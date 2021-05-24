@@ -10,12 +10,19 @@ public class Room {
   String roomType;
   int chanceToGenerateRoom;
   
+  boolean hasTeleporter;
+  int roomBlueprint;
+  
+  ArrayList<Enemy> enemyList = new ArrayList();
+  ArrayList<Projectile> projectileList = new ArrayList();
+  
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
     this.roomType = "start";
     this.chanceToGenerateRoom = chanceToGenerateRoom;
     this.x = 0;
     this.y = 0;
+    this.hasTeleporter = true;
   }
   
   // constructor for all other rooms
@@ -24,6 +31,11 @@ public class Room {
     this.chanceToGenerateRoom = chanceToGenerateRoom;
     this.x = x;
     this.y = y;
+    
+    if (random(100) < 20) {
+      this.hasTeleporter = true;
+    }
+    else this.hasTeleporter = false;
     
     switch (direction) {
       case NORTH:
