@@ -12,7 +12,7 @@ Room currentRoom;
 MenuPages menu;
 
 public void setup() {
-  
+  menu = new MenuPages(0);
   
 }
 
