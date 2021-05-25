@@ -7,7 +7,6 @@ public final int WEST = 3;
 
 //INSTANCE VARIABLES
 public Player p;
-public Room currentRoom;
 public Floor map;
 
 public MenuPages menu;
@@ -21,8 +20,6 @@ public void setup() {
   map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
   p = new Player(map.roomList.get(0), 10);
   m1 = new MeatCleaver(400,400, 10, 1);
-  
-  currentRoom = p.currentRoom;
 }
 
 public void draw() {
@@ -35,14 +32,7 @@ public void draw() {
   p.move();
   p.draw();
   
-  
-  // example of drawing stuff
-  m1.draw();
-  println(currentRoom);
-  for (int i = 0; i < currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
-    Projectile pro = currentRoom.projectileList.get(i);
-    pro.draw();
-  }
+  p.currentRoom.draw();
   
 }
 
@@ -61,4 +51,5 @@ public void keyReleased() {
 public void mousePressed() {
   map = new Floor(10, 15);
   p = new Player(map.roomList.get(0), 10);
+  m1 = new MeatCleaver(400,400, 10, 1);
 }

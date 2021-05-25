@@ -67,6 +67,18 @@ public class Room {
     }
   }
   
+  public void draw() {
+    text(toString(), 500, 500);
+    
+    for (Enemy e : this.enemyList) {
+      e.draw();
+    }
+    for (Projectile proj : this.projectileList) {
+      proj.draw();
+    }
+    
+  }
+  
   public String toString() {
     return "this is a " + this.roomType + " located at (" + this.x + ", " + this.y + ")"; 
   }
