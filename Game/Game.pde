@@ -20,6 +20,10 @@ public void setup() {
   map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
   p = new Player(map.roomList.get(0), 10);
   m1 = new MeatCleaver(400,400, 10, 1);
+
+  for (int i = 0; i < p.currentRoom.roomBlueprint.length; i++) {
+    println(p.currentRoom.roomBlueprint[i]);
+  }
 }
 
 public void draw() {
@@ -29,10 +33,9 @@ public void draw() {
   // all of these draw statements will be factored out later
   map.draw();
   
+  p.currentRoom.draw();
   p.move();
   p.draw();
-  
-  p.currentRoom.draw();
   
 }
 

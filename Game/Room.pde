@@ -1,3 +1,9 @@
+public final char PIT = '0';
+public final char WALL = '1';
+public final char TELEPORTER = '2';
+public final char CORRIDOR = '3';
+public final char GROUND = '4';
+
 public class Room {
   int x;
   int y;
@@ -12,7 +18,8 @@ public class Room {
   int chanceToGenerateRoom;
   
   boolean hasTeleporter;
-  int roomBlueprint;
+  String[] roomBlueprint;
+  
   
   ArrayList<Enemy> enemyList = new ArrayList();
   ArrayList<Projectile> projectileList = new ArrayList();
@@ -25,6 +32,8 @@ public class Room {
     this.y = 0;
     this.hasTeleporter = true;
     this.isCurrentRoom = true;
+
+    this.roomBlueprint = loadStrings("room1.txt");
   }
   
   // constructor for all other rooms
@@ -69,7 +78,9 @@ public class Room {
   
   public void draw() {
     text(toString(), 500, 500);
-    
+
+    drawRoomBlueprint();
+
     for (Enemy e : this.enemyList) {
       e.draw();
     }
@@ -77,6 +88,40 @@ public class Room {
       proj.draw();
     }
     
+  }
+
+  public void drawRoomBlueprint() {
+    for (int row = 0; row < roomBlueprint.length; row++) {
+      for (int col = 0; col < roomBlueprint[row].length(); col++) {
+        switch (this.roomBlueprint[row].charAt(col)) {
+          case GROUND:
+            fill(100, 100, 100);
+            break;
+          
+          case PIT:
+            fill(0);
+            break;
+
+          case WALL:
+            fill(255, 0, 0);
+            break;
+          
+          case TELEPORTER:
+            fill(0, 0, 255);
+            break;
+          
+          case CORRIDOR:
+            fill(0, 255, 0);
+            break;
+            
+          default:
+            fill(12, 36, 123);
+            break;
+        }
+
+        rect(col * 60, row * 60, 60, 60);
+      }
+    }
   }
   
   public String toString() {
