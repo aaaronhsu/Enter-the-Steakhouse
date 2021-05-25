@@ -17,6 +17,15 @@ public class Player {
     
     this.speed = speed;
     this.currentRoom = currentRoom;
+    
+    this.health = 5;
+    this.money = 0;
+    this.blanks = 2;
+    
+    Weapon pistol = new Weapon(0.5, 5, 1, 0);
+    this.weaponList = new ArrayList();
+    this.weaponList.add(pistol);
+    this.currentWeapon = pistol;
   }
   
   public void draw() {
