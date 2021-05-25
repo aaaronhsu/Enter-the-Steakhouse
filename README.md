@@ -17,8 +17,10 @@
 ## Devlog:
 ### 5/24
 **Aaron**: Worked on project proposal and created the room generation algorithm using BFS.
+
 **Yaying**: Worked on project proposal.
 
 ### 5/25
 **Aaron**: Worked on floor traversal. Players can now move between rooms.
+
 **Yaying**: Worked on different Enemies. Different Enemies shoot different styles of projectiles.
