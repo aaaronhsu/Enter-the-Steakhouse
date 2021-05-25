@@ -12,3 +12,11 @@
 
 ## UML:
 ![UML](https://github.com/chicknmilk/APCSFinalProject/blob/main/uml.jpeg)
+
+
+## Devlog:
+# 5/24
+**Aaron**: Worked on project proposal and created the room generation algorithm using BFS.
+
+# 5/25
+**Aaron**: Worked on floor traversal. Players can now move between rooms.
