@@ -1,4 +1,4 @@
-public class Player {
+rarspublic class Player {
   float x, y, speed;
   boolean[] direction;
   
@@ -56,7 +56,7 @@ public class Player {
   public void checkIfRoomChange() {
     if (this.x <= 0) {
       // check if corridor exists here, if it doesn't, break
-      if (this.currentRoom.corridorW != null && (int)(this.x / 60) == this.currentRoom.corridorW[1] && (int)(this.y / 60) == this.currentRoom.corridorW[0]) {
+      if (this.currentRoom.corridorW != null && this.x == this.currentRoom.corridorW[0] && this.y == this.currentRoom.corridorW[1]) {
         // GOING WEST
         if (this.currentRoom.roomW != null) {
           this.currentRoom.isCurrentRoom = false;

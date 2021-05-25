@@ -120,21 +120,20 @@ public class Room {
 
             if (row == 0) {
               // NORTH CORRIDOR LOCATION
-              corridorN = {row, col};
+              corridorN = new int[] {row, col};
             }
             else if (row == roomBlueprint.length - 1) {
               // SOUTH CORRIDOR LOCATION
-              corridorS = {row, col};
+              corridorS = new int[] {row, col};
             }
             else if (col == roomBlueprint[row].length() - 1) {
               // EAST CORRIDOR LOCATION
-              corridorE = {row, col};
+              corridorE = new int[] {row, col};
             }
             else if (col == 0) {
               // WEST CORRIDOR LOCATION
-              corridorW = {row, col};
+              corridorW = new int[] {row, col};
             }
-            
 
             break;
             
