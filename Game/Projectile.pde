@@ -12,4 +12,20 @@ public class Projectile {
     this.isPlayerProjectile = isPlayerProjectile;
   }
   
+  //displays the projectile (the shape)
+  void display() {
+    ellipse(x+10, y, 70, 40);
+  }
+  
+  void move() {
+    x += dx;
+    y += dy;
+  }
+  
+  void draw() {
+    display();
+    move();
+    //detect collision
+  }
+  
 }

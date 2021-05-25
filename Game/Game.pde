@@ -12,12 +12,16 @@ public Floor map;
 
 public MenuPages menu;
 
+public MeatCleaver m1 = new MeatCleaver(400,400, 10, 1); //DELETE
+
 public void setup() {
   fullScreen();
   menu = new MenuPages(0);
   
   map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
   p = new Player(map.roomList.get(0), 10);
+  
+  currentRoom = new Room(10);
 }
 
 public void draw() {
@@ -29,6 +33,12 @@ public void draw() {
   
   p.move();
   p.draw();
+  
+  m1.draw();
+  for (int i = 0; i < currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
+    Projectile p = currentRoom.projectileList.get(i);
+    p.draw();
+  }
   
 }
 
