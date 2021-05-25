@@ -16,6 +16,10 @@ public class Floor {
     roomList.add(startRoom);
     
     generateFloor();
+
+    for (Room r : roomList) {
+      r.constructCorridors();
+    }
   }
   
   Floor(int minRooms, int maxRooms) {
@@ -31,6 +35,10 @@ public class Floor {
       roomList.add(startRoom);
       
       generateFloor();
+    }
+
+    for (Room r : roomList) {
+      r.constructCorridors();
     }
   }
   

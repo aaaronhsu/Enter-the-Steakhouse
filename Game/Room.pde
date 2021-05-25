@@ -48,6 +48,8 @@ public class Room {
     this.x = x;
     this.y = y;
     this.isCurrentRoom = false;
+
+    this.roomBlueprint = loadStrings("room1.txt");
     
     if (random(100) < 20) {
       this.hasTeleporter = true;
@@ -78,6 +80,32 @@ public class Room {
         roomE = previousRoom;
         previousRoom.roomW = this;
         break;
+    }
+  }
+
+  public void constructCorridors() {
+    for (int row = 0; row < roomBlueprint.length; row++) {
+      for (int col = 0; col < roomBlueprint[row].length(); col++) {
+        if (this.roomBlueprint[row].charAt(col) == CORRIDOR) {
+          if (row == 0) {
+            // NORTH CORRIDOR LOCATION
+            this.corridorN = new int[] {row, col};
+          }
+          else if (row == roomBlueprint.length - 1) {
+            // SOUTH CORRIDOR LOCATION
+            this.corridorS = new int[] {row + 1, col};
+          }
+          else if (col == roomBlueprint[row].length() - 1) {
+            // EAST CORRIDOR LOCATION
+            this.corridorE = new int[] {row, col + 1};
+          }
+          else if (col == 0) {
+            // WEST CORRIDOR LOCATION
+            this.corridorW = new int[] {row, col};
+          }
+          break;
+        }
+      }
     }
   }
   
