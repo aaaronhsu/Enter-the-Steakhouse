@@ -8,3 +8,7 @@
 
 ## Description:
 *Enter the Steakhouse* is a roguelike bullet-hell dungeon crawler where the player will navigate through various rooms with the goal of finding and defeating the boss of the floor. As the player explores the floor, they will be faced with enemies. Each room may contain a set of enemies that differ in strength and attack patterns that the player must defeat to proceed. Other rooms may contain a shop, where the player can upgrades, or a chest, which can be opened with keys found around the floor. Each floor is procedurally generated.
+
+
+## UML:
+![UML](uml.jpg)
