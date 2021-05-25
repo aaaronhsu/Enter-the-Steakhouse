@@ -64,4 +64,7 @@ public class Room {
     }
   }
   
+  public String toString() {
+    return "this is a " + this.roomType + " located at (" + this.x + ", " + this.y + ")"; 
+  }
 }
