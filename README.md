@@ -11,4 +11,4 @@
 
 
 ## UML:
-![UML](./uml.jpg)
+![UML](https://github.com/chicknmilk/APCSFinalProject/blob/main/uml.jpeg)
