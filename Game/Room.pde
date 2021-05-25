@@ -38,7 +38,7 @@ public class Room {
     this.hasTeleporter = true;
     this.isCurrentRoom = true;
 
-    this.roomBlueprint = loadStrings("room1.txt");
+    this.roomBlueprint = loadStrings("room2.txt");
   }
   
   // constructor for all other rooms
@@ -140,7 +140,9 @@ public class Room {
             break;
           
           case TELEPORTER:
-            fill(0, 0, 255);
+            // by default, a telepoter will be the ground
+            if (this.hasTeleporter) fill(0, 0, 255);
+            else fill(100, 100, 100);
             break;
           
           case CORRIDOR:
