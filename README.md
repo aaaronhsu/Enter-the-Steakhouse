@@ -16,7 +16,8 @@
 
 ## Devlog:
 ### 5/24
-**Aaron**: Worked on project proposal and created the room generation algorithm using BFS.\n
+**Aaron**: Worked on project proposal and created the room generation algorithm using BFS.
+
 **Yaying**: Worked on project proposal.
 
 ### 5/25
