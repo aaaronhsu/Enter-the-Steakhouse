@@ -8,7 +8,7 @@ public class MeatCleaver extends Enemy{
   
   public void shootProjectile() {
     // calculates direction of the projectile
-    float xDist = x - p.x;
+    float xDist = p.x - x;
     float yDist = p.y - y;
     
     float angle = atan2(yDist, xDist);
