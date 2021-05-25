@@ -55,7 +55,7 @@ public class Player {
   // responsible for switching room
   public void checkIfRoomChange() {
     if (this.x <= 0) {
-      // check if corridor exists here, if it doesn't, break
+      // check if there is a corridor here
       if (this.currentRoom.corridorW != null && (int)(this.x / 60) == this.currentRoom.corridorW[1] && (int)(this.y / 60) == this.currentRoom.corridorW[0]) {
         // GOING WEST
         if (this.currentRoom.roomW != null) {
@@ -71,8 +71,9 @@ public class Player {
       else this.x = 0;
     }
     else if (this.x >= width) {
-      // GOING EAST
+      // check if there is a corridor here
       if (this.currentRoom.corridorE != null && (int)(this.x / 60) == this.currentRoom.corridorE[1] && (int)(this.y / 60) == this.currentRoom.corridorE[0]) {
+        // GOING EAST
         if (this.currentRoom.roomE != null) {
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomE.isCurrentRoom = true;
@@ -86,6 +87,7 @@ public class Player {
       else this.x = width;
     }
     if (this.y <= 0) {
+      // check if there is a corridor here
       if (this.currentRoom.corridorN != null && (int)(this.x / 60) == this.currentRoom.corridorN[1] && (int)(this.y / 60) == this.currentRoom.corridorN[0]) {
         // GOING NORTH
         if (this.currentRoom.roomN != null) {
@@ -101,8 +103,7 @@ public class Player {
       else this.y = 0;
     }
     else if (this.y >= height) {
-      println(Arrays.toString(this.currentRoom.corridorS));
-      println((int)(this.x / 60) + ", " + (int)(this.y / 60));
+      // check if there is a corridor here
       if (this.currentRoom.corridorS != null && (int)(this.x / 60) == this.currentRoom.corridorS[1] && (int)(this.y / 60) == this.currentRoom.corridorS[0]) {
         // GOING SOUTH
         if (this.currentRoom.roomS != null) {

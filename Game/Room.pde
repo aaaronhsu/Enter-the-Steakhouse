@@ -116,23 +116,28 @@ public class Room {
             break;
           
           case CORRIDOR:
-            fill(0, 255, 0);
+            // by default, a corridor will be a wall
+            fill(255, 0, 0);
 
-            if (row == 0) {
+            if (roomN != null && row == 0) {
               // NORTH CORRIDOR LOCATION
               corridorN = new int[] {row, col};
+              fill(0, 255, 0);
             }
-            else if (row == roomBlueprint.length - 1) {
+            else if (roomS != null && row == roomBlueprint.length - 1) {
               // SOUTH CORRIDOR LOCATION
               corridorS = new int[] {row + 1, col};
+              fill(0, 255, 0);
             }
-            else if (col == roomBlueprint[row].length() - 1) {
+            else if (roomE != null && col == roomBlueprint[row].length() - 1) {
               // EAST CORRIDOR LOCATION
               corridorE = new int[] {row, col + 1};
+              fill(0, 255, 0);
             }
-            else if (col == 0) {
+            else if (roomW != null && col == 0) {
               // WEST CORRIDOR LOCATION
               corridorW = new int[] {row, col};
+              fill(0, 255, 0);
             }
 
             break;
