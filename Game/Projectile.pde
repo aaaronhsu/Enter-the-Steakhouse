@@ -3,9 +3,11 @@ public class Projectile {
   boolean isPlayerProjectile;
   int damage;
   
-  Projectile(float x, float y, int damage, boolean isPlayerProjectile) {
+  Projectile(float x, float y, float dx, float dy, int damage, boolean isPlayerProjectile) {
     this.x = x;
     this.y = y;
+    this.dx = dx;
+    this.dy = dy;
     this.damage = damage;
     this.isPlayerProjectile = isPlayerProjectile;
   }

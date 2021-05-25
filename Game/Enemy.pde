@@ -1,4 +1,4 @@
-public class Enemy {
+public abstract class Enemy {
   float x, y;
   int health, contactDamage;
   

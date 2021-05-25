@@ -120,4 +120,9 @@ public class Player {
         break;
     }
   }
+  
+  // asks the current weapon to shoot
+  public void shootProjectile() {
+    this.currentWeapon.shootProjectile(x, y);
+  }
 }
