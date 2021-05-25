@@ -24,6 +24,11 @@ public class Room {
   ArrayList<Enemy> enemyList = new ArrayList();
   ArrayList<Projectile> projectileList = new ArrayList();
   
+  int[] corridorN = null;
+  int[] corridorS = null;
+  int[] corridorE = null;
+  int[] corridorW = null;
+  
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
     this.roomType = "start";
@@ -112,6 +117,24 @@ public class Room {
           
           case CORRIDOR:
             fill(0, 255, 0);
+
+            if (row == 0) {
+              // NORTH TELEPORTER LOCATION
+              roomN = {row, col};
+            }
+            else if (row == roomBlueprint.length - 1) {
+              // SOUTH TELEPORTER LOCATION
+              roomS = {row, col};
+            }
+            else if (col == 0) {
+              // WEST TELEPORTER LOCATION
+              roomW = {row, col};
+            }
+            else if (col == roomBlueprint[row].length() - 1) {
+              // SOUTH TELEPORTER LOCATION
+              roomE = {row, col};
+            }
+
             break;
             
           default:
