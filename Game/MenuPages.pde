@@ -14,23 +14,23 @@ public class MenuPages {
   public void draw() {
     switch (currentPage) {
       case MENU_SCREEN: //menu screen
-        println("menu");
+        //println("menu");
         break;
       
       case MAPSELECT_SCREEN: //map size screen
-        println("map size");
+        //println("map size");
         break;
       
       case GAME_SCREEN: //game screen
-        println("game");
+        //println("game");
         break;
       
       case VICTORY_SCREEN: //victory screen
-        println("victory");
+        //println("victory");
         break;
       
       case DEFEAT_SCREEN:
-        println("defeat");
+        //println("defeat");
         break;
     }
   }

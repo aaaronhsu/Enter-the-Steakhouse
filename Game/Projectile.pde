@@ -14,7 +14,7 @@ public class Projectile {
   
   //displays the projectile (the shape)
   void display() {
-    ellipse(x+10, y, 70, 40);
+    ellipse(x, y, 70, 40);
   }
   
   void move() {

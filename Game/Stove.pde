@@ -1,8 +1,8 @@
-public class Gardener extends Enemy{
+public class Stove extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 7;
   
-  Gardener(float x, float y, int health, int contactDamage) {
+  Stove(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
   }
   
@@ -13,8 +13,9 @@ public class Gardener extends Enemy{
     
     float angle = atan2(yDist, xDist);
     
-    // creates 3 projectiles 120 degrees apart
-    for (int i = 0; i <= radians(240); i+= radians(120)) {
+    //***why can it not exceed 6 projectiles??
+    // creates 6 projectiles 60 degrees apart
+    for (int i = 0; i <= radians(300); i+= radians(60)) {
       float dx = projectileSpeed * cos(angle+i);
       float dy = projectileSpeed * sin(angle+i);
       Projectile p1 = new Projectile(x, y, dx, dy, projectileDamage, false);
@@ -22,7 +23,6 @@ public class Gardener extends Enemy{
       // adds projectile to the projectile list of the room that the player is in
       p.currentRoom.projectileList.add(p1);
     }
-  
   }
   
   public void draw() {
