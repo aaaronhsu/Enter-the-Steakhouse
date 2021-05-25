@@ -16,7 +16,7 @@ public void setup() {
   fullScreen();
   menu = new MenuPages(0);
   
-  map = new Floor(65); // should not be in setup, will be called by separate function when game starts
+  map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
 }
 
 public void draw() {
@@ -33,7 +33,12 @@ public void drawMap() {
     if (rm.roomType.equals("combat")) fill(255, 0, 0);
     else if (rm.roomType.equals("start")) fill(100, 100, 100);
     else if (rm.roomType.equals("boss")) fill(0);
+    
     rect(x * 20, y * 20, 20, 20);
+    if (rm.hasTeleporter) {
+      fill(0, 0, 255);
+      rect(x * 20, y * 20, 10, 10);
+    }
     
     stroke(0, 255, 0);
     if (rm.roomN != null) {
@@ -50,4 +55,8 @@ public void drawMap() {
     }
     stroke(0);
   }
+}
+
+public void mousePressed() {
+  map = new Floor(10, 15);
 }

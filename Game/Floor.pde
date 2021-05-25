@@ -18,6 +18,22 @@ public class Floor {
     generateFloor();
   }
   
+  Floor(int minRooms, int maxRooms) {
+    this.roomList = new ArrayList();
+    
+    while (roomList.size() < minRooms || roomList.size() > maxRooms) {
+      this.roomList = new ArrayList();
+      this.numCombatRooms = 0;
+      this.numChestRooms = 0;
+      this.numShopRooms = 0;
+      
+      startRoom = new Room(65);
+      roomList.add(startRoom);
+      
+      generateFloor();
+    }
+  }
+  
   public void generateFloor() {
     ArrayDeque<Room> roomFrontier = new ArrayDeque();
     roomFrontier.add(roomList.get(0));
@@ -252,5 +268,37 @@ public class Floor {
       if (room.x == x && room.y == y) return room; 
     }
     return null;
+  }
+  
+  public void draw() {
+    for (Room rm : map.roomList) {
+      int x = rm.x + 10;
+      int y = rm.y + 10;
+      
+      if (rm.roomType.equals("combat")) fill(255, 0, 0);
+      else if (rm.roomType.equals("start")) fill(100, 100, 100);
+      else if (rm.roomType.equals("boss")) fill(0);
+      
+      rect(x * 20, y * 20, 20, 20);
+      if (rm.hasTeleporter) {
+        fill(0, 0, 255);
+        rect(x * 20, y * 20, 10, 10);
+      }
+      
+      stroke(0, 255, 0);
+      if (rm.roomN != null) {
+        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20);
+      }
+      if (rm.roomS != null) {
+        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20 + 20);
+      }
+      if (rm.roomE != null) {
+        line(x * 20 + 10, y * 20 + 10, x * 20 + 20, y * 20 + 10);
+      }
+      if (rm.roomW != null) {
+        line(x * 20 + 10, y * 20 + 10, x * 20, y * 20 + 10);
+      }
+      stroke(0);
+    }
   }
 }
