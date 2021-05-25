@@ -23,6 +23,8 @@ public void setup() {
 public void draw() {
   background(255, 255, 255);
   menu.draw();
+  
+  // all of these draw statements will be factored out later
   map.draw();
   
   p.move();
