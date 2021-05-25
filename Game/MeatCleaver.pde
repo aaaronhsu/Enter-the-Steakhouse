@@ -25,7 +25,10 @@ public class MeatCleaver extends Enemy{
   
   public void draw() {
     ellipse(x,y, 50,50); //body
-    shootProjectile();
+    //shoots projectile every 0.4 seconds
+    if (millis() % 400 >= 0 && millis() % 400 <= 50) {
+      shootProjectile();
+    }
   }
 
 }
