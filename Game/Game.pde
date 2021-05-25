@@ -36,8 +36,8 @@ public void draw() {
   
   m1.draw();
   for (int i = 0; i < currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
-    Projectile p = currentRoom.projectileList.get(i);
-    p.draw();
+    Projectile pro = currentRoom.projectileList.get(i);
+    pro.draw();
   }
   
 }
