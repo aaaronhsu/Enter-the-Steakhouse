@@ -22,7 +22,7 @@ public void setup() {
   p = new Player(map.roomList.get(0), 10);
   m1 = new MeatCleaver(400,400, 10, 1);
   
-  currentRoom = new Room(10);
+  currentRoom = p.currentRoom;
 }
 
 public void draw() {
@@ -39,8 +39,8 @@ public void draw() {
   // example of drawing stuff
   m1.draw();
   println(currentRoom);
-  for (int i = 0; i < p.currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
-    Projectile pro = p.currentRoom.projectileList.get(i);
+  for (int i = 0; i < currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
+    Projectile pro = currentRoom.projectileList.get(i);
     pro.draw();
   }
   

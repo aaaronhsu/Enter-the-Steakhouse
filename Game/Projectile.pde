@@ -9,7 +9,7 @@ public class Projectile {
     this.dx = dx;
     this.dy = dy;
     this.damage = damage;
-    this.isPlayerProjectile = isPlayerProjectile;
+    this.isPlayerProjectile = isPlayerProjectile;   
   }
   
   //displays the projectile (the shape)
