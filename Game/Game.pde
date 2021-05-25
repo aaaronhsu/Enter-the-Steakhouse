@@ -34,9 +34,12 @@ public void draw() {
   p.move();
   p.draw();
   
+  
+  // example of drawing stuff
   m1.draw();
-  for (int i = 0; i < currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
-    Projectile pro = currentRoom.projectileList.get(i);
+  println(currentRoom);
+  for (int i = 0; i < p.currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
+    Projectile pro = p.currentRoom.projectileList.get(i);
     pro.draw();
   }
   
