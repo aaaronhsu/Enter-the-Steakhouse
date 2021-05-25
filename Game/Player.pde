@@ -30,17 +30,25 @@ public class Player {
   
   public void draw() {
     fill(0);
+    
+    // draw the player
     ellipseMode(CENTER);
     ellipse(this.x, this.y, 30, 30);
+    
+    // draw the weapon
+    currentWeapon.draw();
   }
   
   public void move() {
+    // sum the directions the player is moving in
     int x = (direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0);
     int y = (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0);
     
+    // change the position of the user based on speed and keys held
     this.x += speed * x;
     this.y += speed * y;
     
+    // checks if the player tries to walk to another room
     checkIfRoomChange();
   }
   
