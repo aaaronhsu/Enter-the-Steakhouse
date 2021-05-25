@@ -119,21 +119,22 @@ public class Room {
             fill(0, 255, 0);
 
             if (row == 0) {
-              // NORTH TELEPORTER LOCATION
-              roomN = {row, col};
+              // NORTH CORRIDOR LOCATION
+              corridorN = {row, col};
             }
             else if (row == roomBlueprint.length - 1) {
-              // SOUTH TELEPORTER LOCATION
-              roomS = {row, col};
-            }
-            else if (col == 0) {
-              // WEST TELEPORTER LOCATION
-              roomW = {row, col};
+              // SOUTH CORRIDOR LOCATION
+              corridorS = {row, col};
             }
             else if (col == roomBlueprint[row].length() - 1) {
-              // SOUTH TELEPORTER LOCATION
-              roomE = {row, col};
+              // EAST CORRIDOR LOCATION
+              corridorE = {row, col};
             }
+            else if (col == 0) {
+              // WEST CORRIDOR LOCATION
+              corridorW = {row, col};
+            }
+            
 
             break;
             
