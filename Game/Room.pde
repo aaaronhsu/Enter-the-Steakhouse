@@ -124,11 +124,11 @@ public class Room {
             }
             else if (row == roomBlueprint.length - 1) {
               // SOUTH CORRIDOR LOCATION
-              corridorS = new int[] {row, col};
+              corridorS = new int[] {row + 1, col};
             }
             else if (col == roomBlueprint[row].length() - 1) {
               // EAST CORRIDOR LOCATION
-              corridorE = new int[] {row, col};
+              corridorE = new int[] {row, col + 1};
             }
             else if (col == 0) {
               // WEST CORRIDOR LOCATION

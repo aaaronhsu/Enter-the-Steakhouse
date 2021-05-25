@@ -72,37 +72,48 @@ public class Player {
     }
     else if (this.x >= width) {
       // GOING EAST
-      if (this.currentRoom.roomE != null) {
-        this.currentRoom.isCurrentRoom = false;
-        this.currentRoom.roomE.isCurrentRoom = true;
-        
-        this.currentRoom = this.currentRoom.roomE;
-        this.x = width / 2;
-        this.y = height / 2;
+      if (this.currentRoom.corridorE != null && (int)(this.x / 60) == this.currentRoom.corridorE[1] && (int)(this.y / 60) == this.currentRoom.corridorE[0]) {
+        if (this.currentRoom.roomE != null) {
+          this.currentRoom.isCurrentRoom = false;
+          this.currentRoom.roomE.isCurrentRoom = true;
+          
+          this.currentRoom = this.currentRoom.roomE;
+          this.x = width / 2;
+          this.y = height / 2;
+        }
+        else this.x = width;
       }
       else this.x = width;
     }
     if (this.y <= 0) {
-      // GOING NORTH
-      if (this.currentRoom.roomN != null) {
-        this.currentRoom.isCurrentRoom = false;
-        this.currentRoom.roomN.isCurrentRoom = true;
-        
-        this.currentRoom = this.currentRoom.roomN;
-        this.x = width / 2;
-        this.y = height / 2;
+      if (this.currentRoom.corridorN != null && (int)(this.x / 60) == this.currentRoom.corridorN[1] && (int)(this.y / 60) == this.currentRoom.corridorN[0]) {
+        // GOING NORTH
+        if (this.currentRoom.roomN != null) {
+          this.currentRoom.isCurrentRoom = false;
+          this.currentRoom.roomN.isCurrentRoom = true;
+          
+          this.currentRoom = this.currentRoom.roomN;
+          this.x = width / 2;
+          this.y = height / 2;
+        }
+        else this.y = 0;
       }
       else this.y = 0;
     }
     else if (this.y >= height) {
-      // GOING SOUTH
-      if (this.currentRoom.roomS != null) {
-        this.currentRoom.isCurrentRoom = false;
-        this.currentRoom.roomS.isCurrentRoom = true;
-        
-        this.currentRoom = this.currentRoom.roomS;
-        this.x = width / 2;
-        this.y = height / 2;
+      println(Arrays.toString(this.currentRoom.corridorS));
+      println((int)(this.x / 60) + ", " + (int)(this.y / 60));
+      if (this.currentRoom.corridorS != null && (int)(this.x / 60) == this.currentRoom.corridorS[1] && (int)(this.y / 60) == this.currentRoom.corridorS[0]) {
+        // GOING SOUTH
+        if (this.currentRoom.roomS != null) {
+          this.currentRoom.isCurrentRoom = false;
+          this.currentRoom.roomS.isCurrentRoom = true;
+          
+          this.currentRoom = this.currentRoom.roomS;
+          this.x = width / 2;
+          this.y = height / 2;
+        }
+        else this.y = height;
       }
       else this.y = height;
     }
