@@ -6,6 +6,7 @@ public class Room {
   Room roomS = null;
   Room roomE = null;
   Room roomW = null;
+  boolean isCurrentRoom;
   
   String roomType;
   int chanceToGenerateRoom;
@@ -23,6 +24,7 @@ public class Room {
     this.x = 0;
     this.y = 0;
     this.hasTeleporter = true;
+    this.isCurrentRoom = true;
   }
   
   // constructor for all other rooms
@@ -31,6 +33,7 @@ public class Room {
     this.chanceToGenerateRoom = chanceToGenerateRoom;
     this.x = x;
     this.y = y;
+    this.isCurrentRoom = false;
     
     if (random(100) < 20) {
       this.hasTeleporter = true;

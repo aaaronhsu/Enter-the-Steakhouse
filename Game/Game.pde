@@ -17,46 +17,32 @@ public void setup() {
   menu = new MenuPages(0);
   
   map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
+  p = new Player(map.roomList.get(0), 10);
 }
 
 public void draw() {
   background(255, 255, 255);
   menu.draw();
-  drawMap();
+  map.draw();
+  
+  p.move();
+  p.draw();
+  
 }
 
-public void drawMap() {
-  for (Room rm : map.roomList) {
-    int x = rm.x + 10;
-    int y = rm.y + 10;
-    
-    if (rm.roomType.equals("combat")) fill(255, 0, 0);
-    else if (rm.roomType.equals("start")) fill(100, 100, 100);
-    else if (rm.roomType.equals("boss")) fill(0);
-    
-    rect(x * 20, y * 20, 20, 20);
-    if (rm.hasTeleporter) {
-      fill(0, 0, 255);
-      rect(x * 20, y * 20, 10, 10);
-    }
-    
-    stroke(0, 255, 0);
-    if (rm.roomN != null) {
-      line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20);
-    }
-    if (rm.roomS != null) {
-      line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20 + 20);
-    }
-    if (rm.roomE != null) {
-      line(x * 20 + 10, y * 20 + 10, x * 20 + 20, y * 20 + 10);
-    }
-    if (rm.roomW != null) {
-      line(x * 20 + 10, y * 20 + 10, x * 20, y * 20 + 10);
-    }
-    stroke(0);
+public void keyPressed() {
+  if (keyCode == 87 || keyCode == 82 || keyCode == 83 || keyCode == 65) {
+    p.changeDirection(true);
+  }
+}
+
+public void keyReleased() {
+  if (keyCode == 87 || keyCode == 82 || keyCode == 83 || keyCode == 65) {
+    p.changeDirection(false);
   }
 }
 
 public void mousePressed() {
   map = new Floor(10, 15);
+  p = new Player(map.roomList.get(0), 10);
 }

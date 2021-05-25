@@ -1,3 +1,9 @@
+public final int MENU_SCREEN = 0;
+public final int MAPSELECT_SCREEN = 1;
+public final int GAME_SCREEN = 2;
+public final int VICTORY_SCREEN = 3;
+public final int DEFEAT_SCREEN = 4;
+
 public class MenuPages {
   int currentPage;
   
@@ -7,23 +13,23 @@ public class MenuPages {
   
   public void draw() {
     switch (currentPage) {
-      case 0: //menu screen
+      case MENU_SCREEN: //menu screen
         println("menu");
         break;
       
-      case 1: //map size screen
+      case MAPSELECT_SCREEN: //map size screen
         println("map size");
         break;
       
-      case 2: //game screen
+      case GAME_SCREEN: //game screen
         println("game");
         break;
       
-      case 3: //victory screen
+      case VICTORY_SCREEN: //victory screen
         println("victory");
         break;
       
-      case 4:
+      case DEFEAT_SCREEN:
         println("defeat");
         break;
     }

@@ -284,6 +284,10 @@ public class Floor {
         fill(0, 0, 255);
         rect(x * 20, y * 20, 10, 10);
       }
+      if (rm.isCurrentRoom) {
+        fill(0, 255, 0);
+        rect(x * 20 + 10, y * 20, 10, 10);
+      }
       
       stroke(0, 255, 0);
       if (rm.roomN != null) {
