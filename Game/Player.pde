@@ -4,6 +4,12 @@ public class Player {
   
   Room currentRoom;
   
+  int health;
+  int money;
+  int blanks;
+  ArrayList<Weapon> weaponList;
+  Weapon currentWeapon;
+  
   Player(Room currentRoom, float speed) {
     this.x = width / 2;
     this.y = height / 2;
