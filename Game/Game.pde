@@ -6,13 +6,15 @@ public final int EAST = 2;
 public final int WEST = 3;
 
 //INSTANCE VARIABLES
-Player p;
-Room currentRoom;
+public Player p;
+public Room currentRoom;
+public Floor map;
 
-MenuPages menu;
+public MenuPages menu;
 
 public void setup() {
   menu = new MenuPages(0);
+  
   
 }
 
