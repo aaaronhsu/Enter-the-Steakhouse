@@ -13,6 +13,7 @@ public class Room {
   Room roomE = null;
   Room roomW = null;
   boolean isCurrentRoom;
+  boolean visited;
   
   String roomType;
   int chanceToGenerateRoom;
@@ -37,6 +38,7 @@ public class Room {
     this.y = 0;
     this.hasTeleporter = true;
     this.isCurrentRoom = true;
+    this.visited = true;
 
     this.roomBlueprint = loadStrings("room6.txt");
   }
@@ -48,6 +50,7 @@ public class Room {
     this.x = x;
     this.y = y;
     this.isCurrentRoom = false;
+    this.visited = false;
     
     int randomRoom = (int)(random(7)) + 1;
 

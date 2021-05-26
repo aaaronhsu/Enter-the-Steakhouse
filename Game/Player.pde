@@ -66,6 +66,7 @@ public class Player {
           this.y = this.currentRoom.roomW.corridorE[0] * 60 + 30;
 
           this.currentRoom = this.currentRoom.roomW;
+          this.currentRoom.visited = true;
         }
         else this.x = 0;
       }
@@ -83,6 +84,7 @@ public class Player {
           this.y = this.currentRoom.roomE.corridorW[0] * 60 + 30;
           
           this.currentRoom = this.currentRoom.roomE;
+          this.currentRoom.visited = true;
         }
         else this.x = width;
       }
@@ -101,6 +103,7 @@ public class Player {
           this.y = this.currentRoom.roomN.corridorS[0] * 60 - 1;
           
           this.currentRoom = this.currentRoom.roomN;
+          this.currentRoom.visited = true;
         }
         else this.y = 0;
       }
@@ -118,6 +121,7 @@ public class Player {
           this.y = this.currentRoom.roomS.corridorN[0] * 60 + 1;
           
           this.currentRoom = this.currentRoom.roomS;
+          this.currentRoom.visited = true;
         }
         else this.y = height;
       }

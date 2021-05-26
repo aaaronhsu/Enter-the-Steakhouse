@@ -280,6 +280,7 @@ public class Floor {
   
   public void draw() {
     for (Room rm : map.roomList) {
+      if (rm.visited == false) continue;
       int x = rm.x + 10;
       int y = rm.y + 10;
       
