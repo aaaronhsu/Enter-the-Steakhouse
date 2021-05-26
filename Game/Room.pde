@@ -38,7 +38,7 @@ public class Room {
     this.hasTeleporter = true;
     this.isCurrentRoom = true;
 
-    this.roomBlueprint = loadStrings("room2.txt");
+    this.roomBlueprint = loadStrings("room6.txt");
   }
   
   // constructor for all other rooms
@@ -49,7 +49,7 @@ public class Room {
     this.y = y;
     this.isCurrentRoom = false;
     
-    int randomRoom = (int)(random(3)) + 1;
+    int randomRoom = (int)(random(7)) + 1;
 
     this.roomBlueprint = loadStrings("room" + randomRoom + ".txt");
     
