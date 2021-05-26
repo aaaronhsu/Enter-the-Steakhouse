@@ -1,6 +1,8 @@
 public class SaltPepperTwins extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 0;
+  int cooldown = 25; //does not change
+  int c = cooldown;
   
   SaltPepperTwins(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
@@ -26,9 +28,14 @@ public class SaltPepperTwins extends Enemy{
   
   public void draw() {
     ellipse(x,y, 50,50); //body
-    //shoots projectile every 1 seconds
-    if (millis() % 1000 >= 0 && millis() % 1000 <= 50) {
+    
+    //periodically shoots projectile 
+    if (c == 0) {
       shootProjectile();
+      this.c = this.cooldown;
+    }
+    else {
+      c--;
     }
   }
 

@@ -1,4 +1,4 @@
-public class Projectile { //shooting 3 projectiles @ a time; Stoves can't have >6 projectiles
+public class Projectile { //Stoves can't have >6 projectiles
   float x, y, dx, dy, w, h;
   color c;
   boolean isPlayerProjectile;

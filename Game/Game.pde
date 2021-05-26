@@ -42,10 +42,10 @@ public void draw() {
   p.move();
   p.draw();
   
-  m1.draw(); //testing; delete after
+  //m1.draw(); //testing; delete after
   //g1.draw();
   //s1.draw();
-  //sp1.draw();
+  sp1.draw();
   for (int i = 0; i < p.currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
     Projectile pro = p.currentRoom.projectileList.get(i);
     pro.draw();
