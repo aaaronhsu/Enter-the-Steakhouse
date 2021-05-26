@@ -24,3 +24,6 @@
 **Aaron**: Worked on floor traversal. Players can now move between rooms.
 
 **Yaying**: Worked on different Enemies. Different Enemies shoot different styles of projectiles.
+
+### 5/26
+**Yaying**: Added customizable size + color feature to projectiles
