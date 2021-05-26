@@ -1,4 +1,4 @@
-public class Projectile {
+public class Projectile { //shooting 3 projectiles @ a time; Stoves can't have >6 projectiles
   float x, y, dx, dy, w, h;
   color c;
   boolean isPlayerProjectile;
@@ -27,10 +27,19 @@ public class Projectile {
     y += dy;
   }
   
+  void detectCollision() {
+    if (!isPlayerProjectile) { //is enemy projectile
+      //30 is player's diameter, so radius is 15; might need to change depending on player size
+      if ( Math.abs(p.x-x) >= w/2 + 15 && Math.abs(p.y-y) >= h/2 + 15 ) {
+        println("colliding");
+      }
+    }
+  }
+  
   void draw() {
     display();
     move();
-    //detect collision
+    detectCollision();
   }
   
 }
