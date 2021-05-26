@@ -62,7 +62,7 @@ public class Player {
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomW.isCurrentRoom = true;
           
-          this.x = this.currentRoom.roomW.corridorE[1] * 60;
+          this.x = this.currentRoom.roomW.corridorE[1] * 60 - 1;
           this.y = this.currentRoom.roomW.corridorE[0] * 60 + 30;
 
           this.currentRoom = this.currentRoom.roomW;
@@ -79,7 +79,7 @@ public class Player {
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomE.isCurrentRoom = true;
 
-          this.x = this.currentRoom.roomE.corridorW[1] * 60;
+          this.x = this.currentRoom.roomE.corridorW[1] * 60 + 1;
           this.y = this.currentRoom.roomE.corridorW[0] * 60 + 30;
           
           this.currentRoom = this.currentRoom.roomE;
@@ -98,7 +98,7 @@ public class Player {
 
 
           this.x = this.currentRoom.roomN.corridorS[1] * 60 + 30;
-          this.y = this.currentRoom.roomN.corridorS[0] * 60;
+          this.y = this.currentRoom.roomN.corridorS[0] * 60 - 1;
           
           this.currentRoom = this.currentRoom.roomN;
         }
@@ -115,7 +115,7 @@ public class Player {
           this.currentRoom.roomS.isCurrentRoom = true;
 
           this.x = this.currentRoom.roomS.corridorN[1] * 60 + 30;
-          this.y = this.currentRoom.roomS.corridorN[0] * 60;
+          this.y = this.currentRoom.roomS.corridorN[0] * 60 + 1;
           
           this.currentRoom = this.currentRoom.roomS;
         }
