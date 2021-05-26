@@ -55,7 +55,7 @@ public class Room {
     
     this.roomBlueprintNum = (int)(random(7)) + 1;
 
-    this.roomBlueprint = loadStrings("room" + 6 + ".txt");
+    this.roomBlueprint = loadStrings("room" + roomBlueprintNum + ".txt");
     
     if (random(100) < 20) {
       this.hasTeleporter = true;
