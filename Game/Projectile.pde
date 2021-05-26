@@ -1,21 +1,24 @@
 public class Projectile {
   float x, y, dx, dy, w, h;
+  color c;
   boolean isPlayerProjectile;
   int damage;
   
-  Projectile(float x, float y, float dx, float dy, float w, float h, int damage, boolean isPlayerProjectile) {
+  Projectile(float x, float y, float dx, float dy, float w, float h, color c, int damage, boolean isPlayerProjectile) {
     this.x = x;
     this.y = y;
     this.dx = dx;
     this.dy = dy;
     this.w = w;
     this.h = h;
+    this.c = c;
     this.damage = damage;
     this.isPlayerProjectile = isPlayerProjectile;
   }
   
   //displays the projectile (the shape)
   void display() {
+    fill(c);
     ellipse(x, y, w, h);
   }
   
