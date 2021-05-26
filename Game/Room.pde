@@ -48,8 +48,10 @@ public class Room {
     this.x = x;
     this.y = y;
     this.isCurrentRoom = false;
+    
+    int randomRoom = (int)(random(3)) + 1;
 
-    this.roomBlueprint = loadStrings("room1.txt");
+    this.roomBlueprint = loadStrings("room" + randomRoom + ".txt");
     
     if (random(100) < 20) {
       this.hasTeleporter = true;
