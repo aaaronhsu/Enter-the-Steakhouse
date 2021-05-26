@@ -15,6 +15,7 @@ public MenuPages menu;
 public MeatCleaver m1; //DELETE
 public Gardener g1;
 public Stove s1;
+public SaltPepperTwins sp1;
 
 public void setup() {
   fullScreen();
@@ -25,6 +26,7 @@ public void setup() {
   m1 = new MeatCleaver(400,400, 10, 1);
   g1 = new Gardener(400,400,10,1);
   s1 = new Stove(400,400,10,1);
+  sp1 = new SaltPepperTwins(400,400,10,1);
   
   currentRoom = new Room(10);
 }
@@ -41,7 +43,8 @@ public void draw() {
   
   //m1.draw();
   //g1.draw();
-  s1.draw();
+  //s1.draw();
+  sp1.draw();
   for (int i = 0; i < p.currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
     Projectile pro = p.currentRoom.projectileList.get(i);
     pro.draw();
