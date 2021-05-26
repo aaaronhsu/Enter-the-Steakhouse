@@ -20,6 +20,7 @@ public class Room {
   
   boolean hasTeleporter;
   String[] roomBlueprint;
+  int roomBlueprintNum;
   
   
   ArrayList<Enemy> enemyList = new ArrayList();
@@ -52,9 +53,9 @@ public class Room {
     this.isCurrentRoom = false;
     this.visited = false;
     
-    int randomRoom = (int)(random(7)) + 1;
+    this.roomBlueprintNum = (int)(random(7)) + 1;
 
-    this.roomBlueprint = loadStrings("room" + randomRoom + ".txt");
+    this.roomBlueprint = loadStrings("room" + 6 + ".txt");
     
     if (random(100) < 20) {
       this.hasTeleporter = true;
@@ -91,6 +92,7 @@ public class Room {
   public void constructCorridors() {
     for (int row = 0; row < roomBlueprint.length; row++) {
       for (int col = 0; col < roomBlueprint[row].length(); col++) {
+
         if (this.roomBlueprint[row].charAt(col) == CORRIDOR) {
           if (row == 0) {
             // NORTH CORRIDOR LOCATION
@@ -108,7 +110,6 @@ public class Room {
             // WEST CORRIDOR LOCATION
             this.corridorW = new int[] {row, col};
           }
-          break;
         }
       }
     }
@@ -188,6 +189,6 @@ public class Room {
   }
   
   public String toString() {
-    return "this is a " + this.roomType + " located at (" + this.x + ", " + this.y + ")"; 
+    return "this is a " + this.roomType + " located at (" + this.x + ", " + this.y + ")" + " and is using " + this.roomBlueprintNum; 
   }
 }

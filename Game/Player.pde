@@ -61,6 +61,8 @@ public class Player {
         if (this.currentRoom.roomW != null) {
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomW.isCurrentRoom = true;
+
+          this.currentRoom.roomW.constructCorridors();
           
           this.x = this.currentRoom.roomW.corridorE[1] * 60 - 1;
           this.y = this.currentRoom.roomW.corridorE[0] * 60 + 30;
@@ -80,6 +82,8 @@ public class Player {
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomE.isCurrentRoom = true;
 
+          this.currentRoom.roomE.constructCorridors();
+
           this.x = this.currentRoom.roomE.corridorW[1] * 60 + 1;
           this.y = this.currentRoom.roomE.corridorW[0] * 60 + 30;
           
@@ -98,6 +102,7 @@ public class Player {
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomN.isCurrentRoom = true;
 
+          this.currentRoom.roomN.constructCorridors();
 
           this.x = this.currentRoom.roomN.corridorS[1] * 60 + 30;
           this.y = this.currentRoom.roomN.corridorS[0] * 60 - 1;
@@ -116,6 +121,8 @@ public class Player {
         if (this.currentRoom.roomS != null) {
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomS.isCurrentRoom = true;
+
+          this.currentRoom.roomS.constructCorridors();
 
           this.x = this.currentRoom.roomS.corridorN[1] * 60 + 30;
           this.y = this.currentRoom.roomS.corridorN[0] * 60 + 1;
