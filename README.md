@@ -26,4 +26,4 @@
 **Yaying**: Worked on different Enemies. Different Enemies shoot different styles of projectiles.
 
 ### 5/26
-**Yaying**: Added customizable size + color feature to projectiles
+**Yaying**: Added customizable size + color feature to projectiles + fixed shoot-3-projectiles-at-a-time bug. Added collision detection for enemy projectiles.
