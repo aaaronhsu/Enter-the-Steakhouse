@@ -1,6 +1,8 @@
 public class MeatCleaver extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 5;
+  int cooldown = 20; //does not change
+  int c = cooldown;
   
   MeatCleaver(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
@@ -25,9 +27,14 @@ public class MeatCleaver extends Enemy{
   
   public void draw() {
     ellipse(x,y, 50,50); //body
-    //shoots projectile every 0.4 seconds
-    if (millis() % 400 >= 0 && millis() % 400 <= 50) {
+    
+    //periodically shoots projectile 
+    if (c == 0) {
       shootProjectile();
+      this.c = this.cooldown;
+    }
+    else {
+      c--;
     }
   }
 

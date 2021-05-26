@@ -27,13 +27,19 @@ public class Projectile { //shooting 3 projectiles @ a time; Stoves can't have >
     y += dy;
   }
   
-  void detectCollision() {
+  void detectCollision() { //delete projectile after hitting once
     if (!isPlayerProjectile) { //is enemy projectile
       //**30 is player's diameter, so radius is 15; might need to change depending on player size
       if ( Math.abs(p.x-x) <= w/2 + 15 && Math.abs(p.y-y) <= h/2 + 15 ) {
         println("colliding");
       }
     }
+    //else { //is player projectile
+    //  for (int i = 0; i < p.currentRoom.enemyList.size(); i++) {
+    //    Enemy e = p.currentRoom.enemyList.get(i);
+    //    if ( Math.abs(e.x-x) <= w/2 + e. && Math.abs(p.y-y) <= h/2 + 15 )
+    //  }
+    //}
   }
   
   void draw() {

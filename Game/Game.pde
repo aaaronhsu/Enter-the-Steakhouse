@@ -49,6 +49,7 @@ public void draw() {
   for (int i = 0; i < p.currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
     Projectile pro = p.currentRoom.projectileList.get(i);
     pro.draw();
+    //check if enemy or player hp 0 here, I think
   }
   
 }
