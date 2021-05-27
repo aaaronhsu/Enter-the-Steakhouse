@@ -16,7 +16,7 @@ public void setup() {
   menu = new MenuPages(0);
   
   map = new Floor(13, 18); // should not be in setup, will be called by separate function when game starts
-  p = new Player(map.roomList.get(0), 10);
+  p = new Player(map.roomList.get(0), 7);
 
   for (int i = 0; i < p.currentRoom.roomBlueprint.length; i++) {
     println(p.currentRoom.roomBlueprint[i]);
