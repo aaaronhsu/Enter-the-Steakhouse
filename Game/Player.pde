@@ -62,8 +62,16 @@ public class Player {
       int x = (direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0);
       int y = (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0);
 
-      if (!checkIfXWall(x, y)) this.x += x;
-      if (!checkIfYWall(x, y)) this.y += y;
+      if (!checkIfXWall(x, y)) {
+        if (!this.currentRoom.enemyList.isEmpty() && x == 1 && this.x >= width - radius) continue;
+        if (!this.currentRoom.enemyList.isEmpty() && x == -1 && this.x < radius) continue;
+        this.x += x;
+      }
+      if (!checkIfYWall(x, y)) {
+        if (!this.currentRoom.enemyList.isEmpty() && y == 1 && this.y >= height - radius) continue;
+        if (!this.currentRoom.enemyList.isEmpty() && y == -1 && this.y < radius) continue;
+        this.y += y;
+      }
 
       // checks if player fell into a pit
       this.falling = checkIfPit();

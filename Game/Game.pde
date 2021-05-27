@@ -1,4 +1,3 @@
-
 //GLOBAL VARIABLES
 public final int NORTH = 0;
 public final int SOUTH = 1;
