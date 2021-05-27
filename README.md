@@ -26,4 +26,6 @@
 **Yaying**: Worked on different Enemies. Different Enemies shoot different styles of projectiles.
 
 ### 5/26
+**Aaron**: Worked on wall collisions (so that they player can't walk into walls). Corridors are now deleted if there is no adjacent room. Also new maps!
+
 **Yaying**: Added customizable size + color feature to projectiles + fixed shoot-3-projectiles-at-a-time bug. Added collision detection for enemy projectiles.
