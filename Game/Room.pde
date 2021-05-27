@@ -183,23 +183,23 @@ public class Room {
 
             if (roomN != null && row == 0) {
               // NORTH CORRIDOR LOCATION
-              corridorN = new int[] {row, col};
-              fill(0, 255, 0);
+              if (this.enemyList.isEmpty()) fill(0, 255, 0);
+              else fill(0, 150, 0);
             }
             else if (roomS != null && row == roomBlueprint.length - 1) {
               // SOUTH CORRIDOR LOCATION
-              corridorS = new int[] {row + 1, col};
-              fill(0, 255, 0);
+              if (this.enemyList.isEmpty()) fill(0, 255, 0);
+              else fill(0, 150, 0);
             }
             else if (roomE != null && col == roomBlueprint[row].length() - 1) {
               // EAST CORRIDOR LOCATION
-              corridorE = new int[] {row, col + 1};
-              fill(0, 255, 0);
+              if (this.enemyList.isEmpty()) fill(0, 255, 0);
+              else fill(0, 150, 0);
             }
             else if (roomW != null && col == 0) {
               // WEST CORRIDOR LOCATION
-              corridorW = new int[] {row, col};
-              fill(0, 255, 0);
+              if (this.enemyList.isEmpty()) fill(0, 255, 0);
+              else fill(0, 150, 0);
             }
 
             break;
