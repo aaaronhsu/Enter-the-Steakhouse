@@ -34,7 +34,7 @@ public void draw() {
   p.move();
   p.draw();
   
-  map.draw();
+  if (p.currentRoom.enemyList.isEmpty()) map.draw();
 }
 
 public void keyPressed() {

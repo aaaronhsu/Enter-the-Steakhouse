@@ -289,8 +289,8 @@ public class Floor {
   public void draw() {
     for (Room rm : map.roomList) {
       if (rm.visited == false) continue;
-      int x = rm.x + 10;
-      int y = rm.y + 10;
+      int x = rm.x + 85;
+      int y = rm.y + 8;
       
       if (rm.roomType.equals("combat")) fill(255, 0, 0);
       else if (rm.roomType.equals("start")) fill(100, 100, 100);

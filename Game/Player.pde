@@ -69,7 +69,7 @@ public class Player {
       this.falling = checkIfPit();
 
       // checks if the player tries to walk to another room
-      checkIfRoomChange();
+      if (this.currentRoom.enemyList.isEmpty()) checkIfRoomChange();
     }
   }
 
