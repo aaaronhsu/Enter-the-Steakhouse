@@ -89,6 +89,7 @@ public class Room {
     }
   }
 
+  // determines the positions of the corridors
   public void constructCorridors() {
     for (int row = 0; row < roomBlueprint.length; row++) {
       for (int col = 0; col < roomBlueprint[row].length(); col++) {
@@ -114,6 +115,31 @@ public class Room {
       }
     }
   }
+  
+  // removes corridor from the map if the room adjacent does not exist
+  public void removeCorridors() {
+    if (this.roomN == null) {
+      String north = this.roomBlueprint[0];
+      String newNorth = north.substring(0, this.corridorN[1]) + WALL + north.substring(this.corridorN[1] + 1);
+      this.roomBlueprint[0] = newNorth;
+    }
+    if (this.roomS == null) {
+      String south = this.roomBlueprint[this.roomBlueprint.length - 1];
+      String newSouth = south.substring(0, this.corridorS[1]) + WALL + south.substring(this.corridorS[1] + 1);
+      this.roomBlueprint[this.roomBlueprint.length - 1] = newSouth;
+    }
+    if (this.roomE == null) {
+      String east = this.roomBlueprint[this.corridorE[0]];
+      String newEast = east.substring(0, this.corridorE[1] - 1) + WALL;
+      this.roomBlueprint[this.corridorE[0]] = newEast;
+    }
+    if (this.roomW == null) {
+      String west = this.roomBlueprint[this.corridorW[0]];
+      String newWest = WALL + west.substring(1);
+      this.roomBlueprint[this.corridorW[0]] = newWest;
+    }
+  }
+
   
   public void draw() {
     text(toString(), 500, 500);

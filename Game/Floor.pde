@@ -17,8 +17,12 @@ public class Floor {
     
     generateFloor();
 
+    // construct the corridors and remove the ones that shouldn't exist
     for (Room r : roomList) {
       r.constructCorridors();
+    }
+    for (Room r : roomList) {
+      r.removeCorridors();
     }
   }
   
@@ -37,8 +41,12 @@ public class Floor {
       generateFloor();
     }
 
+    // construct the corridors and remove the ones that shouldn't exist
     for (Room r : roomList) {
       r.constructCorridors();
+    }
+    for (Room r : roomList) {
+      r.removeCorridors();
     }
   }
   
