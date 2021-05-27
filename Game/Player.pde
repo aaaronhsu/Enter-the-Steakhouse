@@ -11,6 +11,8 @@ public class Player {
   ArrayList<Weapon> weaponList;
   Weapon currentWeapon;
   
+  boolean falling = false;
+  
   Player(Room currentRoom, float speed) {
     this.x = width / 2;
     this.y = height / 2;
@@ -41,6 +43,19 @@ public class Player {
   }
   
   public void move() {
+    if (falling) {
+      if (radius > 0) {
+        radius--;
+      }
+      else {
+        radius = 20;
+        falling = false;
+        this.x += 10;
+        this.y += 10;
+      }
+      return;
+    }
+
     for (int i = 0; i < this.speed; i++) {
       // sum the directions the player is moving in
       int x = (direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0);
@@ -48,6 +63,9 @@ public class Player {
 
       if (!checkIfXWall(x, y)) this.x += x;
       if (!checkIfYWall(x, y)) this.y += y;
+
+      // checks if player fell into a pit
+      this.falling = checkIfPit();
 
       // checks if the player tries to walk to another room
       checkIfRoomChange();
@@ -98,7 +116,13 @@ public class Player {
     return false;
   }
  
-
+  public boolean checkIfPit() {
+    try {
+      if (this.currentRoom.roomBlueprint[(int)((this.y) / 60)].charAt((int)(this.x / 60)) == PIT) return true;
+    }
+    catch (Exception e) {}
+    return false;
+  }
 
   // responsible for switching room
   public void checkIfRoomChange() {
