@@ -164,7 +164,7 @@ public class Room {
             break;
           
           case PIT:
-            fill(0);
+            fill(50, 50, 50);
             break;
 
           case WALL:
