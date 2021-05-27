@@ -45,30 +45,34 @@ public class Player {
     int x = (direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0);
     int y = (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0);
 
+    checkIfRoomChange();
     if (!checkIfXWall(x, y)) this.x += speed * x;
     if (!checkIfYWall(x, y)) this.y += speed * y;
     
     // checks if the player tries to walk to another room
-    checkIfRoomChange();
   }
 
   public boolean checkIfXWall(int x, int y) {
     float newX = x + this.x;
     float newY = y + this.y;
 
+        println((int)((newX - radius) / 60) + ", " + (int)(newY / 60));
     try {
       // check if left is in a wall
       if (x == -1) {
+        println("LEFT WALL");
         if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX - radius) / 60)) == WALL) return true;
-        if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX - radius) / 60)) == CORRIDOR && this.currentRoom.roomW == null) return true;
+        // if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX - radius) / 60)) == CORRIDOR && this.currentRoom.roomW == null) return true;
       }
     }
     catch (Exception e) {}
     try {
       // check if right is in a wall
+
       if (x == 1) {
+      println("RIGHT WALL");
         if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX + radius) / 60)) == WALL) return true;
-        if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX + radius) / 60)) == CORRIDOR && this.currentRoom.roomE == null) return true;       
+        // if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX + radius) / 60)) == CORRIDOR && this.currentRoom.roomE == null) return true;       
       }
     }
     catch (Exception e) {}
@@ -82,16 +86,18 @@ public class Player {
     try {
       // check if up is a wall
       if (y == -1) {
+      println("UP WALL");
         if (this.currentRoom.roomBlueprint[(int)((newY - radius) / 60)].charAt((int)(newX / 60)) == WALL) return true;
-        if (this.currentRoom.roomBlueprint[(int)((newY - radius) / 60)].charAt((int)(newX / 60)) == CORRIDOR && this.currentRoom.roomN == null) return true;       
+        // if (this.currentRoom.roomBlueprint[(int)((newY - radius) / 60)].charAt((int)(newX / 60)) == CORRIDOR && this.currentRoom.roomN == null) return true;       
       }
     }
     catch (Exception e) {}
     try {
       // check if down is a wall
       if (y == 1) {
+      println("DOWN WALL");
         if (this.currentRoom.roomBlueprint[(int)((newY + radius) / 60)].charAt((int)(newX / 60)) == WALL) return true;
-        if (this.currentRoom.roomBlueprint[(int)((newY + radius) / 60)].charAt((int)(newX / 60)) == CORRIDOR && this.currentRoom.roomS == null) return true;
+        // if (this.currentRoom.roomBlueprint[(int)((newY + radius) / 60)].charAt((int)(newX / 60)) == CORRIDOR && this.currentRoom.roomS == null) return true;
       }
     }
     catch (Exception e) {}
