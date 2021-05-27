@@ -12,7 +12,7 @@ public class Player {
   Weapon currentWeapon;
   
   boolean falling = false;
-  int[] fallDirection = null;
+  int[] fallDirection = null; // gets updated with the direction the player was moving in when they were falling
   
   Player(Room currentRoom, float speed) {
     this.x = width / 2;
@@ -117,10 +117,12 @@ public class Player {
     return false;
   }
  
+  // checks if the player is in a pit
   public boolean checkIfPit() {
     try {
       if (this.currentRoom.roomBlueprint[(int)((this.y) / 60)].charAt((int)(this.x / 60)) == PIT) {
-        fallDirection = new int[] {(direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0), (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0)};
+        this.fallDirection = new int[] {(direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0), (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0)};
+        this.health--;
         return true;
       }
     }
