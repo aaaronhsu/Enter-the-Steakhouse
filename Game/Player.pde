@@ -7,7 +7,7 @@ public class Player {
   int health;
   int money;
   int blanks;
-  int radius = 15;
+  int radius = 20;
   ArrayList<Weapon> weaponList;
   Weapon currentWeapon;
   
@@ -41,15 +41,17 @@ public class Player {
   }
   
   public void move() {
-    // sum the directions the player is moving in
-    int x = (direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0);
-    int y = (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0);
+    for (int i = 0; i < this.speed; i++) {
+      // sum the directions the player is moving in
+      int x = (direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0);
+      int y = (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0);
 
-    checkIfRoomChange();
-    if (!checkIfXWall(x, y)) this.x += speed * x;
-    if (!checkIfYWall(x, y)) this.y += speed * y;
-    
-    // checks if the player tries to walk to another room
+      if (!checkIfXWall(x, y)) this.x += x;
+      if (!checkIfYWall(x, y)) this.y += y;
+
+      // checks if the player tries to walk to another room
+      checkIfRoomChange();
+    }
   }
 
   public boolean checkIfXWall(int x, int y) {
@@ -77,7 +79,7 @@ public class Player {
   public boolean checkIfYWall(int x, int y) {
     float newX = x + this.x;
     float newY = y + this.y;
-    
+
     try {
       // check if up is a wall
       if (y == -1) {
