@@ -12,6 +12,7 @@ public class Player {
   Weapon currentWeapon;
   
   boolean falling = false;
+  int[] fallDirection = null;
   
   Player(Room currentRoom, float speed) {
     this.x = width / 2;
@@ -50,8 +51,8 @@ public class Player {
       else {
         radius = 20;
         falling = false;
-        this.x += 10;
-        this.y += 10;
+        this.x -= fallDirection[0] * speed * 3;
+        this.y -= fallDirection[1] * speed * 3;
       }
       return;
     }
@@ -118,7 +119,10 @@ public class Player {
  
   public boolean checkIfPit() {
     try {
-      if (this.currentRoom.roomBlueprint[(int)((this.y) / 60)].charAt((int)(this.x / 60)) == PIT) return true;
+      if (this.currentRoom.roomBlueprint[(int)((this.y) / 60)].charAt((int)(this.x / 60)) == PIT) {
+        fallDirection = new int[] {(direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0), (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0)};
+        return true;
+      }
     }
     catch (Exception e) {}
     return false;
