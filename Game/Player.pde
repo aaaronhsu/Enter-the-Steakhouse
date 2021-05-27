@@ -60,7 +60,7 @@ public class Player {
       // check if left is in a wall
       if (x == -1) {
         if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX - radius) / 60)) == WALL) return true;
-        if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX - radius) / 60)) == CORRIDOR && this.currentRoom.corridorW == null) return true;
+        if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX - radius) / 60)) == CORRIDOR && this.currentRoom.roomW == null) return true;
       }
     }
     catch (Exception e) {}
@@ -68,7 +68,7 @@ public class Player {
       // check if right is in a wall
       if (x == 1) {
         if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX + radius) / 60)) == WALL) return true;
-        if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX + radius) / 60)) == CORRIDOR && this.currentRoom.corridorE == null) return true;       
+        if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX + radius) / 60)) == CORRIDOR && this.currentRoom.roomE == null) return true;       
       }
     }
     catch (Exception e) {}
@@ -83,7 +83,7 @@ public class Player {
       // check if up is a wall
       if (y == -1) {
         if (this.currentRoom.roomBlueprint[(int)((newY - radius) / 60)].charAt((int)(newX / 60)) == WALL) return true;
-        if (this.currentRoom.roomBlueprint[(int)((newY - radius) / 60)].charAt((int)(newX / 60)) == CORRIDOR && this.currentRoom.corridorN == null) return true;       
+        if (this.currentRoom.roomBlueprint[(int)((newY - radius) / 60)].charAt((int)(newX / 60)) == CORRIDOR && this.currentRoom.roomN == null) return true;       
       }
     }
     catch (Exception e) {}
@@ -91,7 +91,7 @@ public class Player {
       // check if down is a wall
       if (y == 1) {
         if (this.currentRoom.roomBlueprint[(int)((newY + radius) / 60)].charAt((int)(newX / 60)) == WALL) return true;
-        if (this.currentRoom.roomBlueprint[(int)((newY + radius) / 60)].charAt((int)(newX / 60)) == CORRIDOR && this.currentRoom.corridorS == null) return true;
+        if (this.currentRoom.roomBlueprint[(int)((newY + radius) / 60)].charAt((int)(newX / 60)) == CORRIDOR && this.currentRoom.roomS == null) return true;
       }
     }
     catch (Exception e) {}
