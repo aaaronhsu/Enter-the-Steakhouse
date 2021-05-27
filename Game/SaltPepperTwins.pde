@@ -18,7 +18,7 @@ public class SaltPepperTwins extends Enemy{
     for (int i = 0; i < 10; i++) {
       float xOffset = random(10);
       float yOffset = random(10);
-      Projectile p1 = new Projectile(x + xDist/2+xOffset, y + yDist/2+yOffset, 0, 0, 20, 20, #FFFFFF, projectileDamage, false);
+      Projectile p1 = new Projectile(x + xDist/2+xOffset, y + yDist/2+yOffset, 0, 0, 10, #FFFFFF, projectileDamage, false);
       
       // adds projectile to the projectile list of the room that the player is in
       p.currentRoom.projectileList.add(p1);
