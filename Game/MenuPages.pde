@@ -34,4 +34,8 @@ public class MenuPages {
         break;
     }
   }
+  
+  void showMenu(){
+    background(#DE1F1F);
+  }
 }

@@ -3,6 +3,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   color c;
   int damage;
   int despawnTime; //never despawning Projectiles have this = -1
+  int numBounces; //number of wall-bounces before despawning; -1 = doesn't despawn; 0 = despawns
   boolean isPlayerProjectile;
   
   Projectile(float x, float y, float dx, float dy, float r, color c, int damage, int despawnTime, boolean isPlayerProjectile) {
@@ -31,9 +32,13 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   void detectCollision() {
     if (!isPlayerProjectile) { //is enemy projectile
       if ( Math.abs(p.x - x) <= r && Math.abs(p.y - y) <= r ) {
-        println("colliding");
+        println("colliding with player");
         despawn();
       }
+      if (isWallCollision()) numBounces--;
+      if (numBounces == 0) despawn();
+      
+      
     }
     //else { //is player projectile
     //  for (int i = 0; i < p.currentRoom.enemyList.size(); i++) {
@@ -41,6 +46,13 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     //    
     //  }
     //}
+  }
+  
+  boolean isWallCollision(){
+    int approxX = (int)(x/60); //walls are tiles that are 60x60
+    int approxY = (int)(y/60);
+    if (p.currentRoom.roomBlueprint[approxY].charAt(approxX) == WALL) return true;
+    return false;
   }
   
   void draw() {
