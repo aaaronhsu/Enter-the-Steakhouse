@@ -46,7 +46,7 @@ public void draw() {
   //g1.draw();
   //s1.draw();
   //sp1.draw();
-  for (int i = 0; i < p.currentRoom.projectileList.size(); i++) { //access every projectile in currentRoom
+  for (int i =  p.currentRoom.projectileList.size()-1; i >= 0 ; i--) { //access every projectile in currentRoom
     Projectile pro = p.currentRoom.projectileList.get(i);
     pro.draw();
     //check if enemy or player hp 0 here, I think
