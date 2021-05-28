@@ -19,7 +19,7 @@ public class Gardener extends Enemy{
     for (int i = 0; i <= radians(240); i+= radians(120)) {
       float dx = projectileSpeed * cos(angle+i);
       float dy = projectileSpeed * sin(angle+i);
-      Projectile p1 = new Projectile(x, y, dx, dy, 40, #9B9191, projectileDamage, 200, false);
+      Projectile p1 = new Projectile(x, y, dx, dy, 40, #9B9191, projectileDamage, 200, 3, false);
       
       // adds projectile to the projectile list of the room that the player is in
       p.currentRoom.projectileList.add(p1);

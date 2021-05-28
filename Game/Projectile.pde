@@ -6,7 +6,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   int numBounces; //number of wall-bounces before despawning; -1 = doesn't despawn; 0 = despawns
   boolean isPlayerProjectile;
   
-  Projectile(float x, float y, float dx, float dy, float r, color c, int damage, int despawnTime, boolean isPlayerProjectile) {
+  Projectile(float x, float y, float dx, float dy, float r, color c, int damage, int despawnTime, int numBounces, boolean isPlayerProjectile) {
     this.x = x;
     this.y = y;
     this.dx = dx;
@@ -15,6 +15,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     this.c = c;
     this.damage = damage;
     this.despawnTime = despawnTime;
+    this.numBounces = numBounces;
     this.isPlayerProjectile = isPlayerProjectile;
   }
   
@@ -30,15 +31,15 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   }
   
   void detectCollision() {
+    //despwaning through wall-bounces
+    //if (isWallCollision()) numBounces--;
+    //if (numBounces == 0) despawn(); 
+    
     if (!isPlayerProjectile) { //is enemy projectile
       if ( Math.abs(p.x - x) <= r && Math.abs(p.y - y) <= r ) {
         println("colliding with player");
         despawn();
       }
-      if (isWallCollision()) numBounces--;
-      if (numBounces == 0) despawn();
-      
-      
     }
     //else { //is player projectile
     //  for (int i = 0; i < p.currentRoom.enemyList.size(); i++) {
@@ -60,7 +61,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     move();
     detectCollision();
     
-    //despawning
+    //despawning through time
     if (despawnTime > 0) despawnTime--;
     else if (despawnTime == 0) despawn();
   }
