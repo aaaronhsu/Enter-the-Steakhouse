@@ -17,16 +17,20 @@
 ## Devlog:
 ### 5/24
 **Aaron**: Worked on project proposal and created the room generation algorithm using BFS.
+
 **Yaying**: Worked on project proposal.
 
 ### 5/25
 **Aaron**: Worked on floor traversal. Players can now move between rooms.
+
 **Yaying**: Worked on different Enemies. Different Enemies shoot different styles of projectiles.
 
 ### 5/26
 **Aaron**: Worked on wall collisions (so that they player can't walk into walls). Corridors are now deleted if there is no adjacent room. Also new maps!
+
 **Yaying**: Added customizable size + color feature to projectiles + fixed shoot-3-projectiles-at-a-time bug. Added collision detection for enemy projectiles.
 
 ### 5/27
 **Aaron**: Player can now fall (and take damage) into pits. Also added a small GUI for the amount of health.
+
 **Yaying**: Changed projectiles to circles. Created despawning feature when projectile collides with player, or set amount of time passes.
