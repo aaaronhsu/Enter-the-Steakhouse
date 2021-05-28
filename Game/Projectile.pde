@@ -29,7 +29,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   void detectCollision() { //delete projectile after hitting once
     if (!isPlayerProjectile) { //is enemy projectile
       //**30 is player's diameter, so radius is 15; might need to change depending on player size
-      if ( Math.abs(p.x-x) <= r + 15 && Math.abs(p.y-y) <= r + 15 ) {
+      if ( Math.abs(p.x - x) <= r && Math.abs(p.y - y) <= r ) {
         println("colliding");
       }
     }
