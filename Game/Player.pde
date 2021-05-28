@@ -39,8 +39,21 @@ public class Player {
     ellipseMode(CENTER);
     ellipse(this.x, this.y, radius * 2, radius * 2);
     
+    // draw the player info
+    drawPlayerInfo();
+
     // draw the weapon
     currentWeapon.draw();
+  }
+
+  public void drawPlayerInfo() {
+    int xOffset = 50;
+    int yOffset = 30;
+
+    fill(200, 0, 0);
+    for (int i = 0; i < this.health; i++) {
+      ellipse(xOffset + (i * 40), yOffset, 30, 30);
+    }
   }
   
   public void move() {
@@ -53,6 +66,7 @@ public class Player {
         falling = false;
         this.x -= fallDirection[0] * speed * 3;
         this.y -= fallDirection[1] * speed * 3;
+        this.health--;
       }
       return;
     }
@@ -130,7 +144,6 @@ public class Player {
     try {
       if (this.currentRoom.roomBlueprint[(int)((this.y) / 60)].charAt((int)(this.x / 60)) == PIT) {
         this.fallDirection = new int[] {(direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0), (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0)};
-        this.health--;
         return true;
       }
     }
