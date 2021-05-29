@@ -35,5 +35,5 @@
 
 **Yaying**: Changed projectiles to circles. Created despawning feature when projectile collides with player, or set amount of time passes.
 
-## 5/28
+### 5/28
 **Aaron**: Merged `map-movement` to main and solved merge conflicts.
