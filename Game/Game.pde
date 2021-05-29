@@ -68,5 +68,4 @@ public void mousePressed() {
   // p = new Player(map.roomList.get(0), 10);
 
   if (mouseButton == LEFT) p.isShooting = true;
-  else p.isShooting = false;
 }

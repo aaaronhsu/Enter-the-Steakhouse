@@ -46,6 +46,7 @@ public class Player {
     // draw the weapon
     currentWeapon.draw();
 
+    if (mouseButton != LEFT) isShooting = false;
     if (currentWeapon.timeUntilNextShot > 0) currentWeapon.timeUntilNextShot--;
     if (isShooting) shootProjectile();
   }
