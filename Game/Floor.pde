@@ -16,6 +16,14 @@ public class Floor {
     roomList.add(startRoom);
     
     generateFloor();
+
+    // construct the corridors and remove the ones that shouldn't exist
+    for (Room r : roomList) {
+      r.constructCorridors();
+    }
+    for (Room r : roomList) {
+      r.removeCorridors();
+    }
   }
   
   Floor(int minRooms, int maxRooms) {
@@ -31,6 +39,14 @@ public class Floor {
       roomList.add(startRoom);
       
       generateFloor();
+    }
+
+    // construct the corridors and remove the ones that shouldn't exist
+    for (Room r : roomList) {
+      r.constructCorridors();
+    }
+    for (Room r : roomList) {
+      r.removeCorridors();
     }
   }
   
@@ -272,8 +288,9 @@ public class Floor {
   
   public void draw() {
     for (Room rm : map.roomList) {
-      int x = rm.x + 10;
-      int y = rm.y + 10;
+      if (rm.visited == false) continue;
+      int x = rm.x + 85;
+      int y = rm.y + 8;
       
       if (rm.roomType.equals("combat")) fill(255, 0, 0);
       else if (rm.roomType.equals("start")) fill(100, 100, 100);

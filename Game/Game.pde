@@ -1,4 +1,3 @@
-
 //GLOBAL VARIABLES
 public final int NORTH = 0;
 public final int SOUTH = 1;
@@ -7,7 +6,6 @@ public final int WEST = 3;
 
 //INSTANCE VARIABLES
 public Player p;
-public Room currentRoom;
 public Floor map;
 
 public MenuPages menu;
@@ -17,11 +15,11 @@ public Gardener g1;
 public Stove s1;
 public SaltPepperTwins sp1;
 
-
 public void setup() {
   fullScreen();
   menu = new MenuPages(0);
   
+
   map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
   p = new Player(map.roomList.get(0), 10); 
   
@@ -40,11 +38,14 @@ public void draw() {
   menu.draw();
   
   // all of these draw statements will be factored out later
-  map.draw();
+  
+  p.currentRoom.draw();
   
   p.move();
   p.draw();
   
+
+  if (p.currentRoom.enemyList.isEmpty()) map.draw();
 
   m1.draw(); //testing; delete after
   //g1.draw();
@@ -58,7 +59,7 @@ public void draw() {
     pro.draw();
     //check if enemy or player hp 0 here, I think
   }
-  
+
 }
 
 public void keyPressed() {

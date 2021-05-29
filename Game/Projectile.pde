@@ -14,6 +14,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     this.r = r;
     this.c = c;
     this.damage = damage;
+
     this.despawnTime = despawnTime;
     this.numBounces = numBounces;
     this.isPlayerProjectile = isPlayerProjectile;

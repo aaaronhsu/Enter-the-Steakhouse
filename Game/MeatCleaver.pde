@@ -25,8 +25,7 @@ public class MeatCleaver extends Enemy{
     
     // adds projectile to the projectile list of the room that the player is in
     p.currentRoom.projectileList.add(p1);
-    println(currentRoom);
-  }
+  } 
   
   public void draw() {
     ellipse(x,y, 50,50); //body
