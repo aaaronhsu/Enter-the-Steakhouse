@@ -8,4 +8,6 @@ public abstract class Enemy {
     this.health = health;
     this.contactDamage = contactDamage;
   }
+  
+  public void draw() {}
 }

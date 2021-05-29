@@ -1,6 +1,8 @@
 public class MeatCleaver extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 5;
+  int cooldown = 20; //does not change
+  int c = cooldown;
   
   MeatCleaver(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
@@ -19,7 +21,7 @@ public class MeatCleaver extends Enemy{
     float dy = projectileSpeed * sin(angle);
     
     // creates the projectile
-    Projectile p1 = new Projectile(x, y, dx, dy, projectileDamage, false);
+    Projectile p1 = new Projectile(x, y, dx, dy, 50, #FF1F1F, projectileDamage, 200, 3, false);
     
     // adds projectile to the projectile list of the room that the player is in
     p.currentRoom.projectileList.add(p1);
@@ -28,7 +30,15 @@ public class MeatCleaver extends Enemy{
   
   public void draw() {
     ellipse(x,y, 50,50); //body
-    shootProjectile();
+    
+    //periodically shoots projectile 
+    if (c == 0) {
+      shootProjectile();
+      this.c = this.cooldown;
+    }
+    else {
+      c--;
+    }
   }
 
 }
