@@ -32,6 +32,8 @@ public class Room {
   int[] corridorE = null;
   int[] corridorW = null;
   
+  Enemy m1 = new MeatCleaver(400,400, 10, 1); //delete 
+  
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
     this.roomType = "start";
@@ -43,6 +45,7 @@ public class Room {
     this.visited = true;
 
     this.roomBlueprint = loadStrings("room6.txt");
+    
   }
   
   // constructor for all other rooms
@@ -147,9 +150,10 @@ public class Room {
 
     drawRoomBlueprint();
 
-    for (Enemy e : this.enemyList) {
-      e.draw();
-    } 
+    //for (Enemy e : this.enemyList) {
+    //  e.draw();
+    //} 
+    m1.draw();
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
       if (proj.numBounces == 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj); 

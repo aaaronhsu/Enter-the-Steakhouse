@@ -10,10 +10,10 @@ public Floor map;
 
 public MenuPages menu;
 
-public MeatCleaver m1; //DELETE
-public Gardener g1;
-public Stove s1;
-public SaltPepperTwins sp1;
+//public MeatCleaver m1; //DELETE
+//public Gardener g1;
+//public Stove s1;
+//public SaltPepperTwins sp1;
 
 public void setup() {
   fullScreen();
@@ -23,10 +23,10 @@ public void setup() {
   map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
   p = new Player(map.roomList.get(0), 10); 
   
-  m1 = new MeatCleaver(400,400, 10, 1); //Testing enemies; delete after
-  g1 = new Gardener(400,400,10,1);
-  s1 = new Stove(400,400,10,1);
-  sp1 = new SaltPepperTwins(400,400,10,1);
+  //m1 = new MeatCleaver(400,400, 10, 1); //Testing enemies; delete after
+  //g1 = new Gardener(400,400,10,1);
+  //s1 = new Stove(400,400,10,1);
+  //sp1 = new SaltPepperTwins(400,400,10,1);
 
 }
 
