@@ -34,3 +34,6 @@
 **Aaron**: Player can now fall (and take damage) into pits. Also added a small GUI for the amount of health.
 
 **Yaying**: Changed projectiles to circles. Created despawning feature when projectile collides with player, or set amount of time passes.
+
+## 5/28
+**Aaron**: Merged `map-movement` to main and solved merge conflicts.
