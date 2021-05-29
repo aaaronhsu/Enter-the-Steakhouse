@@ -31,15 +31,13 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     y += dy;
   }
   
-  void detectCollision() {
-    //despwaning through wall-bounces
+  boolean detectCollision() {
+    //despawning through wall-bounces
     //if (isWallCollision()) numBounces--;
-    //if (numBounces == 0) despawn(); 
     
     if (!isPlayerProjectile) { //is enemy projectile
       if ( Math.abs(p.x - x) <= r && Math.abs(p.y - y) <= r ) {
-        println("colliding with player");
-        despawn();
+        return true;
       }
     }
     //else { //is player projectile
@@ -48,6 +46,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     //    
     //  }
     //}
+    return false;
   }
   
   boolean isWallCollision(){
@@ -64,7 +63,6 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     
     //despawning through time
     if (despawnTime > 0) despawnTime--;
-    else if (despawnTime == 0) despawn();
   }
   
   void despawn() {

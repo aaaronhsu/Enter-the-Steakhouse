@@ -48,11 +48,12 @@ public void draw() {
   //g1.draw();
   //s1.draw();
   //sp1.draw();
-  for (int i =  p.currentRoom.projectileList.size()-1; i >= 0 ; i--) { //access every projectile in currentRoom
-    // example of drawing stuff
-    Projectile pro = p.currentRoom.projectileList.get(i);
-    pro.draw();
-    //check if enemy or player hp 0 here, I think
+  for (Projectile proj : p.currentRoom.projectileList) { //access every projectile in currentRoom
+    proj.draw();
+    if (proj.numBounces == 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj); 
+  }
+  for (Projectile proj : p.currentRoom.removeProjList) { //access every projectile that needs to be despawned
+    proj.despawn();
   }
 
 }

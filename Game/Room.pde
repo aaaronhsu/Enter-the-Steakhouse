@@ -25,6 +25,7 @@ public class Room {
   
   ArrayList<Enemy> enemyList = new ArrayList();
   ArrayList<Projectile> projectileList = new ArrayList();
+  ArrayList<Projectile> removeProjList = new ArrayList();
   
   int[] corridorN = null;
   int[] corridorS = null;
