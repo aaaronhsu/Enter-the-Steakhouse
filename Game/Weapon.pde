@@ -1,17 +1,59 @@
+public final int PISTOL = 0;
+public final int SHOTGUN = 1;
+
 public class Weapon extends Item {
-  float fireRate, projectileSize, damage;
+  float projectileSize, damage;
+  int timeUntilNextShot, fireRate;
   int type;
   
-  Weapon(float fireRate, float projectileSize, float damage, int type) {
+  Weapon(int fireRate, float projectileSize, float damage, int type) {
     this.fireRate = fireRate;
     this.projectileSize = projectileSize;
     this.damage = damage;
     this.type = type;
+    this.timeUntilNextShot = 0;
   }
   
   // will add a projectile object to the projectile list of the room that the player is in
-  public void shootProjectile(float x, float y) {
+  public void shootProjectile() {
+    if (this.timeUntilNextShot != 0) {
+      return;
+    }
+
+    float dx, dy;
+    Projectile proj;
+    int projectileSpeed;
     
+    this.timeUntilNextShot = this.fireRate;
+
+    float xDist = mouseX - p.x;
+    float yDist = mouseY - p.y;
+        
+    float angle = atan2(yDist, xDist);
+
+    switch (type) {
+      case PISTOL:
+        projectileSpeed = 10;
+        
+        dx = projectileSpeed * cos(angle);
+        dy = projectileSpeed * sin(angle);
+
+        proj = new Projectile(p.x, p.y, dx, dy, 10, #111111, 1, 200, 10, true);
+
+        p.currentRoom.projectileList.add(proj);
+        break;
+      
+      case SHOTGUN:
+        projectileSpeed = 5;
+        
+        dx = projectileSpeed * cos(angle);
+        dy = projectileSpeed * sin(angle);
+
+        proj = new Projectile(p.x, p.y, dx, dy, 10, #111111, 1, 200, 10, true);
+
+        p.currentRoom.projectileList.add(proj);
+        break;
+    }
   }
   
   // will draw the weapon on the player
