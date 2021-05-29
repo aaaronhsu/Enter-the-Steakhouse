@@ -6,6 +6,8 @@ public class MeatCleaver extends Enemy{
   
   MeatCleaver(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
+    
+    p.currentRoom.enemyList.add(this);
   }
   
   public void shootProjectile() {
@@ -23,6 +25,7 @@ public class MeatCleaver extends Enemy{
     
     // adds projectile to the projectile list of the room that the player is in
     p.currentRoom.projectileList.add(p1);
+    println(currentRoom);
   }
   
   public void draw() {

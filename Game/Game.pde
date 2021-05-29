@@ -17,6 +17,7 @@ public Gardener g1;
 public Stove s1;
 public SaltPepperTwins sp1;
 
+
 public void setup() {
   fullScreen();
   menu = new MenuPages(0);
@@ -28,6 +29,8 @@ public void setup() {
   g1 = new Gardener(400,400,10,1);
   s1 = new Stove(400,400,10,1);
   sp1 = new SaltPepperTwins(400,400,10,1);
+
+  p = new Player(map.roomList.get(0), 10);
   
   currentRoom = new Room(10);
 }
@@ -42,11 +45,15 @@ public void draw() {
   p.move();
   p.draw();
   
+
   m1.draw(); //testing; delete after
   //g1.draw();
   //s1.draw();
   //sp1.draw();
   for (int i =  p.currentRoom.projectileList.size()-1; i >= 0 ; i--) { //access every projectile in currentRoom
+    // example of drawing stuff
+    m1.draw();
+    println(currentRoom);
     Projectile pro = p.currentRoom.projectileList.get(i);
     pro.draw();
     //check if enemy or player hp 0 here, I think
