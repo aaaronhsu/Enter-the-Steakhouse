@@ -149,15 +149,14 @@ public class Room {
 
     for (Enemy e : this.enemyList) {
       e.draw();
-    }
-    for (int i = this.projectileList.size()-1; i >= 0; i--){
-      Projectile proj = this.projectileList.get(i);
+    } 
+    for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
+      if (proj.numBounces == 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj); 
     }
-    
-    //for (Projectile proj : this.projectileList) {
-    //  proj.draw();
-    //}
+    for (Projectile proj : this.removeProjList) { //access every projectile that needs to be despawned
+      proj.despawn();
+    }
     
   }
 

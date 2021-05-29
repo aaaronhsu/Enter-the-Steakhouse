@@ -44,17 +44,10 @@ public void draw() {
 
   if (p.currentRoom.enemyList.isEmpty()) map.draw();
 
-  m1.draw(); //testing; delete after
+  //m1.draw(); //testing; delete after
   //g1.draw();
   //s1.draw();
   //sp1.draw();
-  for (Projectile proj : p.currentRoom.projectileList) { //access every projectile in currentRoom
-    proj.draw();
-    if (proj.numBounces == 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj); 
-  }
-  for (Projectile proj : p.currentRoom.removeProjList) { //access every projectile that needs to be despawned
-    proj.despawn();
-  }
 
 }
 
