@@ -64,6 +64,8 @@ public void keyReleased() {
 }
 
 public void mousePressed() {
-  map = new Floor(10, 15);
-  p = new Player(map.roomList.get(0), 10);
+  // map = new Floor(10, 15);
+  // p = new Player(map.roomList.get(0), 10);
+
+  p.shootProjectile();
 }
