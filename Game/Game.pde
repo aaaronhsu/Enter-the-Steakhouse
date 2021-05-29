@@ -67,5 +67,6 @@ public void mousePressed() {
   // map = new Floor(10, 15);
   // p = new Player(map.roomList.get(0), 10);
 
-  p.shootProjectile();
+  if (mouseButton == LEFT) p.isShooting = true;
+  else p.isShooting = false;
 }
