@@ -149,9 +149,14 @@ public class Room {
     for (Enemy e : this.enemyList) {
       e.draw();
     }
-    for (Projectile proj : this.projectileList) {
+    for (int i = this.projectileList.size()-1; i >= 0; i--){
+      Projectile proj = this.projectileList.get(i);
       proj.draw();
     }
+    
+    //for (Projectile proj : this.projectileList) {
+    //  proj.draw();
+    //}
     
   }
 

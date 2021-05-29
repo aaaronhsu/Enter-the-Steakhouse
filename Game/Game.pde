@@ -28,9 +28,6 @@ public void setup() {
   s1 = new Stove(400,400,10,1);
   sp1 = new SaltPepperTwins(400,400,10,1);
 
-  p = new Player(map.roomList.get(0), 10);
-  
-  currentRoom = new Room(10);
 }
 
 public void draw() {
@@ -53,8 +50,6 @@ public void draw() {
   //sp1.draw();
   for (int i =  p.currentRoom.projectileList.size()-1; i >= 0 ; i--) { //access every projectile in currentRoom
     // example of drawing stuff
-    m1.draw();
-    println(currentRoom);
     Projectile pro = p.currentRoom.projectileList.get(i);
     pro.draw();
     //check if enemy or player hp 0 here, I think
