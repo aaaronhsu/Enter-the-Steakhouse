@@ -11,8 +11,9 @@ public class Player {
   ArrayList<Weapon> weaponList;
   Weapon currentWeapon;
   
-  boolean falling = false;
-  int[] fallDirection = null; // gets updated with the direction the player was moving in when they were falling
+  boolean isFalling = false;
+  boolean isShooting = false;
+  int[] fallDirection = null; // gets updated with the direction the player was moving in when they were isFalling
   
   Player(Room currentRoom, float speed) {
     this.x = width / 2;
@@ -26,7 +27,7 @@ public class Player {
     this.money = 0;
     this.blanks = 2;
     
-    Weapon pistol = new Weapon(0.5, 5, 1, 0);
+    Weapon pistol = new Weapon(15, 5, 1, 0);
     this.weaponList = new ArrayList();
     this.weaponList.add(pistol);
     this.currentWeapon = pistol;
@@ -44,6 +45,9 @@ public class Player {
 
     // draw the weapon
     currentWeapon.draw();
+
+    if (currentWeapon.timeUntilNextShot > 0) currentWeapon.timeUntilNextShot--;
+    if (isShooting) shootProjectile();
   }
 
   public void drawPlayerInfo() {
@@ -57,13 +61,13 @@ public class Player {
   }
   
   public void move() {
-    if (falling) {
+    if (isFalling) {
       if (radius > 0) {
         radius--;
       }
       else {
         radius = 20;
-        falling = false;
+        isFalling = false;
         this.x -= fallDirection[0] * speed * 3;
         this.y -= fallDirection[1] * speed * 3;
         this.health--;
@@ -88,7 +92,7 @@ public class Player {
       }
 
       // checks if player fell into a pit
-      this.falling = checkIfPit();
+      this.isFalling = checkIfPit();
 
       // checks if the player tries to walk to another room
       if (this.currentRoom.enemyList.isEmpty()) checkIfRoomChange();
@@ -254,6 +258,6 @@ public class Player {
   
   // asks the current weapon to shoot
   public void shootProjectile() {
-    this.currentWeapon.shootProjectile(x, y);
+    this.currentWeapon.shootProjectile();
   }
 }
