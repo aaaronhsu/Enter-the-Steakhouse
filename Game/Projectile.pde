@@ -29,6 +29,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   
   void move() {
     if (checkWallCollision(this.x + dx, this.y)) {
+      numBounces--;
       dx *= -1;
     }
     else {
@@ -36,6 +37,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     }
 
     if (checkWallCollision(this.x, this.y + dy)) {
+      numBounces--;
       dy *= -1;
     }
     else {
@@ -46,7 +48,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   boolean checkWallCollision(float x, float y){
     return fetchTile(x, y) == WALL || fetchTile(x, y) == CORRIDOR;
   }
-  
+
   boolean detectCollision() {
     //despawning through wall-bounces
     //if (isWallCollision()) numBounces--;

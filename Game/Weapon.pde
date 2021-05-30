@@ -31,6 +31,9 @@ public class Weapon extends Item {
         
     float angle = atan2(yDist, xDist);
 
+    // projectile constructor
+    // float x, float y, float dx, float dy, float r, color c, int damage, int despawnTime, int numBounces, boolean isPlayerProjectile
+
     switch (type) {
       case PISTOL:
         projectileSpeed = 15;
@@ -38,7 +41,7 @@ public class Weapon extends Item {
         dx = projectileSpeed * cos(angle);
         dy = projectileSpeed * sin(angle);
 
-        proj = new Projectile(p.x, p.y, dx, dy, 10, #FFFFFF, 1, 200, 10, true);
+        proj = new Projectile(p.x, p.y, dx, dy, 10, #FFFFFF, 1, -1, 2, true);
 
         p.currentRoom.projectileList.add(proj);
         break;
@@ -51,7 +54,7 @@ public class Weapon extends Item {
 
         for (int i = 0; i < 5; i++) {
           for (int j = 0; j < 5; j++) {
-            proj = new Projectile(p.x + i * 10, p.y + j * 10, dx, dy, 10, #FFFFFF, 1, 200, 10, true);
+            proj = new Projectile(p.x + i * 10, p.y + j * 10, dx, dy, 10, #FFFFFF, 1, -1, 2, true);
             p.currentRoom.projectileList.add(proj);
           }
         }
