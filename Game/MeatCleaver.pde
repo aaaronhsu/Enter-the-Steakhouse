@@ -30,6 +30,10 @@ public class MeatCleaver extends Enemy{
   
   void loadMon(float x, float y, int sideLength){
     String[] monster = loadStrings("meatcleaver.txt");
+    
+    x -= monster[0].length()/2 * sideLength; //centers the monster
+    y -= monster.length/2 * sideLength; 
+    
     float newX = x;
       
     noStroke();
