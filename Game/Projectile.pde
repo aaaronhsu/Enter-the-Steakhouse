@@ -23,6 +23,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   //displays the projectile (the shape)
   void display() {
     fill(c);
+    stroke(0);
     ellipse(x, y, 2*r, 2*r);
   }
   

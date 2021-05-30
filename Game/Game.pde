@@ -29,7 +29,6 @@ public void draw() {
   
   p.move();
   p.draw();
-  
 
   if (p.currentRoom.enemyList.isEmpty()) map.draw();
 }

@@ -155,6 +155,7 @@ public class Room {
     //for (Enemy e : this.enemyList) {
     //  e.draw();
     //} 
+    
     s1.draw(); //delete
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
