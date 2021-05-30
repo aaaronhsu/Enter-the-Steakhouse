@@ -32,9 +32,9 @@ public class Room {
   int[] corridorE = null;
   int[] corridorW = null;
   
-  Enemy m1 = new MeatCleaver(400,400, 10, 1); //delete 
-  Enemy g1 = new Gardener(400,400, 10, 1); //delete 
-  Enemy s1 = new Stove(400,400, 10, 1); //delete 
+  //Enemy m1 = new MeatCleaver(400,400, 10, 1); //delete 
+  //Enemy g1 = new Gardener(400,400, 10, 1); //delete 
+  //Enemy s1 = new Stove(400,400, 10, 1); //delete 
   
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
@@ -152,11 +152,9 @@ public class Room {
 
     drawRoomBlueprint();
 
-    //for (Enemy e : this.enemyList) {
-    //  e.draw();
-    //} 
-    
-    s1.draw(); //delete
+    for (Enemy e : this.enemyList) {
+      e.draw();
+    }
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
       if (proj.numBounces == 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj); 
