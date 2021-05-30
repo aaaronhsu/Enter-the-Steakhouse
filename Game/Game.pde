@@ -55,3 +55,7 @@ public void mousePressed() {
 public void mouseReleased() {
   if (mouseButton == LEFT) p.isShooting = false;
 }
+
+public char fetchTile(float x, float y) {
+  return this.p.currentRoom.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60));
+}

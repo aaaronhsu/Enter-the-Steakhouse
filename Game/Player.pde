@@ -106,14 +106,14 @@ public class Player {
     try {
       // check if left is in a wall
       if (x == -1) {
-        if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX - radius) / 60)) == WALL) return true;
+        if (fetchTile(newX - radius, newY) == WALL) return true;
       }
     }
     catch (Exception e) {}
     try {
       // check if right is in a wall
       if (x == 1) {
-        if (this.currentRoom.roomBlueprint[(int)(newY / 60)].charAt((int)((newX + radius) / 60)) == WALL) return true;
+        if (fetchTile(newX + radius, newY) == WALL) return true;
       }
     }
     catch (Exception e) {}
@@ -128,14 +128,14 @@ public class Player {
     try {
       // check if up is a wall
       if (y == -1) {
-        if (this.currentRoom.roomBlueprint[(int)((newY - radius) / 60)].charAt((int)(newX / 60)) == WALL) return true;
+        if (fetchTile(newX, newY - radius) == WALL) return true;
       }
     }
     catch (Exception e) {}
     try {
       // check if down is a wall
       if (y == 1) {
-        if (this.currentRoom.roomBlueprint[(int)((newY + radius) / 60)].charAt((int)(newX / 60)) == WALL) return true;
+        if (fetchTile(newX, newY + radius) == WALL) return true;
       }
     }
     catch (Exception e) {}
@@ -146,7 +146,7 @@ public class Player {
   // checks if the player is in a pit
   public boolean checkIfPit() {
     try {
-      if (this.currentRoom.roomBlueprint[(int)((this.y) / 60)].charAt((int)(this.x / 60)) == PIT) {
+      if (fetchTile(this.x, this.y) == PIT) {
         this.fallDirection = new int[] {(direction[EAST] ? 1 : 0) + (direction[WEST] ? -1 : 0), (direction[NORTH] ? -1 : 0) + (direction[SOUTH] ? 1 : 0)};
         return true;
       }
