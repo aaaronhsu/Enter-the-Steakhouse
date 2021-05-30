@@ -27,8 +27,41 @@ public class Gardener extends Enemy{
   
   }
   
+  void loadMon(float x, float y, int sideLength){
+    String[] monster = loadStrings("gardener.txt");
+    
+    x -= monster[0].length()/2 * sideLength; //centers the monster
+    y -= monster.length/2 * sideLength; 
+    
+    float newX = x;
+      
+    noStroke();
+    for (int i = 0; i < monster.length; i++) {
+      
+      for (int j = 0; j < monster[0].length(); j++) {
+        char colour = monster[i].charAt(j);
+        
+        if (colour == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (colour == '1') {fill(#126F17);} //green, darkest
+          else if (colour == '2') {fill(#0DBF17);}
+          else if (colour == '3') {fill(#86FF99);} //green, lightest
+          else if (colour == '4') {fill(#A7630F);} //brown
+          else if (colour == '5') {fill(#030303);} //black
+          else if (colour == '6') {fill(#FFF97E);} //yellow
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
+  }
+  
   public void draw() {
-    ellipse(x,y, 50,50); //body
+    loadMon(x,y, 7);
     
     //periodically shoots projectile 
     if (c == 0) {

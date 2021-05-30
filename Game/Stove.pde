@@ -27,8 +27,39 @@ public class Stove extends Enemy{
     }
   }
   
+  void loadMon(float x, float y, int sideLength){
+    String[] monster = loadStrings("stove.txt");
+    
+    x -= monster[0].length()/2 * sideLength; //centers the monster
+    y -= monster.length/2 * sideLength; 
+    
+    float newX = x;
+      
+    noStroke();
+    for (int i = 0; i < monster.length; i++) {
+      
+      for (int j = 0; j < monster[0].length(); j++) {
+        char colour = monster[i].charAt(j);
+        
+        if (colour == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (colour == '1') {fill(#3D3B7E);} //blue, darkest
+          else if (colour == '2') {fill(#424EB9);}
+          else if (colour == '3') {fill(#5D77F2);}
+          else if (colour == '4') {fill(#5EE6FC);} //blue, lightest
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
+  }
+  
   public void draw() {
-    ellipse(x,y, 50,50); //body
+    loadMon(x,y,7);
     
     //periodically shoots projectile 
     if (c == 0) {

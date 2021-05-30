@@ -9,5 +9,7 @@ public abstract class Enemy {
     this.contactDamage = contactDamage;
   }
   
-  public void draw() {}
+  public void draw() {
+    this.draw();
+  }
 }
