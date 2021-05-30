@@ -25,8 +25,8 @@ public class Floor {
       r.removeCorridors();
     }
 
-    for (Room r : roomList) {
-      r.generateEnemies();
+    for (int i = 1; i < roomList.size(); i++) {
+      roomList.get(i).generateEnemies();
     }
   }
   
@@ -53,8 +53,8 @@ public class Floor {
       r.removeCorridors();
     }
 
-    for (Room r : roomList) {
-      r.generateEnemies();
+    for (int i = 1; i < roomList.size(); i++) {
+      roomList.get(i).generateEnemies();
     }
   }
   
