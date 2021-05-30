@@ -24,6 +24,10 @@ public class Floor {
     for (Room r : roomList) {
       r.removeCorridors();
     }
+
+    for (Room r : roomList) {
+      r.generateEnemies();
+    }
   }
   
   Floor(int minRooms, int maxRooms) {
@@ -47,6 +51,10 @@ public class Floor {
     }
     for (Room r : roomList) {
       r.removeCorridors();
+    }
+
+    for (Room r : roomList) {
+      r.generateEnemies();
     }
   }
   
