@@ -69,3 +69,7 @@ public void mousePressed() {
 
   if (mouseButton == LEFT) p.isShooting = true;
 }
+
+public void mouseReleased() {
+  if (mouseButton == LEFT) p.isShooting = false;
+}

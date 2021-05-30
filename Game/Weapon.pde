@@ -33,7 +33,7 @@ public class Weapon extends Item {
 
     switch (type) {
       case PISTOL:
-        projectileSpeed = 10;
+        projectileSpeed = 15;
         
         dx = projectileSpeed * cos(angle);
         dy = projectileSpeed * sin(angle);
