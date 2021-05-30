@@ -28,7 +28,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   }
   
   void move() {
-    if (checkWallCollision(this.x + dx, this.y)) {
+    if (checkWallCollision(this.x + dx + r, this.y) || checkWallCollision(this.x + dx - r, this.y)) {
       numBounces--;
       dx *= -1;
     }
@@ -36,7 +36,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
       x += dx;
     }
 
-    if (checkWallCollision(this.x, this.y + dy)) {
+    if (checkWallCollision(this.x, this.y + dy + r) || checkWallCollision(this.x, this.y + dy - r)) {
       numBounces--;
       dy *= -1;
     }
