@@ -41,3 +41,4 @@
 **Yaying**: Merged `monster-examples` to main and solved merge conflicts.
 
 ### 5/29
+**Yaying**: Added fire monster designs to our enemies.
