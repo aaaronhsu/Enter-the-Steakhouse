@@ -153,8 +153,8 @@ public class Room {
     switch (randomGenType) {
       case 0:
         for (int i = 0; i < 5; i++) {
-          int x = (int) random(1920);
-          int y = (int) random(1080);
+          int x = (int) random(1560) + 180;
+          int y = (int) random(720) + 180;
 
           while (this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60)) != GROUND) {
             x = (int) random(1920);
