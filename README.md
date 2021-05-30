@@ -41,4 +41,6 @@
 **Yaying**: Merged `monster-examples` to main and solved merge conflicts.
 
 ### 5/29
+**Aaron**: Added player shooting and projectile bouncing.
+
 **Yaying**: Added fire monster designs to our enemies.
