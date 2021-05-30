@@ -28,8 +28,23 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   }
   
   void move() {
-    x += dx;
-    y += dy;
+    if (checkWallCollision(this.x + dx, this.y)) {
+      dx *= -1;
+    }
+    else {
+      x += dx;
+    }
+
+    if (checkWallCollision(this.x, this.y + dy)) {
+      dy *= -1;
+    }
+    else {
+      y += dy;
+    }
+  }
+  
+  boolean checkWallCollision(float x, float y){
+    return fetchTile(x, y) == WALL || fetchTile(x, y) == CORRIDOR;
   }
   
   boolean detectCollision() {
@@ -50,12 +65,6 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     return false;
   }
   
-  boolean isWallCollision(){
-    int approxX = (int)(x/60); //walls are tiles that are 60x60
-    int approxY = (int)(y/60);
-    if (p.currentRoom.roomBlueprint[approxY].charAt(approxX) == WALL) return true;
-    return false;
-  }
   
   void draw() {
     display();
