@@ -22,7 +22,7 @@ public void setup() {
   
 
   map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
-  p = new Player(map.roomList.get(0), 10); 
+  p = new Player(map.roomList.get(0), 10);
 }
 
 public void draw() {

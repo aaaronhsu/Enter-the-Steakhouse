@@ -70,7 +70,7 @@ public class Player {
         isFalling = false;
         this.x -= fallDirection[0] * speed * 3;
         this.y -= fallDirection[1] * speed * 3;
-        this.health--;
+        this.loseHP(1);
       }
       return;
     }
@@ -259,5 +259,9 @@ public class Player {
   // asks the current weapon to shoot
   public void shootProjectile() {
     this.currentWeapon.shootProjectile();
+  }
+  
+  void loseHP(float lost){
+    this.health--;
   }
 }

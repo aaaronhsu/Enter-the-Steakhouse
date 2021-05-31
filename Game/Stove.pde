@@ -59,7 +59,7 @@ public class Stove extends Enemy{
   }
   
   public void draw() {
-    loadMon(x,y,7);
+    loadMon(x,y,4);
     
     //periodically shoots projectile 
     if (c == 0) {

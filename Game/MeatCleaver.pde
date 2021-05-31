@@ -4,10 +4,15 @@ public class MeatCleaver extends Enemy{
   int cooldown = 20; //does not change
   int c = cooldown;
   
+  String[] monster = loadStrings("meatcleaver.txt"); //visual display
+  //for hit box of monster
+  int monWidth = monster[0].length()*4 + 100; 
+  int monHeight = monster.length*4 + 100;
+  
   MeatCleaver(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
     
-    p.currentRoom.enemyList.add(this); //null pointer exception
+    //p.currentRoom.enemyList.add(this); //null pointer exception
   }
   
   public void shootProjectile() {
@@ -28,8 +33,6 @@ public class MeatCleaver extends Enemy{
   } 
   
   void loadMon(float x, float y, int sideLength){
-    String[] monster = loadStrings("meatcleaver.txt");
-    
     x -= monster[0].length()/2 * sideLength; //centers the monster
     y -= monster.length/2 * sideLength; 
     
@@ -62,7 +65,7 @@ public class MeatCleaver extends Enemy{
   }
   
   public void draw() {
-    loadMon(x,y,7);
+    loadMon(x,y,4);
     
     //periodically shoots projectile 
     if (c == 0) {
