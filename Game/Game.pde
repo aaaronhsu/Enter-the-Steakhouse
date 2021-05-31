@@ -4,6 +4,12 @@ public final int SOUTH = 1;
 public final int EAST = 2;
 public final int WEST = 3;
 
+public final int WKEY = 87;
+public final int AKEY = 65;
+public final int SKEY = 83;
+public final int DKEY = 68;
+public final int RKEY = 82;
+
 //INSTANCE VARIABLES
 public Player p;
 public Floor map;
@@ -34,13 +40,13 @@ public void draw() {
 }
 
 public void keyPressed() {
-  if (keyCode == 87 || keyCode == 82 || keyCode == 83 || keyCode == 65) {
+  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == DKEY) {
     p.changeDirection(true);
   }
 }
 
 public void keyReleased() {
-  if (keyCode == 87 || keyCode == 82 || keyCode == 83 || keyCode == 65) {
+  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == DKEY) {
     p.changeDirection(false);
   }
 }

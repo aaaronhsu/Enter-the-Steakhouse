@@ -241,16 +241,16 @@ public class Player {
   
   public void changeDirection(boolean moving) {
     switch (keyCode) {
-      case 87:
+      case WKEY:
         direction[NORTH] = moving;
         break;
-      case 82:
+      case SKEY:
         direction[SOUTH] = moving;
         break;
-      case 83:
+      case DKEY:
         direction[EAST] = moving;
         break;
-      case 65:
+      case AKEY:
         direction[WEST] = moving;
         break;
     }
