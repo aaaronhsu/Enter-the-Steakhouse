@@ -1,6 +1,9 @@
 public abstract class Enemy {
   float x, y;
   int health, contactDamage;
+  //for monster's hit box
+  int monWidth;
+  int monHeight;
   
   Enemy(float x, float y, int health, int contactDamage) {
     this.x = x;
@@ -13,7 +16,7 @@ public abstract class Enemy {
     this.draw();
   }
   
-  void loseHP(int lost){
+  void loseHP(float lost){
     this.health--;
   }
   

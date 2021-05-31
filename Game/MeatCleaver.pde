@@ -3,7 +3,11 @@ public class MeatCleaver extends Enemy{
   float projectileSpeed = 5;
   int cooldown = 20; //does not change
   int c = cooldown;
+  
   String[] monster = loadStrings("meatcleaver.txt"); //visual display
+  //for hit box of monster
+  int monWidth = monster[0].length()*4; 
+  int monHeight = monster.length*4;
   
   MeatCleaver(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
@@ -61,7 +65,7 @@ public class MeatCleaver extends Enemy{
   }
   
   public void draw() {
-    loadMon(x,y,5);
+    loadMon(x,y,4);
     
     //periodically shoots projectile 
     if (c == 0) {

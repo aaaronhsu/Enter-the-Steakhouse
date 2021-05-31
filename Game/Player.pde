@@ -261,7 +261,7 @@ public class Player {
     this.currentWeapon.shootProjectile();
   }
   
-  void loseHP(int lost){
+  void loseHP(float lost){
     this.health--;
   }
 }

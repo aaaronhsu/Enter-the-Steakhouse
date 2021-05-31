@@ -52,14 +52,14 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   boolean detectCollision() {
     if (!isPlayerProjectile) { //is enemy projectile
       if ( Math.abs(p.x - this.x) <= this.r && Math.abs(p.y - this.y) <= this.r ) {
-        p.loseHP(1);
+        p.loseHP(this.damage);
         return true;
       }
     }
     else { //is player projectile
       for (Enemy e : p.currentRoom.enemyList) {
-        if ( Math.abs(e.x - this.x) <= this.r && Math.abs(e.y - this.y) <= this.r ) {
-          e.loseHP(1);
+        if (checkMonCollision(e)) {
+          e.loseHP(p.currentWeapon.damage);
           return true;
         }
       }
@@ -67,6 +67,10 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     return false;
   }
   
+  boolean checkMonCollision(Enemy e){ //collision box of enemy
+    return (Math.abs(e.x + e.monWidth/2 - this.x) <= this.r || Math.abs(e.x - e.monWidth/2 - this.x) <= this.r)
+            && (Math.abs(e.y + e.monHeight/2 - this.y) <= this.r || Math.abs(e.y - e.monHeight/2 - this.y) <= this.r);
+  }
   
   void draw() {
     display();
