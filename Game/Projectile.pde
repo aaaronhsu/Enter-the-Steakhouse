@@ -51,7 +51,7 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
 
   boolean detectCollision() {
     if (!isPlayerProjectile) { //is enemy projectile
-      if ( Math.abs(p.x - this.x) <= this.r && Math.abs(p.y - this.y) <= this.r ) {
+      if ( Math.abs(p.x - this.x) <= this.r && Math.abs(p.y - this.y) <= this.r) {
         p.loseHP(this.damage);
         return true;
       }
@@ -75,7 +75,6 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   void draw() {
     display();
     move(); //despawning through wallBounces
-    detectCollision();
     
     //despawning through time
     if (despawnTime > 0) despawnTime--;
