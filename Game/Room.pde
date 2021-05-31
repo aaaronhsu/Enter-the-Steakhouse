@@ -157,7 +157,11 @@ public class Room {
           int x = (int) random(1560) + 180;
           int y = (int) random(720) + 180;
 
-          while (this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60)) != GROUND) {
+          while (this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60)) != GROUND ||
+                 this.roomBlueprint[(int)(y / 60) - 1].charAt((int)(x / 60)) != GROUND ||
+                 this.roomBlueprint[(int)(y / 60) + 1].charAt((int)(x / 60)) != GROUND ||
+                 this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60) - 1) != GROUND ||
+                 this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60) + 1) != GROUND) {
             x = (int) random(1920);
             y = (int) random(1080);
           }
@@ -173,7 +177,11 @@ public class Room {
           int x = (int) random(1560) + 180;
           int y = (int) random(720) + 180;
 
-          while (this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60)) != GROUND) {
+          while (this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60)) != GROUND ||
+                 this.roomBlueprint[(int)(y / 60) - 1].charAt((int)(x / 60)) != GROUND ||
+                 this.roomBlueprint[(int)(y / 60) + 1].charAt((int)(x / 60)) != GROUND ||
+                 this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60) - 1) != GROUND ||
+                 this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60) + 1) != GROUND) {
             x = (int) random(1920);
             y = (int) random(1080);
           }
