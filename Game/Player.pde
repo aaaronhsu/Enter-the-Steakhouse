@@ -162,6 +162,7 @@ public class Player {
       if (this.currentRoom.corridorW != null && (int)(this.x / 60) == this.currentRoom.corridorW[1] && (int)(this.y / 60) == this.currentRoom.corridorW[0]) {
         // GOING WEST
         if (this.currentRoom.roomW != null) {
+          this.currentRoom.projectileList = new ArrayList();
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomW.isCurrentRoom = true;
 
@@ -182,6 +183,7 @@ public class Player {
       if (this.currentRoom.corridorE != null && (int)(this.x / 60) == this.currentRoom.corridorE[1] && (int)(this.y / 60) == this.currentRoom.corridorE[0]) {
         // GOING EAST
         if (this.currentRoom.roomE != null) {
+          this.currentRoom.projectileList = new ArrayList();
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomE.isCurrentRoom = true;
 
@@ -202,6 +204,7 @@ public class Player {
       if (this.currentRoom.corridorN != null && (int)(this.x / 60) == this.currentRoom.corridorN[1] && (int)(this.y / 60) == this.currentRoom.corridorN[0]) {
         // GOING NORTH
         if (this.currentRoom.roomN != null) {
+          this.currentRoom.projectileList = new ArrayList();
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomN.isCurrentRoom = true;
 
@@ -222,6 +225,7 @@ public class Player {
       if (this.currentRoom.corridorS != null && (int)(this.x / 60) == this.currentRoom.corridorS[1] && (int)(this.y / 60) == this.currentRoom.corridorS[0]) {
         // GOING SOUTH
         if (this.currentRoom.roomS != null) {
+          this.currentRoom.projectileList = new ArrayList();
           this.currentRoom.isCurrentRoom = false;
           this.currentRoom.roomS.isCurrentRoom = true;
 
