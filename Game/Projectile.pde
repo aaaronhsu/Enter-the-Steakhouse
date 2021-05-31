@@ -49,19 +49,22 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
     return fetchTile(x, y) == WALL || fetchTile(x, y) == CORRIDOR;
   }
 
-  void detectCollision() {
+  boolean detectCollision() {
     if (!isPlayerProjectile) { //is enemy projectile
-      if ( Math.abs(p.x - x) <= r && Math.abs(p.y - y) <= r ) {
+      if ( Math.abs(p.x - this.x) <= this.r && Math.abs(p.y - this.y) <= this.r ) {
         p.loseHP(1);
+        return true;
       }
     }
     else { //is player projectile
-      for (int i = 0; i < p.currentRoom.enemyList.size(); i++) {
-        Enemy e = p.currentRoom.enemyList.get(i);
-        
+      for (Enemy e : p.currentRoom.enemyList) {
+        if ( Math.abs(e.x - this.x) <= this.r && Math.abs(e.y - this.y) <= this.r ) {
+          e.loseHP(1);
+          return true;
+        }
       }
     }
-
+    return false;
   }
   
   

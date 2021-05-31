@@ -12,4 +12,8 @@ public abstract class Enemy {
   public void draw() {
     this.draw();
   }
+  
+  void loseHP(int lost){
+    this.health--;
+  }
 }
