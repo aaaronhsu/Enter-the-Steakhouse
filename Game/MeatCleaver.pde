@@ -1,7 +1,7 @@
 public class MeatCleaver extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 5;
-  int cooldown = 20; //does not change
+  int cooldown = 50; //does not change
   int c = cooldown;
   
   String[] monster = loadStrings("meatcleaver.txt"); //visual display

@@ -1,7 +1,7 @@
 public class Stove extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 7;
-  int cooldown = 20; //does not change
+  int cooldown = 50; //does not change
   int c = cooldown;
   
   Stove(float x, float y, int health, int contactDamage) {
