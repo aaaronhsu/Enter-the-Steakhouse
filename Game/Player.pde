@@ -70,7 +70,7 @@ public class Player {
         isFalling = false;
         this.x -= fallDirection[0] * speed * 3;
         this.y -= fallDirection[1] * speed * 3;
-        this.health--;
+        this.loseHP(1);
       }
       return;
     }
@@ -241,16 +241,16 @@ public class Player {
   
   public void changeDirection(boolean moving) {
     switch (keyCode) {
-      case 87:
+      case WKEY:
         direction[NORTH] = moving;
         break;
-      case 82:
+      case RKEY:
         direction[SOUTH] = moving;
         break;
-      case 83:
+      case SKEY:
         direction[EAST] = moving;
         break;
-      case 65:
+      case AKEY:
         direction[WEST] = moving;
         break;
     }
@@ -259,5 +259,9 @@ public class Player {
   // asks the current weapon to shoot
   public void shootProjectile() {
     this.currentWeapon.shootProjectile();
+  }
+  
+  void loseHP(float lost){
+    this.health--;
   }
 }

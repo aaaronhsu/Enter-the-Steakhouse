@@ -50,34 +50,37 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   }
 
   boolean detectCollision() {
-    //despawning through wall-bounces
-    //if (isWallCollision()) numBounces--;
-    
     if (!isPlayerProjectile) { //is enemy projectile
-      if ( Math.abs(p.x - x) <= r && Math.abs(p.y - y) <= r ) {
+      if ( Math.abs(p.x - this.x) <= this.r && Math.abs(p.y - this.y) <= this.r) {
+        p.loseHP(this.damage);
         return true;
       }
     }
-    //else { //is player projectile
-    //  for (int i = 0; i < p.currentRoom.enemyList.size(); i++) {
-    //    Enemy e = p.currentRoom.enemyList.get(i);
-    //    
-    //  }
-    //}
+    else { //is player projectile
+      for (Enemy e : p.currentRoom.enemyList) {
+        if (checkMonCollision(e)) {
+          e.loseHP(p.currentWeapon.damage);
+          return true;
+        }
+      }
+    }
     return false;
   }
   
+  boolean checkMonCollision(Enemy e){ //collision box of enemy
+    return (Math.abs(e.x + e.monWidth/2 - this.x) - 20 <= this.r || Math.abs(e.x - e.monWidth/2 - this.x) - 20 <= this.r)
+            && (Math.abs(e.y + e.monHeight/2 - this.y) - 20 <= this.r || Math.abs(e.y - e.monHeight/2 - this.y) - 20 <= this.r);
+  }
   
   void draw() {
     display();
-    move();
-    detectCollision();
+    move(); //despawning through wallBounces
     
     //despawning through time
     if (despawnTime > 0) despawnTime--;
   }
   
-  void despawn() {
+  void despawn() { //called in Room
     p.currentRoom.projectileList.remove(this);
   }
   
