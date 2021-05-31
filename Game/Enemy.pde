@@ -23,4 +23,12 @@ public abstract class Enemy {
   void despawn() { //called in Room
     p.currentRoom.enemyList.remove(this);
   }
+
+  public void moveTowardsPlayer() {
+
+  }
+
+  private void aStar() {
+    
+  }
 }
