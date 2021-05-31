@@ -33,10 +33,6 @@ public class Room {
   int[] corridorE = null;
   int[] corridorW = null;
   
-  Enemy m1 = new MeatCleaver(400,400, 10, 1); //delete 
-  //Enemy g1 = new Gardener(400,400, 10, 1); //delete 
-  //Enemy s1 = new Stove(400,400, 10, 1); //delete 
-  
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
     this.roomType = "start";

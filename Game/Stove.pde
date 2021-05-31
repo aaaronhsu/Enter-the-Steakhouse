@@ -4,6 +4,11 @@ public class Stove extends Enemy{
   int cooldown = 50; //does not change
   int c = cooldown;
   
+  String[] monster = loadStrings("stove.txt"); //visual display
+  //for hit box of monster
+  int monWidth = monster[0].length()*4 + 100; 
+  int monHeight = monster.length*4 + 100;
+  
   Stove(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
   }
@@ -28,8 +33,6 @@ public class Stove extends Enemy{
   }
   
   void loadMon(float x, float y, int sideLength){
-    String[] monster = loadStrings("stove.txt");
-    
     x -= monster[0].length()/2 * sideLength; //centers the monster
     y -= monster.length/2 * sideLength; 
     

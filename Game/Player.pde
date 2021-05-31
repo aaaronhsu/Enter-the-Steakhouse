@@ -56,7 +56,38 @@ public class Player {
 
     fill(200, 0, 0);
     for (int i = 0; i < this.health; i++) {
-      ellipse(xOffset + (i * 40), yOffset, 30, 30);
+      drawHeart(xOffset + (i * 50), yOffset, 3);
+    }
+  }
+  
+  void drawHeart(float x, float y, int sideLength){
+    String[] colour = loadStrings("heart.txt");
+    
+    x -= colour[0].length()/2 * sideLength; //centers the monster
+    y -= colour.length/2 * sideLength; 
+    
+    float newX = x;
+      
+    noStroke();
+    for (int i = 0; i < colour.length; i++) {
+      
+      for (int j = 0; j < colour[0].length(); j++) {
+        char c = colour[i].charAt(j);
+        
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (c == '1') {fill(#000000);} //black
+          else if (c == '2') {fill(#FF0505);} //bright red
+          else if (c == '3') {fill(#CB1515);} //dark red
+          else if (c == '4') {fill(#FFFFFF);} //white
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
     }
   }
   
