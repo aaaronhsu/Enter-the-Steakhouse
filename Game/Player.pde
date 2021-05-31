@@ -56,7 +56,7 @@ public class Player {
 
     fill(200, 0, 0);
     for (int i = 0; i < this.health; i++) {
-      ellipse(xOffset + (i * 40), yOffset, 30, 30);
+      drawHeart(xOffset + (i * 50), yOffset, 3);
     }
   }
   
