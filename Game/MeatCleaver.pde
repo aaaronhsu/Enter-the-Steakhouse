@@ -24,7 +24,7 @@ public class MeatCleaver extends Enemy{
     float dy = projectileSpeed * sin(angle);
     
     // creates the projectile
-    Projectile p1 = new Projectile(x, y, dx, dy, 25, #FF1F1F, projectileDamage, 200, 3, false);
+    Projectile p1 = new Projectile(x, y, dx, dy, 25, #FF1F1F, projectileDamage, -1, 1, false);
     
     // adds projectile to the projectile list of the room that the player is in
     p.currentRoom.projectileList.add(p1);
