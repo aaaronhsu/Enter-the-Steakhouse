@@ -43,4 +43,7 @@
 ### 5/29
 **Aaron**: Added player shooting and projectile bouncing.
 
-**Yaying**: Added fire monster designs to our enemies.
+**Yaying**: Added fire monster designs to our ene
+
+### 5/30
+**Aaron**: Created random spawning of enemies in rooms. Also merged `interactions` and `enemy-spawning` into main.
