@@ -40,13 +40,13 @@ public void draw() {
 }
 
 public void keyPressed() {
-  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == DKEY) {
+  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
     p.changeDirection(true);
   }
 }
 
 public void keyReleased() {
-  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == DKEY) {
+  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
     p.changeDirection(false);
   }
 }

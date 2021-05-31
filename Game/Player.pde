@@ -244,10 +244,10 @@ public class Player {
       case WKEY:
         direction[NORTH] = moving;
         break;
-      case SKEY:
+      case RKEY:
         direction[SOUTH] = moving;
         break;
-      case DKEY:
+      case SKEY:
         direction[EAST] = moving;
         break;
       case AKEY:
