@@ -149,7 +149,7 @@ public class Room {
 
     switch (randomGenType) {
       case 0:
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
           int x = (int) random(1560) + 180;
           int y = (int) random(720) + 180;
 

@@ -52,13 +52,80 @@ public abstract class Enemy {
         break;
       }
 
+      if (canMoveNorth() && canMoveEast()) {
+        Tile neTile = new Tile(currentTile.x + 5, currentTile.y - 5, start.stepsFromStart + 5, currentTile);
+
+        boolean shouldBeAdded = true;
+        for (Tile t : visited) {
+          if (t.x == neTile.x && t.y == neTile.y) {
+            shouldBeAdded = false;
+            break;
+          }
+        }
+
+        if (shouldBeAdded) {
+          pq.add(neTile);
+          visited.add(neTile);
+        }
+      }
+
+      if (canMoveSouth() && canMoveEast()) {
+        Tile seTile = new Tile(currentTile.x + 5, currentTile.y + 5, start.stepsFromStart + 5, currentTile);
+
+        boolean shouldBeAdded = true;
+        for (Tile t : visited) {
+          if (t.x == seTile.x && t.y == seTile.y) {
+            shouldBeAdded = false;
+            break;
+          }
+        }
+
+        if (shouldBeAdded) {
+          pq.add(seTile);
+          visited.add(seTile);
+        }
+      }
+
+      if (canMoveNorth() && canMoveWest()) {
+        Tile nwTile = new Tile(currentTile.x - 5, currentTile.y - 5, start.stepsFromStart + 5, currentTile);
+
+        boolean shouldBeAdded = true;
+        for (Tile t : visited) {
+          if (t.x == nwTile.x && t.y == nwTile.y) {
+            shouldBeAdded = false;
+            break;
+          }
+        }
+
+        if (shouldBeAdded) {
+          pq.add(nwTile);
+          visited.add(nwTile);
+        }
+      }
+
+      if (canMoveSouth() && canMoveWest()) {
+        Tile swTile = new Tile(currentTile.x - 5, currentTile.y + 5, start.stepsFromStart + 5, currentTile);
+
+        boolean shouldBeAdded = true;
+        for (Tile t : visited) {
+          if (t.x == swTile.x && t.y == swTile.y) {
+            shouldBeAdded = false;
+            break;
+          }
+        }
+
+        if (shouldBeAdded) {
+          pq.add(swTile);
+          visited.add(swTile);
+        }
+      }
+
       if (canMoveNorth()) {
         Tile nTile = new Tile(currentTile.x, currentTile.y - 5, start.stepsFromStart + 5, currentTile);
 
         boolean shouldBeAdded = true;
         for (Tile t : visited) {
           if (t.x == nTile.x && t.y == nTile.y) {
-            println("NORTH CANT BE ADDED");
             shouldBeAdded = false;
             break;
           }
