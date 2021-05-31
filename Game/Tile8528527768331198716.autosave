@@ -1,4 +1,4 @@
-public class Tile implements Comparable<Tile> {
+  public class Tile implements Comparable<Tile> {
   int x, y, stepsFromStart;
   Tile previousTile;
 
@@ -21,5 +21,14 @@ public class Tile implements Comparable<Tile> {
 
   private int heuristic() {
     return (int)abs(this.x - p.x) + (int)abs(this.y - p.y) + stepsFromStart;
+  }
+
+  public boolean equals(Tile obj) {
+    if (obj == this) return true;
+    return this.x == obj.x && this.y == obj.y;
+  }
+  
+  public int hashCode() {
+    return this.x + this.y;
   }
 }

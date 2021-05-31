@@ -145,11 +145,11 @@ public class Room {
 
 
   public void generateEnemies() {
-    int randomGenType = (int) random(2);
+    int randomGenType = (int) random(1);
 
     switch (randomGenType) {
       case 0:
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
           int x = (int) random(1560) + 180;
           int y = (int) random(720) + 180;
 
