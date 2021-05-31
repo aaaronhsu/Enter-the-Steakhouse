@@ -16,4 +16,8 @@ public abstract class Enemy {
   void loseHP(int lost){
     this.health--;
   }
+  
+  void despawn() { //called in Room
+    p.currentRoom.enemyList.remove(this);
+  }
 }

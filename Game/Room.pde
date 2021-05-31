@@ -24,6 +24,7 @@ public class Room {
   
   
   ArrayList<Enemy> enemyList = new ArrayList();
+  ArrayList<Enemy> removeEnemyList = new ArrayList();
   ArrayList<Projectile> projectileList = new ArrayList();
   ArrayList<Projectile> removeProjList = new ArrayList();
   
@@ -154,7 +155,12 @@ public class Room {
 
     for (Enemy e : this.enemyList) {
       e.draw();
+      if (e.health <= 0) p.currentRoom.removeEnemyList.add(e);
     }
+    for (Enemy e : this.removeEnemyList) { //access every enemy that needs to be despawned
+      e.despawn();
+    }
+    
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
       if (proj.numBounces == 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj); 
