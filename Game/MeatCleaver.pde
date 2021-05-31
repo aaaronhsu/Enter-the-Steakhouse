@@ -12,7 +12,7 @@ public class MeatCleaver extends Enemy{
   MeatCleaver(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
     
-    p.currentRoom.enemyList.add(this); //null pointer exception
+    //p.currentRoom.enemyList.add(this); //null pointer exception
   }
   
   public void shootProjectile() {
