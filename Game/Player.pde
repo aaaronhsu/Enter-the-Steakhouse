@@ -260,4 +260,8 @@ public class Player {
   public void shootProjectile() {
     this.currentWeapon.shootProjectile();
   }
+  
+  void loseHP(int lost){
+    this.health--;
+  }
 }
