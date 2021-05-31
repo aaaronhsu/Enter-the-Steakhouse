@@ -68,8 +68,8 @@ public class Projectile { //bugs: Stoves can't have >6 projectiles
   }
   
   boolean checkMonCollision(Enemy e){ //collision box of enemy
-    return (Math.abs(e.x + e.monWidth/2 - this.x) <= this.r || Math.abs(e.x - e.monWidth/2 - this.x) <= this.r)
-            && (Math.abs(e.y + e.monHeight/2 - this.y) <= this.r || Math.abs(e.y - e.monHeight/2 - this.y) <= this.r);
+    return (Math.abs(e.x + e.monWidth/2 - this.x) - 20 <= this.r || Math.abs(e.x - e.monWidth/2 - this.x) - 20 <= this.r)
+            && (Math.abs(e.y + e.monHeight/2 - this.y) - 20 <= this.r || Math.abs(e.y - e.monHeight/2 - this.y) - 20 <= this.r);
   }
   
   void draw() {

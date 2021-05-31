@@ -6,8 +6,8 @@ public class MeatCleaver extends Enemy{
   
   String[] monster = loadStrings("meatcleaver.txt"); //visual display
   //for hit box of monster
-  int monWidth = monster[0].length()*4; 
-  int monHeight = monster.length*4;
+  int monWidth = monster[0].length()*4 + 100; 
+  int monHeight = monster.length*4 + 100;
   
   MeatCleaver(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage);  
