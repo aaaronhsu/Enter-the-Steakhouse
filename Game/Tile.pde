@@ -20,6 +20,6 @@ public class Tile implements Comparable<Tile> {
   }
 
   private int heuristic() {
-    return (int)abs(this.x - p.x) + (int)abs(this.y - p.y) + stepsFromStart;
+    return (int)abs(this.x - p.x) + (int)abs(this.y - p.y) + stepsFromStart / 3;
   }
 }

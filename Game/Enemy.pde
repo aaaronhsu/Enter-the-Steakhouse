@@ -46,7 +46,7 @@ public abstract class Enemy {
 
     while (!pq.isEmpty()) {
       Tile currentTile = pq.poll();
-      if (currentTile.stepsFromStart > 50) break;
+      // if (pq.size() > 500) break;
 
       // println(currentTile.heuristic() + ": " + currentTile.x + ", " + currentTile.y);
 
@@ -57,7 +57,7 @@ public abstract class Enemy {
         break;
       }
 
-      if (canMoveNorth() && canMoveEast()) {
+      if (canMoveNorth(currentTile.x, currentTile.y) && canMoveEast(currentTile.x, currentTile.y)) {
         Tile neTile = new Tile(currentTile.x + movementSpeed, currentTile.y - movementSpeed, start.stepsFromStart + 1, currentTile);
 
         if (!visited[currentTile.y - movementSpeed][currentTile.x + movementSpeed]) {
@@ -66,7 +66,7 @@ public abstract class Enemy {
         }
       }
 
-      if (canMoveSouth() && canMoveEast()) {
+      if (canMoveSouth(currentTile.x, currentTile.y) && canMoveEast(currentTile.x, currentTile.y)) {
         Tile seTile = new Tile(currentTile.x + movementSpeed, currentTile.y + movementSpeed, start.stepsFromStart + 1, currentTile);
 
         if (!visited[currentTile.y + movementSpeed][currentTile.x + movementSpeed]) {
@@ -75,7 +75,7 @@ public abstract class Enemy {
         }
       }
 
-      if (canMoveNorth() && canMoveWest()) {
+      if (canMoveNorth(currentTile.x, currentTile.y) && canMoveWest(currentTile.x, currentTile.y)) {
         Tile nwTile = new Tile(currentTile.x - movementSpeed, currentTile.y - movementSpeed, start.stepsFromStart + 1, currentTile);
 
         if (!visited[currentTile.y - movementSpeed][currentTile.x - movementSpeed]) {
@@ -84,7 +84,7 @@ public abstract class Enemy {
         }
       }
 
-      if (canMoveSouth() && canMoveWest()) {
+      if (canMoveSouth(currentTile.x, currentTile.y) && canMoveWest(currentTile.x, currentTile.y)) {
         Tile swTile = new Tile(currentTile.x - movementSpeed, currentTile.y + movementSpeed, start.stepsFromStart + 1, currentTile);
 
         if (!visited[currentTile.y + movementSpeed][currentTile.x - movementSpeed]) {
@@ -93,7 +93,7 @@ public abstract class Enemy {
         }
       }
 
-      if (canMoveNorth()) {
+      if (canMoveNorth(currentTile.x, currentTile.y)) {
         Tile nTile = new Tile(currentTile.x, currentTile.y - movementSpeed, start.stepsFromStart + 1, currentTile);
 
         if (!visited[currentTile.y - movementSpeed][currentTile.x]) {
@@ -101,7 +101,7 @@ public abstract class Enemy {
           visited[currentTile.y - movementSpeed][currentTile.x] = true;
         }
       }
-      if (canMoveSouth()) {
+      if (canMoveSouth(currentTile.x, currentTile.y)) {
         Tile sTile = new Tile(currentTile.x, currentTile.y + movementSpeed, start.stepsFromStart + 1, currentTile);
 
         if (!visited[currentTile.y + movementSpeed][currentTile.x]) {
@@ -109,7 +109,7 @@ public abstract class Enemy {
           visited[currentTile.y + movementSpeed][currentTile.x] = true;
         }
       }
-      if (canMoveEast()) {
+      if (canMoveEast(currentTile.x, currentTile.y)) {
         Tile eTile = new Tile(currentTile.x + movementSpeed, currentTile.y, start.stepsFromStart + 1, currentTile);
 
         if (!visited[currentTile.y][currentTile.x + movementSpeed]) {
@@ -117,7 +117,7 @@ public abstract class Enemy {
           visited[currentTile.y][currentTile.x + movementSpeed] = true;
         }
       }
-      if (canMoveWest()) {
+      if (canMoveWest(currentTile.x, currentTile.y)) {
         Tile wTile = new Tile(currentTile.x - movementSpeed, currentTile.y, start.stepsFromStart + 1, currentTile);
 
         if (!visited[currentTile.y][currentTile.x - movementSpeed]) {
@@ -137,36 +137,36 @@ public abstract class Enemy {
     }
   }
 
-  private boolean canMoveNorth() {
-    // for (Enemy e : p.currentRoom.enemyList) {
-    //   if (e == this) continue;
-    //   if (abs(e.x - this.x) < 10 && abs(e.y - (this.y - movementSpeed)) < 10) return false;
-    // }
-    return true;
-    // return fetchTile(this.x, this.y - 60) == GROUND;
+  private boolean canMoveNorth(int x, int y) {
+    for (Enemy e : p.currentRoom.enemyList) {
+      if (e == this) continue;
+      if (abs(e.x - x) < 30 && abs(e.y - (y - 3)) < 30) return false;
+    }
+    // return true;
+    return fetchTile(x, y - 60) == GROUND;
   }
-  private boolean canMoveSouth() {
-    // for (Enemy e : p.currentRoom.enemyList) {
-    //   if (e == this) continue;
-    //   if (abs(e.x - this.x) < 10 && abs(e.y - (this.y + movementSpeed)) < 10) return false;
-    // }
-    return true;
-    // return fetchTile(this.x, this.y + 60) == GROUND;
+  private boolean canMoveSouth(int x, int y) {
+    for (Enemy e : p.currentRoom.enemyList) {
+      if (e == this) continue;
+      if (abs(e.x - x) < 30 && abs(e.y - (y + 3)) < 30) return false;
+    }
+    // return true;
+    return fetchTile(x, y + 60) == GROUND;
   }
-  private boolean canMoveEast() {
-    // for (Enemy e : p.currentRoom.enemyList) {
-    //   if (e == this) continue;
-    //   if (abs(e.x - (this.x + movementSpeed)) < 10 && abs(e.y - this.y) < 10) return false;
-    // }
-    return true;
-    // return fetchTile(this.x + 60, this.y) == GROUND;
+  private boolean canMoveEast(int x, int y) {
+    for (Enemy e : p.currentRoom.enemyList) {
+      if (e == this) continue;
+      if (abs(e.x - (x + 3)) < 30 && abs(e.y - y) < 30) return false;
+    }
+    // return true;
+    return fetchTile(x + 60, y) == GROUND;
   }
-  private boolean canMoveWest() {
-    // for (Enemy e : p.currentRoom.enemyList) {
-    //   if (e == this) continue;
-    //   if (abs(e.x - (this.x - movementSpeed)) < 10 && abs(e.y - this.y) < 10) return false;
-    // }
-    return true;
-    // return fetchTile(this.x - 60, this.y) == GROUND;
+  private boolean canMoveWest(int x, int y) {
+    for (Enemy e : p.currentRoom.enemyList) {
+      if (e == this) continue;
+      if (abs(e.x - (x - 3)) < 30 && abs(e.y - y) < 30) return false;
+    }
+    // return true;
+    return fetchTile(x - 60, y) == GROUND;
   }
 }
