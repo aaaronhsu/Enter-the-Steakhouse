@@ -51,4 +51,6 @@
 **Yaying**: Created collision box for enemies and checked for enemy-player projectile collisions.
 
 ### 5/31
+**Aaron**: Worked on A* pathfinding for enemies.
+
 **Yaying**: Added boss design!
