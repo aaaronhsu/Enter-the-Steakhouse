@@ -156,7 +156,7 @@ public abstract class Enemy {
   private boolean canMoveNorth(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
       if (e == this) continue;
-      if (abs(e.x - x) < 30 && abs(e.y - (y - 3)) < 30) return false;
+      if (abs(e.x - x) < 30 && abs(e.y - (y - 40)) < 30) return false;
     }
     // return true;
     return fetchTile(x, y - 80) == GROUND || fetchTile(x, y - 80) == TELEPORTER;
@@ -164,7 +164,7 @@ public abstract class Enemy {
   private boolean canMoveSouth(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
       if (e == this) continue;
-      if (abs(e.x - x) < 30 && abs(e.y - (y + 3)) < 30) return false;
+      if (abs(e.x - x) < 30 && abs(e.y - (y + 40)) < 30) return false;
     }
     // return true;
     return fetchTile(x, y + 80) == GROUND || fetchTile(x, y - 80) == TELEPORTER;
@@ -172,7 +172,7 @@ public abstract class Enemy {
   private boolean canMoveEast(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
       if (e == this) continue;
-      if (abs(e.x - (x + 3)) < 30 && abs(e.y - y) < 30) return false;
+      if (abs(e.x - (x + 40)) < 30 && abs(e.y - y) < 30) return false;
     }
     // return true;
     return fetchTile(x + 80, y) == GROUND || fetchTile(x, y - 80) == TELEPORTER;
@@ -180,7 +180,7 @@ public abstract class Enemy {
   private boolean canMoveWest(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
       if (e == this) continue;
-      if (abs(e.x - (x - 3)) < 30 && abs(e.y - y) < 30) return false;
+      if (abs(e.x - (x - 40)) < 30 && abs(e.y - y) < 30) return false;
     }
     // return true;
     return fetchTile(x - 80, y) == GROUND || fetchTile(x, y - 80) == TELEPORTER;

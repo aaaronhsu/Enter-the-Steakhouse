@@ -66,6 +66,8 @@ public class Gardener extends Enemy{
   public void draw() {
     loadMon(x,y, 4);
     
+    moveTowardsPlayer();
+    
     //periodically shoots projectile 
     if (c == 0) {
       shootProjectile();
