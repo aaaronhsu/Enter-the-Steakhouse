@@ -1,3 +1,8 @@
+public final int MEATCLEAVER = 0;
+public final int STOVE = 1;
+public final int GARDENER = 2;
+public final int BOSS = 3;
+
 public abstract class Enemy {
   float x, y;
   int health, contactDamage;
@@ -7,12 +12,16 @@ public abstract class Enemy {
 
   ArrayDeque<Tile> pathToPlayer = new ArrayDeque();
   int timeUntilRecalculate = 20;
+
+  int type;
   
-  Enemy(float x, float y, int health, int contactDamage) {
+  Enemy(float x, float y, int health, int contactDamage, int type) {
     this.x = x;
     this.y = y;
     this.health = health;
     this.contactDamage = contactDamage;
+
+    this.type = type;
   }
   
   public void draw() {

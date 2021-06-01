@@ -10,7 +10,7 @@ public class MeatCleaver extends Enemy{
   int monHeight = monster.length*4 + 100;
   
   MeatCleaver(float x, float y, int health, int contactDamage) {
-    super(x, y, health, contactDamage);  
+    super(x, y, health, contactDamage, MEATCLEAVER);  
   }
   
   public void shootProjectile() {

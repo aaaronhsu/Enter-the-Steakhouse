@@ -10,7 +10,7 @@ public class Gardener extends Enemy{
   int monHeight = monster.length*4 + 100;
   
   Gardener(float x, float y, int health, int contactDamage) {
-    super(x, y, health, contactDamage);  
+    super(x, y, health, contactDamage, GARDENER);  
   }
   
   public void shootProjectile() {
