@@ -33,12 +33,15 @@ public abstract class Enemy {
     int movementSpeed = 3;
     Queue<Tile> pq = new PriorityQueue();
 
-    boolean[][] visited = new boolean[1080][1920];
+    // boolean[][] visited = new boolean[1080][1920];
+
+    HashSet<Tile> visited = new HashSet();
 
     Tile start = new Tile(this.x, this.y);
     pq.add(start);
     
-    visited[(int)y][(int)x] = true;
+    // visited[(int)y][(int)x] = true;
+    visited.add(start);
 
     Tile path = null;
 
@@ -46,83 +49,81 @@ public abstract class Enemy {
 
     while (!pq.isEmpty()) {
       Tile currentTile = pq.poll();
-      // if (pq.size() > 500) break;
+      if (pq.size() > 500) break;
 
-      // println(currentTile.heuristic() + ": " + currentTile.x + ", " + currentTile.y);
 
       // path has been found
-      if (currentTile.heuristic() - currentTile.stepsFromStart < 100) {
+      if (currentTile.heuristic() - currentTile.stepsFromStart < 500) {
         path = currentTile;
-        // println("SOMETHING GOOD HAPPENEND");
         break;
       }
 
       if (canMoveNorth(currentTile.x, currentTile.y) && canMoveEast(currentTile.x, currentTile.y)) {
         Tile neTile = new Tile(currentTile.x + movementSpeed, currentTile.y - movementSpeed, start.stepsFromStart + 1, currentTile);
 
-        if (!visited[currentTile.y - movementSpeed][currentTile.x + movementSpeed]) {
+        if (!visited.contains(neTile)) {
           pq.add(neTile);
-          visited[currentTile.y - movementSpeed][currentTile.x + movementSpeed] = true;
+          visited.add(neTile);
         }
       }
 
       if (canMoveSouth(currentTile.x, currentTile.y) && canMoveEast(currentTile.x, currentTile.y)) {
         Tile seTile = new Tile(currentTile.x + movementSpeed, currentTile.y + movementSpeed, start.stepsFromStart + 1, currentTile);
 
-        if (!visited[currentTile.y + movementSpeed][currentTile.x + movementSpeed]) {
+        if (!visited.contains(seTile)) {
           pq.add(seTile);
-          visited[currentTile.y + movementSpeed][currentTile.x + movementSpeed] = true;
+          visited.add(seTile);
         }
       }
 
       if (canMoveNorth(currentTile.x, currentTile.y) && canMoveWest(currentTile.x, currentTile.y)) {
         Tile nwTile = new Tile(currentTile.x - movementSpeed, currentTile.y - movementSpeed, start.stepsFromStart + 1, currentTile);
 
-        if (!visited[currentTile.y - movementSpeed][currentTile.x - movementSpeed]) {
+        if (!visited.contains(nwTile)) {
           pq.add(nwTile);
-          visited[currentTile.y - movementSpeed][currentTile.x - movementSpeed] = true;
+          visited.add(nwTile);
         }
       }
 
       if (canMoveSouth(currentTile.x, currentTile.y) && canMoveWest(currentTile.x, currentTile.y)) {
         Tile swTile = new Tile(currentTile.x - movementSpeed, currentTile.y + movementSpeed, start.stepsFromStart + 1, currentTile);
 
-        if (!visited[currentTile.y + movementSpeed][currentTile.x - movementSpeed]) {
+        if (!visited.contains(swTile)) {
           pq.add(swTile);
-          visited[currentTile.y + movementSpeed][currentTile.x - movementSpeed] = true;
+          visited.add(swTile);
         }
       }
 
       if (canMoveNorth(currentTile.x, currentTile.y)) {
         Tile nTile = new Tile(currentTile.x, currentTile.y - movementSpeed, start.stepsFromStart + 1, currentTile);
 
-        if (!visited[currentTile.y - movementSpeed][currentTile.x]) {
+        if (!visited.contains(nTile)) {
           pq.add(nTile);
-          visited[currentTile.y - movementSpeed][currentTile.x] = true;
+          visited.add(nTile);
         }
       }
       if (canMoveSouth(currentTile.x, currentTile.y)) {
         Tile sTile = new Tile(currentTile.x, currentTile.y + movementSpeed, start.stepsFromStart + 1, currentTile);
 
-        if (!visited[currentTile.y + movementSpeed][currentTile.x]) {
+        if (!visited.contains(sTile)) {
           pq.add(sTile);
-          visited[currentTile.y + movementSpeed][currentTile.x] = true;
+          visited.add(sTile);
         }
       }
       if (canMoveEast(currentTile.x, currentTile.y)) {
         Tile eTile = new Tile(currentTile.x + movementSpeed, currentTile.y, start.stepsFromStart + 1, currentTile);
 
-        if (!visited[currentTile.y][currentTile.x + movementSpeed]) {
+        if (!visited.contains(eTile)) {
           pq.add(eTile);
-          visited[currentTile.y][currentTile.x + movementSpeed] = true;
+          visited.add(eTile);
         }
       }
       if (canMoveWest(currentTile.x, currentTile.y)) {
         Tile wTile = new Tile(currentTile.x - movementSpeed, currentTile.y, start.stepsFromStart + 1, currentTile);
 
-        if (!visited[currentTile.y][currentTile.x - movementSpeed]) {
+        if (!visited.contains(wTile)) {
           pq.add(wTile);
-          visited[currentTile.y][currentTile.x - movementSpeed] = true;
+          visited.add(wTile);
         }
       }
     }
@@ -143,7 +144,7 @@ public abstract class Enemy {
       if (abs(e.x - x) < 30 && abs(e.y - (y - 3)) < 30) return false;
     }
     // return true;
-    return fetchTile(x, y - 60) == GROUND;
+    return fetchTile(x, y - 60) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
   }
   private boolean canMoveSouth(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
@@ -151,7 +152,7 @@ public abstract class Enemy {
       if (abs(e.x - x) < 30 && abs(e.y - (y + 3)) < 30) return false;
     }
     // return true;
-    return fetchTile(x, y + 60) == GROUND;
+    return fetchTile(x, y + 60) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
   }
   private boolean canMoveEast(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
@@ -159,7 +160,7 @@ public abstract class Enemy {
       if (abs(e.x - (x + 3)) < 30 && abs(e.y - y) < 30) return false;
     }
     // return true;
-    return fetchTile(x + 60, y) == GROUND;
+    return fetchTile(x + 60, y) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
   }
   private boolean canMoveWest(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
@@ -167,6 +168,6 @@ public abstract class Enemy {
       if (abs(e.x - (x - 3)) < 30 && abs(e.y - y) < 30) return false;
     }
     // return true;
-    return fetchTile(x - 60, y) == GROUND;
+    return fetchTile(x - 60, y) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
   }
 }

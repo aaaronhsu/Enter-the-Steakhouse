@@ -22,4 +22,13 @@ public class Tile implements Comparable<Tile> {
   private int heuristic() {
     return (int)abs(this.x - p.x) + (int)abs(this.y - p.y) + stepsFromStart / 3;
   }
+
+  @Override boolean equals(Object obj) {
+    return obj instanceof Tile ?
+    obj.hashCode() == hashCode() : false;
+  }
+
+  @Override int hashCode() {
+    return x * 25  + y * 34 - stepsFromStart * 100;
+  }
 }
