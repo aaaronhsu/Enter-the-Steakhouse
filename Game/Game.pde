@@ -35,7 +35,6 @@ public void draw() {
   
   p.move();
   p.draw();
-  println(p.money);
 
   if (p.currentRoom.enemyList.isEmpty()) map.draw();
 }

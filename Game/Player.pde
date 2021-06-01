@@ -27,7 +27,7 @@ public class Player {
     this.money = 0;
     this.blanks = 2;
     
-    Weapon pistol = new Weapon(15, 5, 1, 0);
+    Weapon pistol = new Weapon(15, 5, 1, PISTOL);
     this.weaponList = new ArrayList();
     this.weaponList.add(pistol);
     this.currentWeapon = pistol;
