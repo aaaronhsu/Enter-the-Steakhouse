@@ -4,6 +4,9 @@ public abstract class Enemy {
   //for monster's hit box
   int monWidth;
   int monHeight;
+
+  ArrayDeque<Tile> pathToPlayer = new ArrayDeque();
+  int timeUntilRecalculate = 20;
   
   Enemy(float x, float y, int health, int contactDamage) {
     this.x = x;
@@ -25,11 +28,24 @@ public abstract class Enemy {
   }
 
   public void moveTowardsPlayer() {
-    if (p.x < 10 || p.y < 10 || p.x > width - 10 || p.y > height - 10) return; 
-    aStar();
+
+    if (timeUntilRecalculate <= 0 || pathToPlayer.isEmpty()) {
+      aStar();
+      timeUntilRecalculate = 20;
+    }
+
+    if (timeUntilRecalculate > 0 && pathToPlayer.size() > 0) {
+      Tile nextMove = pathToPlayer.pollLast();
+
+      this.x = nextMove.x;
+      this.y = nextMove.y;
+      timeUntilRecalculate -= (int)random(3);
+    }
   }
 
   private void aStar() {
+    if (p.x < 10 || p.y < 10 || p.x > width - 10 || p.y > height - 10) return;
+
     int movementSpeed = 3;
     Queue<Tile> pq = new PriorityQueue();
 
@@ -49,7 +65,7 @@ public abstract class Enemy {
 
     while (!pq.isEmpty()) {
       Tile currentTile = pq.poll();
-      if (pq.size() > 500) break;
+      if (visited.size() > 1000) break;
 
 
       // path has been found
@@ -129,12 +145,11 @@ public abstract class Enemy {
     }
 
     if (path != null && path.previousTile != null) {
-      while (path.previousTile.previousTile != null) {
+      pathToPlayer = new ArrayDeque();
+      while (path.previousTile != null) {
+        pathToPlayer.add(path);
         path = path.previousTile;
       }
-      // println("SOMETHING FOUND");
-      this.x = path.x;
-      this.y = path.y;
     }
   }
 
@@ -144,7 +159,7 @@ public abstract class Enemy {
       if (abs(e.x - x) < 30 && abs(e.y - (y - 3)) < 30) return false;
     }
     // return true;
-    return fetchTile(x, y - 60) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
+    return fetchTile(x, y - 80) == GROUND || fetchTile(x, y - 80) == TELEPORTER;
   }
   private boolean canMoveSouth(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
@@ -152,7 +167,7 @@ public abstract class Enemy {
       if (abs(e.x - x) < 30 && abs(e.y - (y + 3)) < 30) return false;
     }
     // return true;
-    return fetchTile(x, y + 60) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
+    return fetchTile(x, y + 80) == GROUND || fetchTile(x, y - 80) == TELEPORTER;
   }
   private boolean canMoveEast(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
@@ -160,7 +175,7 @@ public abstract class Enemy {
       if (abs(e.x - (x + 3)) < 30 && abs(e.y - y) < 30) return false;
     }
     // return true;
-    return fetchTile(x + 60, y) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
+    return fetchTile(x + 80, y) == GROUND || fetchTile(x, y - 80) == TELEPORTER;
   }
   private boolean canMoveWest(int x, int y) {
     for (Enemy e : p.currentRoom.enemyList) {
@@ -168,6 +183,6 @@ public abstract class Enemy {
       if (abs(e.x - (x - 3)) < 30 && abs(e.y - y) < 30) return false;
     }
     // return true;
-    return fetchTile(x - 60, y) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
+    return fetchTile(x - 80, y) == GROUND || fetchTile(x, y - 80) == TELEPORTER;
   }
 }
