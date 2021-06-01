@@ -169,7 +169,7 @@ public class Room {
         }
         break;
       case 1:
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
           int x = (int) random(1560) + 180;
           int y = (int) random(720) + 180;
 
@@ -206,7 +206,7 @@ public class Room {
     
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
-      if (proj.numBounces == 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj);
+      if (proj.numBounces <= 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj);
     }
     for (Projectile proj : this.removeProjList) { //access every projectile that needs to be despawned
       proj.despawn();
