@@ -5,6 +5,7 @@ public class Floor {
   ArrayList<Room> roomList;
   
   int numCombatRooms, numChestRooms, numShopRooms;
+  boolean showMap = true;
   
   Floor(int size) {
     this.roomList = new ArrayList();
@@ -304,6 +305,8 @@ public class Floor {
   }
   
   public void draw() {
+    if (!showMap) return;
+    
     for (Room rm : map.roomList) {
       // if (rm.visited == false) continue;
       int x = rm.x + 40;

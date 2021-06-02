@@ -35,13 +35,17 @@ public void draw() {
   
   p.move();
   p.draw();
-
-  if (p.currentRoom.enemyList.isEmpty()) map.draw();
+  map.draw();
 }
 
 public void keyPressed() {
+  println(keyCode);
   if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
     p.changeDirection(true);
+  }
+
+  if (keyCode == 77) {
+    map.showMap = !map.showMap;
   }
 }
 
