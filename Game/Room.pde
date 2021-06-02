@@ -58,7 +58,12 @@ public class Room {
     
     this.roomBlueprintNum = (int)(random(7)) + 1;
 
-    this.roomBlueprint = loadStrings("room" + roomBlueprintNum + ".txt");
+    if (roomType.equals("shop")) {
+      this.roomBlueprint = loadStrings("shopRoom.txt");
+    }
+    else {
+      this.roomBlueprint = loadStrings("room" + roomBlueprintNum + ".txt");
+    }
     
     if (random(100) < 20) {
       this.hasTeleporter = true;
@@ -148,7 +153,7 @@ public class Room {
     text(toString(), 500, 500);
 
     drawRoomBlueprint();
-    
+
 
     for (Enemy e : this.enemyList) {
       e.draw();

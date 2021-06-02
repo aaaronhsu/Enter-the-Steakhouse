@@ -272,7 +272,7 @@ public class Floor {
     int randomRoom = (int) random(100);
     Room generatedRoom = new Room(100); // will be reinitialized
 
-    if (randomRoom < 50) {
+    if (randomRoom < 80) {
       numCombatRooms++;
       generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
 
