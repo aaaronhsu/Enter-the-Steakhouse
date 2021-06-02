@@ -320,4 +320,11 @@ public class Player {
       ((ShopRoom) this.currentRoom).purchaseItem(itemIndex);
     }
   }
+
+  public boolean useBlank() {
+    if (this.blanks <= 0) return false;
+    this.blanks--;
+    this.currentRoom.removeEnemyProjectiles();
+    return true;
+  }
 }

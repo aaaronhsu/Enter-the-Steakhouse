@@ -51,6 +51,10 @@ public void keyPressed() {
   if (49 <= keyCode && keyCode <= 52) {
     p.purchaseItem(keyCode - 49);
   }
+
+  if (keyCode == 81) {
+    p.useBlank();
+  }
 }
 
 public void keyReleased() {

@@ -250,6 +250,20 @@ public class Room {
       }
     }
   }
+
+  public void removeEnemyProjectiles() {
+    ArrayList<Projectile> blankProjectile = new ArrayList();
+
+    for (Projectile proj : this.projectileList) {
+      if (!proj.isPlayerProjectile) {
+        blankProjectile.add(proj);
+      }
+    }
+
+    for (Projectile proj : blankProjectile) {
+      this.projectileList.remove(proj);
+    }
+  }
   
   public String toString() {
     return "this is a " + this.roomType + " located at (" + this.x + ", " + this.y + ")" + " and is using " + this.roomBlueprintNum; 

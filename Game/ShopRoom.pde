@@ -38,8 +38,9 @@ public class ShopRoom extends Room {
     super.draw();
 
     int xText = 500;
-    int yText = 200;
+    int yText = 250;
 
+    fill(255);
     text("This is the stuff on sale", xText, yText);
 
     for (int i = 0; i < items.length; i++) {
