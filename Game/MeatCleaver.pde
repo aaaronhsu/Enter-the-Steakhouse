@@ -1,6 +1,6 @@
 public class MeatCleaver extends Enemy{
   int projectileDamage = 1;
-  float projectileSpeed = 5;
+  float projectileSpeed = 2.5;
   int cooldown = 50; //does not change
   int c = cooldown;
   

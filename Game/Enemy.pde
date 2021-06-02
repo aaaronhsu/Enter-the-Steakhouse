@@ -46,7 +46,7 @@ public abstract class Enemy {
   private void aStar() {
     if (p.x < 10 || p.y < 10 || p.x > width - 10 || p.y > height - 10) return;
 
-    int movementSpeed = 3;
+    int movementSpeed = 1;
     Queue<Tile> pq = new PriorityQueue();
 
     // boolean[][] visited = new boolean[1080][1920];
@@ -154,35 +154,35 @@ public abstract class Enemy {
   }
 
   private boolean canMoveNorth(int x, int y) {
-    for (Enemy e : p.currentRoom.enemyList) {
-      if (e == this) continue;
-      if (abs(e.x - x) < 30 && abs(e.y - (y - 40)) < 30) return false;
-    }
+    // for (Enemy e : p.currentRoom.enemyList) {
+    //   if (e == this) continue;
+    //   if (abs(e.x - x) < 15 && abs(e.y - (y - 40)) < 15) return false;
+    // }
     // return true;
-    return fetchTile(x, y - 60) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
+    return fetchTile(x, y - 30) == GROUND || fetchTile(x, y - 30) == TELEPORTER;
   }
   private boolean canMoveSouth(int x, int y) {
-    for (Enemy e : p.currentRoom.enemyList) {
-      if (e == this) continue;
-      if (abs(e.x - x) < 30 && abs(e.y - (y + 40)) < 30) return false;
-    }
+    // for (Enemy e : p.currentRoom.enemyList) {
+    //   if (e == this) continue;
+    //   if (abs(e.x - x) < 15 && abs(e.y - (y + 40)) < 15) return false;
+    // }
     // return true;
-    return fetchTile(x, y + 60) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
+    return fetchTile(x, y + 30) == GROUND || fetchTile(x, y - 30) == TELEPORTER;
   }
   private boolean canMoveEast(int x, int y) {
-    for (Enemy e : p.currentRoom.enemyList) {
-      if (e == this) continue;
-      if (abs(e.x - (x + 40)) < 30 && abs(e.y - y) < 30) return false;
-    }
+    // for (Enemy e : p.currentRoom.enemyList) {
+    //   if (e == this) continue;
+    //   if (abs(e.x - (x + 40)) < 15 && abs(e.y - y) < 15) return false;
+    // }
     // return true;
-    return fetchTile(x + 60, y) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
+    return fetchTile(x + 30, y) == GROUND || fetchTile(x, y - 30) == TELEPORTER;
   }
   private boolean canMoveWest(int x, int y) {
-    for (Enemy e : p.currentRoom.enemyList) {
-      if (e == this) continue;
-      if (abs(e.x - (x - 40)) < 30 && abs(e.y - y) < 30) return false;
-    }
+    // for (Enemy e : p.currentRoom.enemyList) {
+    //   if (e == this) continue;
+    //   if (abs(e.x - (x - 40)) < 15 && abs(e.y - y) < 15) return false;
+    // }
     // return true;
-    return fetchTile(x - 60, y) == GROUND || fetchTile(x, y - 60) == TELEPORTER;
+    return fetchTile(x - 30, y) == GROUND || fetchTile(x, y - 30) == TELEPORTER;
   }
 }

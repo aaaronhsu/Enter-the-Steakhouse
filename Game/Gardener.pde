@@ -1,6 +1,6 @@
 public class Gardener extends Enemy{
   int projectileDamage = 1;
-  float projectileSpeed = 7;
+  float projectileSpeed = 3.5;
   int cooldown = 30; //does not change
   int c = cooldown;
   

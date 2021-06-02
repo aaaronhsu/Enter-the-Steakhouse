@@ -97,7 +97,7 @@ public class Player {
         radius--;
       }
       else {
-        radius = 20;
+        radius = 10;
         isFalling = false;
         this.x -= fallDirection[0] * speed * 3;
         this.y -= fallDirection[1] * speed * 3;
