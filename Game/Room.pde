@@ -154,8 +154,26 @@ public class Room {
       if (e.health <= 0) p.currentRoom.removeEnemyList.add(e);
     }
     for (Enemy e : this.removeEnemyList) { //access every enemy that needs to be despawned
+      switch (e.enemyType) {
+        case MEATCLEAVER:
+          p.money += 1;
+          break;
+        
+        case STOVE:
+          p.money += 2;
+          break;
+        
+        case GARDENER:
+          p.money += 3;
+          break;
+        
+        case BOSS:
+          p.money += 5;
+          break;
+      }
       e.despawn();
     }
+
     
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
@@ -165,6 +183,8 @@ public class Room {
       proj.despawn();
     }
     
+    this.removeEnemyList = new ArrayList();
+    this.removeProjList = new ArrayList();
   }
 
   public void drawRoomBlueprint() {
