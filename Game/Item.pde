@@ -14,10 +14,11 @@ public class Item {
     this.type = type;
   }
 
-  public void purchase() {
+  public boolean purchase() {
     if (p.money >= cost) {
       p.money -= cost;
     }
+    else return false;
 
     if (this.isConsumable) {
       switch (this.type) {
@@ -33,7 +34,7 @@ public class Item {
       }
     }
     else equipWeapon();
-
+    return true;
   }
 
   public void equipWeapon() {

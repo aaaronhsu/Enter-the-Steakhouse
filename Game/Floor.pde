@@ -315,6 +315,7 @@ public class Floor {
       if (rm.roomType.equals("combat")) fill(200, 0, 0);
       else if (rm.roomType.equals("start")) fill(150, 150, 150);
       else if (rm.roomType.equals("boss")) fill(10);
+      else if (rm.roomType.equals("shop")) fill(255, 255, 0);
       
       rect(x * 20, y * 20, 20, 20);
       if (rm.hasTeleporter) {

@@ -28,6 +28,12 @@ public class ShopRoom extends Room {
     }
   }
 
+  public void purchaseItem(int itemIndex) {
+    if (items[itemIndex] == null) return;
+
+    if (items[itemIndex].purchase()) items[itemIndex] = null;
+  }
+
   public void draw() {
     super.draw();
 
