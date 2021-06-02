@@ -41,6 +41,17 @@ public class Item {
   }
 
   public String toString() {
-    return "This is a " + this.type;
+    switch (this.type) {
+      case HEALTH:
+        return "HEALTH FOR " + this.cost + " MOONIES";
+      case BLANK:
+        return "BLANK FOR " + this.cost + " MOONIES";
+      case KEY:
+        return "KEY FOR " + this.cost + " MOONIES";
+      case WEAPON:
+        return "WEAPON FOR " + this.cost + " MOONIES";
+    }
+
+    return "IDK WHAT ITEM THIS IS";
   }
 }

@@ -27,4 +27,18 @@ public class ShopRoom extends Room {
       }
     }
   }
+
+  public void draw() {
+    super.draw();
+
+    int xText = 500;
+    int yText = 200;
+
+    text("This is the stuff on sale", xText, yText);
+
+    for (int i = 0; i < items.length; i++) {
+      yText += 50;
+      text(items[i].toString() + " (press " + (i + 1) + " to buy)", xText, yText);
+    }
+  }
 }

@@ -274,7 +274,7 @@ public class Floor {
     
     Room generatedRoom = new Room(100); // will be reinitialized
     
-    if (numShopRooms == 0 && numCombatRooms > 5) {
+    if (numShopRooms == 0 && numCombatRooms >= 5) {
       // force generate shop room
       generatedRoom = new ShopRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
       numShopRooms++;
@@ -306,7 +306,7 @@ public class Floor {
   
   public void draw() {
     if (!showMap) return;
-    
+
     for (Room rm : map.roomList) {
       // if (rm.visited == false) continue;
       int x = rm.x + 40;
