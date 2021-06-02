@@ -39,4 +39,8 @@ public class Item {
   public void equipWeapon() {
     p.weaponList.add((Weapon) this);
   }
+
+  public String toString() {
+    return "This is a " + this.type;
+  }
 }
