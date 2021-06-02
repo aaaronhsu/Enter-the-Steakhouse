@@ -61,6 +61,13 @@ public class Player {
     for (int i = 0; i < this.health; i++) {
       drawHeart(xOffset + (i * 35), yOffset, 2);
     }
+    for (int i = 0; i < this.blanks; i++) {
+      drawBlank(xOffset + (i * 35), yOffset + 30, 2);
+    }
+
+    textSize(20);
+    fill(255);
+    text("You have " + this.money + " moonies", xOffset - 10, yOffset + 60);
   }
   
   void drawHeart(float x, float y, int sideLength){
@@ -92,6 +99,11 @@ public class Player {
       newX = x; //resets newX
       y += sideLength;
     }
+  }
+
+  void drawBlank(float x, float y, int sideLength) {
+    fill(0, 0, 255);
+    ellipse(x, y, 15, 15);
   }
   
   public void move() {
