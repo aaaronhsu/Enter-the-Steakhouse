@@ -11,6 +11,18 @@ public class Item {
   }
 
   public void equip() {
-
+    if (this.isConsumable) {
+      switch (this.type) {
+        case HEALTHITEM:
+          p.health++;
+          break;
+        case BLANKITEM:
+          p.blanks++;
+          break;
+      }
+    }
+    else {
+      // is a weapon
+    }
   }
 }
