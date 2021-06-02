@@ -65,7 +65,7 @@ public abstract class Enemy {
 
     while (!pq.isEmpty()) {
       Tile currentTile = pq.poll();
-      if (visited.size() > 50000) break;
+      if (visited.size() > 5000) break;
 
 
       // path has been found
