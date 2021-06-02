@@ -15,7 +15,7 @@ public class ShopRoom extends Room {
     // adds items to room
 
     for (int i = 0; i < items.length; i++) {
-      int itemType = (int) random(2);
+      int itemType = (int) random(1);
 
       switch (itemType) {
         case HEALTHITEM:
@@ -27,6 +27,20 @@ public class ShopRoom extends Room {
           break;
       }
     }
+  }
+
+  public boolean purchaseItem(int itemIndex) {
+    if (items[itemIndex] == null) return false;
+
+    if (p.money >= items[itemIndex].cost) {
+      items[itemIndex].equip();
+      p.money -= items[itemIndex].cost;
+      items[itemIndex] = null;
+      println("purchased item");
+      return true;
+    }
+
+    return false;
   }
 
   public String toString() {

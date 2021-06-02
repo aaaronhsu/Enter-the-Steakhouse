@@ -43,6 +43,17 @@ public void keyPressed() {
   if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
     p.changeDirection(true);
   }
+
+  println(keyCode);
+
+  if (p.currentRoom.roomType.equals("shop")) {
+    if (keyCode == 49) {
+      ((ShopRoom) p.currentRoom).purchaseItem(0);
+    }
+    else if (keyCode == 50) {
+      ((ShopRoom) p.currentRoom).purchaseItem(1);
+    }
+  }
 }
 
 public void keyReleased() {
