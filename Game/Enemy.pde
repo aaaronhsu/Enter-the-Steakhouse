@@ -65,11 +65,11 @@ public abstract class Enemy {
 
     while (!pq.isEmpty()) {
       Tile currentTile = pq.poll();
-      if (visited.size() > 1000) break;
+      if (visited.size() > 50000) break;
 
 
       // path has been found
-      if (currentTile.heuristic() - currentTile.stepsFromStart < 500) {
+      if (currentTile.heuristic() - currentTile.stepsFromStart < 200) {
         path = currentTile;
         break;
       }
