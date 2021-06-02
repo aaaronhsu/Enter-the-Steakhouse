@@ -59,7 +59,7 @@ public class Player {
 
     fill(200, 0, 0);
     for (int i = 0; i < this.health; i++) {
-      drawHeart(xOffset + (i * 50), yOffset, 2);
+      drawHeart(xOffset + (i * 35), yOffset, 2);
     }
   }
   
