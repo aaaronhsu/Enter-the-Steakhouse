@@ -10,7 +10,7 @@ public class Stove extends Enemy{
   int monHeight = monster.length*4 + 100;
   
   Stove(float x, float y, int health, int contactDamage) {
-    super(x, y, health, contactDamage);  
+    super(x, y, health, contactDamage, STOVE);  
   }
   
   public void shootProjectile() {
