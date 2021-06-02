@@ -277,9 +277,13 @@ public class Floor {
       generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
 
     }
-    else if (randomRoom < 100) {
+    else if (randomRoom < 100 && numShopRooms == 0) {
       numShopRooms++;
       generatedRoom = new ShopRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+    }
+    else {
+      numChestRooms++;
+      // generate chest room
     }
     
     return generatedRoom;
