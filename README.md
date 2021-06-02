@@ -54,3 +54,6 @@
 **Aaron**: Worked on A* pathfinding for enemies.
 
 **Yaying**: Added boss design!
+
+### 6/1
+**Aaron**: Finished A* pathfinding, created barebones for shop room, and rescaled screen size.

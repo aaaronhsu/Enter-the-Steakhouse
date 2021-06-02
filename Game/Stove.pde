@@ -1,6 +1,6 @@
 public class Stove extends Enemy{
   int projectileDamage = 1;
-  float projectileSpeed = 7;
+  float projectileSpeed = 3.5;
   int cooldown = 50; //does not change
   int c = cooldown;
   
@@ -25,7 +25,7 @@ public class Stove extends Enemy{
     for (int i = 0; i <= radians(300); i+= radians(60)) {
       float dx = projectileSpeed * cos(angle+i);
       float dy = projectileSpeed * sin(angle+i);
-      Projectile p1 = new Projectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
+      Projectile p1 = new Projectile(x, y, dx, dy, 12, #6D60E8, projectileDamage, -1, 1, false);
       
       // adds projectile to the projectile list of the room that the player is in
       p.currentRoom.projectileList.add(p1);
@@ -62,7 +62,7 @@ public class Stove extends Enemy{
   }
   
   public void draw() {
-    loadMon(x,y,4);
+    loadMon(x,y,2);
     
     moveTowardsPlayer();
     //periodically shoots projectile 

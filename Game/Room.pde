@@ -148,9 +148,7 @@ public class Room {
     }
   }
 
-  
   public void draw() {
-    text(toString(), 500, 500);
 
     drawRoomBlueprint();
 
@@ -243,7 +241,7 @@ public class Room {
             break;
         }
 
-        rect(col * 60, row * 60, 60, 60);
+        rect(col * 30, row * 30, 30, 30);
       }
     }
   }

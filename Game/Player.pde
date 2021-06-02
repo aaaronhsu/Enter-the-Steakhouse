@@ -7,7 +7,7 @@ public class Player {
   int health;
   int money;
   int blanks;
-  int radius = 20;
+  int radius = 10;
   ArrayList<Weapon> weaponList;
   Weapon currentWeapon;
   
@@ -105,7 +105,7 @@ public class Player {
         radius--;
       }
       else {
-        radius = 20;
+        radius = 10;
         isFalling = false;
         this.x -= fallDirection[0] * speed * 3;
         this.y -= fallDirection[1] * speed * 3;
@@ -198,7 +198,7 @@ public class Player {
   public void checkIfRoomChange() {
     if (this.x <= 0) {
       // check if there is a corridor here
-      if (this.currentRoom.corridorW != null && (int)(this.x / 60) == this.currentRoom.corridorW[1] && (int)(this.y / 60) == this.currentRoom.corridorW[0]) {
+      if (this.currentRoom.corridorW != null && (int)(this.x / 30) == this.currentRoom.corridorW[1] && (int)(this.y / 30) == this.currentRoom.corridorW[0]) {
         // GOING WEST
         if (this.currentRoom.roomW != null) {
           this.currentRoom.projectileList = new ArrayList();
@@ -207,8 +207,8 @@ public class Player {
 
           this.currentRoom.roomW.constructCorridors();
           
-          this.x = this.currentRoom.roomW.corridorE[1] * 60 - 1;
-          this.y = this.currentRoom.roomW.corridorE[0] * 60 + 30;
+          this.x = this.currentRoom.roomW.corridorE[1] * 30 - 1;
+          this.y = this.currentRoom.roomW.corridorE[0] * 30 + 15;
 
           this.currentRoom = this.currentRoom.roomW;
           this.currentRoom.visited = true;
@@ -219,7 +219,7 @@ public class Player {
     }
     else if (this.x >= width) {
       // check if there is a corridor here
-      if (this.currentRoom.corridorE != null && (int)(this.x / 60) == this.currentRoom.corridorE[1] && (int)(this.y / 60) == this.currentRoom.corridorE[0]) {
+      if (this.currentRoom.corridorE != null && (int)(this.x / 30) == this.currentRoom.corridorE[1] && (int)(this.y / 30) == this.currentRoom.corridorE[0]) {
         // GOING EAST
         if (this.currentRoom.roomE != null) {
           this.currentRoom.projectileList = new ArrayList();
@@ -228,8 +228,8 @@ public class Player {
 
           this.currentRoom.roomE.constructCorridors();
 
-          this.x = this.currentRoom.roomE.corridorW[1] * 60 + 1;
-          this.y = this.currentRoom.roomE.corridorW[0] * 60 + 30;
+          this.x = this.currentRoom.roomE.corridorW[1] * 30 + 1;
+          this.y = this.currentRoom.roomE.corridorW[0] * 30 + 15;
           
           this.currentRoom = this.currentRoom.roomE;
           this.currentRoom.visited = true;
@@ -240,7 +240,7 @@ public class Player {
     }
     if (this.y <= 0) {
       // check if there is a corridor here
-      if (this.currentRoom.corridorN != null && (int)(this.x / 60) == this.currentRoom.corridorN[1] && (int)(this.y / 60) == this.currentRoom.corridorN[0]) {
+      if (this.currentRoom.corridorN != null && (int)(this.x / 30) == this.currentRoom.corridorN[1] && (int)(this.y / 30) == this.currentRoom.corridorN[0]) {
         // GOING NORTH
         if (this.currentRoom.roomN != null) {
           this.currentRoom.projectileList = new ArrayList();
@@ -249,8 +249,8 @@ public class Player {
 
           this.currentRoom.roomN.constructCorridors();
 
-          this.x = this.currentRoom.roomN.corridorS[1] * 60 + 30;
-          this.y = this.currentRoom.roomN.corridorS[0] * 60 - 1;
+          this.x = this.currentRoom.roomN.corridorS[1] * 30 + 15;
+          this.y = this.currentRoom.roomN.corridorS[0] * 30 - 1;
           
           this.currentRoom = this.currentRoom.roomN;
           this.currentRoom.visited = true;
@@ -261,7 +261,7 @@ public class Player {
     }
     else if (this.y >= height) {
       // check if there is a corridor here
-      if (this.currentRoom.corridorS != null && (int)(this.x / 60) == this.currentRoom.corridorS[1] && (int)(this.y / 60) == this.currentRoom.corridorS[0]) {
+      if (this.currentRoom.corridorS != null && (int)(this.x / 30) == this.currentRoom.corridorS[1] && (int)(this.y / 30) == this.currentRoom.corridorS[0]) {
         // GOING SOUTH
         if (this.currentRoom.roomS != null) {
           this.currentRoom.projectileList = new ArrayList();
@@ -270,8 +270,8 @@ public class Player {
 
           this.currentRoom.roomS.constructCorridors();
 
-          this.x = this.currentRoom.roomS.corridorN[1] * 60 + 30;
-          this.y = this.currentRoom.roomS.corridorN[0] * 60 + 1;
+          this.x = this.currentRoom.roomS.corridorN[1] * 30 + 15;
+          this.y = this.currentRoom.roomS.corridorN[0] * 30 + 1;
           
           this.currentRoom = this.currentRoom.roomS;
           this.currentRoom.visited = true;
