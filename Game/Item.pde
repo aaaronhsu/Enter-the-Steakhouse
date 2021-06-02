@@ -14,5 +14,29 @@ public class Item {
     this.type = type;
   }
 
-  
+  public void purchase() {
+    if (p.money >= cost) {
+      p.money -= cost;
+    }
+
+    if (this.isConsumable) {
+      switch (this.type) {
+        case HEALTH:
+          p.health++;
+          break;
+        case BLANK:
+          p.blanks++;
+          break;
+        case KEY:
+          p.keys++;
+          break;
+      }
+    }
+    else equip();
+
+  }
+
+  public void equip() {
+
+  }
 }
