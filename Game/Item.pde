@@ -37,6 +37,6 @@ public class Item {
   }
 
   public void equipWeapon() {
-    p.weaponList.add(this);
+    p.weaponList.add((Weapon) this);
   }
 }

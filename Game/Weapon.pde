@@ -7,6 +7,9 @@ public class Weapon extends Item {
   int type;
   
   Weapon(int fireRate, float projectileSize, float damage, int type) {
+    
+    super(type * 10, false, WEAPON);
+
     this.fireRate = fireRate;
     this.projectileSize = projectileSize;
     this.damage = damage;

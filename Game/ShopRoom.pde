@@ -1,7 +1,7 @@
 public class ShopRoom extends Room {
   Item[] items = new Item[4];
 
-  CombatRoom(Room previousRoom, int direction, int x, int y, int chanceToGenerateRoom) {
+  ShopRoom(Room previousRoom, int direction, int x, int y, int chanceToGenerateRoom) {
     super(previousRoom, direction, "shop", x, y, chanceToGenerateRoom);
     
     addItemsToRoom();
