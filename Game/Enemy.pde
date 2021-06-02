@@ -53,7 +53,7 @@ public abstract class Enemy {
   }
 
   private void aStar() {
-    if (p.x < 10 || p.y < 10 || p.x > width - 10 || p.y > height - 10) return;
+    if (p.x < 40 || p.y < 40 || p.x > width - 40 || p.y > height - 40) return;
 
     int movementSpeed = 1;
     Queue<Tile> pq = new PriorityQueue();
@@ -74,6 +74,7 @@ public abstract class Enemy {
 
     while (!pq.isEmpty()) {
       Tile currentTile = pq.poll();
+      if (currentTile.x < 40 || currentTile.y < 40 || currentTile.x > width - 40 || currentTile.y > height - 40) return;
       if (visited.size() > 5000) break;
 
 

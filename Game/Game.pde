@@ -74,5 +74,12 @@ public void mouseReleased() {
 }
 
 public char fetchTile(float x, float y) {
-  return this.p.currentRoom.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30));
+  try {
+    return this.p.currentRoom.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30));
+  }
+  catch (Exception e) {
+    e.printStackTrace();
+  }
+
+  return 'a';
 }
