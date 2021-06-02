@@ -304,28 +304,28 @@ public class Floor {
       else if (rm.roomType.equals("start")) fill(100, 100, 100);
       else if (rm.roomType.equals("boss")) fill(0);
       
-      rect(x * 20, y * 20, 20, 20);
+      rect(x * 10, y * 10, 10, 10);
       if (rm.hasTeleporter) {
         fill(0, 0, 255);
-        rect(x * 20, y * 20, 10, 10);
+        rect(x * 10, y * 10, 10, 10);
       }
       if (rm.isCurrentRoom) {
         fill(0, 255, 0);
-        rect(x * 20 + 10, y * 20, 10, 10);
+        rect(x * 10 + 10, y * 10, 10, 10);
       }
       
       stroke(0, 255, 0);
       if (rm.roomN != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20);
+        line(x * 10 + 10, y * 10 + 10, x * 10 + 10, y * 10);
       }
       if (rm.roomS != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20 + 20);
+        line(x * 10 + 10, y * 10 + 10, x * 10 + 10, y * 10 + 10);
       }
       if (rm.roomE != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20 + 20, y * 20 + 10);
+        line(x * 10 + 10, y * 10 + 10, x * 10 + 10, y * 10 + 10);
       }
       if (rm.roomW != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20, y * 20 + 10);
+        line(x * 10 + 10, y * 10 + 10, x * 10, y * 10 + 10);
       }
       stroke(0);
     }
