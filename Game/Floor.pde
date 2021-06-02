@@ -273,7 +273,12 @@ public class Floor {
     
     Room generatedRoom = new Room(100); // will be reinitialized
     
-    if (roomType < 80) {
+    if (numShopRooms == 0 && numCombatRooms > 5) {
+      // force generate shop room
+      generatedRoom = new ShopRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+      numShopRooms++;
+    }
+    else if (roomType < 80) {
       generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
       numCombatRooms++;
     }
