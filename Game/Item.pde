@@ -32,11 +32,11 @@ public class Item {
           break;
       }
     }
-    else equip();
+    else equipWeapon();
 
   }
 
-  public void equip() {
-
+  public void equipWeapon() {
+    p.weaponList.add(this);
   }
 }
