@@ -9,7 +9,7 @@ public class ShopRoom extends Room {
 
   public void addItemsToRoom() {
     for (int i = 0; i < 4; i++) {
-      int itemType = (int) random(4);
+      int itemType = (int) random(3);
 
       switch (itemType) {
         case HEALTH:
@@ -44,6 +44,7 @@ public class ShopRoom extends Room {
 
     for (int i = 0; i < items.length; i++) {
       yText += 50;
+      if (items[i] == null) continue;
       text(items[i].toString() + " (press " + (i + 1) + " to buy)", xText, yText);
     }
   }
