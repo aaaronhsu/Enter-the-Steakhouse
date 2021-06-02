@@ -296,36 +296,36 @@ public class Floor {
   
   public void draw() {
     for (Room rm : map.roomList) {
-      if (rm.visited == false) continue;
-      int x = rm.x + 85;
-      int y = rm.y + 8;
+      // if (rm.visited == false) continue;
+      int x = rm.x + 40;
+      int y = rm.y + 4;
       
-      if (rm.roomType.equals("combat")) fill(255, 0, 0);
-      else if (rm.roomType.equals("start")) fill(100, 100, 100);
-      else if (rm.roomType.equals("boss")) fill(0);
+      if (rm.roomType.equals("combat")) fill(200, 0, 0);
+      else if (rm.roomType.equals("start")) fill(150, 150, 150);
+      else if (rm.roomType.equals("boss")) fill(10);
       
-      rect(x * 10, y * 10, 10, 10);
+      rect(x * 20, y * 20, 20, 20);
       if (rm.hasTeleporter) {
         fill(0, 0, 255);
-        rect(x * 10, y * 10, 10, 10);
+        rect(x * 20, y * 20, 10, 10);
       }
       if (rm.isCurrentRoom) {
         fill(0, 255, 0);
-        rect(x * 10 + 10, y * 10, 10, 10);
+        rect(x * 20 + 10, y * 20, 10, 10);
       }
       
       stroke(0, 255, 0);
       if (rm.roomN != null) {
-        line(x * 10 + 10, y * 10 + 10, x * 10 + 10, y * 10);
+        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20);
       }
       if (rm.roomS != null) {
-        line(x * 10 + 10, y * 10 + 10, x * 10 + 10, y * 10 + 10);
+        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20 + 20);
       }
       if (rm.roomE != null) {
-        line(x * 10 + 10, y * 10 + 10, x * 10 + 10, y * 10 + 10);
+        line(x * 20 + 10, y * 20 + 10, x * 20 + 20, y * 20 + 10);
       }
       if (rm.roomW != null) {
-        line(x * 10 + 10, y * 10 + 10, x * 10, y * 10 + 10);
+        line(x * 20 + 10, y * 20 + 10, x * 20, y * 20 + 10);
       }
       stroke(0);
     }
