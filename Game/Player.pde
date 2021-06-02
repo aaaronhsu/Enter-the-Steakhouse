@@ -314,4 +314,10 @@ public class Player {
   void loseHP(float lost){
     this.health--;
   }
+
+  public void purchaseItem(int itemIndex) {
+    if (this.currentRoom.roomType.equals("shop")) {
+      ((ShopRoom) this.currentRoom).purchaseItem(itemIndex);
+    }
+  }
 }

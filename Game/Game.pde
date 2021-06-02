@@ -47,6 +47,10 @@ public void keyPressed() {
   if (keyCode == 77) {
     map.showMap = !map.showMap;
   }
+
+  if (49 <= keyCode && keyCode <= 52) {
+    p.purchaseItem(keyCode - 49);
+  }
 }
 
 public void keyReleased() {
