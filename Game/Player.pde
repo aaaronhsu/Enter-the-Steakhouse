@@ -7,6 +7,8 @@ public class Player {
   int health;
   int money;
   int blanks;
+  int keys;
+
   int radius = 10;
   ArrayList<Weapon> weaponList;
   Weapon currentWeapon;
@@ -26,6 +28,7 @@ public class Player {
     this.health = 5;
     this.money = 0;
     this.blanks = 2;
+    this.keys = 1;
     
     Weapon pistol = new Weapon(15, 5, 1, 0);
     this.weaponList = new ArrayList();
