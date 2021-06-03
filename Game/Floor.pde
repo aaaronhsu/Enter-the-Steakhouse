@@ -5,6 +5,7 @@ public class Floor {
   ArrayList<Room> roomList;
   
   int numCombatRooms, numChestRooms, numShopRooms;
+  boolean showMap = true;
   
   Floor(int size) {
     this.roomList = new ArrayList();
@@ -23,10 +24,6 @@ public class Floor {
     }
     for (Room r : roomList) {
       r.removeCorridors();
-    }
-
-    for (int i = 1; i < roomList.size(); i++) {
-      roomList.get(i).generateEnemies();
     }
   }
   
@@ -51,10 +48,6 @@ public class Floor {
     }
     for (Room r : roomList) {
       r.removeCorridors();
-    }
-
-    for (int i = 1; i < roomList.size(); i++) {
-      roomList.get(i).generateEnemies();
     }
   }
   
@@ -277,11 +270,28 @@ public class Floor {
   
   // generates a random room in the given direction, from the coordinates of the previous room
   public Room generateRoom(Room previousRoom, int direction, int x, int y, int chanceToGenerateRoom) {
-    numCombatRooms++;
+    int roomType = (int) random(100);
     
     Room generatedRoom = new Room(100); // will be reinitialized
     
-    generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+    if (numShopRooms == 0 && numCombatRooms >= 5) {
+      // force generate shop room
+      generatedRoom = new ShopRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+      numShopRooms++;
+    }
+    else if (roomType < 80) {
+      generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+      numCombatRooms++;
+    }
+    else if (roomType < 100 && numShopRooms == 0) {
+      generatedRoom = new ShopRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+      numShopRooms++;
+    }
+    else {
+      // a chest room should generate here but for now another combat
+      generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+      numCombatRooms++;
+    }
     
     return generatedRoom;
   }
@@ -295,6 +305,8 @@ public class Floor {
   }
   
   public void draw() {
+    if (!showMap) return;
+
     for (Room rm : map.roomList) {
       // if (rm.visited == false) continue;
       int x = rm.x + 40;
@@ -303,6 +315,7 @@ public class Floor {
       if (rm.roomType.equals("combat")) fill(200, 0, 0);
       else if (rm.roomType.equals("start")) fill(150, 150, 150);
       else if (rm.roomType.equals("boss")) fill(10);
+      else if (rm.roomType.equals("shop")) fill(255, 255, 0);
       
       rect(x * 20, y * 20, 20, 20);
       if (rm.hasTeleporter) {

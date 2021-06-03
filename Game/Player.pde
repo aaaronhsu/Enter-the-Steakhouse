@@ -7,6 +7,8 @@ public class Player {
   int health;
   int money;
   int blanks;
+  int keys;
+
   int radius = 10;
   ArrayList<Weapon> weaponList;
   Weapon currentWeapon;
@@ -26,6 +28,7 @@ public class Player {
     this.health = 5;
     this.money = 0;
     this.blanks = 2;
+    this.keys = 1;
     
     Weapon pistol = new Weapon(15, 5, 1, 0);
     this.weaponList = new ArrayList();
@@ -56,8 +59,15 @@ public class Player {
 
     fill(200, 0, 0);
     for (int i = 0; i < this.health; i++) {
-      drawHeart(xOffset + (i * 50), yOffset, 2);
+      drawHeart(xOffset + (i * 35), yOffset, 2);
     }
+    for (int i = 0; i < this.blanks; i++) {
+      drawBlank(xOffset + (i * 35), yOffset + 30, 2);
+    }
+
+    textSize(20);
+    fill(255);
+    text("You have " + this.money + " moonies", xOffset - 10, yOffset + 60);
   }
   
   void drawHeart(float x, float y, int sideLength){
@@ -89,6 +99,11 @@ public class Player {
       newX = x; //resets newX
       y += sideLength;
     }
+  }
+
+  void drawBlank(float x, float y, int sideLength) {
+    fill(0, 0, 255);
+    ellipse(x, y, 15, 15);
   }
   
   public void move() {
@@ -298,5 +313,18 @@ public class Player {
   
   void loseHP(float lost){
     this.health--;
+  }
+
+  public void purchaseItem(int itemIndex) {
+    if (this.currentRoom.roomType.equals("shop")) {
+      ((ShopRoom) this.currentRoom).purchaseItem(itemIndex);
+    }
+  }
+
+  public boolean useBlank() {
+    if (this.blanks <= 0) return false;
+    this.blanks--;
+    this.currentRoom.removeEnemyProjectiles();
+    return true;
   }
 }

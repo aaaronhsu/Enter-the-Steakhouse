@@ -58,7 +58,12 @@ public class Room {
     
     this.roomBlueprintNum = (int)(random(7)) + 1;
 
-    this.roomBlueprint = loadStrings("room" + roomBlueprintNum + ".txt");
+    if (roomType.equals("shop")) {
+      this.roomBlueprint = loadStrings("shopRoom.txt");
+    }
+    else {
+      this.roomBlueprint = loadStrings("room" + roomBlueprintNum + ".txt");
+    }
     
     if (random(100) < 20) {
       this.hasTeleporter = true;
@@ -143,52 +148,6 @@ public class Room {
     }
   }
 
-
-  public void generateEnemies() {
-    int randomGenType = (int) random(2);
-
-    switch (randomGenType) {
-      case 0:
-        for (int i = 0; i < 5; i++) {
-          int x = (int) random(780) + 90;
-          int y = (int) random(360) + 90;
-
-          while (this.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 30) - 1].charAt((int)(x / 30)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 30) + 1].charAt((int)(x / 30)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30) - 1) != GROUND ||
-                 this.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30) + 1) != GROUND) {
-            x = (int) random(960);
-            y = (int) random(540);
-          }
-
-          MeatCleaver m = new MeatCleaver(x, y, 1, 1);
-
-          this.enemyList.add(m);
-          println("enemyGenerated");
-        }
-        break;
-      case 1:
-        for (int i = 0; i < 10; i++) {
-          int x = (int) random(780) + 90;
-          int y = (int) random(360) + 90;
-
-          while (this.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 30) - 1].charAt((int)(x / 30)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 30) + 1].charAt((int)(x / 30)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30) - 1) != GROUND ||
-                 this.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30) + 1) != GROUND) {
-            x = (int) random(960);
-            y = (int) random(540);
-          }
-
-          Stove m = new Stove(x, y, 1, 1);
-
-          this.enemyList.add(m);
-        }
-    }
-  }
-
   
   public void draw() {
 
@@ -200,8 +159,26 @@ public class Room {
       if (e.health <= 0) p.currentRoom.removeEnemyList.add(e);
     }
     for (Enemy e : this.removeEnemyList) { //access every enemy that needs to be despawned
+      switch (e.enemyType) {
+        case MEATCLEAVER:
+          p.money += 1;
+          break;
+        
+        case STOVE:
+          p.money += 2;
+          break;
+        
+        case GARDENER:
+          p.money += 3;
+          break;
+        
+        case BOSS:
+          p.money += 5;
+          break;
+      }
       e.despawn();
     }
+
     
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
@@ -211,6 +188,8 @@ public class Room {
       proj.despawn();
     }
     
+    this.removeEnemyList = new ArrayList();
+    this.removeProjList = new ArrayList();
   }
 
   public void drawRoomBlueprint() {
@@ -269,6 +248,20 @@ public class Room {
 
         rect(col * 30, row * 30, 30, 30);
       }
+    }
+  }
+
+  public void removeEnemyProjectiles() {
+    ArrayList<Projectile> blankProjectile = new ArrayList();
+
+    for (Projectile proj : this.projectileList) {
+      if (!proj.isPlayerProjectile) {
+        blankProjectile.add(proj);
+      }
+    }
+
+    for (Projectile proj : blankProjectile) {
+      this.projectileList.remove(proj);
     }
   }
   
