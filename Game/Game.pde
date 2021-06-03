@@ -25,6 +25,8 @@ public void setup() {
   p = new Player(map.roomList.get(0), 5);
 }
 
+
+
 public void draw() {
   background(255, 255, 255);
 
@@ -83,3 +85,4 @@ public void mouseReleased() {
 public char fetchTile(float x, float y) {
   return this.p.currentRoom.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30));
 }
+
