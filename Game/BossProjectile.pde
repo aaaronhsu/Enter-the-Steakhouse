@@ -1,5 +1,4 @@
 public class BossProjectile extends Projectile{
-  
   BossProjectile(float x, float y, float dx, float dy, float r, color c, int damage, int despawnTime, int numBounces, boolean isPlayerProjectile) {
     super(x, y, dx, dy, r, c, damage, despawnTime, numBounces, isPlayerProjectile);
   }
@@ -18,7 +17,9 @@ public class BossProjectile extends Projectile{
      dy *= -1;
    }
    else {
-     y += (dy - 2);
+     y += dy;
+     //y += dy + (2 * time);
+     //time += 0.1;
    }
   }
   

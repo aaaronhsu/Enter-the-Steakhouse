@@ -1,8 +1,9 @@
 public class Boss extends Enemy{
   int projectileDamage = 2;
   float projectileSpeed = 5;
-  int cooldown = 50; //does not change
+  int cooldown = 70; //does not change
   int c = cooldown;
+  float time = 1;
   
   String[] monster = loadStrings("thoushaltnotpass.txt"); //visual display
   //for hit box of monster
@@ -49,7 +50,15 @@ public class Boss extends Enemy{
     }
   }
   
+  float tangentialVel(){
+    return 2 * PI * (monWidth/2) / time;
+  }
+  
   public void shootProjectile() {
+    
+
+    
+    
     // calculates direction of the projectile
     float xDist = p.x - x;
     float yDist = p.y - y;
