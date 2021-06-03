@@ -1,7 +1,7 @@
 public class Gardener extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 3.5;
-  int cooldown = 60; //does not change
+  int cooldown = 80; //does not change
   int c = cooldown;
   
   String[] monster = loadStrings("gardener.txt"); //visual display
@@ -69,12 +69,12 @@ public class Gardener extends Enemy{
     moveTowardsPlayer();
     
     //periodically shoots projectile 
-    if (c == 0) {
+    if (c <= 0) {
       shootProjectile();
       this.c = this.cooldown;
     }
     else {
-      c--;
+      c -= (int)random(3);
     }
   }
 

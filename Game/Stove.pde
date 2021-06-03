@@ -1,7 +1,7 @@
 public class Stove extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 3.5;
-  int cooldown = 50; //does not change
+  int cooldown = 60; //does not change
   int c = cooldown;
   
   String[] monster = loadStrings("stove.txt"); //visual display
@@ -66,12 +66,12 @@ public class Stove extends Enemy{
     
     moveTowardsPlayer();
     //periodically shoots projectile 
-    if (c == 0) {
+    if (c <= 0) {
       shootProjectile();
       this.c = this.cooldown;
     }
     else {
-      c--;
+      c -= (int)random(3);
     }
   }
 
