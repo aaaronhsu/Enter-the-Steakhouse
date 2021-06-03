@@ -17,18 +17,20 @@ public Floor map;
 public MenuPages menu;
 
 public void setup() {
-  fullScreen();
+  size(960, 540);
   menu = new MenuPages(0);
   
 
   map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
-  p = new Player(map.roomList.get(0), 10);
+  p = new Player(map.roomList.get(0), 5);
 }
 
 
 
 public void draw() {
   background(255, 255, 255);
+
+  noStroke();
   menu.draw();
   
   // all of these draw statements will be factored out later
@@ -37,19 +39,35 @@ public void draw() {
   
   p.move();
   p.draw();
-
-  if (p.currentRoom.enemyList.isEmpty()) map.draw();
+  map.draw();
 }
 
 public void keyPressed() {
+  println(keyCode);
   if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
     p.changeDirection(true);
+  }
+
+  if (keyCode == 9) {
+    map.showMap = true;
+  }
+
+  if (49 <= keyCode && keyCode <= 52) {
+    p.purchaseItem(keyCode - 49);
+  }
+
+  if (keyCode == 81) {
+    p.useBlank();
   }
 }
 
 public void keyReleased() {
   if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
     p.changeDirection(false);
+  }
+
+  if (keyCode == 9) {
+    map.showMap = false;
   }
 }
 
@@ -65,5 +83,6 @@ public void mouseReleased() {
 }
 
 public char fetchTile(float x, float y) {
-  return this.p.currentRoom.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60));
+  return this.p.currentRoom.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30));
 }
+

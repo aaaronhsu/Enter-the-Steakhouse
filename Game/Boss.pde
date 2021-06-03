@@ -11,7 +11,7 @@ public class Boss extends Enemy{
   int monHeight = monster.length*4 + 100;
   
   Boss(float x, float y, int health, int contactDamage) {
-    super(x, y, health, contactDamage);  
+    super(x, y, health, contactDamage, BOSS);  
   }
   
   void loadBoss(float x, float y, int sideLength){

@@ -1,6 +1,6 @@
 public class Gardener extends Enemy{
   int projectileDamage = 1;
-  float projectileSpeed = 7;
+  float projectileSpeed = 3.5;
   int cooldown = 30; //does not change
   int c = cooldown;
   
@@ -10,7 +10,7 @@ public class Gardener extends Enemy{
   int monHeight = monster.length*4 + 100;
   
   Gardener(float x, float y, int health, int contactDamage) {
-    super(x, y, health, contactDamage);  
+    super(x, y, health, contactDamage, GARDENER);  
   }
   
   public void shootProjectile() {
@@ -24,7 +24,7 @@ public class Gardener extends Enemy{
     for (int i = 0; i <= radians(240); i+= radians(120)) {
       float dx = projectileSpeed * cos(angle+i);
       float dy = projectileSpeed * sin(angle+i);
-      Projectile p1 = new Projectile(x, y, dx, dy, 40, #9B9191, projectileDamage, 200, 3, false);
+      Projectile p1 = new Projectile(x, y, dx, dy, 20, #9B9191, projectileDamage, 200, 3, false);
       
       // adds projectile to the projectile list of the room that the player is in
       p.currentRoom.projectileList.add(p1);
@@ -64,7 +64,9 @@ public class Gardener extends Enemy{
   }
   
   public void draw() {
-    loadMon(x,y, 4);
+    loadMon(x,y, 2);
+    
+    moveTowardsPlayer();
     
     //periodically shoots projectile 
     if (c == 0) {

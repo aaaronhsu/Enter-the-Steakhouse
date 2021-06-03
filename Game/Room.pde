@@ -60,7 +60,12 @@ public class Room {
     
     this.roomBlueprintNum = (int)(random(7)) + 1;
 
-    this.roomBlueprint = loadStrings("room" + roomBlueprintNum + ".txt");
+    if (roomType.equals("shop")) {
+      this.roomBlueprint = loadStrings("shopRoom.txt");
+    }
+    else {
+      this.roomBlueprint = loadStrings("room" + roomBlueprintNum + ".txt");
+    }
     
     if (random(100) < 20) {
       this.hasTeleporter = true;
@@ -145,55 +150,8 @@ public class Room {
     }
   }
 
-
-  public void generateEnemies() {
-    int randomGenType = (int) random(2);
-
-    switch (randomGenType) {
-      case 0:
-        for (int i = 0; i < 5; i++) {
-          int x = (int) random(1560) + 180;
-          int y = (int) random(720) + 180;
-
-          while (this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 60) - 1].charAt((int)(x / 60)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 60) + 1].charAt((int)(x / 60)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60) - 1) != GROUND ||
-                 this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60) + 1) != GROUND) {
-            x = (int) random(1920);
-            y = (int) random(1080);
-          }
-
-          MeatCleaver m = new MeatCleaver(x, y, 1, 1);
-
-          this.enemyList.add(m);
-          println("enemyGenerated");
-        }
-        break;
-      case 1:
-        for (int i = 0; i < 3; i++) {
-          int x = (int) random(1560) + 180;
-          int y = (int) random(720) + 180;
-
-          while (this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 60) - 1].charAt((int)(x / 60)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 60) + 1].charAt((int)(x / 60)) != GROUND ||
-                 this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60) - 1) != GROUND ||
-                 this.roomBlueprint[(int)(y / 60)].charAt((int)(x / 60) + 1) != GROUND) {
-            x = (int) random(1920);
-            y = (int) random(1080);
-          }
-
-          Stove m = new Stove(x, y, 1, 1);
-
-          this.enemyList.add(m);
-        }
-    }
-  }
-
   
   public void draw() {
-    text(toString(), 500, 500);
 
     drawRoomBlueprint();
     
@@ -205,17 +163,37 @@ public class Room {
       if (e.health <= 0) p.currentRoom.removeEnemyList.add(e);
     }
     for (Enemy e : this.removeEnemyList) { //access every enemy that needs to be despawned
+      switch (e.enemyType) {
+        case MEATCLEAVER:
+          p.money += 1;
+          break;
+        
+        case STOVE:
+          p.money += 2;
+          break;
+        
+        case GARDENER:
+          p.money += 3;
+          break;
+        
+        case BOSS:
+          p.money += 5;
+          break;
+      }
       e.despawn();
     }
+
     
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
-      if (proj.numBounces == 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj);
+      if (proj.numBounces <= 0 || proj.despawnTime == 0 || proj.detectCollision()) p.currentRoom.removeProjList.add(proj);
     }
     for (Projectile proj : this.removeProjList) { //access every projectile that needs to be despawned
       proj.despawn();
     }
     
+    this.removeEnemyList = new ArrayList();
+    this.removeProjList = new ArrayList();
   }
 
   public void drawRoomBlueprint() {
@@ -223,7 +201,7 @@ public class Room {
       for (int col = 0; col < roomBlueprint[row].length(); col++) {
         switch (this.roomBlueprint[row].charAt(col)) {
           case GROUND:
-            fill(100, 100, 100);
+            fill(200, 250, 200);
             break;
           
           case PIT:
@@ -231,38 +209,38 @@ public class Room {
             break;
 
           case WALL:
-            fill(255, 0, 0);
+            fill(100, 100, 100);
             break;
           
           case TELEPORTER:
             // by default, a telepoter will be the ground
             if (this.hasTeleporter) fill(0, 0, 255);
-            else fill(100, 100, 100);
+            else fill(200, 250, 200);
             break;
           
           case CORRIDOR:
             // by default, a corridor will be a wall
-            fill(255, 0, 0);
+            fill(100, 100, 100);
 
             if (roomN != null && row == 0) {
               // NORTH CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(0, 255, 0);
-              else fill(0, 150, 0);
+              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              else fill(120, 120, 120);
             }
             else if (roomS != null && row == roomBlueprint.length - 1) {
               // SOUTH CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(0, 255, 0);
-              else fill(0, 150, 0);
+              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              else fill(120, 120, 120);
             }
             else if (roomE != null && col == roomBlueprint[row].length() - 1) {
               // EAST CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(0, 255, 0);
-              else fill(0, 150, 0);
+              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              else fill(120, 120, 120);
             }
             else if (roomW != null && col == 0) {
               // WEST CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(0, 255, 0);
-              else fill(0, 150, 0);
+              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              else fill(120, 120, 120);
             }
 
             break;
@@ -272,8 +250,22 @@ public class Room {
             break;
         }
 
-        rect(col * 60, row * 60, 60, 60);
+        rect(col * 30, row * 30, 30, 30);
       }
+    }
+  }
+
+  public void removeEnemyProjectiles() {
+    ArrayList<Projectile> blankProjectile = new ArrayList();
+
+    for (Projectile proj : this.projectileList) {
+      if (!proj.isPlayerProjectile) {
+        blankProjectile.add(proj);
+      }
+    }
+
+    for (Projectile proj : blankProjectile) {
+      this.projectileList.remove(proj);
     }
   }
   

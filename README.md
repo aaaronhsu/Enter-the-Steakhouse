@@ -54,3 +54,9 @@
 **Aaron**: Worked on A* pathfinding for enemies.
 
 **Yaying**: Added boss design!
+
+### 6/1
+**Aaron**: Finished A* pathfinding, created barebones for shop room, and rescaled screen size.
+
+### 6/2
+**Aaron**: Created functional shop room, made visual changes, map screen toggle, and enemy spawning/attack pattern changes.
