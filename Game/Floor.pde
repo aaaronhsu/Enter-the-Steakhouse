@@ -309,36 +309,36 @@ public class Floor {
 
     for (Room rm : map.roomList) {
       // if (rm.visited == false) continue;
-      int x = rm.x + 40;
-      int y = rm.y + 4;
+      int x = rm.x + (width / 60);
+      int y = rm.y + (height / 60) - 1;
       
       if (rm.roomType.equals("combat")) fill(200, 0, 0);
       else if (rm.roomType.equals("start")) fill(150, 150, 150);
       else if (rm.roomType.equals("boss")) fill(10);
       else if (rm.roomType.equals("shop")) fill(255, 255, 0);
       
-      rect(x * 20, y * 20, 20, 20);
+      rect(x * 30, y * 30, 30, 30);
       if (rm.hasTeleporter) {
         fill(0, 0, 255);
-        rect(x * 20, y * 20, 10, 10);
+        rect(x * 30, y * 30, 15, 15);
       }
       if (rm.isCurrentRoom) {
         fill(0, 255, 0);
-        rect(x * 20 + 10, y * 20, 10, 10);
+        rect(x * 30 + 15, y * 30, 15, 15);
       }
       
       stroke(0, 255, 0);
       if (rm.roomN != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20);
+        line(x * 30 + 15, y * 30 + 15, x * 30 + 15, y * 30);
       }
       if (rm.roomS != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20 + 20);
+        line(x * 30 + 15, y * 30 + 15, x * 30 + 15, y * 30 + 30);
       }
       if (rm.roomE != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20 + 20, y * 20 + 10);
+        line(x * 30 + 15, y * 30 + 15, x * 30 + 30, y * 30 + 15);
       }
       if (rm.roomW != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20, y * 20 + 10);
+        line(x * 30 + 15, y * 30 + 15, x * 30, y * 30 + 15);
       }
       stroke(0);
     }
