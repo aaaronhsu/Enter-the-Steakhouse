@@ -1,5 +1,5 @@
 public class Boss extends Enemy{
-  int projectileDamage = 2;
+  int projectileDamage = 1;
   float projectileSpeed = 5;
   int cooldown = 30; //does not change
   int c = cooldown;
@@ -91,20 +91,23 @@ public class Boss extends Enemy{
       float dx = distance/5 * cos(angle); //temporary speed of boss
       float dy = distance/5 * sin(angle);
 
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < 5; i++) { //how to show it's slowly one by one moving?
         x += dx;
         y += dy;
       }
 
       //~~~~~~~~~ //spawning projectiles that go out and back in
+      int radius = 200; //distance of group of projectiles from boss
+      int radiusEachOther = 10; //distance from proj to proj
+      
       for (int i = 0; i < 360; i += 60){
-        int radius = 100;
-
-        float newX = radius * cos(radians(i));
-        float newY = radius * sin(radians(i));
-
-        Projectile p1 = new Projectile(newX, newY, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
-        p.currentRoom.projectileList.add(p1);
+        for (int j = 0; j < 360; j += 60){
+          float newX = x + radius * cos(radians(i)) + radiusEachOther * cos(radians(j));
+          float newY = y + radius * sin(radians(i)) + radiusEachOther * sin(radians(j));
+          
+          Projectile p1 = new Projectile(newX, newY, dx, dy, 10, #6D60E8, projectileDamage, -1, 1, false);
+          p.currentRoom.projectileList.add(p1);
+        }
 
       }
       
