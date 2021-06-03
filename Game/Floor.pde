@@ -312,8 +312,8 @@ public class Floor {
     int opacity = 240;
 
     for (Room rm : map.roomList) {
-      int roomPos = 35;
-      int roomSize = 24;
+      int roomPos = 38;
+      int roomSize = (roomPos * 2) / 3;
       int corridor = roomSize / 2;
 
       int x = rm.x + (width / (roomSize * 3));
@@ -333,11 +333,11 @@ public class Floor {
 
       if (rm.isCurrentRoom && rm.visited) {
         fill(0, 255, 0, opacity);
-        ellipse(x * roomPos + corridor, y * roomPos + corridor, corridor, corridor);
+        ellipse(x * roomPos + corridor, y * roomPos + corridor, roomSize / 1.5, roomSize / 1.5);
       }
       if (rm.hasTeleporter && rm.visited) {
         fill(0, 0, 255, opacity);
-        ellipse(x * roomPos + corridor, y * roomPos + corridor, 8, 8);
+        ellipse(x * roomPos + corridor, y * roomPos + corridor, roomSize / 2.5, roomSize / 2.5);
       }
       
       
