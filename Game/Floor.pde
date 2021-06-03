@@ -312,8 +312,12 @@ public class Floor {
     int opacity = 240;
 
     for (Room rm : map.roomList) {
-      int x = rm.x + (width / 100);
-      int y = rm.y + (height / 100) - 1;
+      int roomPos = 35;
+      int roomSize = 24;
+      int corridor = roomSize / 2;
+
+      int x = rm.x + (width / (roomSize * 3));
+      int y = rm.y + (height / (roomSize * 3));
       
       if (rm.roomType.equals("combat")) fill(200, 0, 0, opacity);
       else if (rm.roomType.equals("start")) fill(150, 150, 150, opacity);
@@ -324,31 +328,32 @@ public class Floor {
         fill(255, 255, 255, opacity);
       }
 
-      rect(x * 45, y * 45, 30, 30);
+      
+      rect(x * roomPos, y * roomPos, roomSize, roomSize);
 
       if (rm.isCurrentRoom && rm.visited) {
         fill(0, 255, 0, opacity);
-        ellipse(x * 45 + 15, y * 45 + 15, 15, 15);
+        ellipse(x * roomPos + corridor, y * roomPos + corridor, corridor, corridor);
       }
       if (rm.hasTeleporter && rm.visited) {
         fill(0, 0, 255, opacity);
-        ellipse(x * 45 + 15, y * 45 + 15, 8, 8);
+        ellipse(x * roomPos + corridor, y * roomPos + corridor, 8, 8);
       }
       
       
       stroke(0);
       strokeWeight(3);
       if (rm.roomN != null) {
-        line(x * 45 + 15, y * 45, x * 45 + 15, y * 45 - 15);
+        line(x * roomPos + corridor, y * roomPos, x * roomPos + corridor, y * roomPos - corridor);
       }
       if (rm.roomS != null) {
-        line(x * 45 + 15, y * 45 + 30, x * 45 + 15, y * 45 + 45);
+        line(x * roomPos + corridor, y * roomPos + roomSize, x * roomPos + corridor, y * roomPos + roomPos);
       }
       if (rm.roomE != null) {
-        line(x * 45 + 30, y * 45 + 15, x * 45 + 45, y * 45 + 15);
+        line(x * roomPos + roomSize, y * roomPos + corridor, x * roomPos + roomPos, y * roomPos + corridor);
       }
       if (rm.roomW != null) {
-        line(x * 45, y * 45 + 15, x * 45 - 15, y * 45 + 15);
+        line(x * roomPos, y * roomPos + corridor, x * roomPos - corridor, y * roomPos + corridor);
       }
       stroke(0);
       strokeWeight(1);
