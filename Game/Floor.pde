@@ -307,6 +307,8 @@ public class Floor {
   public void draw() {
     if (!showMap) return;
     
+    background(180);
+
     int opacity = 240;
 
     for (Room rm : map.roomList) {
@@ -324,14 +326,15 @@ public class Floor {
 
       rect(x * 45, y * 45, 30, 30);
 
-      if (rm.hasTeleporter && rm.visited) {
-        fill(0, 0, 255, opacity);
-        rect(x * 45, y * 45, 15, 15);
-      }
       if (rm.isCurrentRoom && rm.visited) {
         fill(0, 255, 0, opacity);
-        rect(x * 45 + 15, y * 45, 15, 15);
+        ellipse(x * 45 + 15, y * 45 + 15, 15, 15);
       }
+      if (rm.hasTeleporter && rm.visited) {
+        fill(0, 0, 255, opacity);
+        ellipse(x * 45 + 15, y * 45 + 15, 8, 8);
+      }
+      
       
       stroke(0);
       strokeWeight(3);
