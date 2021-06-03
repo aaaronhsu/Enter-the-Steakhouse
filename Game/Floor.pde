@@ -307,10 +307,9 @@ public class Floor {
   public void draw() {
     if (!showMap) return;
     
-    int opacity = 100;
+    int opacity = 240;
 
     for (Room rm : map.roomList) {
-      // if (rm.visited == false) continue;
       int x = rm.x + (width / 100);
       int y = rm.y + (height / 100) - 1;
       
@@ -319,13 +318,18 @@ public class Floor {
       else if (rm.roomType.equals("boss")) fill(10, opacity);
       else if (rm.roomType.equals("shop")) fill(255, 255, 0, opacity);
       
+      if (rm.visited == false) {
+        fill(255, 255, 255, opacity);
+      }
+
       rect(x * 45, y * 45, 30, 30);
-      if (rm.hasTeleporter) {
-        fill(0, 0, 255);
+
+      if (rm.hasTeleporter && rm.visited) {
+        fill(0, 0, 255, opacity);
         rect(x * 45, y * 45, 15, 15);
       }
-      if (rm.isCurrentRoom) {
-        fill(0, 255, 0);
+      if (rm.isCurrentRoom && rm.visited) {
+        fill(0, 255, 0, opacity);
         rect(x * 45 + 15, y * 45, 15, 15);
       }
       
