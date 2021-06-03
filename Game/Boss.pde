@@ -53,9 +53,8 @@ public class Boss extends Enemy{
   float tangentialVel(){
     return 2 * PI * (monWidth/2) / time;
   }
-
+  
   public void shootProjectile(int mode) {
-
     if (mode == 1) { //swirl pattern; incomplete
       // creates 6 projectiles 60 degrees apart
       for (int i = 0; i <= radians(300); i+= radians(60)) {
@@ -63,7 +62,6 @@ public class Boss extends Enemy{
         float dy = projectileSpeed * sin(90);
         //float tanV = tangentialVel();
         Projectile p1 = new BossProjectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
-
         p.currentRoom.projectileList.add(p1);
       }
     }
@@ -72,9 +70,9 @@ public class Boss extends Enemy{
       // calculates direction of the projectile
       float xDist = p.x - x;
       float yDist = p.y - y;
-
+      
       float angle = atan2(yDist, xDist);
-
+      
       for (float i = radians(20); i >= -radians(20); i -= radians(40)) {
         float dx = projectileSpeed * cos(angle+i);
         float dy = projectileSpeed * sin(angle+i);
@@ -109,16 +107,11 @@ public class Boss extends Enemy{
         p.currentRoom.projectileList.add(p1);
 
       }
-
+      
     //  for (int i = 0; i <= radians(300); i+= radians(60)) {
     //    dx = projectileSpeed * cos(angle+i);
     //    dy = projectileSpeed * sin(angle+i);
-    //    Projectile p1 = new Projectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
-
-    //  // adds projectile to the projectile list of the room that the player is in
-    //  p.currentRoom.projectileList.add(p1);
-    //}
-
+    //    Projectile p1 = new Projectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false)
     }
 
     else if (mode == 4) {
@@ -128,7 +121,7 @@ public class Boss extends Enemy{
   
   public void draw(){
     loadBoss(x,y,5);
-
+    
     //periodically shoots projectile 
     if (c == 0) {
       shootProjectile(3);

@@ -22,5 +22,4 @@ public class BossProjectile extends Projectile{
      //time += 0.1;
    }
   }
-
 }
