@@ -306,41 +306,45 @@ public class Floor {
   
   public void draw() {
     if (!showMap) return;
+    
+    int opacity = 100;
 
     for (Room rm : map.roomList) {
       // if (rm.visited == false) continue;
-      int x = rm.x + (width / 60);
-      int y = rm.y + (height / 60) - 1;
+      int x = rm.x + (width / 100);
+      int y = rm.y + (height / 100) - 1;
       
-      if (rm.roomType.equals("combat")) fill(200, 0, 0);
-      else if (rm.roomType.equals("start")) fill(150, 150, 150);
-      else if (rm.roomType.equals("boss")) fill(10);
-      else if (rm.roomType.equals("shop")) fill(255, 255, 0);
+      if (rm.roomType.equals("combat")) fill(200, 0, 0, opacity);
+      else if (rm.roomType.equals("start")) fill(150, 150, 150, opacity);
+      else if (rm.roomType.equals("boss")) fill(10, opacity);
+      else if (rm.roomType.equals("shop")) fill(255, 255, 0, opacity);
       
-      rect(x * 30, y * 30, 30, 30);
+      rect(x * 45, y * 45, 30, 30);
       if (rm.hasTeleporter) {
         fill(0, 0, 255);
-        rect(x * 30, y * 30, 15, 15);
+        rect(x * 45, y * 45, 15, 15);
       }
       if (rm.isCurrentRoom) {
         fill(0, 255, 0);
-        rect(x * 30 + 15, y * 30, 15, 15);
+        rect(x * 45 + 15, y * 45, 15, 15);
       }
       
-      stroke(0, 255, 0);
+      stroke(0);
+      strokeWeight(3);
       if (rm.roomN != null) {
-        line(x * 30 + 15, y * 30 + 15, x * 30 + 15, y * 30);
+        line(x * 45 + 15, y * 45, x * 45 + 15, y * 45 - 15);
       }
       if (rm.roomS != null) {
-        line(x * 30 + 15, y * 30 + 15, x * 30 + 15, y * 30 + 30);
+        line(x * 45 + 15, y * 45 + 30, x * 45 + 15, y * 45 + 45);
       }
       if (rm.roomE != null) {
-        line(x * 30 + 15, y * 30 + 15, x * 30 + 30, y * 30 + 15);
+        line(x * 45 + 30, y * 45 + 15, x * 45 + 45, y * 45 + 15);
       }
       if (rm.roomW != null) {
-        line(x * 30 + 15, y * 30 + 15, x * 30, y * 30 + 15);
+        line(x * 45, y * 45 + 15, x * 45 - 15, y * 45 + 15);
       }
       stroke(0);
+      strokeWeight(1);
     }
   }
 }
