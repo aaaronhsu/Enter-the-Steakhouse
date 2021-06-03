@@ -3,7 +3,8 @@ public class Boss extends Enemy{
   float projectileSpeed = 5;
   int cooldown = 30; //does not change
   int c = cooldown;
-  float time = 1; //????
+  int maxHealth;
+  int time = 1; //????
   
   String[] monster = loadStrings("thoushaltnotpass.txt"); //visual display
   //for hit box of monster
@@ -11,7 +12,8 @@ public class Boss extends Enemy{
   int monHeight = monster.length*4 + 100;
   
   Boss(float x, float y, int health, int contactDamage) {
-    super(x, y, health, contactDamage, BOSS);  
+    super(x, y, health, contactDamage, BOSS);
+    this.maxHealth = health;
   }
   
   void loadBoss(float x, float y, int sideLength){
@@ -61,7 +63,7 @@ public class Boss extends Enemy{
         float dx = projectileSpeed * cos(90);
         float dy = projectileSpeed * sin(90);
         //float tanV = tangentialVel();
-        Projectile p1 = new BossProjectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
+        Projectile p1 = new Projectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
         p.currentRoom.projectileList.add(p1);
       }
     }
@@ -105,7 +107,10 @@ public class Boss extends Enemy{
           float newX = x + radius * cos(radians(i)) + radiusEachOther * cos(radians(j));
           float newY = y + radius * sin(radians(i)) + radiusEachOther * sin(radians(j));
           
-          Projectile p1 = new Projectile(newX, newY, dx, dy, 10, #6D60E8, projectileDamage, -1, 1, false);
+          dx = projectileSpeed * cos(radians(j));
+          dy = projectileSpeed * sin(radians(j));
+          
+          Projectile p1 = new BossProjectile(newX, newY, dx/2, dy/2, 10, #6D60E8, projectileDamage, -1, 1, false, 3);
           p.currentRoom.projectileList.add(p1);
         }
 
@@ -127,7 +132,16 @@ public class Boss extends Enemy{
     
     //periodically shoots projectile 
     if (c == 0) {
-      shootProjectile(3);
+      if (this.health >= 0.75 * maxHealth){
+        shootProjectile(3);
+      }
+      else if (this.health >= 0.5 * maxHealth){
+        shootProjectile(2);
+      }
+      else {
+        shootProjectile(1);
+      }
+      
       this.c = this.cooldown;
     }
     else {
