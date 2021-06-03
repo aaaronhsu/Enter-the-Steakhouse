@@ -68,6 +68,7 @@ public class Boss extends Enemy{
         p.currentRoom.projectileList.add(p1);
       }
     }
+    
     else if (mode == 2) { //fast chase + fast 2-projectile shooting
       // calculates direction of the projectile
       float xDist = p.x - x;
@@ -78,10 +79,27 @@ public class Boss extends Enemy{
       for (float i = radians(20); i >= -radians(20); i -= radians(40)) {
         float dx = projectileSpeed * cos(angle+i);
         float dy = projectileSpeed * sin(angle+i);
-        Projectile p1 = new Projectile(x, y, 1.5*dx, 1.5*dy, 40, #9B9191, projectileDamage, 200, 3, false);
+        Projectile p1 = new Projectile(x, y, 1.5*dx, 1.5*dy, 25, #FAFF03, projectileDamage, 200, 3, false);
         // adds projectile to the projectile list of the room that the player is in
         p.currentRoom.projectileList.add(p1);
       }
+    }
+    
+    else if (mode == 3) { //goes to center of room; randomly shoots 
+      float distance = dist(this.x, this.y, width/2, height/2);
+      
+      float xDist = width/2 - this.x; //x-dist btwn center of room and boss's x-cord
+      float yDist = height/2 - this.y;
+      float angle = atan2(yDist, xDist);
+      
+      float dx = distance/5 * cos(angle); //temporary speed of boss
+      float dy = distance/5 * sin(angle);
+      
+      for (int i = 0; i < 5; i++) {
+        x += dx;
+        y += dy;
+      }
+
     }
     
     
@@ -92,7 +110,7 @@ public class Boss extends Enemy{
     
     //periodically shoots projectile 
     if (c == 0) {
-      shootProjectile(2);
+      shootProjectile(3);
       this.c = this.cooldown;
     }
     else {
