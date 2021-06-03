@@ -33,8 +33,6 @@ public class Room {
   int[] corridorE = null;
   int[] corridorW = null;
   
-  Boss b1 = new Boss(400,400, 20,2); //delete after testing
-  
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
     this.roomType = "start";
@@ -154,9 +152,6 @@ public class Room {
   public void draw() {
 
     drawRoomBlueprint();
-    
-    b1.draw(); //del after testing
-    
 
     for (Enemy e : this.enemyList) {
       e.draw();
