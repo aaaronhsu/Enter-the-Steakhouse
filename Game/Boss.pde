@@ -56,7 +56,7 @@ public class Boss extends Enemy{
   
   public void shootProjectile(int mode) {
     
-    if (mode == 1) { //swirl pattern
+    if (mode == 1) { //swirl pattern; incomplete
       // creates 6 projectiles 60 degrees apart
       for (int i = 0; i <= radians(300); i+= radians(60)) {
         float dx = projectileSpeed * cos(90);
@@ -64,12 +64,11 @@ public class Boss extends Enemy{
         //float tanV = tangentialVel();
         Projectile p1 = new BossProjectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
       
-        // adds projectile to the projectile list of the room that the player is in
         p.currentRoom.projectileList.add(p1);
       }
     }
     
-    else if (mode == 2) { //fast chase + fast 2-projectile shooting
+    else if (mode == 2) { //fast chase + fast 2-projectile shooting; fast-chase incomplete
       // calculates direction of the projectile
       float xDist = p.x - x;
       float yDist = p.y - y;
@@ -80,12 +79,11 @@ public class Boss extends Enemy{
         float dx = projectileSpeed * cos(angle+i);
         float dy = projectileSpeed * sin(angle+i);
         Projectile p1 = new Projectile(x, y, 1.5*dx, 1.5*dy, 25, #FAFF03, projectileDamage, 200, 3, false);
-        // adds projectile to the projectile list of the room that the player is in
         p.currentRoom.projectileList.add(p1);
       }
     }
     
-    else if (mode == 3) { //goes to center of room; randomly shoots 
+    else if (mode == 3) { //goes to center of room; randomly shoots; incomplete
       float distance = dist(this.x, this.y, width/2, height/2);
       
       float xDist = width/2 - this.x; //x-dist btwn center of room and boss's x-cord
@@ -99,9 +97,33 @@ public class Boss extends Enemy{
         x += dx;
         y += dy;
       }
+      
+      //~~~~~~~~~ //spawning projectiles that go out and back in
+      for (int i = 0; i < 360; i += 60){
+        int radius = 100;
+        
+        float newX = radius * cos(radians(i));
+        float newY = radius * sin(radians(i));
+        
+        Projectile p1 = new Projectile(newX, newY, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
+        p.currentRoom.projectileList.add(p1);
+        
+      }
+      
+    //  for (int i = 0; i <= radians(300); i+= radians(60)) {
+    //    dx = projectileSpeed * cos(angle+i);
+    //    dy = projectileSpeed * sin(angle+i);
+    //    Projectile p1 = new Projectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
+      
+    //  // adds projectile to the projectile list of the room that the player is in
+    //  p.currentRoom.projectileList.add(p1);
+    //}
 
     }
     
+    else if (mode == 4) {
+      
+    }
     
   } 
   
