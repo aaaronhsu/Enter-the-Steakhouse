@@ -27,6 +27,8 @@ public void setup() {
 
 public void draw() {
   background(255, 255, 255);
+
+  noStroke();
   menu.draw();
   
   // all of these draw statements will be factored out later

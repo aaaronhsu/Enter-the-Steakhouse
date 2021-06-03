@@ -197,7 +197,7 @@ public class Room {
       for (int col = 0; col < roomBlueprint[row].length(); col++) {
         switch (this.roomBlueprint[row].charAt(col)) {
           case GROUND:
-            fill(100, 100, 100);
+            fill(200, 250, 200);
             break;
           
           case PIT:
@@ -205,38 +205,38 @@ public class Room {
             break;
 
           case WALL:
-            fill(255, 0, 0);
+            fill(100, 100, 100);
             break;
           
           case TELEPORTER:
             // by default, a telepoter will be the ground
             if (this.hasTeleporter) fill(0, 0, 255);
-            else fill(100, 100, 100);
+            else fill(200, 250, 200);
             break;
           
           case CORRIDOR:
             // by default, a corridor will be a wall
-            fill(255, 0, 0);
+            fill(100, 100, 100);
 
             if (roomN != null && row == 0) {
               // NORTH CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(0, 255, 0);
-              else fill(0, 150, 0);
+              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              else fill(120, 120, 120);
             }
             else if (roomS != null && row == roomBlueprint.length - 1) {
               // SOUTH CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(0, 255, 0);
-              else fill(0, 150, 0);
+              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              else fill(120, 120, 120);
             }
             else if (roomE != null && col == roomBlueprint[row].length() - 1) {
               // EAST CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(0, 255, 0);
-              else fill(0, 150, 0);
+              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              else fill(120, 120, 120);
             }
             else if (roomW != null && col == 0) {
               // WEST CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(0, 255, 0);
-              else fill(0, 150, 0);
+              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              else fill(120, 120, 120);
             }
 
             break;
