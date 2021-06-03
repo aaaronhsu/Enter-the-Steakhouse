@@ -46,8 +46,8 @@ public void keyPressed() {
     p.changeDirection(true);
   }
 
-  if (keyCode == 77) {
-    map.showMap = !map.showMap;
+  if (keyCode == 9) {
+    map.showMap = true;
   }
 
   if (49 <= keyCode && keyCode <= 52) {
@@ -62,6 +62,10 @@ public void keyPressed() {
 public void keyReleased() {
   if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
     p.changeDirection(false);
+  }
+
+  if (keyCode == 9) {
+    map.showMap = false;
   }
 }
 

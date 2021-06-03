@@ -5,7 +5,7 @@ public class Floor {
   ArrayList<Room> roomList;
   
   int numCombatRooms, numChestRooms, numShopRooms;
-  boolean showMap = true;
+  boolean showMap = false;
   
   Floor(int size) {
     this.roomList = new ArrayList();
