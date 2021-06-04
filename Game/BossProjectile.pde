@@ -23,11 +23,7 @@ public class BossProjectile extends Projectile{
    else {
      y += dy;
    }
-   
-   if (mode == 3) {
-     
-   }
-  }
+ }
   
   //has draw() method inherited from Projectile
 }
