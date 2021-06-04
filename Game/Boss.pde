@@ -5,6 +5,8 @@ public class Boss extends Enemy{
   int c = cooldown;
   int maxHealth;
   
+  float constant = 0;
+  
   String[] monster = loadStrings("thoushaltnotpass.txt"); //visual display
   //for hit box of monster
   int monWidth = monster[0].length()*4 + 100; 
@@ -52,16 +54,18 @@ public class Boss extends Enemy{
   }
   
   public void shootProjectile(int mode) {
-    if (mode == 1) { //swirl pattern; incomplete
-      // creates 6 projectiles 60 degrees apart
-      for (int i = 0; i <= radians(300); i+= radians(60)) {
-        float dx = projectileSpeed * cos(90);
-        float dy = projectileSpeed * sin(90);
-        //float tanV = tangentialVel();
-        Projectile p1 = new Projectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
-        p.currentRoom.projectileList.add(p1);
-      }
-    }
+    if (mode == 1) { //swirl pattern
+     
+     for (float i = 0; i <= radians(330); i += radians(30)) {
+       float dx = projectileSpeed * cos(i-constant);
+       float dy = projectileSpeed * sin(i-constant);
+        
+       Projectile p1 = new Projectile(x, y, dx, dy, 15, #6D60E8, projectileDamage, -1, 1, false);
+       p.currentRoom.projectileList.add(p1);
+     }
+     println(constant);
+     constant += radians(50);
+   }
 
     else if (mode == 2) { //fast chase + fast 2-projectile shooting; fast-chase incomplete
       // calculates direction of the projectile
@@ -134,7 +138,7 @@ public class Boss extends Enemy{
     if (c == 0) {
       if (this.health >= 0.75 * maxHealth){
         teleportDisplay();
-        shootProjectile(3);
+        shootProjectile(1);
       }
       else if (this.health >= 0.5 * maxHealth){
         shootProjectile(2);

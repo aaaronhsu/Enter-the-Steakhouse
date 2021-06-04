@@ -43,7 +43,6 @@ public void draw() {
 }
 
 public void keyPressed() {
-  println(keyCode);
   if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
     p.changeDirection(true);
   }
