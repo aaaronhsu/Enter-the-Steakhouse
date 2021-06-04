@@ -319,30 +319,35 @@ public class Floor {
       int x = rm.x + (width / (roomSize * 3));
       int y = rm.y + (height / (roomSize * 3));
       
+      noStroke();
+
+      if (rm.isCurrentRoom) {
+        fill(0, 255, 0, opacity);
+        rect(x * roomPos - 2, y * roomPos - 2, roomSize + 4, roomSize + 4);
+        fill(0);
+      }
+
+      // renders teleporter on map
+      // if (rm.hasTeleporter && rm.visited) {
+      //   fill(0, 0, 255, opacity);
+      //   ellipse(x * roomPos + corridor, y * roomPos + corridor, roomSize / 2.5, roomSize / 2.5);
+      // }
+
+
       if (rm.roomType.equals("combat")) fill(200, 0, 0, opacity);
-      else if (rm.roomType.equals("start")) fill(150, 150, 150, opacity);
+      else if (rm.roomType.equals("start")) fill(255, 255, 255, opacity);
       else if (rm.roomType.equals("boss")) fill(10, opacity);
       else if (rm.roomType.equals("shop")) fill(255, 255, 0, opacity);
       
       if (rm.visited == false) {
-        fill(255, 255, 255, opacity);
+        fill(150, 150, 150, opacity);
       }
 
       
       rect(x * roomPos, y * roomPos, roomSize, roomSize);
-
-      if (rm.isCurrentRoom && rm.visited) {
-        fill(0, 255, 0, opacity);
-        ellipse(x * roomPos + corridor, y * roomPos + corridor, roomSize / 1.5, roomSize / 1.5);
-      }
-      if (rm.hasTeleporter && rm.visited) {
-        fill(0, 0, 255, opacity);
-        ellipse(x * roomPos + corridor, y * roomPos + corridor, roomSize / 2.5, roomSize / 2.5);
-      }
       
-      
-      stroke(0);
       strokeWeight(3);
+      stroke(0);
       if (rm.roomN != null) {
         line(x * roomPos + corridor, y * roomPos, x * roomPos + corridor, y * roomPos - corridor);
       }
