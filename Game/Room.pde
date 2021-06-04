@@ -55,7 +55,7 @@ public class Room {
     this.isCurrentRoom = false;
     this.visited = false;
     
-    this.roomBlueprintNum = (int)(random(7)) + 1;
+    this.roomBlueprintNum = (int)(random(14)) + 1;
 
     if (roomType.equals("shop")) {
       this.roomBlueprint = loadStrings("shopRoom.txt");
