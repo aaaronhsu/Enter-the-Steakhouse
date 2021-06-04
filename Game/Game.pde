@@ -31,15 +31,16 @@ public void draw() {
   background(255, 255, 255);
 
   noStroke();
+  
   menu.draw();
   
   // all of these draw statements will be factored out later
   
-  p.currentRoom.draw();
+  //p.currentRoom.draw();
   
-  p.move();
-  p.draw();
-  map.draw();
+  //p.move();
+  //p.draw();
+  //map.draw();
 }
 
 public void keyPressed() {

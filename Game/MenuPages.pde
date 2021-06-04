@@ -6,14 +6,17 @@ public final int DEFEAT_SCREEN = 4;
 
 public class MenuPages {
   int currentPage;
+  PFont titleFont = loadFont("Luminari-Regular-66.vlw");
   
   MenuPages(int currentPage) {
     this.currentPage = currentPage;
+    
   }
   
   public void draw() {
     switch (currentPage) {
       case MENU_SCREEN: //menu screen
+        showMenu();
         //println("menu");
         break;
       
@@ -37,5 +40,10 @@ public class MenuPages {
   
   void showMenu(){
     background(#DE1F1F);
+    
+    textFont(titleFont, 66);
+    String title = "Enter the Steakhouse";
+    text(title, width/6 - 15, 150);
+    
   }
 }
