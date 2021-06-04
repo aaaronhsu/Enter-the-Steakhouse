@@ -25,7 +25,7 @@ public class Player {
     this.speed = speed;
     this.currentRoom = currentRoom;
     
-    this.health = 5;
+    this.health = 10;
     this.money = 0;
     this.blanks = 2;
     this.keys = 1;
@@ -66,7 +66,7 @@ public class Player {
     }
 
     textSize(20);
-    fill(255);
+    fill(0);
     text("You have " + this.money + " moonies", xOffset - 10, yOffset + 60);
   }
   

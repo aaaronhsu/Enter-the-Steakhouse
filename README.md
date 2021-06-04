@@ -58,5 +58,12 @@
 ### 6/1
 **Aaron**: Finished A* pathfinding, created barebones for shop room, and rescaled screen size.
 
+**Yaying**: Relearned projectile motion.
+
 ### 6/2
 **Aaron**: Created functional shop room, made visual changes, map screen toggle, and enemy spawning/attack pattern changes.
+
+**Yaying**: Worked on boss attack pattern 3 (random) and 2 (chase)
+
+### 6/3
+**Yaying**: Worked on boss attack pattern 3 (random) and 1 (swirl) from Aaron's help.
