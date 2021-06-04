@@ -126,7 +126,7 @@ public class Boss extends Enemy{
       //  else {
   }
   
-  void teleportDisplay(){
+  void teleportDisplay(){ //some animation of teleporting?
     this.x = width/2;
     this.y = height/2;
   }
@@ -144,6 +144,7 @@ public class Boss extends Enemy{
         shootProjectile(2);
       }
       else {
+        teleportDisplay();
         shootProjectile(3);
       }
       

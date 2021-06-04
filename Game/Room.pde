@@ -27,8 +27,6 @@ public class Room {
   ArrayList<Projectile> projectileList = new ArrayList();
   ArrayList<Projectile> removeProjList = new ArrayList();
   
-  Boss b1 = new Boss(200,200, 10, 2);
-  
   int[] corridorN = null;
   int[] corridorS = null;
   int[] corridorE = null;
@@ -178,9 +176,6 @@ public class Room {
       }
       e.despawn();
     }
-    
-    b1.draw();
-
     
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();
