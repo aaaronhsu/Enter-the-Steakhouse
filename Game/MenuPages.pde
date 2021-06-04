@@ -45,5 +45,7 @@ public class MenuPages {
     String title = "Enter the Steakhouse";
     text(title, width/6 - 15, 150);
     
+    rect(300,300, 300, 200);
+    
   }
 }
