@@ -5,7 +5,7 @@ public class Boss extends Enemy{
   int c = cooldown;
   int maxHealth;
   
-  float constant = 0;
+  float offset = 0;
   
   String[] monster = loadStrings("thoushaltnotpass.txt"); //visual display
   //for hit box of monster
@@ -56,15 +56,15 @@ public class Boss extends Enemy{
   public void shootProjectile(int mode) {
     if (mode == 1) { //swirl pattern
      
-     for (float i = 0; i <= radians(330); i += radians(30)) {
-       float dx = projectileSpeed * cos(i-constant);
-       float dy = projectileSpeed * sin(i-constant);
+     for (float i = 0; i <= radians(325); i += radians(36)) {
+       float dx = projectileSpeed * cos(i-offset);
+       float dy = projectileSpeed * sin(i-offset);
         
-       Projectile p1 = new Projectile(x, y, dx, dy, 15, #6D60E8, projectileDamage, -1, 1, false);
+       Projectile p1 = new Projectile(x, y, dx*1.2/2, dy*1.2/2, 20, #6D60E8, projectileDamage, -1, 1, false);
        p.currentRoom.projectileList.add(p1);
      }
-     println(constant);
-     constant += radians(50);
+    
+     offset += radians(50);
    }
 
     else if (mode == 2) { //fast chase + fast 2-projectile shooting; fast-chase incomplete
@@ -144,7 +144,7 @@ public class Boss extends Enemy{
         shootProjectile(2);
       }
       else {
-        shootProjectile(1);
+        shootProjectile(3);
       }
       
       this.c = this.cooldown;
