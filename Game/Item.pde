@@ -33,6 +33,7 @@ public class Item {
           break;
       }
     }
+    
     else equipWeapon();
     return true;
   }

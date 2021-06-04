@@ -306,41 +306,62 @@ public class Floor {
   
   public void draw() {
     if (!showMap) return;
+    
+    background(180);
+
+    int opacity = 240;
 
     for (Room rm : map.roomList) {
-      // if (rm.visited == false) continue;
-      int x = rm.x + 40;
-      int y = rm.y + 4;
+      int roomPos = 38;
+      int roomSize = (roomPos * 2) / 3;
+      int corridor = roomSize / 2;
+
+      int x = rm.x + (width / (roomSize * 3));
+      int y = rm.y + (height / (roomSize * 3));
       
-      if (rm.roomType.equals("combat")) fill(200, 0, 0);
-      else if (rm.roomType.equals("start")) fill(150, 150, 150);
-      else if (rm.roomType.equals("boss")) fill(10);
-      else if (rm.roomType.equals("shop")) fill(255, 255, 0);
-      
-      rect(x * 20, y * 20, 20, 20);
-      if (rm.hasTeleporter) {
-        fill(0, 0, 255);
-        rect(x * 20, y * 20, 10, 10);
-      }
+      noStroke();
+
       if (rm.isCurrentRoom) {
-        fill(0, 255, 0);
-        rect(x * 20 + 10, y * 20, 10, 10);
+        fill(0, 255, 0, opacity);
+        rect(x * roomPos - 2, y * roomPos - 2, roomSize + 4, roomSize + 4);
+        fill(0);
       }
+
+      // renders teleporter on map
+      // if (rm.hasTeleporter && rm.visited) {
+      //   fill(0, 0, 255, opacity);
+      //   ellipse(x * roomPos + corridor, y * roomPos + corridor, roomSize / 2.5, roomSize / 2.5);
+      // }
+
+
+      if (rm.roomType.equals("combat")) fill(200, 0, 0, opacity);
+      else if (rm.roomType.equals("start")) fill(255, 255, 255, opacity);
+      else if (rm.roomType.equals("boss")) fill(10, opacity);
+      else if (rm.roomType.equals("shop")) fill(255, 255, 0, opacity);
       
-      stroke(0, 255, 0);
+      if (rm.visited == false) {
+        fill(150, 150, 150, opacity);
+      }
+
+      
+      rect(x * roomPos, y * roomPos, roomSize, roomSize);
+      
+      strokeWeight(3);
+      stroke(0);
       if (rm.roomN != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20);
+        line(x * roomPos + corridor, y * roomPos, x * roomPos + corridor, y * roomPos - corridor);
       }
       if (rm.roomS != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20 + 10, y * 20 + 20);
+        line(x * roomPos + corridor, y * roomPos + roomSize, x * roomPos + corridor, y * roomPos + roomPos);
       }
       if (rm.roomE != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20 + 20, y * 20 + 10);
+        line(x * roomPos + roomSize, y * roomPos + corridor, x * roomPos + roomPos, y * roomPos + corridor);
       }
       if (rm.roomW != null) {
-        line(x * 20 + 10, y * 20 + 10, x * 20, y * 20 + 10);
+        line(x * roomPos, y * roomPos + corridor, x * roomPos - corridor, y * roomPos + corridor);
       }
       stroke(0);
+      strokeWeight(1);
     }
   }
 }

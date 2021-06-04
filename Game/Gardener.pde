@@ -1,7 +1,7 @@
 public class Gardener extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 3.5;
-  int cooldown = 30; //does not change
+  int cooldown = 80; //does not change
   int c = cooldown;
   
   String[] monster = loadStrings("gardener.txt"); //visual display
@@ -24,7 +24,7 @@ public class Gardener extends Enemy{
     for (int i = 0; i <= radians(240); i+= radians(120)) {
       float dx = projectileSpeed * cos(angle+i);
       float dy = projectileSpeed * sin(angle+i);
-      Projectile p1 = new Projectile(x, y, dx, dy, 20, #9B9191, projectileDamage, 200, 3, false);
+      Projectile p1 = new Projectile(x, y, dx, dy, 10, #9B9191, projectileDamage, 200, 3, false);
       
       // adds projectile to the projectile list of the room that the player is in
       p.currentRoom.projectileList.add(p1);
@@ -69,12 +69,12 @@ public class Gardener extends Enemy{
     moveTowardsPlayer();
     
     //periodically shoots projectile 
-    if (c == 0) {
+    if (c <= 0) {
       shootProjectile();
       this.c = this.cooldown;
     }
     else {
-      c--;
+      c -= (int)random(3);
     }
   }
 

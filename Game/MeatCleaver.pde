@@ -66,12 +66,12 @@ public class MeatCleaver extends Enemy{
     loadMon(x,y,2);
     moveTowardsPlayer();
     //periodically shoots projectile 
-    if (c == 0) {
+    if (c <= 0) {
       shootProjectile();
       this.c = this.cooldown;
     }
     else {
-      c--;
+      c -= (int)random(3);
     }
   }
 
