@@ -39,6 +39,10 @@ public void draw() {
     fill(0);
     text("YOU WON", 300, 300);
   }
+  else if (p.health == 0) {
+    fill(0);
+    text("YOU LOST", 300, 300);
+  }
   else {
     p.currentRoom.draw();
     p.move();
