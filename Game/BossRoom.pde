@@ -1,12 +1,13 @@
 public class BossRoom extends Room {
+
+  boolean bossSpawned = false;
+  boolean bossDefeated = false;
   
   BossRoom(Room previousRoom, int direction, int x, int y, int chanceToGenerateRoom) {
     super(previousRoom, direction, "boss", x, y, chanceToGenerateRoom);
-    
-    addBossToRoom();
   }
   
-  private void addBossToRoom() {
+  public void addBossToRoom() {
     // will add boss to the list 'enemyList' in super
 
     int randomGenType = (int) random(1);

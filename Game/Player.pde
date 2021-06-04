@@ -219,6 +219,8 @@ public class Player {
 
           this.currentRoom = this.currentRoom.roomW;
           this.currentRoom.visited = true;
+
+          spawnBoss();
         }
         else this.x = 0;
       }
@@ -240,6 +242,8 @@ public class Player {
           
           this.currentRoom = this.currentRoom.roomE;
           this.currentRoom.visited = true;
+
+          spawnBoss();
         }
         else this.x = width;
       }
@@ -261,6 +265,8 @@ public class Player {
           
           this.currentRoom = this.currentRoom.roomN;
           this.currentRoom.visited = true;
+
+          spawnBoss();
         }
         else this.y = 0;
       }
@@ -282,6 +288,8 @@ public class Player {
           
           this.currentRoom = this.currentRoom.roomS;
           this.currentRoom.visited = true;
+
+          spawnBoss();
         }
         else this.y = height;
       }
@@ -326,5 +334,20 @@ public class Player {
     this.blanks--;
     this.currentRoom.removeEnemyProjectiles();
     return true;
+  }
+
+
+  public void spawnBoss() {
+    if (this.currentRoom.roomType.equals("boss")) {
+      if (!((BossRoom)this.currentRoom).bossSpawned) {
+
+        for (Room r : map.roomList) {
+          if (r.roomType.equals("combat")) {
+            if (!r.visited) return;
+          }
+        }
+        ((BossRoom)this.currentRoom).addBossToRoom();
+      }
+    }
   }
 }
