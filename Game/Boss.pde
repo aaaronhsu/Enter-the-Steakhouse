@@ -97,24 +97,36 @@ public class Boss extends Enemy{
         x += dx;
         y += dy;
       }
-
-      //~~~~~~~~~ //spawning projectiles that go out and back in
-      int radius = 200; //distance of group of projectiles from boss
-      int radiusEachOther = 10; //distance from proj to proj
       
-      for (int i = 0; i < 360; i += 60){
-        for (int j = 0; j < 360; j += 60){
-          float newX = x + radius * cos(radians(i)) + radiusEachOther * cos(radians(j));
-          float newY = y + radius * sin(radians(i)) + radiusEachOther * sin(radians(j));
-          
-          dx = projectileSpeed * cos(radians(j));
-          dy = projectileSpeed * sin(radians(j));
-          
-          Projectile p1 = new BossProjectile(newX, newY, dx/2, dy/2, 10, #6D60E8, projectileDamage, -1, 1, false, 3);
-          p.currentRoom.projectileList.add(p1);
-        }
-
+      for (int i = 0; i < 10; i++){
+        angle = radians(random(360));
+        dx = projectileSpeed * cos(angle);
+        dy = projectileSpeed * sin(angle);
+        
+        Projectile p1 = new Projectile(x, y, dx, dy, 10, #EEFF0F, projectileDamage, -1, 1, false);
+        p.currentRoom.projectileList.add(p1);
       }
+
+      //~~~~~~~~~ once in a while, spawn projectiles that go out and back in; incomplete in and out
+      if (Math.random() > 0.7) {
+        int radius = 200; //distance of group of projectiles from boss
+        int radiusEachOther = 10; //distance from proj to proj
+        
+        for (int i = 0; i < 360; i += 60){
+          for (int j = 0; j < 360; j += 60){
+            float newX = x + radius * cos(radians(i)) + radiusEachOther * cos(radians(j));
+            float newY = y + radius * sin(radians(i)) + radiusEachOther * sin(radians(j));
+            
+            dx = projectileSpeed * cos(radians(j));
+            dy = projectileSpeed * sin(radians(j));
+            
+            Projectile p1 = new BossProjectile(newX, newY, dx/2, dy/2, 10, #FF0F0F, projectileDamage, -1, 1, false, 3);
+            p.currentRoom.projectileList.add(p1);
+          }
+  
+        }
+      }
+      
       
     //  for (int i = 0; i <= radians(300); i+= radians(60)) {
     //    dx = projectileSpeed * cos(angle+i);
