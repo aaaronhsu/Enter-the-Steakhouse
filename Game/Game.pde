@@ -34,12 +34,16 @@ public void draw() {
   menu.draw();
   
   // all of these draw statements will be factored out later
-  
-  p.currentRoom.draw();
-  
-  p.move();
-  p.draw();
-  map.draw();
+
+  if (p.currentRoom.roomType.equals("boss") && ((BossRoom) p.currentRoom).bossSpawned && p.currentRoom.enemyList.isEmpty()) {
+    text("YOU WON", 300, 300);
+  }
+  else {
+    p.currentRoom.draw();
+    p.move();
+    p.draw();
+    map.draw();
+  }
 }
 
 public void keyPressed() {
