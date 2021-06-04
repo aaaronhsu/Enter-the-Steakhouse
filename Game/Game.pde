@@ -43,7 +43,6 @@ public void draw() {
 }
 
 public void keyPressed() {
-  println(keyCode);
   if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
     p.changeDirection(true);
   }
@@ -85,4 +84,3 @@ public void mouseReleased() {
 public char fetchTile(float x, float y) {
   return this.p.currentRoom.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30));
 }
-

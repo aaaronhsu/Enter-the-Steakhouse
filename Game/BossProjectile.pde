@@ -1,6 +1,10 @@
 public class BossProjectile extends Projectile{
-  BossProjectile(float x, float y, float dx, float dy, float r, color c, int damage, int despawnTime, int numBounces, boolean isPlayerProjectile) {
+  
+  int mode;
+  
+  BossProjectile(float x, float y, float dx, float dy, float r, color c, int damage, int despawnTime, int numBounces, boolean isPlayerProjectile, int mode) {
     super(x, y, dx, dy, r, c, damage, despawnTime, numBounces, isPlayerProjectile);
+    this.mode = mode;
   }
 
   void move() {
@@ -18,8 +22,8 @@ public class BossProjectile extends Projectile{
    }
    else {
      y += dy;
-     //y += dy + (2 * time);
-     //time += 0.1;
    }
-  }
+ }
+  
+  //has draw() method inherited from Projectile
 }

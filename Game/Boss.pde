@@ -1,9 +1,11 @@
 public class Boss extends Enemy{
-  int projectileDamage = 2;
+  int projectileDamage = 1;
   float projectileSpeed = 5;
   int cooldown = 30; //does not change
   int c = cooldown;
-  float time = 1; //????
+  int maxHealth;
+  
+  float offset = 0;
   
   String[] monster = loadStrings("thoushaltnotpass.txt"); //visual display
   //for hit box of monster
@@ -11,7 +13,8 @@ public class Boss extends Enemy{
   int monHeight = monster.length*4 + 100;
   
   Boss(float x, float y, int health, int contactDamage) {
-    super(x, y, health, contactDamage, BOSS);  
+    super(x, y, health, contactDamage, BOSS);
+    this.maxHealth = health;
   }
   
   void loadBoss(float x, float y, int sideLength){
@@ -50,21 +53,19 @@ public class Boss extends Enemy{
     }
   }
   
-  float tangentialVel(){
-    return 2 * PI * (monWidth/2) / time;
-  }
-  
   public void shootProjectile(int mode) {
-    if (mode == 1) { //swirl pattern; incomplete
-      // creates 6 projectiles 60 degrees apart
-      for (int i = 0; i <= radians(300); i+= radians(60)) {
-        float dx = projectileSpeed * cos(90);
-        float dy = projectileSpeed * sin(90);
-        //float tanV = tangentialVel();
-        Projectile p1 = new BossProjectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
-        p.currentRoom.projectileList.add(p1);
-      }
-    }
+    if (mode == 1) { //swirl pattern
+     
+     for (float i = 0; i <= radians(325); i += radians(36)) {
+       float dx = projectileSpeed * cos(i-offset);
+       float dy = projectileSpeed * sin(i-offset);
+        
+       Projectile p1 = new Projectile(x, y, dx*1.2/2, dy*1.2/2, 20, #6D60E8, projectileDamage, -1, 1, false);
+       p.currentRoom.projectileList.add(p1);
+     }
+    
+     offset += radians(50);
+   }
 
     else if (mode == 2) { //fast chase + fast 2-projectile shooting; fast-chase incomplete
       // calculates direction of the projectile
@@ -81,42 +82,53 @@ public class Boss extends Enemy{
       }
     }
 
-    else if (mode == 3) { //goes to center of room; randomly shoots; incomplete
-      float distance = dist(this.x, this.y, width/2, height/2);
-
-      float xDist = width/2 - this.x; //x-dist btwn center of room and boss's x-cord
-      float yDist = height/2 - this.y;
-      float angle = atan2(yDist, xDist);
-
-      float dx = distance/5 * cos(angle); //temporary speed of boss
-      float dy = distance/5 * sin(angle);
-
-      for (int i = 0; i < 5; i++) {
-        x += dx;
-        y += dy;
-      }
-
-      //~~~~~~~~~ //spawning projectiles that go out and back in
-      for (int i = 0; i < 360; i += 60){
-        int radius = 100;
-
-        float newX = radius * cos(radians(i));
-        float newY = radius * sin(radians(i));
-
-        Projectile p1 = new Projectile(newX, newY, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false);
+    else if (mode == 3) { //randomly shoots + flower bombs at center of room
+      for (int i = 0; i < 10; i++){
+        float angle = radians(random(360));
+        float dx = projectileSpeed * cos(angle);
+        float dy = projectileSpeed * sin(angle);
+        
+        Projectile p1 = new Projectile(x, y, dx, dy, 10, #EEFF0F, projectileDamage, -1, 1, false);
         p.currentRoom.projectileList.add(p1);
-
       }
+
+      //once in a while, spawn flower projectiles
+      if (Math.random() > 0.7) {
+        int radius = 200; //distance of group of projectiles from boss
+        int radiusEachOther = 10; //distance from proj to proj
+        
+        for (int i = 0; i < 360; i += 60){
+          for (int j = 0; j < 360; j += 60){
+            float newX = x + radius * cos(radians(i)) + radiusEachOther * cos(radians(j));
+            float newY = y + radius * sin(radians(i)) + radiusEachOther * sin(radians(j));
+            
+            float dx = projectileSpeed * cos(radians(j));
+            float dy = projectileSpeed * sin(radians(j));
+            
+            Projectile p1 = new Projectile(newX, newY, dx/2, dy/2, 10, #FF0F0F, projectileDamage, -1, 1, false);
+            p.currentRoom.projectileList.add(p1);
+          }
+        }
+      }
+    }
       
-    //  for (int i = 0; i <= radians(300); i+= radians(60)) {
-    //    dx = projectileSpeed * cos(angle+i);
-    //    dy = projectileSpeed * sin(angle+i);
-    //    Projectile p1 = new Projectile(x, y, dx, dy, 25, #6D60E8, projectileDamage, -1, 1, false)
-    }
-
-    else if (mode == 4) {
-
-    }
+      //if (this.x != width/2 && this.y != height/2) { //centers boss if not centered
+      //    float xDist = width/2 - this.x; //x-dist btwn center of room and boss's x-cord
+      //    float yDist = height/2 - this.y;
+      //    float angle = atan2(yDist, xDist);
+          
+      //    float dx = 50 * cos(angle); //temporary speed of boss
+      //    float dy = 50 * sin(angle);
+          
+      //    x += dx;
+      //    y += dy;
+      //  }
+      //  else {
+  }
+  
+  void teleportDisplay(){ //some animation of teleporting?
+    this.x = width/2;
+    this.y = height/2;
   }
   
   public void draw(){
@@ -124,7 +136,18 @@ public class Boss extends Enemy{
     
     //periodically shoots projectile 
     if (c == 0) {
-      shootProjectile(3);
+      if (this.health >= 0.75 * maxHealth){
+        teleportDisplay();
+        shootProjectile(1);
+      }
+      else if (this.health >= 0.5 * maxHealth){
+        shootProjectile(2);
+      }
+      else {
+        teleportDisplay();
+        shootProjectile(3);
+      }
+      
       this.c = this.cooldown;
     }
     else {

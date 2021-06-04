@@ -22,7 +22,6 @@ public class Room {
   String[] roomBlueprint;
   int roomBlueprintNum;
   
-  
   ArrayList<Enemy> enemyList = new ArrayList();
   ArrayList<Enemy> removeEnemyList = new ArrayList();
   ArrayList<Projectile> projectileList = new ArrayList();
@@ -177,7 +176,6 @@ public class Room {
       }
       e.despawn();
     }
-
     
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();

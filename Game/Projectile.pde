@@ -1,4 +1,4 @@
-public class Projectile { //bugs: Stoves can't have >6 projectiles
+public class Projectile {
   float x, y, dx, dy, r;
   color c;
   int damage;
