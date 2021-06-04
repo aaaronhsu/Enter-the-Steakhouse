@@ -36,6 +36,7 @@ public void draw() {
   // all of these draw statements will be factored out later
 
   if (p.currentRoom.roomType.equals("boss") && ((BossRoom) p.currentRoom).bossSpawned && p.currentRoom.enemyList.isEmpty()) {
+    fill(0);
     text("YOU WON", 300, 300);
   }
   else {
