@@ -66,4 +66,6 @@
 **Yaying**: Worked on boss attack pattern 3 (random) and 2 (chase)
 
 ### 6/3
+**Aaron**: Modified map overlay, added the boss to the boss room, and added a win/loss screen for demo
+
 **Yaying**: Worked on boss attack pattern 3 (random) and 1 (swirl) from Aaron's help.
