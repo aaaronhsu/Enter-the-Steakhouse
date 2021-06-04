@@ -27,7 +27,7 @@ public class Player {
     
     this.health = 10;
     this.money = 0;
-    this.blanks = 2;
+    this.blanks = 6;
     this.keys = 1;
     
     Weapon pistol = new Weapon(15, 5, 1, 0);
