@@ -1,7 +1,6 @@
 public class BossRoom extends Room {
 
   boolean bossSpawned = false;
-  boolean bossDefeated = false;
   
   BossRoom(Room previousRoom, int direction, int x, int y, int chanceToGenerateRoom) {
     super(previousRoom, direction, "boss", x, y, chanceToGenerateRoom);

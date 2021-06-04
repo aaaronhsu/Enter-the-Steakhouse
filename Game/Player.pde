@@ -347,6 +347,7 @@ public class Player {
           }
         }
         ((BossRoom)this.currentRoom).addBossToRoom();
+        ((BossRoom)this.currentRoom).bossSpawned = true;
       }
     }
   }
