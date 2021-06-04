@@ -35,4 +35,15 @@ public class BossRoom extends Room {
 
 
   }
+
+  public void draw() {
+    super.draw();
+
+    if (bossSpawned == true) {
+      if (!enemyList.isEmpty()) {
+        fill(255, 0, 0);
+        text("HEALTH: " + enemyList.get(0).health, width / 2 - 100, 100);
+      }
+    }
+  }
 }
