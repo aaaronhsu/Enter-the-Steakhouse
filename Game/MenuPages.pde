@@ -19,6 +19,7 @@ public class MenuPages {
     switch (currentPage) {
       case MENU_SCREEN: //menu screen
         showMenu();
+        mousePressed();
         break;
       
       case MAPSELECT_SCREEN: //map size screen
