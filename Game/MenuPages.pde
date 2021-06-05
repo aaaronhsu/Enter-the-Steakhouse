@@ -7,6 +7,7 @@ public final int DEFEAT_SCREEN = 4;
 public class MenuPages {
   int currentPage;
   PFont titleFont = loadFont("Luminari-Regular-66.vlw");
+  PFont other = loadFont("Athelas-Bold-48.vlw");
   
   MenuPages(int currentPage) {
     this.currentPage = currentPage;
@@ -42,10 +43,16 @@ public class MenuPages {
     background(#DE1F1F);
     
     textFont(titleFont, 66);
-    String title = "Enter the Steakhouse";
-    text(title, width/6 - 15, 150);
+    text("Enter the Steakhouse", width/6 - 15, 150);
     
-    rect(300,300, 300, 200);
+    fill(#000000);
+    rect(325,225, 300, 100);
+    rect(325,375, 300, 100);
+    
+    fill(#FFFFFF);
+    textFont(other, 48);
+    text("START", 398, 288);
+    text("OPTIONS", 370, 440);
     
   }
 }
