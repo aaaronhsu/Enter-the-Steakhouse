@@ -1,6 +1,6 @@
 public class BossProjectile extends Projectile{
   
-  int mode;
+  int mode; //nothing diff from reg projectiles for now
   
   BossProjectile(float x, float y, float dx, float dy, float r, color c, int damage, int despawnTime, int numBounces, boolean isPlayerProjectile, int mode) {
     super(x, y, dx, dy, r, c, damage, despawnTime, numBounces, isPlayerProjectile);

@@ -5,10 +5,17 @@ public final int VICTORY_SCREEN = 3;
 public final int DEFEAT_SCREEN = 4;
 public final int OPTIONS_SCREEN = 5;
 
+public final char SMALL = 'S';
+public final char MEDIUM = 'M';
+public final char LARGE = 'L';
+
 public class MenuPages {
   int currentPage;
+  char mapSize;
+  
   PFont titleFont = loadFont("Luminari-Regular-66.vlw");
   PFont other = loadFont("Athelas-Bold-48.vlw");
+  PFont otherBig = loadFont("Athelas-Bold-66.vlw");
   
   MenuPages(int currentPage) {
     this.currentPage = currentPage;
@@ -23,7 +30,7 @@ public class MenuPages {
         break;
       
       case MAPSELECT_SCREEN: //map size screen
-        println("map size");
+        showMapSelect();
         break;
       
       case GAME_SCREEN: //game screen
@@ -64,6 +71,26 @@ public class MenuPages {
     text("OPTIONS", 370, 440);
   }
   
+  void showMapSelect(){
+    background(#DE1F1F);
+    
+    fill(#FFFFFF);
+    textFont(otherBig, 66);
+    text("Map Size", 340, 100);
+    
+    fill(#B9FFBD); //WHY IS THIS COLOR SCHEME SO BAD
+    if (inBounds(92,175, 225, 100)) fill(#FFFFFF);
+    rect(92,175, 225, 100);
+    
+    fill(#B9C0FF);
+    if (inBounds(368,175, 225, 100)) fill(#FFFFFF);
+    rect(368,175, 225, 100);
+    
+    fill(#FFB9C7);
+    if (inBounds(643,175, 225, 100)) fill(#FFFFFF);
+    rect(643,175, 225, 100);
+  }
+  
   //is mouse in bounds of rect?
   boolean inBounds(int x, int y, int rectwidth, int rectheight){
     return mouseX >= x && mouseX <= x + rectwidth &&
@@ -71,10 +98,8 @@ public class MenuPages {
   }
   
   void mousePressed(){
-    if (mouseButton == LEFT) {
-      println("hadsj");
+    if (this.currentPage == MENU_SCREEN && mouseButton == LEFT) {
       if (inBounds(325,225,300,100)) {
-        println("yay");
         this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
       }
     
