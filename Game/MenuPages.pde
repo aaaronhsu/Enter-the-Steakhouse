@@ -3,6 +3,7 @@ public final int MAPSELECT_SCREEN = 1;
 public final int GAME_SCREEN = 2;
 public final int VICTORY_SCREEN = 3;
 public final int DEFEAT_SCREEN = 4;
+public final int OPTIONS_SCREEN = 5;
 
 public class MenuPages {
   int currentPage;
@@ -18,11 +19,10 @@ public class MenuPages {
     switch (currentPage) {
       case MENU_SCREEN: //menu screen
         showMenu();
-        //println("menu");
         break;
       
       case MAPSELECT_SCREEN: //map size screen
-        //println("map size");
+        println("map size");
         break;
       
       case GAME_SCREEN: //game screen
@@ -35,6 +35,10 @@ public class MenuPages {
       
       case DEFEAT_SCREEN:
         //println("defeat");
+        break;
+        
+      case OPTIONS_SCREEN: //options screen
+        println("options");
         break;
     }
   }
@@ -63,5 +67,17 @@ public class MenuPages {
   boolean inBounds(int x, int y, int rectwidth, int rectheight){
     return mouseX >= x && mouseX <= x + rectwidth &&
            mouseY >= y && mouseY <= y + rectheight;
+  }
+  
+  void mousePressed(){
+    if (mouseButton == LEFT) {
+      println("hadsj");
+      if (inBounds(325,225,300,100)) {
+        println("yay");
+        this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
+      }
+    
+      if (inBounds(325,375,300,100)) this.currentPage = OPTIONS_SCREEN; //clicks on "OPTIONS"
+    }
   }
 }
