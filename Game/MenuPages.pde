@@ -46,13 +46,22 @@ public class MenuPages {
     text("Enter the Steakhouse", width/6 - 15, 150);
     
     fill(#000000);
+    if (inBounds(325,225,300,100)) fill(#05AD36);
     rect(325,225, 300, 100);
+    
+    fill(#000000);
+    if (inBounds(325,375,300,100)) fill(#05AD36);
     rect(325,375, 300, 100);
     
     fill(#FFFFFF);
     textFont(other, 48);
     text("START", 398, 288);
     text("OPTIONS", 370, 440);
-    
+  }
+  
+  //is mouse in bounds of rect?
+  boolean inBounds(int x, int y, int rectwidth, int rectheight){
+    return mouseX >= x && mouseX <= x + rectwidth &&
+           mouseY >= y && mouseY <= y + rectheight;
   }
 }
