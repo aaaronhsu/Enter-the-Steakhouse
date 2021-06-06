@@ -76,3 +76,6 @@
 
 ### 6/4
 **Yaying**: Added Menu Page with color-changing buttons upon hover.
+
+### 6/5
+**Yaying**: Added Map Selection page
