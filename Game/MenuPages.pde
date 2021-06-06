@@ -78,17 +78,23 @@ public class MenuPages {
     textFont(otherBig, 66);
     text("Map Size", 340, 100);
     
-    fill(#B9FFBD); //WHY IS THIS COLOR SCHEME SO BAD
-    if (inBounds(92,175, 225, 100)) fill(#FFFFFF);
+    fill(#000000); 
+    if (inBounds(92,175, 225, 100)) fill(#19AF35);
     rect(92,175, 225, 100);
     
-    fill(#B9C0FF);
-    if (inBounds(368,175, 225, 100)) fill(#FFFFFF);
+    fill(#000000);
+    if (inBounds(368,175, 225, 100)) fill(#1944AF);
     rect(368,175, 225, 100);
     
-    fill(#FFB9C7);
-    if (inBounds(643,175, 225, 100)) fill(#FFFFFF);
+    fill(#000000);
+    if (inBounds(643,175, 225, 100)) fill(#CB0003);
     rect(643,175, 225, 100);
+    
+    fill(#FFFFFF);
+    textFont(other, 48);
+    text("Small", 143, 240);
+    text("Medium", 393, 240);
+    text("Large", 695, 240);
   }
   
   //is mouse in bounds of rect?
