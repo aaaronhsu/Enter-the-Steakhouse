@@ -31,6 +31,7 @@ public class MenuPages {
       
       case MAPSELECT_SCREEN: //map size screen
         showMapSelect();
+        mousePressed();
         break;
       
       case GAME_SCREEN: //game screen
@@ -78,17 +79,18 @@ public class MenuPages {
     textFont(otherBig, 66);
     text("Map Size", 340, 100);
     
+    //hover or selected, box should be highlighted (color changes)
     fill(#000000); 
-    if (inBounds(92,175, 225, 100)) fill(#19AF35);
+    if (inBounds(92,175, 225, 100) || mapSize == 'S') fill(#19AF35);
     rect(92,175, 225, 100);
     
     fill(#000000);
-    if (inBounds(368,175, 225, 100)) fill(#1944AF);
+    if (inBounds(368,175, 225, 100) || mapSize == 'M') fill(#1944AF);
     rect(368,175, 225, 100);
     
     fill(#000000);
-    if (inBounds(643,175, 225, 100)) fill(#CB0003);
-    rect(643,175, 225, 100);
+    if (inBounds(643,175, 225, 100) || mapSize == 'L') fill(#CB0003);
+    rect(643,175, 225, 100);  
     
     fill(#FFFFFF);
     textFont(other, 48);
@@ -105,11 +107,14 @@ public class MenuPages {
   
   void mousePressed(){
     if (this.currentPage == MENU_SCREEN && mouseButton == LEFT) {
-      if (inBounds(325,225,300,100)) {
-        this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
-      }
-    
+      if (inBounds(325,225,300,100)) this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
       if (inBounds(325,375,300,100)) this.currentPage = OPTIONS_SCREEN; //clicks on "OPTIONS"
+    }
+    
+    if (this.currentPage == MAPSELECT_SCREEN && mouseButton == LEFT) {
+      if (inBounds(92,175, 225, 100)) this.mapSize = 'S'; //clicks on "Small"
+      if (inBounds(368,175, 225, 100)) this.mapSize = 'M'; //clicks on "Medium"
+      if (inBounds(643,175, 225, 100)) this.mapSize = 'L'; //clicks on "Large"
     }
   }
 }
