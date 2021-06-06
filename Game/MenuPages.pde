@@ -4,6 +4,7 @@ public final int GAME_SCREEN = 2;
 public final int VICTORY_SCREEN = 3;
 public final int DEFEAT_SCREEN = 4;
 public final int OPTIONS_SCREEN = 5;
+public final int PREVIEW_SCREEN = 6;
 
 public final char SMALL = 'S';
 public final char MEDIUM = 'M';
@@ -49,6 +50,10 @@ public class MenuPages {
       case OPTIONS_SCREEN: //options screen
         println("options");
         break;
+        
+      case PREVIEW_SCREEN: //preview screen
+        println("preview");
+        break;
     }
   }
   
@@ -92,11 +97,23 @@ public class MenuPages {
     if (inBounds(643,175, 225, 100) || mapSize == 'L') fill(#CB0003);
     rect(643,175, 225, 100);  
     
+    //boxes for 'Preview' and 'Start'
+    fill(#000000);
+    if (inBounds(200,375, 225, 125)) fill(#05AD36);
+    rect(200,375, 225, 125);
+    
+    fill (#000000);
+    if (inBounds(535,375, 225, 125)) fill(#05AD36);
+    rect(535,375, 225, 125);
+    
     fill(#FFFFFF);
     textFont(other, 48);
     text("Small", 143, 240);
     text("Medium", 393, 240);
     text("Large", 695, 240);
+    text("Preview", 227, 450);
+    text("Start", 595, 450);
+    
   }
   
   //is mouse in bounds of rect?
@@ -115,6 +132,8 @@ public class MenuPages {
       if (inBounds(92,175, 225, 100)) this.mapSize = 'S'; //clicks on "Small"
       if (inBounds(368,175, 225, 100)) this.mapSize = 'M'; //clicks on "Medium"
       if (inBounds(643,175, 225, 100)) this.mapSize = 'L'; //clicks on "Large"
+      if (inBounds(200,375, 225, 125)) this.currentPage = PREVIEW_SCREEN; //clicks on "Preview"
+      if (inBounds(535,375, 225, 125)) this.currentPage = GAME_SCREEN; //clicks on "Start"
     }
   }
 }
