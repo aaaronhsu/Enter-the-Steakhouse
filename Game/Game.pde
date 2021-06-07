@@ -51,30 +51,6 @@ public void keyPressed() {
   }
 }
 
-public void keyReleased() {
-  if (menu.currentPage == GAME_SCREEN) {
-    if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
-      p.changeDirection(false);
-    }
-
-    if (keyCode == 9) {
-      map.showMap = false;
-    }
-  }
-}
-
-public void mousePressed() {
-  if (menu.currentPage == GAME_SCREEN) {
-    if (mouseButton == LEFT) p.isShooting = true;
-  }
-}
-
-public void mouseReleased() {
-  if (menu.currentPage == GAME_SCREEN) {
-    if (mouseButton == LEFT) p.isShooting = false;
-  }
-}
-
 public char fetchTile(float x, float y) {
   return this.p.currentRoom.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30));
 }

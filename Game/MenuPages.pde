@@ -16,7 +16,6 @@ public class MenuPages {
   
   MenuPages(int currentPage) {
     this.currentPage = currentPage;
-    
   }
   
   public void draw() {
@@ -33,12 +32,6 @@ public class MenuPages {
       
       case GAME_SCREEN: //game screen
         showGame();
-
-        mousePressed();
-        mouseReleased();
-
-        keyPressed();
-        keyReleased();
 
         checkGameState(); // checks if player has won/lost
         break;
@@ -122,10 +115,17 @@ public class MenuPages {
   void showGame(){
     //load game
     p.currentRoom.draw();
-  
-    p.move();
+    
+    if (mousePressed) changePlayerShooting();
     p.draw();
+    mouseReleased();
+    
+    keyPressed();
+    keyReleased();
+    p.move();
+    
     map.draw();
+    
   }
 
   void checkGameState() {
@@ -175,14 +175,18 @@ public class MenuPages {
         this.currentPage = GAME_SCREEN;
       }
     }
-    
+  }
+  
+  void changePlayerShooting(){
     if (this.currentPage == GAME_SCREEN) {
-      if (mouseButton == LEFT) p.isShooting = true;
+      if (mouseButton == LEFT) {
+        p.isShooting = true;
+      }
+      
     }
   }
 
   void mouseReleased() {
-
     if (this.currentPage == GAME_SCREEN) {
       if (mouseButton == LEFT) p.isShooting = false;
     }
@@ -219,4 +223,5 @@ public class MenuPages {
       }
     }
   }
+
 }
