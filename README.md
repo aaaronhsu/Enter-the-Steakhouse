@@ -84,3 +84,5 @@
 
 ### 6/6
 **Aaron**: Moved floor generation to menu page.
+
+**Yayiing**: Added cow pixel art; fixed color scheme for map selection page
