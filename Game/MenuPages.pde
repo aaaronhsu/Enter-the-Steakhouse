@@ -12,7 +12,7 @@ public final char LARGE = 'L';
 
 public class MenuPages {
   int currentPage;
-  char mapSize;
+  int mapSize;
   
   //delete/move?
   String[] monster = loadStrings("cowpixel.txt"); //visual display
@@ -187,18 +187,22 @@ public class MenuPages {
         switch (this.mapSize) {
           case 0:
             map = new Floor(7, 10); // generates a map that is 7 to 10 rooms large
+            println("generating small");
           case 1:
             map = new Floor(10, 15); // generates a map that is 10 to 15 rooms large
+            println("generating med");
           case 2:
             map = new Floor(15, 20); // generates a map that is 15 to 20 rooms large
+            println("generating large");
           default:
             map = new Floor(10, 15); // generates a map that is 10 to 15 rooms large
+            println("generating def");
+            println(this.mapSize);
         }
         
         // generates the player
         p = new Player(map.roomList.get(0), 5);
         this.currentPage = GAME_SCREEN; //clicks on "Start"
-        println(this.mapSize);
       }
     }
 
