@@ -25,9 +25,9 @@ public class Player {
     this.speed = speed;
     this.currentRoom = currentRoom;
     
-    this.health = 5;
+    this.health = 10;
     this.money = 0;
-    this.blanks = 2;
+    this.blanks = 6;
     this.keys = 1;
     
     Weapon pistol = new Weapon(15, 5, 1, 0);
@@ -66,7 +66,7 @@ public class Player {
     }
 
     textSize(20);
-    fill(255);
+    fill(0);
     text("You have " + this.money + " moonies", xOffset - 10, yOffset + 60);
   }
   
@@ -219,6 +219,8 @@ public class Player {
 
           this.currentRoom = this.currentRoom.roomW;
           this.currentRoom.visited = true;
+
+          spawnBoss();
         }
         else this.x = 0;
       }
@@ -240,6 +242,8 @@ public class Player {
           
           this.currentRoom = this.currentRoom.roomE;
           this.currentRoom.visited = true;
+
+          spawnBoss();
         }
         else this.x = width;
       }
@@ -261,6 +265,8 @@ public class Player {
           
           this.currentRoom = this.currentRoom.roomN;
           this.currentRoom.visited = true;
+
+          spawnBoss();
         }
         else this.y = 0;
       }
@@ -282,6 +288,8 @@ public class Player {
           
           this.currentRoom = this.currentRoom.roomS;
           this.currentRoom.visited = true;
+
+          spawnBoss();
         }
         else this.y = height;
       }
@@ -326,5 +334,21 @@ public class Player {
     this.blanks--;
     this.currentRoom.removeEnemyProjectiles();
     return true;
+  }
+
+
+  public void spawnBoss() {
+    if (this.currentRoom.roomType.equals("boss")) {
+      if (!((BossRoom)this.currentRoom).bossSpawned) {
+
+        for (Room r : map.roomList) {
+          if (r.roomType.equals("combat")) {
+            if (!r.visited) return;
+          }
+        }
+        ((BossRoom)this.currentRoom).addBossToRoom();
+        ((BossRoom)this.currentRoom).bossSpawned = true;
+      }
+    }
   }
 }
