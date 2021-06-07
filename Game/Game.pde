@@ -19,9 +19,6 @@ public MenuPages menu;
 public void setup() {
   size(960, 540);
   menu = new MenuPages(0);
-  
-  map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
-  p = new Player(map.roomList.get(0), 5);
 }
 
 
@@ -32,14 +29,6 @@ public void draw() {
   noStroke();
   
   menu.draw();
-  
-  // all of these draw statements will be factored out later
-  
-  //p.currentRoom.draw();
-  
-  //p.move();
-  //p.draw();
-  //map.draw();
 }
 
 public void keyPressed() {

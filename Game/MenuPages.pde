@@ -150,6 +150,11 @@ public class MenuPages {
   
   void showGame(){
     //load game
+    p.currentRoom.draw();
+  
+    p.move();
+    p.draw();
+    map.draw();
   }
   
   //is mouse in bounds of rect?
@@ -160,7 +165,25 @@ public class MenuPages {
   
   void mousePressed(){
     if (this.currentPage == MENU_SCREEN && mouseButton == LEFT) {
-      if (inBounds(325,225,300,100)) this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
+      if (inBounds(325,225,300,100)) {
+
+        // generates the map
+        switch (this.mapSize) {
+          case 'S':
+            map = new Floor(7, 10); // generates a map that is 7 to 10 rooms large
+          case 'M':
+            map = new Floor(10, 15); // generates a map that is 10 to 15 rooms large
+          case 'L':
+            map = new Floor(15, 20); // generates a map that is 15 to 20 rooms large
+          default:
+            map = new Floor(10, 15); // generates a map that is 10 to 15 rooms large
+        }
+
+        // generates the player
+        p = new Player(map.roomList.get(0), 5);
+
+        this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
+      }
       if (inBounds(325,375,300,100)) this.currentPage = OPTIONS_SCREEN; //clicks on "OPTIONS"
     }
     
@@ -170,6 +193,10 @@ public class MenuPages {
       if (inBounds(643,175, 225, 100)) this.mapSize = 'L'; //clicks on "Large"
       if (inBounds(200,375, 225, 125)) this.currentPage = PREVIEW_SCREEN; //clicks on "Preview"
       if (inBounds(535,375, 225, 125)) this.currentPage = GAME_SCREEN; //clicks on "Start"
+    }
+
+    if (this.currentPage == GAME_SCREEN) {
+      if (mouseButton == LEFT) p.isShooting = true;
     }
   }
 }
