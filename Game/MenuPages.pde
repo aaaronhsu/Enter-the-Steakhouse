@@ -6,13 +6,9 @@ public final int DEFEAT_SCREEN = 4;
 public final int OPTIONS_SCREEN = 5;
 public final int PREVIEW_SCREEN = 6;
 
-public final char SMALL = 'S';
-public final char MEDIUM = 'M';
-public final char LARGE = 'L';
-
 public class MenuPages {
   int currentPage;
-  char mapSize;
+  int mapSize;
   
   PFont titleFont = loadFont("Luminari-Regular-66.vlw");
   PFont other = loadFont("Athelas-Bold-48.vlw");
@@ -37,15 +33,22 @@ public class MenuPages {
       
       case GAME_SCREEN: //game screen
         showGame();
+
         mousePressed();
+        mouseReleased();
+
+        keyPressed();
+        keyReleased();
+
+        checkGameState(); // checks if player has won/lost
         break;
       
       case VICTORY_SCREEN: //victory screen
-        //println("victory");
+        text("won", 100, 100);
         break;
       
       case DEFEAT_SCREEN:
-        //println("defeat");
+        text("lost", 100, 100);
         break;
         
       case OPTIONS_SCREEN: //options screen
@@ -87,15 +90,15 @@ public class MenuPages {
     
     //hover or selected, box should be highlighted (color changes)
     fill(#000000); 
-    if (inBounds(92,175, 225, 100) || mapSize == 'S') fill(#19AF35);
+    if (inBounds(92,175, 225, 100) || mapSize == 0) fill(#19AF35);
     rect(92,175, 225, 100);
     
     fill(#000000);
-    if (inBounds(368,175, 225, 100) || mapSize == 'M') fill(#1944AF);
+    if (inBounds(368,175, 225, 100) || mapSize == 1) fill(#1944AF);
     rect(368,175, 225, 100);
     
     fill(#000000);
-    if (inBounds(643,175, 225, 100) || mapSize == 'L') fill(#CB0003);
+    if (inBounds(643,175, 225, 100) || mapSize == 2) fill(#CB0003);
     rect(643,175, 225, 100);  
     
     //boxes for 'Preview' and 'Start'
@@ -118,6 +121,20 @@ public class MenuPages {
   
   void showGame(){
     //load game
+    p.currentRoom.draw();
+  
+    p.move();
+    p.draw();
+    map.draw();
+  }
+
+  void checkGameState() {
+    if (p.currentRoom.roomType.equals("boss") && ((BossRoom) p.currentRoom).bossSpawned && p.currentRoom.enemyList.isEmpty()) {
+      this.currentPage = VICTORY_SCREEN;
+    }
+    else if (p.health == 0) {
+      this.currentPage = DEFEAT_SCREEN;
+    }
   }
   
   //is mouse in bounds of rect?
@@ -128,16 +145,78 @@ public class MenuPages {
   
   void mousePressed(){
     if (this.currentPage == MENU_SCREEN && mouseButton == LEFT) {
-      if (inBounds(325,225,300,100)) this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
+      if (inBounds(325,225,300,100)) {
+        this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
+      }
       if (inBounds(325,375,300,100)) this.currentPage = OPTIONS_SCREEN; //clicks on "OPTIONS"
     }
     
     if (this.currentPage == MAPSELECT_SCREEN && mouseButton == LEFT) {
-      if (inBounds(92,175, 225, 100)) this.mapSize = 'S'; //clicks on "Small"
-      if (inBounds(368,175, 225, 100)) this.mapSize = 'M'; //clicks on "Medium"
-      if (inBounds(643,175, 225, 100)) this.mapSize = 'L'; //clicks on "Large"
+      if (inBounds(92,175, 225, 100)) this.mapSize = 0; //clicks on "Small"
+      if (inBounds(368,175, 225, 100)) this.mapSize = 1; //clicks on "Medium"
+      if (inBounds(643,175, 225, 100)) this.mapSize = 2; //clicks on "Large"
+
       if (inBounds(200,375, 225, 125)) this.currentPage = PREVIEW_SCREEN; //clicks on "Preview"
-      if (inBounds(535,375, 225, 125) && mapSize != '\0') this.currentPage = GAME_SCREEN; //clicks on "Start"
+      if (inBounds(535,375, 225, 125) && mapSize != '\0') {//clicks on "Start"; cannot click "Start" unless user chose map size
+        // generates the map
+        switch (this.mapSize) {
+          case 0:
+            map = new Floor(7, 10); // generates a map that is 7 to 10 rooms large
+            println("generating small");
+          case 1:
+            map = new Floor(10, 15); // generates a map that is 10 to 15 rooms large
+            println("generating med");
+          case 2:
+            map = new Floor(15, 20); // generates a map that is 15 to 20 rooms large
+            println("generating large");
+        }
+        // generates the player
+        p = new Player(map.roomList.get(0), 5);
+        this.currentPage = GAME_SCREEN;
+      }
+    }
+    
+    if (this.currentPage == GAME_SCREEN) {
+      if (mouseButton == LEFT) p.isShooting = true;
+    }
+  }
+
+  void mouseReleased() {
+
+    if (this.currentPage == GAME_SCREEN) {
+      if (mouseButton == LEFT) p.isShooting = false;
+    }
+  }
+
+  void keyPressed() {
+    if (this.currentPage == GAME_SCREEN) {
+      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
+        p.changeDirection(true);
+      }
+
+      if (keyCode == 9) {
+        map.showMap = true;
+      }
+
+      if (49 <= keyCode && keyCode <= 52) {
+        p.purchaseItem(keyCode - 49);
+      }
+
+      if (keyCode == 81) {
+        p.useBlank();
+      }
+    }
+  }
+
+  void keyReleased() {
+    if (this.currentPage == GAME_SCREEN) {
+      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
+        p.changeDirection(false);
+      }
+
+      if (keyCode == 9) {
+        map.showMap = false;
+      }
     }
   }
 }
