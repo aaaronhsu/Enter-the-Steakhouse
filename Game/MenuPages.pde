@@ -10,7 +10,7 @@ public class MenuPages {
   int currentPage;
   int mapSize;
   ArrayList<AnimatedCow> cows = new ArrayList<AnimatedCow>();
-  int time = 100; //doesn't change
+  int time = 70; //doesn't change
   int t = 0;
   
   PFont titleFont = loadFont("Luminari-Regular-66.vlw");
@@ -65,8 +65,8 @@ public class MenuPages {
   
   void cowAnimation(){
     if (t == 0) {
-      for (int x = 100; x < width; x += 100) {
-        cows.add(new AnimatedCow(x, 50));
+      for (int x = 100; x < width + 600; x += 250) {
+        cows.add(new AnimatedCow(x, 0));
       }
       t = time;
     }

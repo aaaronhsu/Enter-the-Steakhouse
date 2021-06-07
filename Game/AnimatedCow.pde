@@ -38,8 +38,8 @@ public class AnimatedCow{
   }
   
   void move(){
-    x-=5;
-    y+=5;
+    x-=2;
+    y+=2;
   }
   
   void draw(){
