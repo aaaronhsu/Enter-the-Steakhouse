@@ -89,15 +89,15 @@ public class MenuPages {
     
     //hover or selected, box should be highlighted (color changes)
     fill(#000000); 
-    if (inBounds(92,175, 225, 100) || mapSize == 0) fill(#19AF35);
+    if (inBounds(92,175, 225, 100) || mapSize == 1) fill(#19AF35);
     rect(92,175, 225, 100);
     
     fill(#000000);
-    if (inBounds(368,175, 225, 100) || mapSize == 1) fill(#1944AF);
+    if (inBounds(368,175, 225, 100) || mapSize == 2) fill(#1944AF);
     rect(368,175, 225, 100);
     
     fill(#000000);
-    if (inBounds(643,175, 225, 100) || mapSize == 2) fill(#CB0003);
+    if (inBounds(643,175, 225, 100) || mapSize == 3) fill(#CB0003);
     rect(643,175, 225, 100);  
     
     //boxes for 'Preview' and 'Start'
@@ -152,21 +152,21 @@ public class MenuPages {
     }
     
     if (this.currentPage == MAPSELECT_SCREEN && mouseButton == LEFT) {
-      if (inBounds(92,175, 225, 100)) this.mapSize = 0; //clicks on "Small"
-      if (inBounds(368,175, 225, 100)) this.mapSize = 1; //clicks on "Medium"
-      if (inBounds(643,175, 225, 100)) this.mapSize = 2; //clicks on "Large"
+      if (inBounds(92,175, 225, 100)) this.mapSize = 1; //clicks on "Small"
+      if (inBounds(368,175, 225, 100)) this.mapSize = 2; //clicks on "Medium"
+      if (inBounds(643,175, 225, 100)) this.mapSize = 3; //clicks on "Large"
 
       if (inBounds(200,375, 225, 125)) this.currentPage = PREVIEW_SCREEN; //clicks on "Preview"
-      if (inBounds(535,375, 225, 125) && mapSize != '\0') {//clicks on "Start"; cannot click "Start" unless user chose map size
+      if (inBounds(535,375, 225, 125) && this.mapSize != '\0') {//clicks on "Start"; cannot click "Start" unless user chose map size
         // generates the map
         switch (this.mapSize) {
-          case 0:
+          case 1:
             map = new Floor(7, 10); // generates a map that is 7 to 10 rooms large
             println("generating small");
-          case 1:
+          case 2:
             map = new Floor(10, 15); // generates a map that is 10 to 15 rooms large
             println("generating med");
-          case 2:
+          case 3:
             map = new Floor(15, 20); // generates a map that is 15 to 20 rooms large
             println("generating large");
         }
