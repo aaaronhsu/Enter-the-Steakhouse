@@ -14,9 +14,6 @@ public class MenuPages {
   int currentPage;
   char mapSize;
   
-  //delete/move?
-  String[] monster = loadStrings("cowpixel.txt"); //visual display
-  
   PFont titleFont = loadFont("Luminari-Regular-66.vlw");
   PFont other = loadFont("Athelas-Bold-48.vlw");
   PFont otherBig = loadFont("Athelas-Bold-66.vlw");
@@ -26,39 +23,10 @@ public class MenuPages {
     
   }
   
-  void loadMon(float x, float y, int sideLength){
-    x -= monster[0].length()/2 * sideLength; //centers the monster
-    y -= monster.length/2 * sideLength; 
-    
-    float newX = x;
-      
-    noStroke();
-    for (int i = 0; i < monster.length; i++) {
-      
-      for (int j = 0; j < monster[0].length(); j++) {
-        char colour = monster[i].charAt(j);
-        
-        if (colour == '0') {
-          //space; skip the iteration
-        }
-        else {
-          if (colour == '1') {fill(#000000);} //black
-          else if (colour == '2') {fill(#FFFFFF);} //white
-          else if (colour == '3') {fill(#FF8BA8);} //pink
-          rect(newX,y, sideLength,sideLength);
-        }
-        newX += sideLength;
-      }
-      newX = x; //resets newX
-      y += sideLength;
-    }
-  }
-  
   public void draw() {
     switch (currentPage) {
       case MENU_SCREEN: //menu screen
         showMenu();
-        loadMon(300,300, 7);
         mousePressed();
         break;
       
@@ -169,7 +137,7 @@ public class MenuPages {
       if (inBounds(368,175, 225, 100)) this.mapSize = 'M'; //clicks on "Medium"
       if (inBounds(643,175, 225, 100)) this.mapSize = 'L'; //clicks on "Large"
       if (inBounds(200,375, 225, 125)) this.currentPage = PREVIEW_SCREEN; //clicks on "Preview"
-      if (inBounds(535,375, 225, 125)) this.currentPage = GAME_SCREEN; //clicks on "Start"
+      if (inBounds(535,375, 225, 125) && mapSize != '\0') this.currentPage = GAME_SCREEN; //clicks on "Start"
     }
   }
 }
