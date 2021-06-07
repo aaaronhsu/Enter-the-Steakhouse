@@ -75,14 +75,16 @@ public class MenuPages {
 
         keyPressed();
         keyReleased();
+
+        checkGameState(); // checks if player has won/lost
         break;
       
       case VICTORY_SCREEN: //victory screen
-        //println("victory");
+        text("won", 100, 100);
         break;
       
       case DEFEAT_SCREEN:
-        //println("defeat");
+        text("lost", 100, 100);
         break;
         
       case OPTIONS_SCREEN: //options screen
@@ -160,6 +162,15 @@ public class MenuPages {
     p.move();
     p.draw();
     map.draw();
+  }
+
+  void checkGameState() {
+    if (p.currentRoom.roomType.equals("boss") && ((BossRoom) p.currentRoom).bossSpawned && p.currentRoom.enemyList.isEmpty()) {
+      this.currentPage = VICTORY_SCREEN;
+    }
+    else if (p.health == 0) {
+      this.currentPage = DEFEAT_SCREEN;
+    }
   }
   
   //is mouse in bounds of rect?
