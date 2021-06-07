@@ -9,6 +9,9 @@ public final int PREVIEW_SCREEN = 6;
 public class MenuPages {
   int currentPage;
   int mapSize;
+  ArrayList<AnimatedCow> cows = new ArrayList<AnimatedCow>();
+  int time = 100; //doesn't change
+  int t = 0;
   
   PFont titleFont = loadFont("Luminari-Regular-66.vlw");
   PFont other = loadFont("Athelas-Bold-48.vlw");
@@ -60,8 +63,26 @@ public class MenuPages {
     }
   }
   
+  void cowAnimation(){
+    if (t == 0) {
+      for (int x = 100; x < width; x += 100) {
+        cows.add(new AnimatedCow(x, 50));
+      }
+      t = time;
+    }
+    else {
+      t--;
+    }
+    
+    for (AnimatedCow c : cows) {
+      c.draw();
+    }
+  }
+  
   void showMenu(){
     background(#DE1F1F);
+    
+    cowAnimation();
     
     textFont(titleFont, 66);
     text("Enter the Steakhouse", width/6 - 15, 150);
