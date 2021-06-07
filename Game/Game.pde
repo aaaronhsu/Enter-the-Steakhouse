@@ -32,42 +32,47 @@ public void draw() {
 }
 
 public void keyPressed() {
-  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
-    p.changeDirection(true);
-  }
+  if (menu.currentPage == GAME_SCREEN) {
+    if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
+      p.changeDirection(true);
+    }
 
-  if (keyCode == 9) {
-    map.showMap = true;
-  }
+    if (keyCode == 9) {
+      map.showMap = true;
+    }
 
-  if (49 <= keyCode && keyCode <= 52) {
-    p.purchaseItem(keyCode - 49);
-  }
+    if (49 <= keyCode && keyCode <= 52) {
+      p.purchaseItem(keyCode - 49);
+    }
 
-  if (keyCode == 81) {
-    p.useBlank();
+    if (keyCode == 81) {
+      p.useBlank();
+    }
   }
 }
 
 public void keyReleased() {
-  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
-    p.changeDirection(false);
-  }
+  if (menu.currentPage == GAME_SCREEN) {
+    if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
+      p.changeDirection(false);
+    }
 
-  if (keyCode == 9) {
-    map.showMap = false;
+    if (keyCode == 9) {
+      map.showMap = false;
+    }
   }
 }
 
 public void mousePressed() {
-  // map = new Floor(10, 15);
-  // p = new Player(map.roomList.get(0), 10);
-
-  if (mouseButton == LEFT) p.isShooting = true;
+  if (menu.currentPage == GAME_SCREEN) {
+    if (mouseButton == LEFT) p.isShooting = true;
+  }
 }
 
 public void mouseReleased() {
-  if (mouseButton == LEFT) p.isShooting = false;
+  if (menu.currentPage == GAME_SCREEN) {
+    if (mouseButton == LEFT) p.isShooting = false;
+  }
 }
 
 public char fetchTile(float x, float y) {

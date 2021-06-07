@@ -69,7 +69,12 @@ public class MenuPages {
       
       case GAME_SCREEN: //game screen
         showGame();
+
         mousePressed();
+        mouseReleased();
+
+        keyPressed();
+        keyReleased();
         break;
       
       case VICTORY_SCREEN: //victory screen
@@ -197,6 +202,45 @@ public class MenuPages {
 
     if (this.currentPage == GAME_SCREEN) {
       if (mouseButton == LEFT) p.isShooting = true;
+    }
+  }
+
+  void mouseReleased() {
+
+    if (this.currentPage == GAME_SCREEN) {
+      if (mouseButton == LEFT) p.isShooting = false;
+    }
+  }
+
+  void keyPressed() {
+    if (this.currentPage == GAME_SCREEN) {
+      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
+        p.changeDirection(true);
+      }
+
+      if (keyCode == 9) {
+        map.showMap = true;
+      }
+
+      if (49 <= keyCode && keyCode <= 52) {
+        p.purchaseItem(keyCode - 49);
+      }
+
+      if (keyCode == 81) {
+        p.useBlank();
+      }
+    }
+  }
+
+  void keyReleased() {
+    if (this.currentPage == GAME_SCREEN) {
+      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
+        p.changeDirection(false);
+      }
+
+      if (keyCode == 9) {
+        map.showMap = false;
+      }
     }
   }
 }
