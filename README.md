@@ -88,4 +88,6 @@
 **Yayiing**: Added cow pixel art; fixed color scheme for map selection page
 
 ### 6/7
+**Aaron**: Chest room created and fixed the generation of different sized floors.
+
 **Yaying**: Added scrolling cow animation in menu page
