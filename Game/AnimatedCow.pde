@@ -38,7 +38,6 @@ public class AnimatedCow{
   }
   
   void move(){
-    x-=2;
     y+=2;
   }
   

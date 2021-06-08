@@ -10,7 +10,8 @@ public class MenuPages {
   int currentPage;
   int mapSize;
   ArrayList<AnimatedCow> cows = new ArrayList<AnimatedCow>();
-  int time = 70; //doesn't change
+  ArrayList<AnimatedCow> reMOOvecows = new ArrayList<AnimatedCow>();
+  int time = 100; //doesn't change
   int t = 0;
   
   PFont titleFont = loadFont("Luminari-Regular-66.vlw");
@@ -65,8 +66,8 @@ public class MenuPages {
   
   void cowAnimation(){
     if (t == 0) {
-      for (int x = 100; x < width + 600; x += 250) {
-        cows.add(new AnimatedCow(x, 0));
+      for (int x = 100; x < width; x += 250) {
+        cows.add(new AnimatedCow(x, -20));
       }
       t = time;
     }
@@ -76,6 +77,11 @@ public class MenuPages {
     
     for (AnimatedCow c : cows) {
       c.draw();
+      if (c.y > height+50) reMOOvecows.add(c);
+      println(cows.size());
+    }
+    for (AnimatedCow c : reMOOvecows) {
+      cows.remove(c);
     }
   }
   
@@ -84,6 +90,9 @@ public class MenuPages {
     
     cowAnimation();
     
+    fill(#DE1F1F);
+    rect(120,80,720,100);
+    fill(0);
     textFont(titleFont, 66);
     text("Enter the Steakhouse", width/6 - 15, 150);
     
