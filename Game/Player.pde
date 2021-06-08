@@ -1,4 +1,4 @@
-public class Player {
+public class Player { //bugs:use Q once, all blanks are used up???
   float x, y, speed;
   boolean[] direction;
   
@@ -62,18 +62,18 @@ public class Player {
       drawHeart(xOffset + (i * 35), yOffset, 2);
     }
     for (int i = 0; i < this.blanks; i++) {
-      drawBlank(xOffset + (i * 35), yOffset + 30, 2);
+      drawBlank(xOffset + (i * 40), yOffset + 30, 1);
     }
 
     textSize(20);
     fill(0);
-    text("You have " + this.money + " moonies", xOffset - 10, yOffset + 60);
+    text("You have " + this.money + " moonies", xOffset - 10, yOffset + 70);
   }
   
   void drawHeart(float x, float y, int sideLength){
     String[] colour = loadStrings("heart.txt");
     
-    x -= colour[0].length()/2 * sideLength; //centers the monster
+    x -= colour[0].length()/2 * sideLength; //centers the heart
     y -= colour.length/2 * sideLength; 
     
     float newX = x;
@@ -102,8 +102,38 @@ public class Player {
   }
 
   void drawBlank(float x, float y, int sideLength) {
-    fill(0, 0, 255);
-    ellipse(x, y, 15, 15);
+    String[] colour = loadStrings("milk.txt");
+    
+    x -= colour[0].length()/2 * sideLength; //centers the blank (milk carton)
+    y -= colour.length/2 * sideLength; 
+    
+    float newX = x;
+      
+    noStroke();
+    for (int i = 0; i < colour.length; i++) {
+      
+      for (int j = 0; j < colour[0].length(); j++) {
+        char c = colour[i].charAt(j);
+        
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (c == '1') {fill(#000000);} //black
+          else if (c == '2') {fill(#FFFFFF);} //white
+          else if (c == '3') {fill(#9DEBFF);} //cyan blue
+          else if (c == '4') {fill(#9DFFF1);} 
+          else if (c == '5') {fill(#95C4FF);} //light blue 
+          else if (c == '6') {fill(#7491FF);} //
+          else if (c == '7') {fill(#524DFF);} //dark blue
+          else if (c == '8') {fill(#FCF2CC);} //beige
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
   }
   
   public void move() {
@@ -302,11 +332,11 @@ public class Player {
       case WKEY:
         direction[NORTH] = moving;
         break;
-      case RKEY:
-        direction[SOUTH] = moving;
+      case DKEY:
+        direction[EAST] = moving;
         break;
       case SKEY:
-        direction[EAST] = moving;
+        direction[SOUTH] = moving;
         break;
       case AKEY:
         direction[WEST] = moving;
