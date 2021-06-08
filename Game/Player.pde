@@ -67,10 +67,13 @@ public class Player {
     for (int i = 0; i < this.blanks; i++) {
       drawBlank(xOffset + (i * 35), yOffset + 30, 2);
     }
+    for (int i = 0; i < this.keys; i++) {
+      drawKey(xOffset + (i * 35), yOffset + 60, 2);
+    }
 
     textSize(20);
     fill(0);
-    text("You have " + this.money + " moonies", xOffset - 10, yOffset + 60);
+    text("You have " + this.money + " moonies", xOffset - 10, yOffset + 90);
   }
   
   void drawHeart(float x, float y, int sideLength){
@@ -107,6 +110,11 @@ public class Player {
   void drawBlank(float x, float y, int sideLength) {
     if (this.blankCooldown == 0) fill(0, 0, 255);
     else fill(0, 0, 255, 100);
+    ellipse(x, y, 15, 15);
+  }
+
+  void drawKey(float x, float y, int sideLength) {
+    fill(101, 67, 33);
     ellipse(x, y, 15, 15);
   }
   
@@ -352,6 +360,17 @@ public class Player {
         }
         ((BossRoom)this.currentRoom).addBossToRoom();
         ((BossRoom)this.currentRoom).bossSpawned = true;
+      }
+    }
+  }
+  
+  public void openChest() {
+    if (this.currentRoom.roomType.equals("chest")) {
+      if (!((ChestRoom)this.currentRoom).chestOpened) {
+        if (p.keys > 0) {
+          p.keys--;
+          ((ChestRoom)this.currentRoom).openChest();
+        }
       }
     }
   }

@@ -289,8 +289,8 @@ public class Floor {
     }
     else {
       // a chest room should generate here but for now another combat
-      generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
-      numCombatRooms++;
+      generatedRoom = new ChestRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+      numChestRooms++;
     }
     
     return generatedRoom;
@@ -332,10 +332,11 @@ public class Floor {
       else if (rm.roomType.equals("start")) fill(255, 255, 255, opacity);
       else if (rm.roomType.equals("boss")) fill(10, opacity);
       else if (rm.roomType.equals("shop")) fill(255, 255, 0, opacity);
+      else if (rm.roomType.equals("chest")) fill(101, 67, 33, opacity);
       
-      if (rm.visited == false) {
-        fill(150, 150, 150, opacity);
-      }
+      // if (rm.visited == false) {
+      //   fill(150, 150, 150, opacity);
+      // }
 
       
       rect(x * roomPos, y * roomPos, roomSize, roomSize);

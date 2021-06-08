@@ -60,7 +60,7 @@ public class Room {
     if (roomType.equals("shop")) {
       this.roomBlueprint = loadStrings("shopRoom.txt");
     }
-    else if (roomType.equals("boss")) {
+    else if (roomType.equals("boss") || roomType.equals("chest")) {
       this.roomBlueprint = loadStrings("room6.txt");
     }
     else {
