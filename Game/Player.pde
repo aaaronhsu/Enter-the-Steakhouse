@@ -108,42 +108,50 @@ public class Player { //bugs:use Q once, all blanks are used up???
   }
 
   void drawBlank(float x, float y, int sideLength) {
-    //String[] colour = loadStrings("milk.txt");
+    String[] colour = loadStrings("milk.txt");
     
-    //x -= colour[0].length()/2 * sideLength; //centers the blank (milk carton)
-    //y -= colour.length/2 * sideLength; 
+    x -= colour[0].length()/2 * sideLength; //centers the blank (milk carton)
+    y -= colour.length/2 * sideLength; 
     
-    //float newX = x;
+    float newX = x;
       
-    //noStroke();
-    //for (int i = 0; i < colour.length; i++) {
+    noStroke();
+    for (int i = 0; i < colour.length; i++) {
       
-    //  for (int j = 0; j < colour[0].length(); j++) {
-    //    char c = colour[i].charAt(j);
+      for (int j = 0; j < colour[0].length(); j++) {
+        char c = colour[i].charAt(j);
         
-    //    if (c == '0') {
-    //      //space; skip the iteration
-    //    }
-    //    else {
-    //      if (c == '1') {fill(#000000);} //black
-    //      else if (c == '2') {fill(#FFFFFF);} //white
-    //      else if (c == '3') {fill(#9DEBFF);} //cyan blue
-    //      else if (c == '4') {fill(#9DFFF1);} 
-    //      else if (c == '5') {fill(#95C4FF);} //light blue 
-    //      else if (c == '6') {fill(#7491FF);} //
-    //      else if (c == '7') {fill(#524DFF);} //dark blue
-    //      else if (c == '8') {fill(#FCF2CC);} //beige
-    //      rect(newX,y, sideLength,sideLength);
-    //    }
-    //    newX += sideLength;
-    //  }
-    //  newX = x; //resets newX
-    //  y += sideLength;
-    //}
-    
-    if (this.blankCooldown == 0) fill(0, 0, 255);
-    else fill(0, 0, 255, 100);
-    ellipse(x, y, 15, 15);
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (this.blankCooldown == 0) {
+            if (c == '1') {fill(#000000);} //black
+            else if (c == '2') {fill(#FFFFFF);} //white
+            else if (c == '3') {fill(#9DEBFF);} //cyan blue
+            else if (c == '4') {fill(#9DFFF1);} 
+            else if (c == '5') {fill(#95C4FF);} //light blue 
+            else if (c == '6') {fill(#7491FF);} //
+            else if (c == '7') {fill(#524DFF);} //dark blue
+            else if (c == '8') {fill(#FCF2CC);} //beige
+          }
+          else { //change the alpha to show user that blank was used
+            if (c == '1') {fill(#000000,100);} //black
+            else if (c == '2') {fill(#FFFFFF,100);} //white
+            else if (c == '3') {fill(#9DEBFF,100);} //cyan blue
+            else if (c == '4') {fill(#9DFFF1,100);} 
+            else if (c == '5') {fill(#95C4FF,100);} //light blue 
+            else if (c == '6') {fill(#7491FF,100);} //
+            else if (c == '7') {fill(#524DFF,100);} //dark blue
+            else if (c == '8') {fill(#FCF2CC,100);} //beige
+          }
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
   }
 
   void drawKey(float x, float y, int sideLength) {
