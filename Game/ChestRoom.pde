@@ -5,6 +5,10 @@ public class ChestRoom extends Room {
   
   ChestRoom(Room previousRoom, int direction, int x, int y, int chanceToGenerateRoom) {
     super(previousRoom, direction, "chest", x, y, chanceToGenerateRoom);
+
+    int itemType = (int) random(2);
+
+    item = new Item(0, true, itemType); // generates either health or a blank
   }
 
   public void draw() {
