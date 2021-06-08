@@ -30,7 +30,7 @@ public class Player {
     this.blanks = 2;
     this.keys = 1;
     
-    Weapon pistol = new Weapon(15, 5, 1, 0);
+    Weapon pistol = new Weapon(15, 5, 1, PISTOL);
     this.weaponList = new ArrayList();
     this.weaponList.add(pistol);
     this.currentWeapon = pistol;
@@ -68,6 +68,13 @@ public class Player {
     textSize(20);
     fill(255);
     text("You have " + this.money + " moonies", xOffset - 10, yOffset + 60);
+    fill(0, 0, 255);
+    for (int i = 0; i < this.blanks; i++) {
+      ellipse(xOffset + (i * 50), yOffset + 45, 30, 30);
+    }
+
+    fill(0);
+    text("You have " + money + " moonies", xOffset - 10, yOffset + 80);
   }
   
   void drawHeart(float x, float y, int sideLength){

@@ -270,6 +270,7 @@ public class Floor {
   
   // generates a random room in the given direction, from the coordinates of the previous room
   public Room generateRoom(Room previousRoom, int direction, int x, int y, int chanceToGenerateRoom) {
+<<<<<<< HEAD
     int roomType = (int) random(100);
     
     Room generatedRoom = new Room(100); // will be reinitialized
@@ -291,6 +292,23 @@ public class Floor {
       // a chest room should generate here but for now another combat
       generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
       numCombatRooms++;
+=======
+    int randomRoom = (int) random(100);
+    Room generatedRoom = new Room(100); // will be reinitialized
+
+    if (randomRoom < 80) {
+      numCombatRooms++;
+      generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+
+    }
+    else if (randomRoom < 100 && numShopRooms == 0) {
+      numShopRooms++;
+      generatedRoom = new ShopRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
+    }
+    else {
+      numChestRooms++;
+      // generate chest room
+>>>>>>> 03df7e4c8967efb4d61ba8dd7e7c2ea96cae9432
     }
     
     return generatedRoom;

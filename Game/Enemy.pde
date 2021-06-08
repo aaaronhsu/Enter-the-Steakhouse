@@ -2,9 +2,14 @@ public final int MEATCLEAVER = 0;
 public final int STOVE = 1;
 public final int GARDENER = 2;
 
+
 public final int BOSS = 10;
 
 public class Enemy {
+
+public final int BOSS = 3;
+
+public abstract class Enemy {
   float x, y;
   int health, contactDamage;
   //for monster's hit box
@@ -15,6 +20,7 @@ public class Enemy {
   int timeUntilRecalculate = 20;
 
   int enemyType;
+  int type;
   
   Enemy(float x, float y, int health, int contactDamage, int type) {
     this.x = x;
@@ -22,6 +28,8 @@ public class Enemy {
     this.health = health;
     this.contactDamage = contactDamage;
     this.enemyType = type;
+
+    this.type = type;
   }
   
   public void draw() {
@@ -53,7 +61,7 @@ public class Enemy {
   }
 
   private void aStar() {
-    if (p.x < 10 || p.y < 10 || p.x > width - 10 || p.y > height - 10) return;
+    if (p.x < 40 || p.y < 40 || p.x > width - 40 || p.y > height - 40) return;
 
     int movementSpeed = 1;
     Queue<Tile> pq = new PriorityQueue();
@@ -74,6 +82,7 @@ public class Enemy {
 
     while (!pq.isEmpty()) {
       Tile currentTile = pq.poll();
+      if (currentTile.x < 40 || currentTile.y < 40 || currentTile.x > width - 40 || currentTile.y > height - 40) return;
       if (visited.size() > 5000) break;
 
 
