@@ -3,7 +3,7 @@ public final int MAPSELECT_SCREEN = 1;
 public final int GAME_SCREEN = 2;
 public final int VICTORY_SCREEN = 3;
 public final int DEFEAT_SCREEN = 4;
-public final int OPTIONS_SCREEN = 5;
+public final int CONTROLS_SCREEN = 5;
 public final int PREVIEW_SCREEN = 6;
 
 public class MenuPages {
@@ -54,8 +54,8 @@ public class MenuPages {
         text("lost", 100, 100);
         break;
         
-      case OPTIONS_SCREEN: //options screen
-        println("options");
+      case CONTROLS_SCREEN: //controls screen
+        showControls();
         break;
         
       case PREVIEW_SCREEN: //preview screen
@@ -107,7 +107,7 @@ public class MenuPages {
     fill(#FFFFFF);
     textFont(other, 48);
     text("START", 398, 288);
-    text("OPTIONS", 370, 440);
+    text("CONTROLS", 345, 440);
   }
   
   void showMapSelect(){
@@ -157,6 +157,15 @@ public class MenuPages {
     map.draw();
     
   }
+  
+  void showControls(){
+    background(0);
+    
+    textFont(otherBig, 66);
+    text("Controls", 350, 100);
+    
+    textFont(other, 48);
+  }
 
   void checkGameState() {
     if (p.currentRoom.roomType.equals("boss") && ((BossRoom) p.currentRoom).bossSpawned && p.currentRoom.enemyList.isEmpty()) {
@@ -178,7 +187,7 @@ public class MenuPages {
       if (inBounds(325,225,300,100)) {
         this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
       }
-      if (inBounds(325,375,300,100)) this.currentPage = OPTIONS_SCREEN; //clicks on "OPTIONS"
+      if (inBounds(325,375,300,100)) this.currentPage = CONTROLS_SCREEN; //clicks on "CONTROLS"
     }
     
     if (this.currentPage == MAPSELECT_SCREEN && mouseButton == LEFT) {
