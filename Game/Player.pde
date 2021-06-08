@@ -355,4 +355,15 @@ public class Player {
       }
     }
   }
+  
+  public void openChest() {
+    if (this.currentRoom.roomType.equals("chest")) {
+      if (!((ChestRoom)this.currentRoom).chestOpened) {
+        if (p.keys > 0) {
+          p.keys--;
+          ((ChestRoom)this.currentRoom).openChest();
+        }
+      }
+    }
+  }
 }

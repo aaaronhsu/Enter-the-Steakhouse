@@ -11,6 +11,16 @@ public class ChestRoom extends Room {
     item = new Item(0, true, itemType); // generates either health or a blank
   }
 
+  public void openChest() {
+    chestOpened = true;
+    if (item.type == HEALTH) {
+      p.health++;
+    }
+    else if (item.type == BLANK) {
+      p.blanks++;
+    }
+  }
+
   public void draw() {
     super.draw();
 
