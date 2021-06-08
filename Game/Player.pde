@@ -1,4 +1,4 @@
-public class Player { //bugs:use Q once, all blanks are used up???
+public class Player { //bugs: use Q, don't move, all blanks slowly end up being used
   float x, y, speed;
   boolean[] direction;
   
@@ -65,15 +65,15 @@ public class Player { //bugs:use Q once, all blanks are used up???
       drawHeart(xOffset + (i * 35), yOffset, 2);
     }
     for (int i = 0; i < this.blanks; i++) {
-      drawBlank(xOffset + (i * 40), yOffset + 30, 1);
+      drawBlank(xOffset + (i * 40), yOffset + 32, 1);
     }
     for (int i = 0; i < this.keys; i++) {
-      drawKey(xOffset + (i * 35), yOffset + 60, 2);
+      drawKey(xOffset + (i * 35), yOffset + 67, 2);
     }
 
     textSize(20);
     fill(0);
-    text("You have " + this.money + " moonies", xOffset - 10, yOffset + 90);
+    text("You have " + this.money + " moonies", xOffset - 10, yOffset + 100);
   }
   
   void drawHeart(float x, float y, int sideLength){
@@ -155,8 +155,35 @@ public class Player { //bugs:use Q once, all blanks are used up???
   }
 
   void drawKey(float x, float y, int sideLength) {
-    fill(101, 67, 33);
-    ellipse(x, y, 15, 15);
+    String[] colour = loadStrings("coin.txt");
+    
+    x -= colour[0].length()/2 * sideLength; //centers the key
+    y -= colour.length/2 * sideLength; 
+    
+    float newX = x;
+      
+    noStroke();
+    for (int i = 0; i < colour.length; i++) {
+      
+      for (int j = 0; j < colour[0].length(); j++) {
+        char c = colour[i].charAt(j);
+        
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (c == '1') {fill(#000000);} //black
+          else if (c == '2') {fill(#FFFFFF);} //white
+          else if (c == '3') {fill(#FEFF12);} //bright yellow
+          else if (c == '4') {fill(#FFE02E);} //cheese yellow
+          else if (c == '5') {fill(#B6B909);} //dirty yellow
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
   }
   
   public void move() {
