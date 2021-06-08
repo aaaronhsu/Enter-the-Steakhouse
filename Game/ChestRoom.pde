@@ -14,13 +14,14 @@ public class ChestRoom extends Room {
   public void draw() {
     super.draw();
 
-    if (chestOpened) {
+    if (!chestOpened) {
       drawChest();
     }
   }
 
   // YAYING PLEASE DRAW THE CHEST AT THE CENTER OF THE ROOM
   public void drawChest() {
-
+    fill(0);
+    text("THERE IS A CHEST HERE", 200, 200);
   }
 }

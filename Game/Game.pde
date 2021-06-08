@@ -64,6 +64,10 @@ public void draw() {
         p.blankCooldown = 100;
         p.useBlank();
       }
+
+      if (keyCode == 70) {
+        p.openChest();
+      }
     }
   }
 
