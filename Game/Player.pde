@@ -15,6 +15,7 @@ public class Player {
   
   boolean isFalling = false;
   boolean isShooting = false;
+  int blankCooldown = 0;
   int[] fallDirection = null; // gets updated with the direction the player was moving in when they were isFalling
   
   Player(Room currentRoom, float speed) {
@@ -48,6 +49,8 @@ public class Player {
 
     // draw the weapon
     currentWeapon.draw();
+
+    if (p.blankCooldown > 0) p.blankCooldown--;
 
     if (currentWeapon.timeUntilNextShot > 0) currentWeapon.timeUntilNextShot--;
     if (isShooting) shootProjectile();
@@ -102,7 +105,8 @@ public class Player {
   }
 
   void drawBlank(float x, float y, int sideLength) {
-    fill(0, 0, 255);
+    if (this.blankCooldown == 0) fill(0, 0, 255);
+    else fill(0, 0, 255, 100);
     ellipse(x, y, 15, 15);
   }
   
