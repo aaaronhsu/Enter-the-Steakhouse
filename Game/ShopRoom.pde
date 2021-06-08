@@ -61,7 +61,7 @@ public class ShopRoom extends Room {
     int xText = 500;
     int yText = 250;
 
-    fill(255);
+    fill(0);
     text("This is the stuff on sale", xText, yText);
 
     for (int i = 0; i < items.length; i++) {
