@@ -209,9 +209,8 @@ public class Room {
             break;
           
           case TELEPORTER:
-            // by default, a telepoter will be the ground
-            if (this.hasTeleporter) fill(0, 0, 255);
-            else fill(200, 250, 200);
+            // all teleporters will be treated as the ground
+            fill(200, 250, 200);
             break;
           
           case CORRIDOR:

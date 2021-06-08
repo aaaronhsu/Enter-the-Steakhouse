@@ -327,12 +327,6 @@ public class Floor {
         fill(0);
       }
 
-      // renders teleporter on map
-      // if (rm.hasTeleporter && rm.visited) {
-      //   fill(0, 0, 255, opacity);
-      //   ellipse(x * roomPos + corridor, y * roomPos + corridor, roomSize / 2.5, roomSize / 2.5);
-      // }
-
 
       if (rm.roomType.equals("combat")) fill(200, 0, 0, opacity);
       else if (rm.roomType.equals("start")) fill(255, 255, 255, opacity);
