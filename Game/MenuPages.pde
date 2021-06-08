@@ -202,12 +202,19 @@ public class MenuPages {
           case 1:
             map = new Floor(7, 10); // generates a map that is 7 to 10 rooms large
             println("generating small");
+            break;
           case 2:
             map = new Floor(10, 15); // generates a map that is 10 to 15 rooms large
             println("generating med");
+            break;
           case 3:
             map = new Floor(15, 20); // generates a map that is 15 to 20 rooms large
             println("generating large");
+            break;
+          default:
+            map = new Floor(10, 15); // generates a map that is 10 to 15 rooms large
+            println("generating def");
+            break;
         }
         // generates the player
         p = new Player(map.roomList.get(0), 5);

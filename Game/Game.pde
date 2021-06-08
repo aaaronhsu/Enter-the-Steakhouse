@@ -60,8 +60,13 @@ public void draw() {
         p.purchaseItem(keyCode - 49);
       }
 
-      if (keyCode == 81) {
+      if (keyCode == 81 && p.blankCooldown == 0) {
+        p.blankCooldown = 100;
         p.useBlank();
+      }
+
+      if (keyCode == 70) {
+        p.openChest();
       }
     }
   }
