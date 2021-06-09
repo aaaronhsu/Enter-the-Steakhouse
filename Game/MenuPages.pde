@@ -158,8 +158,9 @@ public class MenuPages {
   void showControls(){
     background(0);
     
+    fill(#FFFFFF);
     textFont(otherBig, 66);
-    text("Controls", 350, 100);
+    text("Controls", 350, 90);
     
     fill(#FFFFFF);
     if (inBounds(40,40, 140,70)) fill(#05AD36);
@@ -172,7 +173,7 @@ public class MenuPages {
     fill(#FFFFFF);
     textFont(other, 48); //WASD + Q (blanks) + ?(open chests)
     ellipse(70,165, 15, 15);
-    text("W - Up", 100, 180);
+    text("W - Up", 100, 170);
     ellipse(70,230, 15, 15);
     text("A - Left", 100, 240);
     ellipse(70,295, 15, 15);
@@ -183,6 +184,28 @@ public class MenuPages {
     text("Q - Use Blank", 100, 450);
     ellipse(70,505, 15, 15);
     text("? - Open Chest", 100, 520);
+    
+    //map <--> room colors
+    fill(200, 0, 0, 240);
+    ellipse(490,165, 15, 15);
+    text("Red - CombatRoom", 520, 170);
+    
+    fill(255, 255, 255, 240);
+    ellipse(490,230, 15, 15);
+    text("White - StartRoom", 520, 240);
+    
+    fill(#B2B2B2);
+    ellipse(490,295, 15, 15);
+    text("Black - BossRoom", 520, 310);
+    
+    fill(255, 255, 0, 240);
+    ellipse(490,365, 15, 15);
+    text("Yellow - ShopRoom", 520, 380);
+    
+    fill(101, 67, 33, 240);
+    ellipse(490,435, 15, 15);
+    text("Brown - ChestRoom", 520, 450);
+    
   }
 
   void checkGameState() {
