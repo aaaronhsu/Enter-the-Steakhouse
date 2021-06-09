@@ -54,7 +54,7 @@ public class Item {
       case KEY:
         return "KEY FOR " + this.cost + " MOONIES";
       case WEAPON:
-        return "WEAPON FOR " + this.cost + " MOONIES";
+        return "SHOTGUN FOR " + this.cost + " MOONIES";
     }
 
     return "IDK WHAT ITEM THIS IS";
