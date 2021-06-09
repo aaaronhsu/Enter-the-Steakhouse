@@ -18,6 +18,11 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   int blankCooldown = 0;
   int[] fallDirection = null; // gets updated with the direction the player was moving in when they were isFalling
   
+  String[] heartColour = loadStrings("heart.txt");
+  String[] blankColour = loadStrings("milk.txt");
+  String[] keyColour = loadStrings("key.txt");
+  String[] coinColour = loadStrings("coin.txt");
+  
   Player(Room currentRoom, float speed) {
     this.x = width / 2;
     this.y = height / 2;
@@ -42,6 +47,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     
     // draw the player
     ellipseMode(CENTER);
+    //drawPlayer(this.x, this. y, radius);
     ellipse(this.x, this.y, radius * 2, radius * 2);
     
     // draw the player info
@@ -54,6 +60,10 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
 
     if (currentWeapon.timeUntilNextShot > 0) currentWeapon.timeUntilNextShot--;
     if (isShooting) shootProjectile();
+  }
+  
+  public void drawPlayer(float x, float y, int sideLength){
+    
   }
 
   public void drawPlayerInfo() {
@@ -77,18 +87,16 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   }
   
   void drawHeart(float x, float y, int sideLength){
-    String[] colour = loadStrings("heart.txt");
-    
-    x -= colour[0].length()/2 * sideLength; //centers the heart
-    y -= colour.length/2 * sideLength; 
+    x -= heartColour[0].length()/2 * sideLength; //centers the heart
+    y -= heartColour.length/2 * sideLength; 
     
     float newX = x;
       
     noStroke();
-    for (int i = 0; i < colour.length; i++) {
+    for (int i = 0; i < heartColour.length; i++) {
       
-      for (int j = 0; j < colour[0].length(); j++) {
-        char c = colour[i].charAt(j);
+      for (int j = 0; j < heartColour[0].length(); j++) {
+        char c = heartColour[i].charAt(j);
         
         if (c == '0') {
           //space; skip the iteration
@@ -108,18 +116,16 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   }
 
   void drawBlank(float x, float y, int sideLength) {
-    String[] colour = loadStrings("milk.txt");
-    
-    x -= colour[0].length()/2 * sideLength; //centers the blank (milk carton)
-    y -= colour.length/2 * sideLength; 
+    x -= blankColour[0].length()/2 * sideLength; //centers the blank (milk carton)
+    y -= blankColour.length/2 * sideLength; 
     
     float newX = x;
       
     noStroke();
-    for (int i = 0; i < colour.length; i++) {
+    for (int i = 0; i < blankColour.length; i++) {
       
-      for (int j = 0; j < colour[0].length(); j++) {
-        char c = colour[i].charAt(j);
+      for (int j = 0; j < blankColour[0].length(); j++) {
+        char c = blankColour[i].charAt(j);
         
         if (c == '0') {
           //space; skip the iteration
@@ -155,18 +161,16 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   }
   
   void drawKey(float x, float y, int sideLength){
-    String[] colour = loadStrings("key.txt");
-    
-    x -= colour[0].length()/2 * sideLength; //centers the key
-    y -= colour.length/2 * sideLength; 
+    x -= keyColour[0].length()/2 * sideLength; //centers the key
+    y -= keyColour.length/2 * sideLength; 
     
     float newX = x;
       
     noStroke();
-    for (int i = 0; i < colour.length; i++) {
+    for (int i = 0; i < keyColour.length; i++) {
       
-      for (int j = 0; j < colour[0].length(); j++) {
-        char c = colour[i].charAt(j);
+      for (int j = 0; j < keyColour[0].length(); j++) {
+        char c = keyColour[i].charAt(j);
         
         if (c == '0') {
           //space; skip the iteration
@@ -188,18 +192,16 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   }
 
   void drawCoin(float x, float y, int sideLength) {
-    String[] colour = loadStrings("coin.txt");
-    
-    x -= colour[0].length()/2 * sideLength; //centers the coin
-    y -= colour.length/2 * sideLength; 
+    x -= coinColour[0].length()/2 * sideLength; //centers the coin
+    y -= coinColour.length/2 * sideLength; 
     
     float newX = x;
       
     noStroke();
-    for (int i = 0; i < colour.length; i++) {
+    for (int i = 0; i < coinColour.length; i++) {
       
-      for (int j = 0; j < colour[0].length(); j++) {
-        char c = colour[i].charAt(j);
+      for (int j = 0; j < coinColour[0].length(); j++) {
+        char c = coinColour[i].charAt(j);
         
         if (c == '0') {
           //space; skip the iteration
