@@ -15,7 +15,6 @@ public class Boss extends Enemy{
   Boss(float x, float y, int health, int contactDamage) {
     super(x, y, health, contactDamage, BOSS);
     this.maxHealth = health;
-    super(x, y, health, contactDamage, BOSS);  
   }
   
   void loadBoss(float x, float y, int sideLength){

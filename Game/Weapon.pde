@@ -1,5 +1,5 @@
-public final int PISTOL = 10;
-public final int SHOTGUN = 11;
+public final int PISTOL = 0;
+public final int SHOTGUN = 1;
 
 public class Weapon extends Item {
   float projectileSize, damage;
@@ -7,13 +7,9 @@ public class Weapon extends Item {
   int type;
   
   Weapon(int fireRate, float projectileSize, float damage, int type) {
-<<<<<<< HEAD
     
     super(type * 10, false, WEAPON);
 
-=======
-    super(15, true, type);
->>>>>>> 03df7e4c8967efb4d61ba8dd7e7c2ea96cae9432
     this.fireRate = fireRate;
     this.projectileSize = projectileSize;
     this.damage = damage;
