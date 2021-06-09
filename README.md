@@ -94,4 +94,4 @@
 
 ### 6/8
 
-**Yaying**: Added chest, key, blank, and coin pixel arts + added them into respective files. 
+**Yaying**: Added chest, key, blank, and coin pixel arts + loaded them into respective files; added controls screen, win + lose screen with reset button
