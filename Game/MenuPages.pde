@@ -24,7 +24,8 @@ public class MenuPages {
   public void draw() {
     switch (currentPage) {
       case MENU_SCREEN: //menu screen
-        showMenu();
+        showWin();
+        //showMenu();
         mousePressed();
         break;
       
@@ -46,7 +47,7 @@ public class MenuPages {
         break;
       
       case VICTORY_SCREEN: //victory screen
-        text("won", 100, 100);
+        showWin();
         break;
       
       case DEFEAT_SCREEN:
@@ -174,14 +175,19 @@ public class MenuPages {
     textFont(other, 48); //WASD + Q (blanks) + ?(open chests)
     ellipse(70,165, 15, 15);
     text("W - Up", 100, 170);
+    
     ellipse(70,230, 15, 15);
     text("A - Left", 100, 240);
+    
     ellipse(70,295, 15, 15);
     text("S - Down", 100, 310);
+    
     ellipse(70,365, 15, 15);
     text("D - Right", 100, 380);
+    
     ellipse(70,435, 15, 15);
     text("Q - Use Blank", 100, 450);
+    
     ellipse(70,505, 15, 15);
     text("? - Open Chest", 100, 520);
     
@@ -205,7 +211,19 @@ public class MenuPages {
     fill(101, 67, 33, 240);
     ellipse(490,435, 15, 15);
     text("Brown - ChestRoom", 520, 450);
+  }
+  
+  void showWin(){
+    background(#7FFC86);
     
+    textFont(otherBig, 66);
+    fill(0);
+    text("Yatta!", 390, 100);
+    textFont(other, 48);
+    text("You beat that evil CEO making bank", 88, 180);
+    text("off your blood, sweat, tears, and meat!", 75, 230);
+    text("How about taking revenge", 210, 300);
+    text("and making a human flesh factory? :)", 88, 350);
   }
 
   void checkGameState() {
