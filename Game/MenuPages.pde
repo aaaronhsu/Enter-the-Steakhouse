@@ -170,9 +170,19 @@ public class MenuPages {
     text("Back", 71, 85);
     
     fill(#FFFFFF);
-    textFont(other, 48);
-    ellipse(70,200, 30, 30);
-    text("W - Up", 100, 200);
+    textFont(other, 48); //WASD + Q (blanks) + ?(open chests)
+    ellipse(70,165, 15, 15);
+    text("W - Up", 100, 180);
+    ellipse(70,230, 15, 15);
+    text("A - Left", 100, 240);
+    ellipse(70,295, 15, 15);
+    text("S - Down", 100, 310);
+    ellipse(70,365, 15, 15);
+    text("D - Right", 100, 380);
+    ellipse(70,435, 15, 15);
+    text("Q - Use Blank", 100, 450);
+    ellipse(70,505, 15, 15);
+    text("? - Open Chest", 100, 520);
   }
 
   void checkGameState() {
