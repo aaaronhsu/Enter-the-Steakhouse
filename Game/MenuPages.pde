@@ -24,7 +24,7 @@ public class MenuPages {
   public void draw() {
     switch (currentPage) {
       case MENU_SCREEN: //menu screen
-        showWin();
+        showLoss();
         //showMenu();
         mousePressed();
         break;
@@ -51,7 +51,7 @@ public class MenuPages {
         break;
       
       case DEFEAT_SCREEN:
-        text("lost", 100, 100);
+        showLoss();
         break;
         
       case CONTROLS_SCREEN: //controls screen
@@ -224,6 +224,19 @@ public class MenuPages {
     text("off your blood, sweat, tears, and meat!", 75, 230);
     text("How about taking revenge", 210, 300);
     text("and making a human flesh factory? :)", 88, 350);
+  }
+  
+  void showLoss(){
+    background(#FF7979);
+    
+    textFont(otherBig, 66);
+    fill(0);
+    text("Burned!", 360, 100);
+    textFont(other, 44);
+    text("That evil CEO punishes your disobedience", 60, 180);
+    text("by refusing to salt and pepper his steak.", 90, 230);
+    text("How about teaching him a lesson & seasoning", 30, 300);
+    text("him with salt the next time you see him?", 80, 350);
   }
 
   void checkGameState() {
