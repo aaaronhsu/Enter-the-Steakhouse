@@ -24,8 +24,7 @@ public class MenuPages {
   public void draw() {
     switch (currentPage) {
       case MENU_SCREEN: //menu screen
-        showLoss();
-        //showMenu();
+        showMenu();
         mousePressed();
         break;
       
@@ -48,10 +47,12 @@ public class MenuPages {
       
       case VICTORY_SCREEN: //victory screen
         showWin();
+        mousePressed();
         break;
       
       case DEFEAT_SCREEN:
         showLoss();
+        mousePressed();
         break;
         
       case CONTROLS_SCREEN: //controls screen
@@ -224,6 +225,13 @@ public class MenuPages {
     text("off your blood, sweat, tears, and meat!", 75, 230);
     text("How about taking revenge", 210, 300);
     text("and making a human flesh factory? :)", 88, 350);
+    
+    fill(0);
+    if (inBounds(350,410, 250,100)) fill(#0BB409);
+    rect(350,410, 250,100);
+    textFont(other, 48);
+    fill(#FFFFFF);
+    text("Restart", 397, 470);
   }
   
   void showLoss(){
@@ -237,6 +245,13 @@ public class MenuPages {
     text("by refusing to salt and pepper his steak.", 90, 230);
     text("How about teaching him a lesson & seasoning", 30, 300);
     text("him with salt the next time you see him?", 80, 350);
+    
+    fill(0);
+    if (inBounds(350,410, 250,100)) fill(#B40909);
+    rect(350,410, 250,100);
+    textFont(other, 48);
+    fill(#FFFFFF);
+    text("Restart", 397, 470);
   }
 
   void checkGameState() {
@@ -294,6 +309,10 @@ public class MenuPages {
     
     if (this.currentPage == CONTROLS_SCREEN && mouseButton == LEFT) {
       if (inBounds(40,40, 140,70)) this.currentPage = MENU_SCREEN;
+    }
+    
+    if ((this.currentPage == VICTORY_SCREEN || this.currentPage == DEFEAT_SCREEN) && mouseButton == LEFT) {
+      if (inBounds(350,410, 250,100)) this.currentPage = MENU_SCREEN;
     }
   }
 
