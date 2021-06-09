@@ -124,7 +124,11 @@ public class MenuPages {
     if (inBounds(643,175, 225, 100) || mapSize == 3) fill(#CB0003);
     rect(643,175, 225, 100);  
     
-    //box for 'Start'
+    //boxes for 'Back' and 'Start'
+    fill(#000000);
+    if (inBounds(40,40, 140,70)) fill(#05AD36);
+    rect(40,40, 140,70);
+    
     fill (#000000);
     if (inBounds(368,375, 225, 125)) fill(#05AD36);
     rect(368,375, 225, 125);
@@ -135,6 +139,9 @@ public class MenuPages {
     text("Medium", 393, 240);
     text("Large", 695, 240);
     text("Start", 428, 450);
+    
+    textFont(other, 36);
+    text("Back", 70, 85);
   }
   
   void showGame(){
@@ -154,6 +161,8 @@ public class MenuPages {
     text("Controls", 350, 100);
     
     textFont(other, 48);
+    ellipse(70,200, 30, 30);
+    text("W - Up", 100, 200);
   }
 
   void checkGameState() {
@@ -183,7 +192,8 @@ public class MenuPages {
       if (inBounds(92,175, 225, 100)) this.mapSize = 1; //clicks on "Small"
       if (inBounds(368,175, 225, 100)) this.mapSize = 2; //clicks on "Medium"
       if (inBounds(643,175, 225, 100)) this.mapSize = 3; //clicks on "Large"
-
+       
+      if (inBounds(40,40, 140,70)) this.currentPage = MENU_SCREEN;
       if (inBounds(368,375, 225, 125) && this.mapSize != '\0') {//clicks on "Start"; cannot click "Start" unless user chose map size
         // generates the map
         switch (this.mapSize) {
