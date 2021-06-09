@@ -75,9 +75,6 @@
 **Yaying**: Worked on boss attack pattern 3 (random) and 1 (swirl) from Aaron's help.
 
 ### 6/4
-<<<<<<< HEAD
-**Yaying**: Added Menu Page with color-changing buttons upon hover.
-=======
 **Aaron**: Sketched out how the menu pages will look like.
 
 **Yaying**: Added Menu Page with color-changing buttons upon hover.
@@ -87,4 +84,15 @@
 
 ### 6/6
 **Aaron**: Moved floor generation to menu page.
->>>>>>> main
+
+**Yayiing**: Added cow pixel art; fixed color scheme for map selection page
+
+### 6/7
+**Aaron**: Chest room created and fixed the generation of different sized floors.
+
+**Yaying**: Added scrolling cow animation in menu page
+
+### 6/8
+**Aaron**: Weapon types implemented and you can buy a shotgun at the shop.
+
+**Yaying**: Added chest, key, blank, and coin pixel arts + loaded them into respective files; added controls screen, win + lose screen with reset button

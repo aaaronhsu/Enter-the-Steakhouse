@@ -154,6 +154,10 @@ public class Room {
   public void draw() {
 
     drawRoomBlueprint();
+  public void draw() {
+
+    drawRoomBlueprint();
+
 
     for (Enemy e : this.enemyList) {
       e.draw();
@@ -177,8 +181,25 @@ public class Room {
           p.money += 5;
           break;
       }
+
+      switch (e.type) {
+        case MEATCLEAVER:
+          p.money += 2;
+          break;
+        
+        case STOVE:
+          p.money += 1;
+          break;
+
+        case GARDENER:
+          p.money += 3;
+          break;
+      }
+
       e.despawn();
     }
+
+    removeEnemyList.clear();
     
     for (Projectile proj : this.projectileList) { //access every projectile in currentRoom
       proj.draw();

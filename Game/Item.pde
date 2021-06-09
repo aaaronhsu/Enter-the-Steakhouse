@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 public final int HEALTH = 0;
 public final int BLANK = 1;
 public final int KEY = 2;
@@ -58,5 +59,23 @@ public class Item {
     }
 
     return "IDK WHAT ITEM THIS IS";
+
+    this.type = type;
+  }
+
+  public void equip() {
+    if (this.isConsumable) {
+      switch (this.type) {
+        case HEALTHITEM:
+          p.health++;
+          break;
+        case BLANKITEM:
+          p.blanks++;
+          break;
+      }
+    }
+    else {
+      // is a weapon
+    }
   }
 }
