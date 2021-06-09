@@ -36,7 +36,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     this.blanks = 6;
     this.keys = 1;
     
-    Weapon pistol = new Weapon(15, 5, 1, 1);
+    Weapon pistol = new Weapon(15, 5, 1, 0);
     this.currentWeapon = pistol;
   }
   
