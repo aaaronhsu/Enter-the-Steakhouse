@@ -48,7 +48,7 @@ public void draw() {
 
   void keyPressed() {
     if (menu.currentPage == GAME_SCREEN) {
-      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == DKEY) {
+      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
         p.changeDirection(true);
       }
 
@@ -73,7 +73,7 @@ public void draw() {
 
   void keyReleased() {
     if (menu.currentPage == GAME_SCREEN) {
-      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == DKEY) {
+      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
         p.changeDirection(false);
       }
 

@@ -270,7 +270,6 @@ public class Floor {
   
   // generates a random room in the given direction, from the coordinates of the previous room
   public Room generateRoom(Room previousRoom, int direction, int x, int y, int chanceToGenerateRoom) {
-<<<<<<< HEAD
     int roomType = (int) random(100);
     
     Room generatedRoom = new Room(100); // will be reinitialized
@@ -290,25 +289,8 @@ public class Floor {
     }
     else {
       // a chest room should generate here but for now another combat
-      generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
-      numCombatRooms++;
-=======
-    int randomRoom = (int) random(100);
-    Room generatedRoom = new Room(100); // will be reinitialized
-
-    if (randomRoom < 80) {
-      numCombatRooms++;
-      generatedRoom = new CombatRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
-
-    }
-    else if (randomRoom < 100 && numShopRooms == 0) {
-      numShopRooms++;
-      generatedRoom = new ShopRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
-    }
-    else {
+      generatedRoom = new ChestRoom(previousRoom, direction, x, y, chanceToGenerateRoom);
       numChestRooms++;
-      // generate chest room
->>>>>>> 03df7e4c8967efb4d61ba8dd7e7c2ea96cae9432
     }
     
     return generatedRoom;
@@ -345,21 +327,16 @@ public class Floor {
         fill(0);
       }
 
-      // renders teleporter on map
-      // if (rm.hasTeleporter && rm.visited) {
-      //   fill(0, 0, 255, opacity);
-      //   ellipse(x * roomPos + corridor, y * roomPos + corridor, roomSize / 2.5, roomSize / 2.5);
-      // }
-
 
       if (rm.roomType.equals("combat")) fill(200, 0, 0, opacity);
       else if (rm.roomType.equals("start")) fill(255, 255, 255, opacity);
       else if (rm.roomType.equals("boss")) fill(10, opacity);
       else if (rm.roomType.equals("shop")) fill(255, 255, 0, opacity);
+      else if (rm.roomType.equals("chest")) fill(101, 67, 33, opacity);
       
-      if (rm.visited == false) {
-        fill(150, 150, 150, opacity);
-      }
+      // if (rm.visited == false) {
+      //   fill(150, 150, 150, opacity);
+      // }
 
       
       rect(x * roomPos, y * roomPos, roomSize, roomSize);
