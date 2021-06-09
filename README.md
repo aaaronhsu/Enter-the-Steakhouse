@@ -93,6 +93,5 @@
 **Yaying**: Added scrolling cow animation in menu page
 
 ### 6/8
-**Aaron**: Weapon types implemented and you can buy a shotgun at the shop.
 
 **Yaying**: Added chest, key, blank, and coin pixel arts + loaded them into respective files; added controls screen, win + lose screen with reset button
