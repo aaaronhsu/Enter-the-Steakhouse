@@ -43,7 +43,6 @@ public class Item {
       Weapon shotgun = new Weapon(15, 5, 1, 1);
       p.currentWeapon = shotgun;
     }
-    p.weaponList.add((Weapon) this);
   }
 
   public String toString() {

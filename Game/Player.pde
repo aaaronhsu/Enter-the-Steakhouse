@@ -10,7 +10,6 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   int keys;
 
   int radius = 10;
-  ArrayList<Weapon> weaponList;
   Weapon currentWeapon;
   
   boolean isFalling = false;
@@ -38,8 +37,6 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     this.keys = 1;
     
     Weapon pistol = new Weapon(15, 5, 1, 0);
-    this.weaponList = new ArrayList();
-    this.weaponList.add(pistol);
     this.currentWeapon = pistol;
   }
   
