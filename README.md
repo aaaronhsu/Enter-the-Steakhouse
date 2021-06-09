@@ -91,3 +91,7 @@
 **Aaron**: Chest room created and fixed the generation of different sized floors.
 
 **Yaying**: Added scrolling cow animation in menu page
+
+### 6/8
+
+**Yaying**: Added chest, key, blank, and coin pixel arts + added them into respective files. 
