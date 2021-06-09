@@ -22,6 +22,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   String[] blankColour = loadStrings("milk.txt");
   String[] keyColour = loadStrings("key.txt");
   String[] coinColour = loadStrings("coin.txt");
+  String[] cow = loadStrings("cowpixel.txt"); 
   
   Player(Room currentRoom, float speed) {
     this.x = width / 2;
@@ -47,7 +48,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     
     // draw the player
     ellipseMode(CENTER);
-    //drawPlayer(this.x, this. y, radius);
+    //drawPlayer(this.x, this. y, 3);
     ellipse(this.x, this.y, radius * 2, radius * 2);
     
     // draw the player info
@@ -63,7 +64,31 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   }
   
   public void drawPlayer(float x, float y, int sideLength){
+    x -= cow[0].length()/2 * sideLength; //centers the player cow
+    y -= cow.length/2 * sideLength; 
     
+    float newX = x;
+      
+    noStroke();
+    for (int i = 0; i < cow.length; i++) {
+      
+      for (int j = 0; j < cow[0].length(); j++) {
+        char colour = cow[i].charAt(j);
+        
+        if (colour == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (colour == '1') {fill(#000000);} //black
+          else if (colour == '2') {fill(#FFFFFF);} //white
+          else if (colour == '3') {fill(#FF8BA8);} //pink
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
   }
 
   public void drawPlayerInfo() {

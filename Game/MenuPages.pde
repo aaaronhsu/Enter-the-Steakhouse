@@ -4,7 +4,6 @@ public final int GAME_SCREEN = 2;
 public final int VICTORY_SCREEN = 3;
 public final int DEFEAT_SCREEN = 4;
 public final int CONTROLS_SCREEN = 5;
-public final int PREVIEW_SCREEN = 6;
 
 public class MenuPages {
   int currentPage;
@@ -57,10 +56,6 @@ public class MenuPages {
       case CONTROLS_SCREEN: //controls screen
         showControls();
         break;
-        
-      case PREVIEW_SCREEN: //preview screen
-        println("preview");
-        break;
     }
   }
   
@@ -78,7 +73,6 @@ public class MenuPages {
     for (AnimatedCow c : cows) {
       c.draw();
       if (c.y > height+50) reMOOvecows.add(c);
-      println(cows.size());
     }
     for (AnimatedCow c : reMOOvecows) {
       cows.remove(c);
@@ -130,22 +124,17 @@ public class MenuPages {
     if (inBounds(643,175, 225, 100) || mapSize == 3) fill(#CB0003);
     rect(643,175, 225, 100);  
     
-    //boxes for 'Preview' and 'Start'
-    fill(#000000);
-    if (inBounds(200,375, 225, 125)) fill(#05AD36);
-    rect(200,375, 225, 125);
-    
+    //box for 'Start'
     fill (#000000);
-    if (inBounds(535,375, 225, 125)) fill(#05AD36);
-    rect(535,375, 225, 125);
+    if (inBounds(368,375, 225, 125)) fill(#05AD36);
+    rect(368,375, 225, 125);
     
     fill(#FFFFFF);
     textFont(other, 48);
     text("Small", 143, 240);
     text("Medium", 393, 240);
     text("Large", 695, 240);
-    text("Preview", 227, 450);
-    text("Start", 595, 450);
+    text("Start", 428, 450);
   }
   
   void showGame(){
@@ -195,8 +184,7 @@ public class MenuPages {
       if (inBounds(368,175, 225, 100)) this.mapSize = 2; //clicks on "Medium"
       if (inBounds(643,175, 225, 100)) this.mapSize = 3; //clicks on "Large"
 
-      if (inBounds(200,375, 225, 125)) this.currentPage = PREVIEW_SCREEN; //clicks on "Preview"
-      if (inBounds(535,375, 225, 125) && this.mapSize != '\0') {//clicks on "Start"; cannot click "Start" unless user chose map size
+      if (inBounds(368,375, 225, 125) && this.mapSize != '\0') {//clicks on "Start"; cannot click "Start" unless user chose map size
         // generates the map
         switch (this.mapSize) {
           case 1:
