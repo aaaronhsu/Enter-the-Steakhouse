@@ -39,6 +39,10 @@ public class Item {
   }
 
   public void equipWeapon() {
+    if (this.cost == 25) {
+      Weapon shotgun = new Weapon(15, 5, 1, 1);
+      p.currentWeapon = shotgun;
+    }
     p.weaponList.add((Weapon) this);
   }
 
