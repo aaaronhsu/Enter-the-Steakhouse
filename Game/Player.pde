@@ -68,7 +68,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
       drawBlank(xOffset + (i * 40), yOffset + 32, 1);
     }
     for (int i = 0; i < this.keys; i++) {
-      drawKey(xOffset + (i * 35), yOffset + 67, 2);
+      drawKey(xOffset+10 + (i * 48), yOffset + 67, 2);
     }
 
     textSize(20);
@@ -153,11 +153,44 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
       y += sideLength;
     }
   }
-
-  void drawKey(float x, float y, int sideLength) {
-    String[] colour = loadStrings("coin.txt");
+  
+  void drawKey(float x, float y, int sideLength){
+    String[] colour = loadStrings("key.txt");
     
     x -= colour[0].length()/2 * sideLength; //centers the key
+    y -= colour.length/2 * sideLength; 
+    
+    float newX = x;
+      
+    noStroke();
+    for (int i = 0; i < colour.length; i++) {
+      
+      for (int j = 0; j < colour[0].length(); j++) {
+        char c = colour[i].charAt(j);
+        
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (c == '1') {fill(0);} //black
+          else if (c == '2') {fill(#FFFFFF);} //white
+          else if (c == '3') {fill(#FFED21);} //bright yellow
+          else if (c == '4') {fill(#FCD821);} //
+          else if (c == '5') {fill(#FFB012);} //orange
+          else if (c == '5') {fill(#DE9C16);} //brown
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
+  }
+
+  void drawCoin(float x, float y, int sideLength) {
+    String[] colour = loadStrings("coin.txt");
+    
+    x -= colour[0].length()/2 * sideLength; //centers the coin
     y -= colour.length/2 * sideLength; 
     
     float newX = x;
