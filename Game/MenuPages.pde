@@ -55,6 +55,7 @@ public class MenuPages {
         
       case CONTROLS_SCREEN: //controls screen
         showControls();
+        mousePressed();
         break;
     }
   }
@@ -141,7 +142,7 @@ public class MenuPages {
     text("Start", 428, 450);
     
     textFont(other, 36);
-    text("Back", 70, 85);
+    text("Back", 71, 85);
   }
   
   void showGame(){
@@ -160,6 +161,15 @@ public class MenuPages {
     textFont(otherBig, 66);
     text("Controls", 350, 100);
     
+    fill(#FFFFFF);
+    if (inBounds(40,40, 140,70)) fill(#05AD36);
+    rect(40,40, 140,70);
+    
+    fill(0);
+    textFont(other, 36);
+    text("Back", 71, 85);
+    
+    fill(#FFFFFF);
     textFont(other, 48);
     ellipse(70,200, 30, 30);
     text("W - Up", 100, 200);
@@ -182,9 +192,7 @@ public class MenuPages {
   
   void mousePressed(){
     if (this.currentPage == MENU_SCREEN && mouseButton == LEFT) {
-      if (inBounds(325,225,300,100)) {
-        this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
-      }
+      if (inBounds(325,225,300,100)) this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
       if (inBounds(325,375,300,100)) this.currentPage = CONTROLS_SCREEN; //clicks on "CONTROLS"
     }
     
@@ -218,6 +226,10 @@ public class MenuPages {
         p = new Player(map.roomList.get(0), 5);
         this.currentPage = GAME_SCREEN;
       }
+    }
+    
+    if (this.currentPage == CONTROLS_SCREEN && mouseButton == LEFT) {
+      if (inBounds(40,40, 140,70)) this.currentPage = MENU_SCREEN;
     }
   }
 
