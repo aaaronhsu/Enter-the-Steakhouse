@@ -43,12 +43,14 @@ public class ShopRoom extends Room {
     int yText = 250;
 
     fill(0);
-    text("This is the stuff on sale", xText, yText);
+    text("Use buttons (1-4) to purchase items!", xText, yText);
 
     for (int i = 0; i < items.length; i++) {
       yText += 50;
       if (items[i] == null) continue;
-      text(items[i].toString() + " (press " + (i + 1) + " to buy)", xText, yText);
+      text("(" + (i + 1) + ")", xText - 50, yText);
+      items[i].draw(xText, yText);
     }
   }
+
 }

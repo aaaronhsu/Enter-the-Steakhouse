@@ -8,6 +8,12 @@ public class Item {
   boolean isConsumable;
   int type;
 
+  String[] heartColour = loadStrings("heart.txt");
+  String[] blankColour = loadStrings("milk.txt");
+  String[] keyColour = loadStrings("key.txt");
+  String[] coinColour = loadStrings("coin.txt");
+  String[] cow = loadStrings("cowpixel.txt"); 
+
   Item(int cost, boolean isConsumable, int type) {
     this.cost = cost;
     this.isConsumable = isConsumable;
@@ -62,11 +68,11 @@ public class Item {
 
   public void draw(float x, float y) {
     switch (this.type) {
-      case HEART:
+      case HEALTH:
         drawHeart(x, y, 2);
         break;
       case BLANK:
-        drawBlank(x, y, 2);
+        drawBlank(x, y, 1);
         break;
       case KEY:
         drawKey(x, y, 2);
@@ -122,26 +128,15 @@ public class Item {
           //space; skip the iteration
         }
         else {
-          if (this.blankCooldown == 0) {
-            if (c == '1') {fill(#000000);} //black
-            else if (c == '2') {fill(#FFFFFF);} //white
-            else if (c == '3') {fill(#9DEBFF);} //cyan blue
-            else if (c == '4') {fill(#9DFFF1);} 
-            else if (c == '5') {fill(#95C4FF);} //light blue 
-            else if (c == '6') {fill(#7491FF);} //
-            else if (c == '7') {fill(#524DFF);} //dark blue
-            else if (c == '8') {fill(#FCF2CC);} //beige
-          }
-          else { //change the alpha to show user that blank was used
-            if (c == '1') {fill(#000000,100);} //black
-            else if (c == '2') {fill(#FFFFFF,100);} //white
-            else if (c == '3') {fill(#9DEBFF,100);} //cyan blue
-            else if (c == '4') {fill(#9DFFF1,100);} 
-            else if (c == '5') {fill(#95C4FF,100);} //light blue 
-            else if (c == '6') {fill(#7491FF,100);} //
-            else if (c == '7') {fill(#524DFF,100);} //dark blue
-            else if (c == '8') {fill(#FCF2CC,100);} //beige
-          }
+          if (c == '1') {fill(#000000);} //black
+          else if (c == '2') {fill(#FFFFFF);} //white
+          else if (c == '3') {fill(#9DEBFF);} //cyan blue
+          else if (c == '4') {fill(#9DFFF1);} 
+          else if (c == '5') {fill(#95C4FF);} //light blue 
+          else if (c == '6') {fill(#7491FF);} //
+          else if (c == '7') {fill(#524DFF);} //dark blue
+          else if (c == '8') {fill(#FCF2CC);} //beige
+
           rect(newX,y, sideLength,sideLength);
         }
         newX += sideLength;
