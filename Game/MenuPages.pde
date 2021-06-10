@@ -173,7 +173,7 @@ public class MenuPages {
     text("Back", 71, 85);
     
     fill(#FFFFFF);
-    textFont(other, 48); //WASD + Q (blanks) + ?(open chests)
+    textFont(other, 36); //WASD + Q (blanks) + ?(open chests)
     ellipse(70,165, 15, 15);
     text("W - Up", 100, 170);
     
@@ -212,6 +212,10 @@ public class MenuPages {
     fill(101, 67, 33, 240);
     ellipse(490,435, 15, 15);
     text("Brown - ChestRoom", 520, 450);
+
+    fill(#FFFFFF);
+    ellipse(490,505, 15, 15);
+    text("TAB - Show Map", 520, 520);
   }
   
   void showWin(){
