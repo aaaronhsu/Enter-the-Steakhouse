@@ -45,7 +45,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     
     // draw the player
     ellipseMode(CENTER);
-    drawPlayer(this.x, this. y, 3);
+    drawPlayer(this.x, this. y, 2);
     // ellipse(this.x, this.y, radius * 2, radius * 2);
     
     // draw the player info

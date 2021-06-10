@@ -66,7 +66,7 @@ public class MeatCleaver extends Enemy{
     else {
       for (int i = 0; i < monster.length; i++) {
         
-        for (int j = monster[0].length(); j >= 0; j--) {
+        for (int j = monster[0].length() - 1; j >= 0; j--) {
           char colour = monster[i].charAt(j);
           
           if (colour == '0') {
