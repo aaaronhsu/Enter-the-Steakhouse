@@ -11,7 +11,6 @@ public class Item {
   String[] heartColour = loadStrings("heart.txt");
   String[] blankColour = loadStrings("milk.txt");
   String[] keyColour = loadStrings("key.txt");
-  String[] coinColour = loadStrings("coin.txt");
   String[] cow = loadStrings("cowpixel.txt"); 
 
   Item(int cost, boolean isConsumable, int type) {
@@ -168,36 +167,6 @@ public class Item {
           else if (c == '4') {fill(#FCD821);} //
           else if (c == '5') {fill(#FFB012);} //orange
           else if (c == '5') {fill(#DE9C16);} //brown
-          rect(newX,y, sideLength,sideLength);
-        }
-        newX += sideLength;
-      }
-      newX = x; //resets newX
-      y += sideLength;
-    }
-  }
-
-  void drawCoin(float x, float y, int sideLength) {
-    x -= coinColour[0].length()/2 * sideLength; //centers the coin
-    y -= coinColour.length/2 * sideLength; 
-    
-    float newX = x;
-      
-    noStroke();
-    for (int i = 0; i < coinColour.length; i++) {
-      
-      for (int j = 0; j < coinColour[0].length(); j++) {
-        char c = coinColour[i].charAt(j);
-        
-        if (c == '0') {
-          //space; skip the iteration
-        }
-        else {
-          if (c == '1') {fill(#000000);} //black
-          else if (c == '2') {fill(#FFFFFF);} //white
-          else if (c == '3') {fill(#FEFF12);} //bright yellow
-          else if (c == '4') {fill(#FFE02E);} //cheese yellow
-          else if (c == '5') {fill(#B6B909);} //dirty yellow
           rect(newX,y, sideLength,sideLength);
         }
         newX += sideLength;
