@@ -17,11 +17,11 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   int blankCooldown = 0;
   int[] fallDirection = null; // gets updated with the direction the player was moving in when they were isFalling
   
-  public String[] heartColour = loadStrings("heart.txt");
-  public String[] blankColour = loadStrings("milk.txt");
-  public String[] keyColour = loadStrings("key.txt");
-  public String[] coinColour = loadStrings("coin.txt");
-  public String[] cow = loadStrings("cowpixel.txt"); 
+  String[] heartColour = loadStrings("heart.txt");
+  String[] blankColour = loadStrings("milk.txt");
+  String[] keyColour = loadStrings("key.txt");
+  String[] coinColour = loadStrings("coin.txt");
+  String[] cow = loadStrings("cowpixel.txt"); 
   
   Player(Room currentRoom, float speed) {
     this.x = width / 2;
