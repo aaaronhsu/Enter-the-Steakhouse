@@ -60,7 +60,7 @@ public class Room {
     if (roomType.equals("shop")) {
       this.roomBlueprint = loadStrings("shopRoom.txt");
     }
-    else if (roomType.equals("boss")) {
+    else if (roomType.equals("boss") || roomType.equals("chest")) {
       this.roomBlueprint = loadStrings("room6.txt");
     }
     else {
@@ -209,9 +209,8 @@ public class Room {
             break;
           
           case TELEPORTER:
-            // by default, a telepoter will be the ground
-            if (this.hasTeleporter) fill(0, 0, 255);
-            else fill(200, 250, 200);
+            // all teleporters will be treated as the ground
+            fill(200, 250, 200);
             break;
           
           case CORRIDOR:
