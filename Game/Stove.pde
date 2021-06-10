@@ -38,25 +38,50 @@ public class Stove extends Enemy{
     float newX = x;
       
     noStroke();
-    for (int i = 0; i < monster.length; i++) {
-      
-      for (int j = 0; j < monster[0].length(); j++) {
-        char colour = monster[i].charAt(j);
+
+    if (this.x < p.x) {
+      for (int i = 0; i < monster.length; i++) {
         
-        if (colour == '0') {
-          //space; skip the iteration
+        for (int j = 0; j < monster[0].length(); j++) {
+          char colour = monster[i].charAt(j);
+          
+          if (colour == '0') {
+            //space; skip the iteration
+          }
+          else {
+            if (colour == '1') {fill(#3D3B7E);} //blue, darkest
+            else if (colour == '2') {fill(#424EB9);}
+            else if (colour == '3') {fill(#5D77F2);}
+            else if (colour == '4') {fill(#5EE6FC);} //blue, lightest
+            rect(newX,y, sideLength,sideLength);
+          }
+          newX += sideLength;
         }
-        else {
-          if (colour == '1') {fill(#3D3B7E);} //blue, darkest
-          else if (colour == '2') {fill(#424EB9);}
-          else if (colour == '3') {fill(#5D77F2);}
-          else if (colour == '4') {fill(#5EE6FC);} //blue, lightest
-          rect(newX,y, sideLength,sideLength);
-        }
-        newX += sideLength;
+        newX = x; //resets newX
+        y += sideLength;
       }
-      newX = x; //resets newX
-      y += sideLength;
+    }
+    else {
+      for (int i = 0; i < monster.length; i++) {
+      
+        for (int j = monster[0].length() - 1; j >= 0; j--) {
+          char colour = monster[i].charAt(j);
+          
+          if (colour == '0') {
+            //space; skip the iteration
+          }
+          else {
+            if (colour == '1') {fill(#3D3B7E);} //blue, darkest
+            else if (colour == '2') {fill(#424EB9);}
+            else if (colour == '3') {fill(#5D77F2);}
+            else if (colour == '4') {fill(#5EE6FC);} //blue, lightest
+            rect(newX,y, sideLength,sideLength);
+          }
+          newX += sideLength;
+        }
+        newX = x; //resets newX
+        y += sideLength;
+      }
     }
   }
   
