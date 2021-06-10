@@ -26,7 +26,7 @@ public class Milkshake extends Enemy{
         
         float dx = projectileSpeed * cos(angle+i+j);
         float dy = projectileSpeed * sin(angle+i+j);
-        Projectile p1 = new Projectile(x, y, dx, dy, 15, c, projectileDamage, 200, 3, false);
+        Projectile p1 = new Projectile(x, y, dx, dy, 12, c, projectileDamage, 200, 3, false);
         p.currentRoom.projectileList.add(p1);
       }
     }
