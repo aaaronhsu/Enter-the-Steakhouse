@@ -45,8 +45,8 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     
     // draw the player
     ellipseMode(CENTER);
-    //drawPlayer(this.x, this. y, 3);
-    ellipse(this.x, this.y, radius * 2, radius * 2);
+    drawPlayer(this.x, this. y, 2);
+    // ellipse(this.x, this.y, radius * 2, radius * 2);
     
     // draw the player info
     drawPlayerInfo();
@@ -61,31 +61,55 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   }
   
   public void drawPlayer(float x, float y, int sideLength){
+
     x -= cow[0].length()/2 * sideLength; //centers the player cow
     y -= cow.length/2 * sideLength; 
     
     float newX = x;
-      
     noStroke();
-    for (int i = 0; i < cow.length; i++) {
-      
-      for (int j = 0; j < cow[0].length(); j++) {
-        char colour = cow[i].charAt(j);
-        
-        if (colour == '0') {
-          //space; skip the iteration
+    
+    if (mouseX < this.x) {
+      for (int i = 0; i < cow.length; i++) {
+        for (int j = 0; j < cow[0].length(); j++) {
+          char colour = cow[i].charAt(j);
+          
+          if (colour == '0') {
+            //space; skip the iteration
+          }
+          else {
+            if (colour == '1') {fill(#000000);} //black
+            else if (colour == '2') {fill(#FFFFFF);} //white
+            else if (colour == '3') {fill(#FF8BA8);} //pink
+            rect(newX,y, sideLength,sideLength);
+          }
+          newX += sideLength;
         }
-        else {
-          if (colour == '1') {fill(#000000);} //black
-          else if (colour == '2') {fill(#FFFFFF);} //white
-          else if (colour == '3') {fill(#FF8BA8);} //pink
-          rect(newX,y, sideLength,sideLength);
-        }
-        newX += sideLength;
+        newX = x; //resets newX
+        y += sideLength;
       }
-      newX = x; //resets newX
-      y += sideLength;
     }
+    else {
+      for (int i = 0; i < cow.length; i++) {
+        for (int j = cow[0].length() - 1; j >= 0; j--) {
+          char colour = cow[i].charAt(j);
+          
+          if (colour == '0') {
+            //space; skip the iteration
+          }
+          else {
+            if (colour == '1') {fill(#000000);} //black
+            else if (colour == '2') {fill(#FFFFFF);} //white
+            else if (colour == '3') {fill(#FF8BA8);} //pink
+            rect(newX,y, sideLength,sideLength);
+          }
+          newX += sideLength;
+        }
+        newX = x; //resets newX
+        y += sideLength;
+      }
+    }
+      
+    
   }
 
   public void drawPlayerInfo() {
