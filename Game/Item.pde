@@ -82,6 +82,23 @@ public class Item {
     }
   }
 
+  public void draw(float x, float y, boolean larger) {
+    switch (this.type) {
+      case HEALTH:
+        drawHeart(x, y, 3);
+        break;
+      case BLANK:
+        drawBlank(x, y, 2);
+        break;
+      case KEY:
+        drawKey(x, y, 3);
+        break;
+      case WEAPON:
+        drawWeapon(x, y, 3);
+        break;
+    }
+  }
+
   void drawHeart(float x, float y, int sideLength){
     x -= heartColour[0].length()/2 * sideLength; //centers the heart
     y -= heartColour.length/2 * sideLength; 

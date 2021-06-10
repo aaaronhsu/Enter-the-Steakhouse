@@ -65,7 +65,7 @@ public class ChestRoom extends Room {
   }
 
   public void drawItem() {
-    if (!itemPickedUp) item.draw(width / 2, height / 2);
+    if (!itemPickedUp) item.draw(width / 2, height / 2, true);
   }
 
   public void checkIfItemPickedUp() {
