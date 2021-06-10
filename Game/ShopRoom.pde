@@ -47,6 +47,7 @@ public class ShopRoom extends Room {
     fill(0);
     text("Use buttons (1-4) to purchase items!", xText, yText + 10);
 
+    textSize(24);
     for (int i = 0; i < items.length; i++) {
       yText += 50;
       if (items[i] == null) continue;
