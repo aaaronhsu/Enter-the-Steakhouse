@@ -39,27 +39,54 @@ public class Gardener extends Enemy{
     float newX = x;
       
     noStroke();
-    for (int i = 0; i < monster.length; i++) {
-      
-      for (int j = 0; j < monster[0].length(); j++) {
-        char colour = monster[i].charAt(j);
+
+    if (this.x < p.x) {
+      for (int i = 0; i < monster.length; i++) {
         
-        if (colour == '0') {
-          //space; skip the iteration
+        for (int j = 0; j < monster[0].length(); j++) {
+          char colour = monster[i].charAt(j);
+          
+          if (colour == '0') {
+            //space; skip the iteration
+          }
+          else {
+            if (colour == '1') {fill(#126F17);} //green, darkest
+            else if (colour == '2') {fill(#0DBF17);}
+            else if (colour == '3') {fill(#86FF99);} //green, lightest
+            else if (colour == '4') {fill(#A7630F);} //brown
+            else if (colour == '5') {fill(#030303);} //black
+            else if (colour == '6') {fill(#FFF97E);} //yellow
+            rect(newX,y, sideLength,sideLength);
+          }
+          newX += sideLength;
         }
-        else {
-          if (colour == '1') {fill(#126F17);} //green, darkest
-          else if (colour == '2') {fill(#0DBF17);}
-          else if (colour == '3') {fill(#86FF99);} //green, lightest
-          else if (colour == '4') {fill(#A7630F);} //brown
-          else if (colour == '5') {fill(#030303);} //black
-          else if (colour == '6') {fill(#FFF97E);} //yellow
-          rect(newX,y, sideLength,sideLength);
-        }
-        newX += sideLength;
+        newX = x; //resets newX
+        y += sideLength;
       }
-      newX = x; //resets newX
-      y += sideLength;
+    }
+    else {
+      for (int i = 0; i < monster.length; i++) {
+      
+        for (int j = monster[0].length() - 1; j >= 0; j--) {
+          char colour = monster[i].charAt(j);
+          
+          if (colour == '0') {
+            //space; skip the iteration
+          }
+          else {
+            if (colour == '1') {fill(#126F17);} //green, darkest
+            else if (colour == '2') {fill(#0DBF17);}
+            else if (colour == '3') {fill(#86FF99);} //green, lightest
+            else if (colour == '4') {fill(#A7630F);} //brown
+            else if (colour == '5') {fill(#030303);} //black
+            else if (colour == '6') {fill(#FFF97E);} //yellow
+            rect(newX,y, sideLength,sideLength);
+          }
+          newX += sideLength;
+        }
+        newX = x; //resets newX
+        y += sideLength;
+      }
     }
   }
   
