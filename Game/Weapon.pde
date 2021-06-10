@@ -51,14 +51,17 @@ public class Weapon extends Item {
       
       case SHOTGUN:
         projectileSpeed = 5;
+        
+        dx = projectileSpeed * cos(angle);
+        dy = projectileSpeed * sin(angle);
 
-        proj = new Projectile(p.x, p.y, projectileSpeed * cos(angle), projectileSpeed * sin(angle), 5, #FFFFFF, 1, -1, 2, true);
-        Projectile proj2 = new Projectile(p.x, p.y, projectileSpeed * cos(angle + 0.1), projectileSpeed * sin(angle + 0.1), 3, #FFFFFF, 1, -1, 1, true);
-        Projectile proj3 = new Projectile(p.x, p.y, projectileSpeed * cos(angle - 0.1), projectileSpeed * sin(angle - 0.1), 3, #FFFFFF, 1, -1, 1, true);
+        for (int i = 0; i < 5; i++) {
+          for (int j = 0; j < 5; j++) {
+            proj = new Projectile(p.x + i * 10, p.y + j * 10, dx, dy, 5, #FFFFFF, 1, -1, 2, true);
+            p.currentRoom.projectileList.add(proj);
+          }
+        }
 
-        p.currentRoom.projectileList.add(proj);
-        p.currentRoom.projectileList.add(proj2);
-        p.currentRoom.projectileList.add(proj3);
         break;
     }
   }
