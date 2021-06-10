@@ -111,6 +111,19 @@ public class Boss extends Enemy{
         }
       }
     }
+      
+      //if (this.x != width/2 && this.y != height/2) { //centers boss if not centered
+      //    float xDist = width/2 - this.x; //x-dist btwn center of room and boss's x-cord
+      //    float yDist = height/2 - this.y;
+      //    float angle = atan2(yDist, xDist);
+          
+      //    float dx = 50 * cos(angle); //temporary speed of boss
+      //    float dy = 50 * sin(angle);
+          
+      //    x += dx;
+      //    y += dy;
+      //  }
+      //  else {
   }
   
   void teleportDisplay(){ //some animation of teleporting?

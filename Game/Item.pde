@@ -39,10 +39,7 @@ public class Item {
   }
 
   public void equipWeapon() {
-    if (this.cost == 25) {
-      Weapon shotgun = new Weapon(15, 5, 1, 1);
-      p.currentWeapon = shotgun;
-    }
+    p.weaponList.add((Weapon) this);
   }
 
   public String toString() {
@@ -54,7 +51,7 @@ public class Item {
       case KEY:
         return "KEY FOR " + this.cost + " MOONIES";
       case WEAPON:
-        return "SHOTGUN FOR " + this.cost + " MOONIES";
+        return "WEAPON FOR " + this.cost + " MOONIES";
     }
 
     return "IDK WHAT ITEM THIS IS";

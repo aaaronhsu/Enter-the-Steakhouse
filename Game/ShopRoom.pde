@@ -8,7 +8,7 @@ public class ShopRoom extends Room {
   }
 
   public void addItemsToRoom() {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
       int itemType = (int) random(3);
 
       switch (itemType) {
@@ -26,8 +26,6 @@ public class ShopRoom extends Room {
           break;
       }
     }
-
-    items[3] = new Item(25, false, WEAPON);
   }
 
   public void purchaseItem(int itemIndex) {

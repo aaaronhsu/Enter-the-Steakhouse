@@ -19,6 +19,10 @@ public MenuPages menu;
 public void setup() {
   size(960, 540);
   menu = new MenuPages(0);
+  
+
+  map = new Floor(10, 15); // should not be in setup, will be called by separate function when game starts
+  p = new Player(map.roomList.get(0), 5);
 }
 
 
@@ -27,61 +31,64 @@ public void draw() {
   background(255, 255, 255);
 
   noStroke();
-  
   menu.draw();
+  
+  // all of these draw statements will be factored out later
+
+  if (p.currentRoom.roomType.equals("boss") && ((BossRoom) p.currentRoom).bossSpawned && p.currentRoom.enemyList.isEmpty()) {
+    fill(0);
+    text("YOU WON", 300, 300);
+  }
+  else if (p.health == 0) {
+    fill(0);
+    text("YOU LOST", 300, 300);
+  }
+  else {
+    p.currentRoom.draw();
+    p.move();
+    p.draw();
+    map.draw();
+  }
 }
 
-  void mousePressed(){
-    if (menu.currentPage == GAME_SCREEN) {
-      if (mouseButton == LEFT) {
-        p.isShooting = true;
-      }
-      
-    }
+public void keyPressed() {
+  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
+    p.changeDirection(true);
   }
 
-  void mouseReleased() {
-    if (menu.currentPage == GAME_SCREEN) {
-      if (mouseButton == LEFT) p.isShooting = false;
-    }
+  if (keyCode == 9) {
+    map.showMap = true;
   }
 
-  void keyPressed() {
-    if (menu.currentPage == GAME_SCREEN) {
-      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == DKEY) {
-        p.changeDirection(true);
-      }
-
-      if (keyCode == 9) {
-        map.showMap = true;
-      }
-
-      if (49 <= keyCode && keyCode <= 52) {
-        p.purchaseItem(keyCode - 49);
-      }
-
-      if (keyCode == 81 && p.blankCooldown == 0) {
-        p.blankCooldown = 100;
-        p.useBlank();
-      }
-
-      if (keyCode == 70) {
-        p.openChest();
-      }
-    }
+  if (49 <= keyCode && keyCode <= 52) {
+    p.purchaseItem(keyCode - 49);
   }
 
-  void keyReleased() {
-    if (menu.currentPage == GAME_SCREEN) {
-      if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == DKEY) {
-        p.changeDirection(false);
-      }
-
-      if (keyCode == 9) {
-        map.showMap = false;
-      }
-    }
+  if (keyCode == 81) {
+    p.useBlank();
   }
+}
+
+public void keyReleased() {
+  if (keyCode == WKEY || keyCode == AKEY || keyCode == SKEY || keyCode == RKEY) {
+    p.changeDirection(false);
+  }
+
+  if (keyCode == 9) {
+    map.showMap = false;
+  }
+}
+
+public void mousePressed() {
+  // map = new Floor(10, 15);
+  // p = new Player(map.roomList.get(0), 10);
+
+  if (mouseButton == LEFT) p.isShooting = true;
+}
+
+public void mouseReleased() {
+  if (mouseButton == LEFT) p.isShooting = false;
+}
 
 public char fetchTile(float x, float y) {
   return this.p.currentRoom.roomBlueprint[(int)(y / 30)].charAt((int)(x / 30));
