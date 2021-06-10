@@ -420,7 +420,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
 
           this.currentRoom.roomS.constructCorridors();
 
-          this.x = this.currentRoom.roomS.corridorN[1] * 30 + 15;
+          this.x = this.currentRoom.roomS.corridorN[1] * 30 + 15; //NULLPOINTER EXCEPTION
           this.y = this.currentRoom.roomS.corridorN[0] * 30 + 1;
           
           this.currentRoom = this.currentRoom.roomS;

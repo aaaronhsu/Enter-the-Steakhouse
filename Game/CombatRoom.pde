@@ -23,7 +23,7 @@ public class CombatRoom extends Room {
             x = (int) random(960);
             y = (int) random(540);
           }
-
+          
           MeatCleaver m = new MeatCleaver(x, y, 1, 1);
 
           this.enemyList.add(m);
