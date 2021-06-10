@@ -190,7 +190,7 @@ public class MenuPages {
     text("Q - Use Blank", 100, 450);
     
     ellipse(70,505, 15, 15);
-    text("? - Open Chest", 100, 520);
+    text("F - Open Chest", 100, 520);
     
     //map <--> room colors
     fill(200, 0, 0, 240);
