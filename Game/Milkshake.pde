@@ -12,7 +12,7 @@ public class Milkshake extends Enemy{
   int monHeight = monster.length*4 + 100;
   
   Milkshake(float x, float y, int health, int contactDamage) {
-    super(x, y, health, contactDamage, GARDENER);  
+    super(x, y, health, contactDamage, MILKSHAKE);  
   }
   
   public void shootProjectile() {
