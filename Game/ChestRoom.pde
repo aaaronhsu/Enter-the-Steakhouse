@@ -1,6 +1,7 @@
 public class ChestRoom extends Room {
 
   boolean chestOpened = false;
+  boolean itemPickedUp = false;
   Item item;
   
   ChestRoom(Room previousRoom, int direction, int x, int y, int chanceToGenerateRoom) {
@@ -13,12 +14,6 @@ public class ChestRoom extends Room {
 
   public void openChest() {
     chestOpened = true;
-    if (item.type == HEALTH) {
-      p.health++;
-    }
-    else if (item.type == BLANK) {
-      p.blanks++;
-    }
   }
 
   public void draw() {
@@ -26,6 +21,10 @@ public class ChestRoom extends Room {
 
     if (!chestOpened) {
       drawChest();
+    }
+    else {
+      checkIfItemPickedUp();
+      drawItem();
     }
   }
 
@@ -62,6 +61,23 @@ public class ChestRoom extends Room {
       }
       newX = chestX; //resets newX
       chestY += 5;
+    }
+  }
+
+  public void drawItem() {
+    if (!itemPickedUp) item.draw(width / 2, height / 2, true);
+  }
+
+  public void checkIfItemPickedUp() {
+    if (abs(p.x - width / 2) < 50 && abs(p.y - height / 2) < 50 && !itemPickedUp) {
+      if (item.type == HEALTH) {
+      p.health++;
+      }
+      else if (item.type == BLANK) {
+        p.blanks++;
+      }
+
+      itemPickedUp = true;
     }
   }
 }

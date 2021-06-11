@@ -83,7 +83,13 @@ public class Boss extends Enemy{
     }
   }
   
-  public void shootProjectile(int mode) {
+  public void shootProjectile() {
+
+    int mode = (int) random(3) + 1;
+
+    if (this.health > 20 && mode == 3) mode = 1;
+    
+
     if (mode == 1) { //swirl pattern
      
      for (float i = 0; i <= radians(325); i += radians(36)) {
@@ -104,7 +110,7 @@ public class Boss extends Enemy{
       
       float angle = atan2(yDist, xDist);
       
-      for (float i = radians(20); i >= -radians(20); i -= radians(40)) {
+      for (float i = radians(20); i >= -radians(20); i -= radians(20)) {
         float dx = projectileSpeed * cos(angle+i);
         float dy = projectileSpeed * sin(angle+i);
         Projectile p1 = new Projectile(x, y, 1.5*dx, 1.5*dy, 25, #FAFF03, projectileDamage, 200, 3, false);
@@ -150,19 +156,13 @@ public class Boss extends Enemy{
   
   public void draw(){
     loadBoss(x,y,5);
+
+    if (random(100) < 1.5) shootProjectile();
     
     //periodically shoots projectile 
     if (c == 0) {
       if (this.health >= 0.75 * maxHealth){
         teleportDisplay();
-        shootProjectile(1);
-      }
-      else if (this.health >= 0.5 * maxHealth){
-        shootProjectile(2);
-      }
-      else {
-        teleportDisplay();
-        shootProjectile(3);
       }
       
       this.c = this.cooldown;

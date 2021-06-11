@@ -6,6 +6,9 @@ public class Weapon extends Item {
   int timeUntilNextShot, fireRate;
   int type;
   
+  String[] pistolColour = loadStrings("pistol.txt");
+  String[] shotgunColour = loadStrings("shotgun.txt");
+  
   Weapon(int fireRate, float projectileSize, float damage, int type) {
     
     super(type * 10, false, WEAPON);
@@ -63,8 +66,72 @@ public class Weapon extends Item {
     }
   }
   
+  void drawPistol(float x, float y, int sideLength){
+    x -= pistolColour[0].length()/2 * sideLength; //centers the pistol
+    y -= pistolColour.length/2 * sideLength; 
+    
+    float newX = x;
+      
+    noStroke();
+    for (int i = 0; i < pistolColour.length; i++) {
+      
+      for (int j = 0; j < pistolColour[0].length(); j++) {
+        char c = pistolColour[i].charAt(j);
+        
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (c == '1') {fill(#000000);} //black
+          else if (c == '2') {fill(#342FF5);} //blue
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
+  }
+  
+  void drawShotgun(float x, float y, int sideLength){
+    x -= shotgunColour[0].length()/2 * sideLength; //centers the shotgun
+    y -= shotgunColour.length/2 * sideLength; 
+    
+    float newX = x;
+      
+    noStroke();
+    for (int i = 0; i < shotgunColour.length; i++) {
+      
+      for (int j = 0; j < shotgunColour[0].length(); j++) {
+        char c = shotgunColour[i].charAt(j);
+        
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (c == '1') {fill(#000000);} //black
+          else if (c == '2') {fill(#FF0F17);} //red
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
+  }
+  
   // will draw the weapon on the player
   public void draw() {
-    
+    switch (type) {
+      case PISTOL:
+        int xOffset = 0; 
+        
+        drawPistol(p.x, p.y, 2);
+        break;
+      
+      case SHOTGUN:
+        drawShotgun(p.x, p.y, 2);
+        break;
+    }
   }
 }

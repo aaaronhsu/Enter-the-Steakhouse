@@ -94,17 +94,17 @@ public class MenuPages {
     text("Enter the Steakhouse", width/6 - 15, 150);
     
     fill(#000000);
-    if (inBounds(325,225,300,100)) fill(#05AD36);
-    rect(325,225, 300, 100);
+    if (inBounds(110,225, 300, 100)) fill(#05AD36);
+    rect(110,225, 300, 100);
     
     fill(#000000);
-    if (inBounds(325,375,300,100)) fill(#05AD36);
-    rect(325,375, 300, 100);
+    if (inBounds(560,225, 300, 100)) fill(#05AD36);
+    rect(560,225, 300, 100);
     
     fill(#FFFFFF);
     textFont(other, 48);
-    text("START", 398, 288);
-    text("CONTROLS", 345, 440);
+    text("START", 180, 288);
+    text("CONTROLS", 580, 288);
   }
   
   void showMapSelect(){
@@ -173,7 +173,7 @@ public class MenuPages {
     text("Back", 71, 85);
     
     fill(#FFFFFF);
-    textFont(other, 48); //WASD + Q (blanks) + ?(open chests)
+    textFont(other, 36); //WASD + Q (blanks) + ?(open chests)
     ellipse(70,165, 15, 15);
     text("W - Up", 100, 170);
     
@@ -190,7 +190,7 @@ public class MenuPages {
     text("Q - Use Blank", 100, 450);
     
     ellipse(70,505, 15, 15);
-    text("? - Open Chest", 100, 520);
+    text("F - Open Chest", 100, 520);
     
     //map <--> room colors
     fill(200, 0, 0, 240);
@@ -212,6 +212,10 @@ public class MenuPages {
     fill(101, 67, 33, 240);
     ellipse(490,435, 15, 15);
     text("Brown - ChestRoom", 520, 450);
+
+    fill(#FFFFFF);
+    ellipse(490,505, 15, 15);
+    text("TAB - Show Map", 520, 520);
   }
   
   void showWin(){
@@ -258,7 +262,7 @@ public class MenuPages {
     if (p.currentRoom.roomType.equals("boss") && ((BossRoom) p.currentRoom).bossSpawned && p.currentRoom.enemyList.isEmpty()) {
       this.currentPage = VICTORY_SCREEN;
     }
-    else if (p.health == 0) {
+    else if (p.health <= 0) {
       this.currentPage = DEFEAT_SCREEN;
     }
   }
@@ -271,8 +275,8 @@ public class MenuPages {
   
   void mousePressed(){
     if (this.currentPage == MENU_SCREEN && mouseButton == LEFT) {
-      if (inBounds(325,225,300,100)) this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
-      if (inBounds(325,375,300,100)) this.currentPage = CONTROLS_SCREEN; //clicks on "CONTROLS"
+      if (inBounds(110,225, 300, 100)) this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
+      if (inBounds(560,225, 300, 100)) this.currentPage = CONTROLS_SCREEN; //clicks on "CONTROLS"
     }
     
     if (this.currentPage == MAPSELECT_SCREEN && mouseButton == LEFT) {

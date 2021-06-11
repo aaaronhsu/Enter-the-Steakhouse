@@ -14,6 +14,12 @@
 2. Open the Processing project
 3. Press the run button on the top left of Processing
 
+## How To Play
+- Use keys `WASD` to move up, left, down, and right respectively.
+- Travel between rooms and left click to shoot enemies.
+- Press `TAB` to view the map. The room bordered in green is the one you are currently in.
+- After defeating all the enemies in the red rooms, you may enter the boss (black) room to fight the boss. The boss will only spawn when all combat rooms have been visited.
+
 ## UML:
 ![UML](https://github.com/chicknmilk/APCSFinalProject/blob/main/uml.jpeg)
 

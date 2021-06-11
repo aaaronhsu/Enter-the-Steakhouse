@@ -20,6 +20,7 @@ public class Room {
   
   boolean hasTeleporter;
   String[] roomBlueprint;
+  ArrayList<int[]> bloodStainCoords = new ArrayList();
   int roomBlueprintNum;
   
   ArrayList<Enemy> enemyList = new ArrayList();
@@ -31,6 +32,9 @@ public class Room {
   int[] corridorS = null;
   int[] corridorE = null;
   int[] corridorW = null;
+  
+  String[] bloodstain = loadStrings("bloodstain.txt");
+  String[] wall = loadStrings("wall.txt");
   
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
@@ -65,6 +69,14 @@ public class Room {
     }
     else {
       this.roomBlueprint = loadStrings("room" + roomBlueprintNum + ".txt");
+    }
+
+    for (int i = 0; i < roomBlueprint.length; i++) {
+      for (int j = 0; j < roomBlueprint[i].length(); j++) {
+        if (roomBlueprint[i].charAt(j) == GROUND && random(100) < 1) {
+          bloodStainCoords.add(new int[] {j, i});
+        }
+      }
     }
     
     if (random(100) < 20) {
@@ -197,11 +209,11 @@ public class Room {
       for (int col = 0; col < roomBlueprint[row].length(); col++) {
         switch (this.roomBlueprint[row].charAt(col)) {
           case GROUND:
-            fill(200, 250, 200);
+            fill(101, 67, 33);
             break;
           
           case PIT:
-            fill(50, 50, 50);
+            fill(0, 0, 0);
             break;
 
           case WALL:
@@ -210,7 +222,7 @@ public class Room {
           
           case TELEPORTER:
             // all teleporters will be treated as the ground
-            fill(200, 250, 200);
+            fill(101, 67, 33);
             break;
           
           case CORRIDOR:
@@ -219,22 +231,22 @@ public class Room {
 
             if (roomN != null && row == 0) {
               // NORTH CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              if (this.enemyList.isEmpty()) fill(4, 99, 7);
               else fill(120, 120, 120);
             }
             else if (roomS != null && row == roomBlueprint.length - 1) {
               // SOUTH CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              if (this.enemyList.isEmpty()) fill(4, 99, 7);
               else fill(120, 120, 120);
             }
             else if (roomE != null && col == roomBlueprint[row].length() - 1) {
               // EAST CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              if (this.enemyList.isEmpty()) fill(4, 99, 7);
               else fill(120, 120, 120);
             }
             else if (roomW != null && col == 0) {
               // WEST CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              if (this.enemyList.isEmpty()) fill(4, 99, 7);
               else fill(120, 120, 120);
             }
 
@@ -246,8 +258,52 @@ public class Room {
         }
 
         rect(col * 30, row * 30, 30, 30);
+        
+        
+        if (this.roomBlueprint[row].charAt(col) == WALL) drawWall(col, row);
+
       }
     }
+
+    for (int[] i : this.bloodStainCoords) {
+      drawBloodstain(i[0], i[1]);
+    }
+  }
+  
+  void drawBloodstain(float x, float y) {
+    int sideLength = 30;
+    
+    //x -= bloodstain[0].length()/2 * sideLength; //centers the bloodstain
+    //y -= bloodstain.length/2 * sideLength; 
+    
+    
+    for (int i = 0; i < bloodstain.length; i++) {
+        
+        for (int j = 0; j < bloodstain[0].length(); j++) {
+          char colour = bloodstain[i].charAt(j);
+          
+          if (colour == '0') fill(101, 67, 33); //gray
+          else if (colour == '1') {fill(#FF2727);} //red
+          else if (colour == '2') {fill(#DE1919);} //dark red
+          else if (colour == '3') {fill(#FF8E8E);} //light red
+          rect(x * 30 + j + 5, y * 30 + i + 5, 1, 1);
+        }
+      }
+  }
+  
+  void drawWall(float x, float y) {
+
+    fill(#676666);
+    rect(x * 30, y * 30, 30, 30);
+
+    fill(#AFAFAF);
+    rect(x * 30 + 1, y * 30 + 2, 28, 6);
+
+    fill(#908F8F);
+    rect(x * 30 + 1, y * 30 + 6, 28, 14);
+
+    fill(#747474);
+    rect(x * 30 + 1, y * 30 + 20, 28, 10);
   }
 
   public void removeEnemyProjectiles() {

@@ -127,9 +127,11 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
       drawKey(xOffset+10 + (i * 48), yOffset + 67, 2);
     }
 
-    textSize(20);
+    textSize(32);
     fill(0);
-    text("You have " + this.money + " moonies", xOffset - 10, yOffset + 100);
+    text(this.money, xOffset - 10, yOffset + 110);
+
+    drawCoin(xOffset + 30, yOffset + 100, 2);
   }
   
   void drawHeart(float x, float y, int sideLength){
