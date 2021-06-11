@@ -32,6 +32,8 @@ public class Room {
   int[] corridorE = null;
   int[] corridorW = null;
   
+  String[] bloodstain = loadStrings("bloodstain.txt");
+  
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
     this.roomType = "start";
@@ -248,6 +250,31 @@ public class Room {
         rect(col * 30, row * 30, 30, 30);
       }
     }
+  }
+  
+  void drawBloodstain(float x, float y) {
+    int sideLength = 30;
+    
+    //x -= bloodstain[0].length()/2 * sideLength; //centers the bloodstain
+    //y -= bloodstain.length/2 * sideLength; 
+    
+    float newX = x;
+    
+    for (int i = 0; i < bloodstain.length; i++) {
+        
+        for (int j = 0; j < bloodstain[0].length(); j++) {
+          char colour = bloodstain[i].charAt(j);
+          
+          if (colour == '0') fill(200, 250, 200); //gray
+          else if (colour == '1') {fill(#FF2727);} //red
+          else if (colour == '2') {fill(#DE1919);} //dark red
+          else if (colour == '3') {fill(#FF8E8E);} //light red
+          rect(newX * 30,y * 30, sideLength, sideLength);
+          newX += sideLength;
+        }
+        newX = x; //resets newX
+        y += sideLength;
+      }
   }
 
   public void removeEnemyProjectiles() {
