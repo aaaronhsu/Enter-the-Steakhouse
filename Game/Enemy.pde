@@ -171,7 +171,9 @@ public class Enemy {
       }
       return fetchTile(x, y - 30) == GROUND || fetchTile(x, y - 30) == TELEPORTER;
     }
-    return false;
+    catch (Exception e) {
+      return false; 
+    }
   }
   private boolean canMoveSouth(int x, int y) {
     try {
@@ -181,7 +183,9 @@ public class Enemy {
       }
       return fetchTile(x, y + 30) == GROUND || fetchTile(x, y - 30) == TELEPORTER;
     }
-    return false;
+    catch (Exception e) {
+      return false; 
+    }
   }
   private boolean canMoveEast(int x, int y) {
     try {
@@ -191,7 +195,9 @@ public class Enemy {
       }
       return fetchTile(x + 30, y) == GROUND || fetchTile(x, y - 30) == TELEPORTER;
     }
-    return false;
+    catch (Exception e) {
+      return false; 
+    }
   }
   private boolean canMoveWest(int x, int y) {
     try {
@@ -201,6 +207,8 @@ public class Enemy {
       }
       return fetchTile(x - 30, y) == GROUND || fetchTile(x, y - 30) == TELEPORTER;
     }
-    return false;
+    catch (Exception e) {
+      return false; 
+    }
   }
 }
