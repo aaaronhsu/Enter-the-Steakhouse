@@ -1,6 +1,7 @@
 public final int MEATCLEAVER = 0;
 public final int STOVE = 1;
 public final int GARDENER = 2;
+public final int MILKSHAKE = 3;
 
 public final int BOSS = 10;
 
