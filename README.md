@@ -82,6 +82,8 @@ Mooing Steak: Aaron Hsu, Yaying Liang Li
 **Yaying**: Added Menu Page with color-changing buttons upon hover.
 
 ### 6/5
+**Aaron**: Worked on slideshow for demo
+
 **Yaying**: Added Map Selection page
 
 ### 6/6
@@ -95,5 +97,10 @@ Mooing Steak: Aaron Hsu, Yaying Liang Li
 **Yaying**: Added scrolling cow animation in menu page
 
 ### 6/8
-
 **Yaying**: Added chest, key, blank, and coin pixel arts + loaded them into respective files; added controls screen, win + lose screen with reset button
+
+### 6/9
+**Aaron**: Added new weapon that you can buy in the shop. Also made enemies and the player turn.
+
+### 6/10
+**Aaron**: Changed the visuals of the game (added tile colors) and updated UML. Player has invincibility frames when getting shot and falling into pit. Also fixed misc. bugs.
