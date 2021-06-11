@@ -20,6 +20,7 @@ public class Room {
   
   boolean hasTeleporter;
   String[] roomBlueprint;
+  ArrayList<int[]> bloodStainCoords = new ArrayList();
   int roomBlueprintNum;
   
   ArrayList<Enemy> enemyList = new ArrayList();
@@ -67,6 +68,14 @@ public class Room {
     }
     else {
       this.roomBlueprint = loadStrings("room" + roomBlueprintNum + ".txt");
+    }
+
+    for (int i = 0; i < roomBlueprint.length; i++) {
+      for (int j = 0; j < roomBlueprint[i].length(); j++) {
+        if (roomBlueprint[i].charAt(j) == GROUND && random(100) < 1) {
+          bloodStainCoords.add(new int[] {j, i});
+        }
+      }
     }
     
     if (random(100) < 20) {
@@ -248,7 +257,12 @@ public class Room {
         }
 
         rect(col * 30, row * 30, 30, 30);
+
       }
+    }
+
+    for (int[] i : this.bloodStainCoords) {
+      drawBloodstain(i[0], i[1]);
     }
   }
   
@@ -258,7 +272,6 @@ public class Room {
     //x -= bloodstain[0].length()/2 * sideLength; //centers the bloodstain
     //y -= bloodstain.length/2 * sideLength; 
     
-    float newX = x;
     
     for (int i = 0; i < bloodstain.length; i++) {
         
@@ -269,11 +282,8 @@ public class Room {
           else if (colour == '1') {fill(#FF2727);} //red
           else if (colour == '2') {fill(#DE1919);} //dark red
           else if (colour == '3') {fill(#FF8E8E);} //light red
-          rect(newX * 30,y * 30, sideLength, sideLength);
-          newX += sideLength;
+          rect(x * 30 + j + 5, y * 30 + i + 5, 1, 1);
         }
-        newX = x; //resets newX
-        y += sideLength;
       }
   }
 
