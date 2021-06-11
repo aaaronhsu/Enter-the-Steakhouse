@@ -29,8 +29,8 @@ public class Floor {
   
   Floor(int minRooms, int maxRooms) {
     this.roomList = new ArrayList();
-    // roomList.size() < minRooms || roomList.size() > maxRooms
-    while (roomList.size() > 5 || roomList.size() == 0) {
+    
+    while (roomList.size() < minRooms || roomList.size() > maxRooms) {
       this.roomList = new ArrayList();
       this.numCombatRooms = 0;
       this.numChestRooms = 0;
