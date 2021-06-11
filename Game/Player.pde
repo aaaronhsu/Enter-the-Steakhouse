@@ -75,7 +75,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
 
     int transparent = this.iFrame == 0 ? 255 : 50;
     
-    if (mouseX < this.x) {
+    if (mouseX < this.x) { 
       for (int i = 0; i < cow.length; i++) {
         for (int j = 0; j < cow[0].length(); j++) {
           char colour = cow[i].charAt(j);

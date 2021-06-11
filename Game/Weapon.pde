@@ -71,9 +71,10 @@ public class Weapon extends Item {
     y -= pistolColour.length/2 * sideLength; 
     
     float newX = x;
-      
     noStroke();
-    for (int i = 0; i < pistolColour.length; i++) {
+    
+    if (p.x < mouseX) {
+      for (int i = 0; i < pistolColour.length; i++) {
       
       for (int j = 0; j < pistolColour[0].length(); j++) {
         char c = pistolColour[i].charAt(j);
@@ -91,6 +92,27 @@ public class Weapon extends Item {
       newX = x; //resets newX
       y += sideLength;
     }
+   }
+   else {
+     for (int i = 0; i < pistolColour.length; i++) {
+        for (int j = pistolColour[0].length() - 1; j >= 0; j--) {
+        char c = pistolColour[i].charAt(j);
+        
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (c == '1') {fill(#000000);} //black
+          else if (c == '2') {fill(#342FF5);} //blue
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
+   }
+    
   }
   
   void drawShotgun(float x, float y, int sideLength){
@@ -98,9 +120,10 @@ public class Weapon extends Item {
     y -= shotgunColour.length/2 * sideLength; 
     
     float newX = x;
-      
     noStroke();
-    for (int i = 0; i < shotgunColour.length; i++) {
+    
+    if (p.x < mouseX) {
+      for (int i = 0; i < shotgunColour.length; i++) {
       
       for (int j = 0; j < shotgunColour[0].length(); j++) {
         char c = shotgunColour[i].charAt(j);
@@ -110,7 +133,7 @@ public class Weapon extends Item {
         }
         else {
           if (c == '1') {fill(#000000);} //black
-          else if (c == '2') {fill(#FF0F17);} //red
+          else if (c == '2') {fill(#FF1F1F);} //red
           rect(newX,y, sideLength,sideLength);
         }
         newX += sideLength;
@@ -118,19 +141,44 @@ public class Weapon extends Item {
       newX = x; //resets newX
       y += sideLength;
     }
+   }
+   else {
+     for (int i = 0; i < shotgunColour.length; i++) {
+        for (int j = shotgunColour[0].length() - 1; j >= 0; j--) {
+        char c = shotgunColour[i].charAt(j);
+        
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (c == '1') {fill(#000000);} //black
+          else if (c == '2') {fill(#FF1F1F);} //red
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
+   }
+    
   }
   
   // will draw the weapon on the player
   public void draw() {
+    int xOffset = 0; 
     switch (type) {
       case PISTOL:
-        int xOffset = 0; 
+        if (mouseX <= p.x) xOffset = -40;
+        else {xOffset = 40;}
         
-        drawPistol(p.x, p.y, 2);
+        drawPistol(p.x+xOffset, p.y, 2);
         break;
       
       case SHOTGUN:
-        drawShotgun(p.x, p.y, 2);
+        if (mouseX <= p.x) xOffset = -60;
+        else {xOffset = 60;}
+        drawShotgun(p.x+xOffset, p.y, 2);
         break;
     }
   }
