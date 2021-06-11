@@ -262,7 +262,7 @@ public class MenuPages {
     if (p.currentRoom.roomType.equals("boss") && ((BossRoom) p.currentRoom).bossSpawned && p.currentRoom.enemyList.isEmpty()) {
       this.currentPage = VICTORY_SCREEN;
     }
-    else if (p.health == 0) {
+    else if (p.health <= 0) {
       this.currentPage = DEFEAT_SCREEN;
     }
   }

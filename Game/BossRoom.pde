@@ -26,7 +26,7 @@ public class BossRoom extends Room {
             y = (int) random(540);
           }
 
-          Boss m = new Boss(x, y, 5, 1);
+          Boss m = new Boss(x, y, 40, 1);
 
           this.enemyList.add(m);
         }
