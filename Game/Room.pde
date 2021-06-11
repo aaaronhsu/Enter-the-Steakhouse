@@ -35,8 +35,6 @@ public class Room {
   
   String[] bloodstain = loadStrings("bloodstain.txt");
   String[] wall = loadStrings("wall.txt");
-  //String[] floor = loadStrings("floor.txt");
-  //String[] pit = loadStrings("pit.txt");
   
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
