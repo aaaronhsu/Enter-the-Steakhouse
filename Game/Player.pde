@@ -68,7 +68,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     float newX = x;
     noStroke();
     
-    if (mouseX < this.x) {
+    if (mouseX < this.x) { 
       for (int i = 0; i < cow.length; i++) {
         for (int j = 0; j < cow[0].length(); j++) {
           char colour = cow[i].charAt(j);
