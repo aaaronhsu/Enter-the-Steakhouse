@@ -9,6 +9,8 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   int blanks;
   int keys;
 
+  int iFrame = 0;
+
   int radius = 10;
   Weapon currentWeapon;
   
@@ -50,6 +52,9 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     
     // draw the player info
     drawPlayerInfo();
+    
+
+    if (iFrame > 0) iFrame--;
 
     // draw the weapon
     currentWeapon.draw();
@@ -67,6 +72,8 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     
     float newX = x;
     noStroke();
+
+    int transparent = this.iFrame == 0 ? 255 : 50;
     
     if (mouseX < this.x) {
       for (int i = 0; i < cow.length; i++) {
@@ -77,9 +84,9 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
             //space; skip the iteration
           }
           else {
-            if (colour == '1') {fill(#000000);} //black
-            else if (colour == '2') {fill(#FFFFFF);} //white
-            else if (colour == '3') {fill(#FF8BA8);} //pink
+            if (colour == '1') {fill(#000000, transparent);} //black
+            else if (colour == '2') {fill(#FFFFFF, transparent);} //white
+            else if (colour == '3') {fill(#FF8BA8, transparent);} //pink
             rect(newX,y, sideLength,sideLength);
           }
           newX += sideLength;
@@ -97,9 +104,9 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
             //space; skip the iteration
           }
           else {
-            if (colour == '1') {fill(#000000);} //black
-            else if (colour == '2') {fill(#FFFFFF);} //white
-            else if (colour == '3') {fill(#FF8BA8);} //pink
+            if (colour == '1') {fill(#000000, transparent);} //black
+            else if (colour == '2') {fill(#FFFFFF, transparent);} //white
+            else if (colour == '3') {fill(#FF8BA8, transparent);} //pink
             rect(newX,y, sideLength,sideLength);
           }
           newX += sideLength;
