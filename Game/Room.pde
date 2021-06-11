@@ -260,6 +260,7 @@ public class Room {
         }
 
         rect(col * 30, row * 30, 30, 30);
+        drawWall(col, row);
 
       }
     }
@@ -291,28 +292,18 @@ public class Room {
   }
   
   void drawWall(float x, float y) {
-    int sideLength = 30;
-    
-    //x -= wall[0].length()/2 * sideLength; //centers the wall
-    //y -= wall.length/2 * sideLength; 
-    
-    float newX = x;
-    
-    for (int i = 0; i < wall.length; i++) {
-        
-        for (int j = 0; j < wall[0].length(); j++) {
-          char colour = wall[i].charAt(j);
-          
-          if (colour == '0') fill(#676666); //darkest gray
-          else if (colour == '1') {fill(#747474);} 
-          else if (colour == '2') {fill(#908F8F);} 
-          else if (colour == '3') {fill(#AFAFAF);} //lightest gray
-          rect(newX * 30,y * 30, sideLength, sideLength);
-          newX += sideLength;
-        }
-        newX = x; //resets newX
-        y += sideLength;
-      }
+
+    fill(#676666);
+    rect(x * 30, y * 30, 30, 30);
+
+    fill(#AFAFAF);
+    rect(x * 30 + 1, y * 30 + 2, 28, 6);
+
+    fill(#908F8F);
+    rect(x * 30 + 1, y * 30 + 6, 28, 14);
+
+    fill(#747474);
+    rect(x * 30 + 1, y * 30 + 20, 28, 10);
   }
 
   public void removeEnemyProjectiles() {
