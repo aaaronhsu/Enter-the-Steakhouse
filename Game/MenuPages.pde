@@ -47,12 +47,12 @@ public class MenuPages {
       
       case VICTORY_SCREEN: //victory screen
         showWin();
-        mouseReleased();
+        mousePressed();
         break;
       
       case DEFEAT_SCREEN:
         showLoss();
-        mouseReleased();
+        mousePressed();
         break;
         
       case CONTROLS_SCREEN: //controls screen
@@ -94,17 +94,17 @@ public class MenuPages {
     text("Enter the Steakhouse", width/6 - 15, 150);
     
     fill(#000000);
-    if (inBounds(325,225,300,100)) fill(#05AD36);
-    rect(325,225, 300, 100);
+    if (inBounds(110,225, 300, 100)) fill(#05AD36);
+    rect(110,225, 300, 100);
     
     fill(#000000);
-    if (inBounds(325,375,300,100)) fill(#05AD36);
-    rect(325,375, 300, 100);
+    if (inBounds(560,225, 300, 100)) fill(#05AD36);
+    rect(560,225, 300, 100);
     
     fill(#FFFFFF);
     textFont(other, 48);
-    text("START", 398, 288);
-    text("CONTROLS", 345, 440);
+    text("START", 180, 288);
+    text("CONTROLS", 580, 288);
   }
   
   void showMapSelect(){
@@ -275,8 +275,8 @@ public class MenuPages {
   
   void mousePressed(){
     if (this.currentPage == MENU_SCREEN && mouseButton == LEFT) {
-      if (inBounds(325,225,300,100)) this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
-      if (inBounds(325,375,300,100)) this.currentPage = CONTROLS_SCREEN; //clicks on "CONTROLS"
+      if (inBounds(110,225, 300, 100)) this.currentPage = MAPSELECT_SCREEN; //clicks on "START"
+      if (inBounds(560,225, 300, 100)) this.currentPage = CONTROLS_SCREEN; //clicks on "CONTROLS"
     }
     
     if (this.currentPage == MAPSELECT_SCREEN && mouseButton == LEFT) {
