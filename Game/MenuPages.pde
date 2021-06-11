@@ -47,12 +47,12 @@ public class MenuPages {
       
       case VICTORY_SCREEN: //victory screen
         showWin();
-        mousePressed();
+        mouseReleased();
         break;
       
       case DEFEAT_SCREEN:
         showLoss();
-        mousePressed();
+        mouseReleased();
         break;
         
       case CONTROLS_SCREEN: //controls screen
