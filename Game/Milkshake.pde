@@ -5,7 +5,8 @@ public class Milkshake extends Enemy{
   int c = cooldown;
   
   String[] monster = loadStrings("milkshake.txt"); //visual display
-  String[] damagedMonster = loadStrings("milkshakeDamaged.txt"); //visual display
+  //String[] damagedMonster = loadStrings("milkshakeDamaged.txt"); //visual display
+  
   //for hit box of monster
   int monWidth = monster[0].length()*4 + 100; 
   int monHeight = monster.length*4 + 100;
@@ -50,24 +51,24 @@ public class Milkshake extends Enemy{
     noStroke();
 
     if (this.health == 1) {
-      for (int i = 0; i < damagedMonster.length; i++) {
+      for (int i = 0; i < monster.length; i++) {
       
-        for (int j = 0; j < damagedMonster[0].length(); j++) {
-          char colour = damagedMonster[i].charAt(j);
+        for (int j = 0; j < monster[0].length(); j++) {
+          char colour = monster[i].charAt(j);
           
-          if (colour == '0') {
+          if (colour == '0') { //darker versions
             //space; skip the iteration
           }
           else {
             if (colour == '1') {fill(0);} //black
-            else if (colour == '2') {fill(#AAE5FF);} //light blue
-            else if (colour == '3') {fill(#9DD6F0);} //darkish blue
-            else if (colour == '4') {fill(#E5101E);} //red
-            else if (colour == '5') {fill(#E3C635);} //blond
-            else if (colour == '6') {fill(#A9DE65);} //green
-            else if (colour == '7') {fill(#DE146C);} //dark pink
-            else if (colour == '8') {fill(#F5EE6F);} //skin
-            else if (colour == '9') {fill(#FF3B83);} //hot pink
+            else if (colour == '2') {fill(#1CACE8);} //light blue
+            else if (colour == '3') {fill(#178BBF);} //darkish blue
+            else if (colour == '4') {fill(#95121B);} //red
+            else if (colour == '5') {fill(#76640E);} //blond
+            else if (colour == '6') {fill(#385A0B);} //green
+            else if (colour == '7') {fill(#B91660);} //dark pink
+            else if (colour == '8') {fill(#C1B617);} //skin
+            else if (colour == '9') {fill(#DB1860);} //hot pink
             rect(newX,y, sideLength,sideLength);
           }
           newX += sideLength;
