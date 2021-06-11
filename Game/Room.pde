@@ -211,7 +211,7 @@ public class Room {
       for (int col = 0; col < roomBlueprint[row].length(); col++) {
         switch (this.roomBlueprint[row].charAt(col)) {
           case GROUND:
-            fill(200, 250, 200);
+            fill(101, 67, 33);
             break;
           
           case PIT:
@@ -224,7 +224,7 @@ public class Room {
           
           case TELEPORTER:
             // all teleporters will be treated as the ground
-            fill(200, 250, 200);
+            fill(101, 67, 33);
             break;
           
           case CORRIDOR:
@@ -284,7 +284,7 @@ public class Room {
         for (int j = 0; j < bloodstain[0].length(); j++) {
           char colour = bloodstain[i].charAt(j);
           
-          if (colour == '0') fill(200, 250, 200); //gray
+          if (colour == '0') fill(101, 67, 33); //gray
           else if (colour == '1') {fill(#FF2727);} //red
           else if (colour == '2') {fill(#DE1919);} //dark red
           else if (colour == '3') {fill(#FF8E8E);} //light red
