@@ -17,10 +17,10 @@
 [Link to Planning Document](https://docs.google.com/document/d/11vZPQI7p4fu9-Jm3V2AgnCRwOxf1TOo5luuOlPP4I3o/edit?usp=sharing)
 
 ## UML:
-# New UML
+### New UML
 ![UML](https://github.com/chicknmilk/APCSFinalProject/blob/main/updatedUML.jpeg)
 
-# Old UML
+### Old UML
 ![UML](https://github.com/chicknmilk/APCSFinalProject/blob/main/uml.jpeg)
 
 ## Devlog:
