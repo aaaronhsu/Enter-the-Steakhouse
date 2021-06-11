@@ -21,8 +21,6 @@ public void setup() {
   menu = new MenuPages(0);
 }
 
-
-
 public void draw() {
   background(255, 255, 255);
 

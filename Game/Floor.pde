@@ -334,10 +334,6 @@ public class Floor {
       else if (rm.roomType.equals("shop")) fill(255, 255, 0, opacity);
       else if (rm.roomType.equals("chest")) fill(101, 67, 33, opacity);
       
-      // if (rm.visited == false) {
-      //   fill(150, 150, 150, opacity);
-      // }
-
       
       rect(x * roomPos, y * roomPos, roomSize, roomSize);
       

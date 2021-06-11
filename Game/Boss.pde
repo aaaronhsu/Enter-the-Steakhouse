@@ -149,7 +149,7 @@ public class Boss extends Enemy{
     }
   }
   
-  void teleportDisplay(){ //some animation of teleporting?
+  void teleportDisplay(){
     this.x = width/2;
     this.y = height/2;
   }
@@ -177,8 +177,6 @@ public class Boss extends Enemy{
     fill(0);
     rect(x + 40,y, 100,25);
     float percent = (float)health/maxHealth;
-    //println(health + " " + maxHealth);
-    //println(percent);
     fill(#FC191D);
     rect(x + 40,y, 100*percent, 25);
   }
