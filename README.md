@@ -14,9 +14,14 @@
 - Press `TAB` to view the map. The room bordered in green is the one you are currently in.
 - After defeating all the enemies in the red rooms, you may enter the boss (black) room to fight the boss. The boss will only spawn when all combat rooms have been visited.
 
-## UML:
-![UML](https://github.com/chicknmilk/APCSFinalProject/blob/main/uml.jpeg)
 [Link to Planning Document](https://docs.google.com/document/d/11vZPQI7p4fu9-Jm3V2AgnCRwOxf1TOo5luuOlPP4I3o/edit?usp=sharing)
+
+## UML:
+# New UML
+![UML](https://github.com/chicknmilk/APCSFinalProject/blob/main/updatedUML.jpeg)
+
+# Old UML
+![UML](https://github.com/chicknmilk/APCSFinalProject/blob/main/uml.jpeg)
 
 ## Devlog:
 ### 5/24
