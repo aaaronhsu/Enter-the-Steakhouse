@@ -13,6 +13,8 @@ public class Item {
   String[] keyColour = loadStrings("key.txt");
   String[] cow = loadStrings("cowpixel.txt"); 
 
+  String[] shotgunColour = loadStrings("shotgun.txt");
+
   Item(int cost, boolean isConsumable, int type) {
     this.cost = cost;
     this.isConsumable = isConsumable;
@@ -193,8 +195,30 @@ public class Item {
     }
   }
 
-  void drawWeapon(float x, float y, int sideLength) {
-    fill(0);
-    ellipse(x, y, 10, 10);
+  void drawWeapon(float x, float y, int sideLength){
+    x -= shotgunColour[0].length()/2 * sideLength; //centers the shotgun
+    y -= shotgunColour.length/2 * sideLength; 
+    
+    float newX = x;
+    noStroke();
+
+    for (int i = 0; i < shotgunColour.length; i++) {
+      for (int j = 0; j < shotgunColour[0].length(); j++) {
+        char c = shotgunColour[i].charAt(j);
+        
+        if (c == '0') {
+          //space; skip the iteration
+        }
+        else {
+          if (c == '1') {fill(#000000);} //black
+          else if (c == '2') {fill(#FF1F1F);} //red
+          rect(newX,y, sideLength,sideLength);
+        }
+        newX += sideLength;
+      }
+      newX = x; //resets newX
+      y += sideLength;
+    }
+    
   }
 }
