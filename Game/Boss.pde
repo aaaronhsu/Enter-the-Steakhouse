@@ -175,12 +175,12 @@ public class Boss extends Enemy{
   
   void loadHP(float x, float y) {
     fill(0);
-    rect(x,y, 100,25);
+    rect(x + 40,y, 100,25);
     float percent = (float)health/maxHealth;
     //println(health + " " + maxHealth);
     //println(percent);
     fill(#FC191D);
-    rect(x,y, 100*percent, 25);
+    rect(x + 40,y, 100*percent, 25);
   }
   
   
