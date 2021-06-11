@@ -122,6 +122,16 @@ public class Weapon extends Item {
   
   // will draw the weapon on the player
   public void draw() {
-    
+    switch (type) {
+      case PISTOL:
+        int xOffset = 0; 
+        
+        drawPistol(p.x, p.y, 2);
+        break;
+      
+      case SHOTGUN:
+        drawShotgun(p.x, p.y, 2);
+        break;
+    }
   }
 }

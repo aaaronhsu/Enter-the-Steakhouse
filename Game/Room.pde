@@ -34,6 +34,9 @@ public class Room {
   int[] corridorW = null;
   
   String[] bloodstain = loadStrings("bloodstain.txt");
+  String[] wall = loadStrings("wall.txt");
+  String[] floor = loadStrings("floor.txt");
+  String[] pit = loadStrings("pit.txt");
   
   // constructor for the start room
   Room(int chanceToGenerateRoom) {
@@ -284,6 +287,31 @@ public class Room {
           else if (colour == '3') {fill(#FF8E8E);} //light red
           rect(x * 30 + j + 5, y * 30 + i + 5, 1, 1);
         }
+      }
+  }
+  
+  void drawWall(float x, float y) {
+    int sideLength = 30;
+    
+    //x -= wall[0].length()/2 * sideLength; //centers the wall
+    //y -= wall.length/2 * sideLength; 
+    
+    float newX = x;
+    
+    for (int i = 0; i < wall.length; i++) {
+        
+        for (int j = 0; j < wall[0].length(); j++) {
+          char colour = wall[i].charAt(j);
+          
+          if (colour == '0') fill(#676666); //darkest gray
+          else if (colour == '1') {fill(#747474);} 
+          else if (colour == '2') {fill(#908F8F);} 
+          else if (colour == '3') {fill(#AFAFAF);} //lightest gray
+          rect(newX * 30,y * 30, sideLength, sideLength);
+          newX += sideLength;
+        }
+        newX = x; //resets newX
+        y += sideLength;
       }
   }
 
