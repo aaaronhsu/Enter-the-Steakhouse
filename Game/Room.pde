@@ -215,7 +215,7 @@ public class Room {
             break;
           
           case PIT:
-            fill(50, 50, 50);
+            fill(0, 0, 0);
             break;
 
           case WALL:
@@ -233,22 +233,22 @@ public class Room {
 
             if (roomN != null && row == 0) {
               // NORTH CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              if (this.enemyList.isEmpty()) fill(4, 99, 7);
               else fill(120, 120, 120);
             }
             else if (roomS != null && row == roomBlueprint.length - 1) {
               // SOUTH CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              if (this.enemyList.isEmpty()) fill(4, 99, 7);
               else fill(120, 120, 120);
             }
             else if (roomE != null && col == roomBlueprint[row].length() - 1) {
               // EAST CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              if (this.enemyList.isEmpty()) fill(4, 99, 7);
               else fill(120, 120, 120);
             }
             else if (roomW != null && col == 0) {
               // WEST CORRIDOR LOCATION
-              if (this.enemyList.isEmpty()) fill(100, 50, 50);
+              if (this.enemyList.isEmpty()) fill(4, 99, 7);
               else fill(120, 120, 120);
             }
 
@@ -260,7 +260,9 @@ public class Room {
         }
 
         rect(col * 30, row * 30, 30, 30);
-        drawWall(col, row);
+        
+        
+        if (this.roomBlueprint[row].charAt(col) == WALL) drawWall(col, row);
 
       }
     }
