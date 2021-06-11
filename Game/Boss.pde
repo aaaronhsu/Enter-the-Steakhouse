@@ -149,13 +149,14 @@ public class Boss extends Enemy{
     }
   }
   
-  void teleportDisplay(){ //some animation of teleporting?
+  void teleportDisplay(){
     this.x = width/2;
     this.y = height/2;
   }
   
   public void draw(){
     loadBoss(x,y,5);
+    loadHP(this.x-monWidth/2, this.y-100);
 
     if (random(100) < 1.5) shootProjectile();
     
@@ -171,5 +172,15 @@ public class Boss extends Enemy{
       c--;
     }
   }
+  
+  void loadHP(float x, float y) {
+    fill(0);
+    rect(x + 40,y, 100,25);
+    float percent = (float)health/maxHealth;
+    fill(#FC191D);
+    rect(x + 40,y, 100*percent, 25);
+  }
+  
+  
   
 }

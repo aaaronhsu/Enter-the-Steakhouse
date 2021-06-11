@@ -20,7 +20,7 @@ public class Stove extends Enemy{
     
     float angle = atan2(yDist, xDist);
     
-    // creates 6 projectiles 60 degrees apart
+    // creates 8 projectiles 45 degrees apart
     for (float i = 0; i <= radians(315); i+= radians(45)) {
       float dx = projectileSpeed * cos(angle+i);
       float dy = projectileSpeed * sin(angle+i);

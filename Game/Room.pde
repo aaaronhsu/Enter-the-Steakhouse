@@ -184,10 +184,15 @@ public class Room {
         case GARDENER:
           p.money += 3;
           break;
+          
+        case MILKSHAKE:
+          p.money += 4;
+          break;
         
         case BOSS:
           p.money += 5;
           break;
+          
       }
       e.despawn();
     }

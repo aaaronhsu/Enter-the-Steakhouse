@@ -51,8 +51,9 @@ public class Projectile {
 
   boolean detectCollision() {
     if (!isPlayerProjectile) { //is enemy projectile
-      if ( Math.abs(p.x - this.x) <= this.r && Math.abs(p.y - this.y) <= this.r) {
+      if ( Math.abs(p.x - this.x) <= this.r && Math.abs(p.y - this.y) <= this.r && p.iFrame == 0 && !p.isFalling) {
         p.loseHP(this.damage);
+        p.iFrame = 50;
         return true;
       }
     }

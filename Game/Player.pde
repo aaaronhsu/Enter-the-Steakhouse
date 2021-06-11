@@ -1,4 +1,4 @@
-public class Player { //bugs: use Q, don't move, all blanks slowly end up being used
+public class Player {
   float x, y, speed;
   boolean[] direction;
   
@@ -8,6 +8,8 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   int money;
   int blanks;
   int keys;
+
+  int iFrame = 0;
 
   int radius = 10;
   Weapon currentWeapon;
@@ -46,10 +48,12 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     // draw the player
     ellipseMode(CENTER);
     drawPlayer(this.x, this. y, 2);
-    // ellipse(this.x, this.y, radius * 2, radius * 2);
     
     // draw the player info
     drawPlayerInfo();
+    
+
+    if (iFrame > 0) iFrame--;
 
     // draw the weapon
     currentWeapon.draw();
@@ -67,8 +71,14 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     
     float newX = x;
     noStroke();
+
+    int transparent = this.iFrame == 0 ? 255 : 50;
+    if (isFalling) {
+      sideLength = 1;
+      transparent = 50;
+    }
     
-    if (mouseX < this.x) {
+    if (mouseX < this.x) { 
       for (int i = 0; i < cow.length; i++) {
         for (int j = 0; j < cow[0].length(); j++) {
           char colour = cow[i].charAt(j);
@@ -77,9 +87,9 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
             //space; skip the iteration
           }
           else {
-            if (colour == '1') {fill(#000000);} //black
-            else if (colour == '2') {fill(#FFFFFF);} //white
-            else if (colour == '3') {fill(#FF8BA8);} //pink
+            if (colour == '1') {fill(#000000, transparent);} //black
+            else if (colour == '2') {fill(#FFFFFF, transparent);} //white
+            else if (colour == '3') {fill(#FF8BA8, transparent);} //pink
             rect(newX,y, sideLength,sideLength);
           }
           newX += sideLength;
@@ -97,9 +107,9 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
             //space; skip the iteration
           }
           else {
-            if (colour == '1') {fill(#000000);} //black
-            else if (colour == '2') {fill(#FFFFFF);} //white
-            else if (colour == '3') {fill(#FF8BA8);} //pink
+            if (colour == '1') {fill(#000000, transparent);} //black
+            else if (colour == '2') {fill(#FFFFFF, transparent);} //white
+            else if (colour == '3') {fill(#FF8BA8, transparent);} //pink
             rect(newX,y, sideLength,sideLength);
           }
           newX += sideLength;
@@ -271,7 +281,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   
   public void move() {
     if (isFalling) {
-      if (radius > 0) {
+      if (radius > -30) {
         radius--;
       }
       else {
