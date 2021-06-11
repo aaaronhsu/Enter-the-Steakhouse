@@ -1,7 +1,7 @@
 public class Milkshake extends Enemy{
   int projectileDamage = 1;
   float projectileSpeed = 3.5;
-  int cooldown = 80; //does not change
+  int cooldown = 120; //does not change
   int c = cooldown;
   
   String[] monster = loadStrings("milkshake.txt"); //visual display
