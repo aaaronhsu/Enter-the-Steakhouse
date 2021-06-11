@@ -74,6 +74,10 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
     noStroke();
 
     int transparent = this.iFrame == 0 ? 255 : 50;
+    if (isFalling) {
+      sideLength = 1;
+      transparent = 50;
+    }
     
     if (mouseX < this.x) { 
       for (int i = 0; i < cow.length; i++) {
@@ -278,7 +282,7 @@ public class Player { //bugs: use Q, don't move, all blanks slowly end up being 
   
   public void move() {
     if (isFalling) {
-      if (radius > 0) {
+      if (radius > -30) {
         radius--;
       }
       else {
